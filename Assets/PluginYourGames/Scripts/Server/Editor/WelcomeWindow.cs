@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using UnityEditor;
 using UnityEngine;
+using YG.EditorScr.BuildModify;
 using YG.Insides;
 
 namespace YG.EditorScr
@@ -8,6 +9,8 @@ namespace YG.EditorScr
     [InitializeOnLoad]
     public class WelcomeWindow : EditorWindow
     {
+        private static Texture2D iconPluginYG;
+
         static WelcomeWindow() => InitializeOnLoad();
         private static void InitializeOnLoad()
         {
@@ -23,12 +26,30 @@ namespace YG.EditorScr
             };
         }
 
-        //[MenuItem("YG2/Welcome")]
+        //[MenuItem("Tools/YG2/Welcome")]
         public static void ShowWindow()
         {
             WelcomeWindow window = GetWindow<WelcomeWindow>($"Welcome to {InfoYG.NAME_PLUGIN}!");
             window.position = new Rect(250, 150, 700, 540);
             window.minSize = new Vector2(700, 540);
+        }
+
+        private void OnEnable()
+        {
+            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+            ModifyBuild.onModifyComplete += Serialize;
+            Serialize();
+        }
+        private void OnDisable()
+        {
+            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+            ModifyBuild.onModifyComplete -= Serialize;
+        }
+        private void OnPlayModeStateChanged(PlayModeStateChange state) => Serialize();
+        private void Serialize()
+        {
+            InfoYGEditorWindow.CreateIcon(InfoYG.PATCH_PC_ICON_YG2, out iconPluginYG);
+            Repaint();
         }
 
         private void OnGUI()
@@ -52,12 +73,14 @@ namespace YG.EditorScr
             styleWelcome = TextStyles.LabelStyleColor(Color.gray);
             styleWelcome.fontSize = 30;
             styleWelcome.alignment = TextAnchor.MiddleCenter;
+            styleWelcome.fontStyle = FontStyle.Bold;
 
             GUILayout.Label(Langs.fullNamePlugin.ToLower(), styleWelcome);
             GUILayout.Space(50);
 
             styleWelcome.fontSize = 16;
             styleWelcome.alignment = TextAnchor.MiddleLeft;
+            styleWelcome.fontStyle = FontStyle.Normal;
 
             GUIStyle buttonStyle = new GUIStyle(YGEditorStyles.button);
             buttonStyle.fontSize = 15;
@@ -124,9 +147,9 @@ namespace YG.EditorScr
                 GUILayout.FlexibleSpace();
                 GUILayout.EndHorizontal();
 #if RU_YG2
-                GUILayout.Label("Вся информация в документации и нашем уютном чате, заходите :)", styleWelcome);
+                GUILayout.Label("Вся полезная информация в документации и телеграм канале", styleWelcome);
 #else
-                GUILayout.Label("All information is in the documentation and our cozy chat, come in :)", styleWelcome);
+                GUILayout.Label("All the useful information is in the documentation and telegram channel", styleWelcome);
 #endif
                 bool newerVersion = false;
                 float thisVersion;
@@ -156,6 +179,13 @@ namespace YG.EditorScr
                     }
                 }
 
+                GUILayout.Space(20);
+                GUILayout.BeginHorizontal();
+
+                GUILayout.Space(10);
+                Rect textureRect = GUILayoutUtility.GetRect(50, 50, GUILayout.ExpandWidth(false));
+                GUI.DrawTexture(textureRect, iconPluginYG);
+
                 if (!newerVersion)
                 {
                     GUILayout.Space(40);
@@ -163,9 +193,9 @@ namespace YG.EditorScr
                     styleWelcome.fontSize = 16;
                     styleWelcome.alignment = TextAnchor.MiddleRight;
 #if RU_YG2
-                    GUILayout.Label($"У Вас самая свежая версия {InfoYG.NAME_PLUGIN}!  v{InfoYG.VERSION_YG2}", styleWelcome);
+                    GUILayout.Label($"\nУ Вас самая свежая версия {InfoYG.NAME_PLUGIN}!  (v{InfoYG.VERSION_YG2})", styleWelcome);
 #else
-                    GUILayout.Label($"You have the latest version of {InfoYG.NAME_PLUGIN}!  v{InfoYG.VERSION_YG2}", styleWelcome);
+                    GUILayout.Label($"\nYou have the latest version of {InfoYG.NAME_PLUGIN}!  (v{InfoYG.VERSION_YG2})", styleWelcome);
 #endif
                 }
                 else
@@ -175,14 +205,16 @@ namespace YG.EditorScr
                     styleWelcome.fontSize = 16;
                     styleWelcome.alignment = TextAnchor.MiddleRight;
 #if RU_YG2
-                    GUILayout.Label($"Есть более свежая версия {InfoYG.NAME_PLUGIN}!  v{cloudVersionStr}", styleWelcome);
+                    GUILayout.Label($"\nЕсть более свежая версия {InfoYG.NAME_PLUGIN}!  (v{cloudVersionStr})", styleWelcome);
 #else
-                    GUILayout.Label($"There is a more recent version of {InfoYG.NAME_PLUGIN}!  v{cloudVersionStr}", styleWelcome);
+                    GUILayout.Label($"\nThere is a more recent version of {InfoYG.NAME_PLUGIN}!  (v{cloudVersionStr})", styleWelcome);
 #endif
                 }
+                GUILayout.EndHorizontal();
             }
 
-            Repaint();
+            if (EditorUtils.IsMouseOverWindow(this))
+                Repaint();
         }
     }
 }

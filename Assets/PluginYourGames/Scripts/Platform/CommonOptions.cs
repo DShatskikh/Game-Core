@@ -10,6 +10,7 @@ namespace YG
 
 namespace YG.Insides
 {
+    [System.Serializable]
     public partial class CommonOptions
     {
         /// [ApplySettings] [SelectPlatform] [DeletePlatform]

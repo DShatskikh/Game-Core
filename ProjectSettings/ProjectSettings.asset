@@ -582,14 +582,14 @@ PlayerSettings:
   blurSplashScreenBackground: 1
   spritePackerPolicy: 
   webGLMemorySize: 32
-  webGLExceptionSupport: 1
+  webGLExceptionSupport: 2
   webGLNameFilesAsHashes: 0
   webGLShowDiagnostics: 0
   webGLDataCaching: 1
   webGLDebugSymbols: 0
   webGLEmscriptenArgs: 
   webGLModulesDirectory: 
-  webGLTemplate: APPLICATION:Default
+  webGLTemplate: PROJECT:YandexGames
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
   webGLCompressionFormat: 0
@@ -623,7 +623,7 @@ PlayerSettings:
     Server: UNITY_VISUAL_SCRIPTING
     Standalone: PLUGIN_YG_2;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;UNITY_VISUAL_SCRIPTING;DOTWEEN;NJSON_YG2
     VisionOS: UNITY_VISUAL_SCRIPTING;DOTWEEN
-    WebGL: UNITY_VISUAL_SCRIPTING;DOTWEEN;PLUGIN_YG_2;NJSON_YG2;MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1
+    WebGL: UNITY_VISUAL_SCRIPTING;DOTWEEN;PLUGIN_YG_2;NJSON_YG2;MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;YandexGamesPlatform_yg;TMP_YG2;Storage_yg;Fullscreen_yg;Metrica_yg;RewardedAdv_yg
     Windows Store Apps: UNITY_VISUAL_SCRIPTING;DOTWEEN
     XboxOne: UNITY_VISUAL_SCRIPTING;DOTWEEN
     iPhone: UNITY_VISUAL_SCRIPTING;DOTWEEN

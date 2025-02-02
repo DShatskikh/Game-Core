@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEditor.Build;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -28,10 +29,10 @@ namespace MoreMountains.FeedbacksForThirdParty
         /// </summary>
         static NiceVibrationsDefineSymbols()
         {
-            string scriptingDefinesString = PlayerSettings.GetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup); 
+            string scriptingDefinesString = PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup));
             List<string> scriptingDefinesStringList = scriptingDefinesString.Split(';').ToList();
             scriptingDefinesStringList.AddRange(Symbols.Except(scriptingDefinesStringList));
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(EditorUserBuildSettings.selectedBuildTargetGroup, string.Join(";", scriptingDefinesStringList.ToArray()));
+            PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup), string.Join(";", scriptingDefinesStringList.ToArray()));
         }
     }
 #endif

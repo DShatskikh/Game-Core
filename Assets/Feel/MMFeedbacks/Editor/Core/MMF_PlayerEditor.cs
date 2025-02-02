@@ -1083,7 +1083,7 @@ namespace MoreMountains.Feedbacks
 
 		protected virtual void StoreRuntimeChanges()
 		{
-			foreach (MMF_Player player in FindObjectsOfType<MMF_Player>().Where(p => p.KeepPlayModeChanges))
+			foreach (MMF_Player player in FindObjectsByType<MMF_Player>(FindObjectsInactive.Include, FindObjectsSortMode.None))
 			{
 				MMF_PlayerCopy.StoreRuntimeChanges(player);
 			}
@@ -1091,7 +1091,7 @@ namespace MoreMountains.Feedbacks
 
 		protected virtual void ApplyRuntimeChanges()
 		{
-			foreach (MMF_Player player in FindObjectsOfType<MMF_Player>().Where(MMF_PlayerCopy.RuntimeChanges.ContainsKey))
+			foreach (MMF_Player player in FindObjectsByType<MMF_Player>(FindObjectsInactive.Include, FindObjectsSortMode.None).Where(MMF_PlayerCopy.RuntimeChanges.ContainsKey))
 			{
 				MMF_PlayerCopy.ApplyRuntimeChanges(player);
 			}

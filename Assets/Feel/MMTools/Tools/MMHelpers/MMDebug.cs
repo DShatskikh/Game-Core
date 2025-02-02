@@ -6,6 +6,7 @@ using System.Text;
 using System.Reflection;
 using System.Linq;
 using Debug = UnityEngine.Debug;
+using Object = UnityEngine.Object;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -560,7 +561,7 @@ namespace MoreMountains.Tools
 			if (_console == null)
 			{
 				// we try to find one in the scene
-				_console = (MMDebugOnScreenConsole) GameObject.FindObjectOfType(typeof(MMDebugOnScreenConsole));
+				_console = (MMDebugOnScreenConsole) Object.FindFirstObjectByType(typeof(MMDebugOnScreenConsole));
 			}
 
 			if (_console == null)

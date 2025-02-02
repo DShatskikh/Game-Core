@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEditor;
+using UnityEditor.Build;
 
 namespace QFSW.QC.Editor.Tools
 {
@@ -38,7 +39,7 @@ namespace QFSW.QC.Editor.Tools
         {
             foreach (BuildTargetGroup group in groups)
             {
-                string currentSymbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+                string currentSymbols = PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(group));
                 foreach (string symbol in symbols)
                 {
                     if (!currentSymbols.Contains(symbol))
@@ -47,7 +48,7 @@ namespace QFSW.QC.Editor.Tools
                     }
                 }
 
-                PlayerSettings.SetScriptingDefineSymbolsForGroup(group, currentSymbols);
+                PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(group), currentSymbols);
             }
         }
 
@@ -65,14 +66,14 @@ namespace QFSW.QC.Editor.Tools
         {
             foreach (BuildTargetGroup group in groups)
             {
-                string currentSymbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+                string currentSymbols = PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(group));
                 foreach (string symbol in symbols)
                 {
                     currentSymbols = Regex.Replace(currentSymbols, symbol, string.Empty);
                 }
 
                 currentSymbols = string.Join(";", currentSymbols.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries));
-                PlayerSettings.SetScriptingDefineSymbolsForGroup(group, currentSymbols);
+                PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(group), currentSymbols);
             }
         }
     }

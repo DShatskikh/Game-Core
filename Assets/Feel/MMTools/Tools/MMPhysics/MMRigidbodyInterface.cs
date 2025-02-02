@@ -118,7 +118,7 @@ namespace MoreMountains.Tools
 			{
 				if (_mode == "2D") 
 				{
-					return(_rigidbody2D.isKinematic);
+					return(_rigidbody2D.bodyType == RigidbodyType2D.Kinematic);
 				}
 				if (_mode == "3D")
 				{			
@@ -250,7 +250,7 @@ namespace MoreMountains.Tools
 		{
 			if (_mode == "2D") 
 			{
-				_rigidbody2D.isKinematic=status;
+				_rigidbody2D.bodyType = status ? RigidbodyType2D.Kinematic : RigidbodyType2D.Dynamic;
 			}
 			if (_mode == "3D")
 			{			

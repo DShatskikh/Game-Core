@@ -24,7 +24,7 @@ namespace QFSW.QC.Suggestors
 
         protected override IEnumerable<string> GetItems(SuggestionContext context, SuggestorOptions options)
         {
-            return Object.FindObjectsOfType(context.TargetType)
+            return Object.FindObjectsByType(context.TargetType, FindObjectsInactive.Include, FindObjectsSortMode.None)
                 .Select(cmp => (Component) cmp)
                 .Select(cmp => cmp.gameObject.name);
         }
