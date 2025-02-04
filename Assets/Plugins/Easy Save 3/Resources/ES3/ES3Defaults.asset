@@ -32,6 +32,9 @@ MonoBehaviour:
     assemblyNames:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
+    - CameraAreaUtility
+    - DOTween.Modules
+    - Extensions
     - FastScriptReload.Runtime
     - Febucci.TextAnimator.Runtime
     - Game
@@ -54,14 +57,16 @@ MonoBehaviour:
     - QFSW.QC.Serializers
     - QFSW.QC.Suggestors
     - QFSW.QC.UI
-    - Sirenix.OdinInspector.Modules.Unity.Addressables
     - Sirenix.OdinInspector.Modules.UnityLocalization
+    - SoundServices
+    - StepSound
     - UniRx
     - UniTask
     - UniTask.Addressables
     - UniTask.DOTween
     - UniTask.Linq
     - UniTask.TextMeshPro
+    - VolumeSlider
     - Zenject
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0

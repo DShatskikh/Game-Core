@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9477b1346d9f4cb0bcee5dad5e82d170, type: 3}
+  m_Name: StepSoundPairsConfig
+  m_EditorClassIdentifier: 
+  StoneStepPair:
+    Left: {fileID: 8300000, guid: d0804d0f450d1c9479c3ef4d511ee3e0, type: 3}
+    Right: {fileID: 8300000, guid: fe0c3c1967a56bc42a689552ed1be2f6, type: 3}
+  GrassStepPair:
+    Left: {fileID: 8300000, guid: f880a46722def2e468cc9c77e4d2d60d, type: 3}
+    Right: {fileID: 8300000, guid: b8918644a2509194993fd57f1faae213, type: 3}
+  WoodStepPair:
+    Left: {fileID: 8300000, guid: 73f3989d14f64c5419dc0f3ba5ad6ce1, type: 3}
+    Right: {fileID: 8300000, guid: fd6712f05f0fc854d858dfc4b5da44f0, type: 3}
+  DirtStepPair:
+    Left: {fileID: 8300000, guid: 37e56bb65b9ae164dbf011e477c9473d, type: 3}
+    Right: {fileID: 8300000, guid: 1526bdc2435e0154db87cb048a99fad8, type: 3}
+  SpongeStepPair:
+    Left: {fileID: 8300000, guid: 5d93625eb742e394f9dfc64540089b0f, type: 3}
+    Right: {fileID: 8300000, guid: c7b57814f08373e458cb42876ec90b9c, type: 3}
+  SandStepPair:
+    Left: {fileID: 8300000, guid: 762bd4de6cf97fc4e85730e3fd98f39d, type: 3}
+    Right: {fileID: 8300000, guid: bd934b1ad702df343ba8f0c61609c1e6, type: 3}

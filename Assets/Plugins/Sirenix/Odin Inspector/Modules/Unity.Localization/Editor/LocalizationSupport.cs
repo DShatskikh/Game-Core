@@ -15,7 +15,7 @@ namespace Sirenix.OdinInspector.Modules.Localization.Editor
     using Sirenix.Utilities.Editor;
     using System.Reflection;
 
-    public class LocalizedReferenceProcessor : OdinAttributeProcessor<LocalizedReference>
+    public class LocalizedStringProcessor : OdinAttributeProcessor<LocalizedString>
     {
         public override bool CanProcessChildMemberAttributes(InspectorProperty parentProperty, MemberInfo member)
         {
@@ -28,7 +28,7 @@ namespace Sirenix.OdinInspector.Modules.Localization.Editor
         }
     }
 
-    public class LocalizedReferenceResolver : OdinPropertyResolver<LocalizedReference>
+    public class LocalizedStringResolver : OdinPropertyResolver<LocalizedString>
     {
         public override int ChildNameToIndex(string name)
         {
@@ -45,7 +45,7 @@ namespace Sirenix.OdinInspector.Modules.Localization.Editor
             throw new NotSupportedException();
         }
 
-        protected override int GetChildCount(LocalizedReference value)
+        protected override int GetChildCount(LocalizedString value)
         {
             return 0;
         }

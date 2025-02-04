@@ -150,6 +150,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -179,8 +192,8 @@ TextureImporter:
       name: Ground_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 95
+        x: 17
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -201,8 +214,8 @@ TextureImporter:
       name: Ground_2
       rect:
         serializedVersion: 2
-        x: 17
-        y: 112
+        x: 0
+        y: 95
         width: 16
         height: 16
       alignment: 0
@@ -311,8 +324,8 @@ TextureImporter:
       name: Ground_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 61
+        x: 17
+        y: 78
         width: 16
         height: 16
       alignment: 0
@@ -333,7 +346,7 @@ TextureImporter:
       name: Ground_8
       rect:
         serializedVersion: 2
-        x: 17
+        x: 34
         y: 78
         width: 16
         height: 16
@@ -355,8 +368,8 @@ TextureImporter:
       name: Ground_9
       rect:
         serializedVersion: 2
-        x: 17
-        y: 61
+        x: 51
+        y: 78
         width: 16
         height: 16
       alignment: 0
@@ -377,8 +390,8 @@ TextureImporter:
       name: Ground_10
       rect:
         serializedVersion: 2
-        x: 34
-        y: 78
+        x: 0
+        y: 61
         width: 16
         height: 16
       alignment: 0
@@ -399,7 +412,7 @@ TextureImporter:
       name: Ground_11
       rect:
         serializedVersion: 2
-        x: 34
+        x: 17
         y: 61
         width: 16
         height: 16
@@ -421,8 +434,8 @@ TextureImporter:
       name: Ground_12
       rect:
         serializedVersion: 2
-        x: 51
-        y: 78
+        x: 34
+        y: 61
         width: 16
         height: 16
       alignment: 0
@@ -465,7 +478,7 @@ TextureImporter:
       name: Ground_14
       rect:
         serializedVersion: 2
-        x: 0
+        x: 51
         y: 44
         width: 16
         height: 16
@@ -487,8 +500,8 @@ TextureImporter:
       name: Ground_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 27
+        x: 34
+        y: 44
         width: 16
         height: 16
       alignment: 0
@@ -509,7 +522,7 @@ TextureImporter:
       name: Ground_16
       rect:
         serializedVersion: 2
-        x: 17
+        x: 0
         y: 44
         width: 16
         height: 16
@@ -531,8 +544,8 @@ TextureImporter:
       name: Ground_17
       rect:
         serializedVersion: 2
-        x: 34
-        y: 44
+        x: 0
+        y: 27
         width: 16
         height: 16
       alignment: 0
@@ -553,8 +566,8 @@ TextureImporter:
       name: Ground_18
       rect:
         serializedVersion: 2
-        x: 0
-        y: 10
+        x: 17
+        y: 44
         width: 16
         height: 16
       alignment: 0
@@ -567,6 +580,28 @@ TextureImporter:
       bones: []
       spriteID: da206e6c9e7af3610800000000000000
       internalID: 1603184614873367213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ground_19
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b17cc2e138b3d449a700a085786c391
+      internalID: 424976622
       vertices: []
       indices: 
       edges: []
@@ -596,6 +631,7 @@ TextureImporter:
       Ground_16: 289909530908896649
       Ground_17: -942494204440328609
       Ground_18: 1603184614873367213
+      Ground_19: 424976622
       Ground_2: -4970410492042351176
       Ground_3: -5930158604282628446
       Ground_4: -4233739483619845583
