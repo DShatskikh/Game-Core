@@ -4,29 +4,59 @@ namespace Game
 {
     public class PlayerView : MonoBehaviour
     {
+        private static readonly int StateHash = Animator.StringToHash("State");
+
+        [SerializeField]
+        private SpriteRenderer _spriteRenderer;
+        
         [SerializeField]
         private HatView _hatView;
 
-        private SpriteRenderer _spriteRenderer;
         private Animator _animator;
+        private bool _isRun;
+        private float _speed;
 
         public bool GetFlipX => _spriteRenderer.flipX;
         public Sprite GetSprite => _spriteRenderer.sprite;
 
         private void Awake()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
             _animator = GetComponent<Animator>();
         }
 
         public void OnDirectionChange(Vector2 direction)
         {
-            
+            if (direction.x > 0) 
+                SetFlipX(false);
+                
+            if (direction.x < 0) 
+                SetFlipX(true);
         }
 
         public void OnSpeedChange(float speed)
         {
-            
+            _speed = speed;
+            OnUpgradeSpeed();
+        }
+
+        public void OnIsRunChange(bool isRun)
+        {
+            _isRun = isRun;
+            OnUpgradeSpeed();
+        }
+
+        public void SetFlipX(bool isFlip)
+        {
+            _spriteRenderer.flipX = isFlip;
+            _hatView.FlipX(isFlip);
+        }
+
+        private void OnUpgradeSpeed()
+        {
+            if (_speed == 0)
+                _animator.SetFloat(StateHash, 0);
+            else
+                _animator.SetFloat(StateHash, _isRun ? 2 : 1);
         }
     }
 }

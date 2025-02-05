@@ -848,6 +848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7524312940959098091}
   - component: {fileID: 4545397354290873429}
+  - component: {fileID: 7524312940959098092}
   m_Layer: 0
   m_Name: Hat
   m_TagString: Untagged
@@ -1007,7 +1008,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -942494204440328609, guid: 04536f96a83a3964180e34af4126ee6e, type: 3}
+  m_Sprite: {fileID: -2311659948842064771, guid: 79cead4322548fb479fa5219f5632658, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1017,7 +1018,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &4874618988917582138
 Animator:
   serializedVersion: 7
@@ -1028,7 +1029,7 @@ Animator:
   m_GameObject: {fileID: 6181233095703349034}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5337c13d9583fb34e8117b2a0a699be7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1061,6 +1062,9 @@ MonoBehaviour:
       m_Bits: 64
     _config: {fileID: 11400000, guid: ed9f65a50f5ce9c4598c8615cc62c69e, type: 2}
     _tileTagConfig: {fileID: 11400000, guid: ee39ebef14b9af943940cd8e8395e2a4, type: 2}
+  _useAreaChecker:
+    _radius: 0.75
+    _point: {fileID: 1475509584748946681}
   _cameraLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -1076,7 +1080,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e010b9003547ebbea8429983196abb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hatView: {fileID: 0}
+  _spriteRenderer: {fileID: 4615935061973373353}
+  _hatView: {fileID: 7524312940959098092}
 --- !u!1 &6181233095703349034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,6 +1116,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 528460128199311292}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7524312940959098092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253495734999036398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71bb71548a464a64894f1943d16a1f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &7638276109208025836
 BoxCollider2D:
   m_ObjectHideFlags: 0

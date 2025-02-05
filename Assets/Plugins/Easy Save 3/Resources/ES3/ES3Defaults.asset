@@ -45,6 +45,7 @@ MonoBehaviour:
     - MoreMountains.Feedbacks.MMTools
     - MoreMountains.Feedbacks.TextMeshPro
     - MoreMountains.Tools
+    - PixelCrushers
     - QFSW.QC
     - QFSW.QC.Grammar
     - QFSW.QC.Parsers
@@ -61,6 +62,7 @@ MonoBehaviour:
     - UniTask.DOTween
     - UniTask.Linq
     - UniTask.TextMeshPro
+    - UseArea
     - VolumeSlider
     - Zenject
     showAdvancedSettings: 0

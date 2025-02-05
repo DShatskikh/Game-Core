@@ -17,6 +17,9 @@ namespace Game
 
         [SerializeField]
         private StepsSoundPlayer _stepsSoundPlayer;
+
+        [SerializeField]
+        private UseAreaChecker _useAreaChecker;
         
         [Header("CameraAreaChecker")]
         [SerializeField]
@@ -54,7 +57,7 @@ namespace Game
 
             if (!_isPause)
             {
-                //_useAreaChecker.Search();
+                _useAreaChecker.Search();
             }
         }
 
@@ -144,16 +147,17 @@ namespace Game
 
                 _currentSpeed.Subscribe(_stepsSoundPlayer.OnSpeedChange);
                 _isRun.Subscribe(_stepsSoundPlayer.OnIsRunChange);
+                _isRun.Subscribe(_view.OnIsRunChange);
                 _direction.Subscribe(_view.OnDirectionChange);
                 _currentSpeed.Subscribe(_view.OnSpeedChange);
-                //_useAreaChecker.Lost();
+                _useAreaChecker.Lost();
                 _playerInput.actions["Move"].canceled += OnInputMove;
             }
             else
             {
                 _currentSpeed.Value = 0;
                 _mover.Stop();
-                //_useAreaChecker.Lost();
+                _useAreaChecker.Lost();
                 
                 _currentSpeed.Dispose();
                 _isRun.Dispose();
