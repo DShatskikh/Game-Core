@@ -38,17 +38,12 @@ MonoBehaviour:
     - FastScriptReload.Runtime
     - Febucci.TextAnimator.Runtime
     - Game
-    - Lofelt.NiceVibrations
-    - Lofelt.NiceVibrations.Demo
+    - GameCycle
     - MoreMountains.Feedbacks
     - MoreMountains.Feedbacks.Authorizations
     - MoreMountains.Feedbacks.Cinemachine
-    - MoreMountains.Feedbacks.HDRP
     - MoreMountains.Feedbacks.MMTools
-    - MoreMountains.Feedbacks.NiceVibrations
-    - MoreMountains.Feedbacks.PostProcessing
     - MoreMountains.Feedbacks.TextMeshPro
-    - MoreMountains.Feedbacks.URP
     - MoreMountains.Tools
     - QFSW.QC
     - QFSW.QC.Grammar

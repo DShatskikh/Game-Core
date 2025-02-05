@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 480259836}
   - component: {fileID: 480259835}
   - component: {fileID: 480259834}
+  - component: {fileID: 480259837}
   m_Layer: 0
   m_Name: '[INSTALLER]'
   m_TagString: Untagged
@@ -181,6 +182,7 @@ MonoBehaviour:
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
   _parentContractNames: []
+  _monoKernel: {fileID: 480259837}
 --- !u!4 &480259836
 Transform:
   m_ObjectHideFlags: 0
@@ -196,6 +198,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &480259837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480259833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0065b85220401f9c7120ad6bc90ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

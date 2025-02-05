@@ -21,6 +21,8 @@ namespace Game
             
             var musicPlayer = new MusicPlayer(_musicSource);
             var soundPlayer = new SoundPlayer(_soundSource_1, _soundSource_2);
+            
+            Container.BindInterfacesAndSelfTo<GameStateController>().AsCached();
         }
     }
 }

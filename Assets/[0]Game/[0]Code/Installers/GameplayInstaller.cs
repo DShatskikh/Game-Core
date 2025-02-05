@@ -20,7 +20,7 @@ namespace Game
         {
             Container.Bind<CinemachineConfiner2D>().FromInstance(_cinemachineConfiner).AsSingle();
             Container.Bind<PlayerInput>().FromInstance(_playerInput).AsSingle();
-            Container.Bind<Player>().FromInstance(_player).AsSingle();
+            Container.BindInterfacesTo<Player>().FromInstance(_player).AsSingle();
         }
     }
 }

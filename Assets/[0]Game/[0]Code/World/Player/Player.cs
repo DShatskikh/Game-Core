@@ -8,7 +8,9 @@ using Zenject;
 
 namespace Game
 {
-    public sealed class Player : MonoBehaviour
+    public sealed class Player : MonoBehaviour, IGameStartListener, IGamePauseListener, IGameResumeListener, 
+        IGameTickableListener,IGameFixedTickableListener, IGameTransitionListener,
+        IGameShopListener, IGameADSListener, IGameDialogueListener
     {
         [SerializeField]
         private PlayerView _view;
@@ -42,19 +44,6 @@ namespace Game
             _cameraAreaChecker = new CameraAreaChecker(transform, _cameraLayer, confiner);
             
             _stepsSoundPlayer.Init(transform);
-
-            Activate(true);
-        }
-
-        private void Update()
-        {
-            _isRun.Value = _playerInput.actions["Cancel"].IsPressed();
-
-            if (_playerInput.actions["Move"].IsPressed())
-            {
-                _direction.Value = _playerInput.actions["Move"].ReadValue<Vector2>().normalized;
-                _mover.Move(_direction.Value,  _isRun.Value);
-            }
         }
 
         public void FixedUpdate()
@@ -74,6 +63,77 @@ namespace Game
             _mover = mover;
         }
 
+        void IGameStartListener.OnStartGame()
+        {
+            Activate(true);
+        }
+
+        void IGameTickableListener.Tick(float delta)
+        {
+            _isRun.Value = _playerInput.actions["Cancel"].IsPressed();
+
+            if (_playerInput.actions["Move"].IsPressed())
+            {
+                _direction.Value = _playerInput.actions["Move"].ReadValue<Vector2>().normalized;
+                _mover.Move(_direction.Value,  _isRun.Value);
+            }
+        }
+
+        void IGameFixedTickableListener.FixedTick(float delta)
+        {
+            
+        }
+
+        void IGamePauseListener.OnPauseGame()
+        {
+            Activate(false);
+        }
+
+        void IGameResumeListener.OnResumeGame()
+        {
+            Activate(true);
+        }
+
+        void IGameTransitionListener.OnStartTransition()
+        {
+            Activate(false);
+        }
+
+        void IGameTransitionListener.OnEndTransition()
+        {
+            Activate(true);
+        }
+
+        void IGameShopListener.OnOpenShop()
+        {
+            Activate(false);
+        }
+
+        void IGameShopListener.OnCloseShop()
+        {
+            Activate(true);
+        }
+
+        void IGameADSListener.OnShowADS()
+        {
+            Activate(false);
+        }
+
+        void IGameADSListener.OnHideADS()
+        {
+            Activate(true);
+        }
+
+        void IGameDialogueListener.OnShowDialogue()
+        {
+            Activate(false);
+        }
+
+        void IGameDialogueListener.OnHideDialogue()
+        {
+            Activate(true);
+        }
+        
         private void Activate(bool isActivate)
         {
             _isPause = !isActivate;

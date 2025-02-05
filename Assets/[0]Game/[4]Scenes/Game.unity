@@ -131,6 +131,8 @@ GameObject:
   - component: {fileID: 16250072}
   - component: {fileID: 16250073}
   - component: {fileID: 16250074}
+  - component: {fileID: 16250075}
+  - component: {fileID: 16250076}
   m_Layer: 0
   m_Name: '[INSTALLER]'
   m_TagString: Untagged
@@ -185,6 +187,7 @@ MonoBehaviour:
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
   _parentContractNames: []
+  _monoKernel: {fileID: 16250075}
 --- !u!114 &16250073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +233,30 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &16250075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16250070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0065b85220401f9c7120ad6bc90ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &16250076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16250070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bafff7811f9f4325a6305d9d8635b901, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &326916031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,7 +1059,6 @@ MonoBehaviour:
     _layerMask:
       serializedVersion: 2
       m_Bits: 64
-    _intervalStep: 0.7
     _config: {fileID: 11400000, guid: ed9f65a50f5ce9c4598c8615cc62c69e, type: 2}
     _tileTagConfig: {fileID: 11400000, guid: ee39ebef14b9af943940cd8e8395e2a4, type: 2}
   _cameraLayer:
