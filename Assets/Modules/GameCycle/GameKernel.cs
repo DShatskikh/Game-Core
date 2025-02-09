@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using Zenject;
 
 namespace Game
@@ -15,6 +17,8 @@ namespace Game
         {
             base.Start();
             
+            _listeners.AddRange(FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None).OfType<IGameListener>());
+
             foreach (var listener in _listeners) 
                 _gameStateController.AddListener(listener);
         }

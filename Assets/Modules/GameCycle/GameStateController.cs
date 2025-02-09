@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -16,9 +17,9 @@ namespace Game
 
         public void AddListener(IGameListener listener) 
         {
-            if (listener == null)
+            if (listener == null || _listeners.Any(x => x == listener))
                 return;
-
+            
             _listeners.Add(listener);
             
             if (listener is IGameTickableListener tickableListener)
@@ -224,6 +225,56 @@ namespace Game
             {
                 if (listener is IGameDialogueListener dialogueListener) 
                     dialogueListener.OnHideDialogue();
+            }
+        }
+        
+        public void OpenEnderChest()
+        {
+            _gameState = GameState.ENDER_CHEST;
+            
+            foreach (var listener in _listeners)
+            {
+                if (listener is IGameEnderChestListener dialogueListener) 
+                    dialogueListener.OnOpenEnderChest();
+            }
+        }
+
+        public void CloseEnderChest()
+        {
+            if (_gameState != GameState.ENDER_CHEST)
+                return;
+
+            _gameState = GameState.PLAYING;
+            
+            foreach (var listener in _listeners)
+            {
+                if (listener is IGameEnderChestListener dialogueListener) 
+                    dialogueListener.OnCloseEnderChest();
+            }
+        }
+
+        public void StartBattle()
+        {
+            _gameState = GameState.BATTLE;
+            
+            foreach (var listener in _listeners)
+            {
+                if (listener is IGameBattleListener battleListener) 
+                    battleListener.OnOpenBattle();
+            } 
+        }
+        
+        public void CloseBattle()
+        {
+            if (_gameState != GameState.BATTLE)
+                return;
+
+            _gameState = GameState.PLAYING;
+            
+            foreach (var listener in _listeners)
+            {
+                if (listener is IGameBattleListener battleListener) 
+                    battleListener.OnCloseBattle();
             }
         }
     }

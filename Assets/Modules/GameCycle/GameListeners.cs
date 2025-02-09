@@ -44,4 +44,16 @@
         void OnShowDialogue();
         void OnHideDialogue();
     }
+    
+    public interface IGameEnderChestListener : IGameListener
+    {
+        void OnOpenEnderChest();
+        void OnCloseEnderChest();
+    }
+    
+    public interface IGameBattleListener : IGameListener
+    {
+        void OnOpenBattle();
+        void OnCloseBattle();
+    }
 }

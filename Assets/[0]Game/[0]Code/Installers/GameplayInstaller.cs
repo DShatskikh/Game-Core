@@ -1,6 +1,5 @@
 ﻿using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Zenject;
 
 namespace Game
@@ -14,13 +13,13 @@ namespace Game
         private Player _player;
 
         [SerializeField]
-        private PlayerInput _playerInput;
-
+        private Transform _screens;
+        
         public override void InstallBindings()
         {
             Container.Bind<CinemachineConfiner2D>().FromInstance(_cinemachineConfiner).AsSingle();
-            Container.Bind<PlayerInput>().FromInstance(_playerInput).AsSingle();
-            Container.BindInterfacesTo<Player>().FromInstance(_player).AsSingle();
+            Container.BindInterfacesAndSelfTo<Player>().FromInstance(_player).AsCached();
+            Container.BindInterfacesAndSelfTo<EnderChestToggleHandler>().AsCached().WithArguments(_screens, AssetProvider.Instance.EnderChestScreen).NonLazy();
         }
     }
 }

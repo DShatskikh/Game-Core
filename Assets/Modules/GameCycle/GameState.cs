@@ -11,5 +11,7 @@
         SHOP =6,
         ADS = 7,
         DIALOGUE = 8,
+        ENDER_CHEST = 9,
+        BATTLE = 10,
     }
 }

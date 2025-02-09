@@ -10,7 +10,7 @@ namespace Game
 {
     public sealed class Player : MonoBehaviour, IGameStartListener, IGamePauseListener, IGameResumeListener, 
         IGameTickableListener,IGameFixedTickableListener, IGameTransitionListener,
-        IGameShopListener, IGameADSListener, IGameDialogueListener
+        IGameShopListener, IGameADSListener, IGameDialogueListener, IGameEnderChestListener, IGameBattleListener
     {
         [SerializeField]
         private PlayerView _view;
@@ -25,9 +25,9 @@ namespace Game
         [SerializeField]
         private LayerMask _cameraLayer;
         
-        private readonly ReactiveProperty<float> _currentSpeed = new();
-        private readonly ReactiveProperty<bool> _isRun = new();
-        private readonly ReactiveProperty<Vector2> _direction = new();
+        private ReactiveProperty<float> _currentSpeed = new();
+        private ReactiveProperty<bool> _isRun = new();
+        private ReactiveProperty<Vector2> _direction = new();
         
         private Rigidbody2D _rigidbody;
         private IPlayerMover _mover;
@@ -37,6 +37,9 @@ namespace Game
         private Vector3 _previousPosition;
         
         public IPlayerMover GetMover => _mover;
+        
+        public IReadOnlyReactiveProperty<MonoBehaviour> NearestUseObject => 
+            _useAreaChecker.NearestUseObject;
 
         [Inject]
         private void Construct(CinemachineConfiner2D confiner, PlayerInput playerInput)
@@ -61,6 +64,11 @@ namespace Game
             }
         }
 
+        public void TryUse(InputAction.CallbackContext obj)
+        {
+            _useAreaChecker.Use();
+        }
+        
         public void SetMover(IPlayerMover mover)
         {
             _mover = mover;
@@ -136,6 +144,26 @@ namespace Game
         {
             Activate(true);
         }
+
+        void IGameEnderChestListener.OnOpenEnderChest()
+        {
+            Activate(false);
+        }
+
+        void IGameEnderChestListener.OnCloseEnderChest()
+        {
+            Activate(true);
+        }
+        
+        public void OnOpenBattle()
+        {
+            Activate(false);
+        }
+
+        public void OnCloseBattle()
+        {
+            Activate(true);
+        }
         
         private void Activate(bool isActivate)
         {
@@ -145,6 +173,10 @@ namespace Game
             {
                 _previousPosition = transform.position;
 
+                _currentSpeed = new ReactiveProperty<float>();
+                _isRun = new ReactiveProperty<bool>();
+                _direction = new ReactiveProperty<Vector2>();
+                
                 _currentSpeed.Subscribe(_stepsSoundPlayer.OnSpeedChange);
                 _isRun.Subscribe(_stepsSoundPlayer.OnIsRunChange);
                 _isRun.Subscribe(_view.OnIsRunChange);
