@@ -14,12 +14,18 @@ namespace Game
 
         [SerializeField]
         private Transform _screens;
+
+        [SerializeField]
+        private TransitionScreen _transitionScreen;
         
         public override void InstallBindings()
         {
             Container.Bind<CinemachineConfiner2D>().FromInstance(_cinemachineConfiner).AsSingle();
             Container.BindInterfacesAndSelfTo<Player>().FromInstance(_player).AsCached();
             Container.BindInterfacesAndSelfTo<EnderChestToggleHandler>().AsCached().WithArguments(_screens, AssetProvider.Instance.EnderChestScreen).NonLazy();
+            Container.Bind<TransitionScreen>().FromInstance(_transitionScreen).AsSingle().NonLazy();
+            Container.Bind<CharacterInventory>().AsSingle().NonLazy();
+            Container.Bind<WalletService>().AsSingle().NonLazy();
         }
     }
 }

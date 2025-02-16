@@ -22,6 +22,9 @@ namespace Game
 
         [SerializeField]
         private AssetProvider _assetProvider;
+
+        [SerializeField]
+        private NextButton _nextButton;
         
         public override void InstallBindings()
         {
@@ -36,6 +39,7 @@ namespace Game
             Container.BindInterfacesAndSelfTo<GameStateController>().AsCached();
             Container.Bind<ConsoleToggleHandler>().AsSingle().WithArguments(AssetProvider.Instance.QuantumConsole).NonLazy();
             Container.Bind<ConsoleCommandRegistry>().AsSingle().NonLazy();
+            Container.Bind<INextButton>().FromInstance(_nextButton).AsSingle().NonLazy();
         }
     }
 }

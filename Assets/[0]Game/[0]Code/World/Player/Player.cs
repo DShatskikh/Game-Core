@@ -177,11 +177,11 @@ namespace Game
                 _isRun = new ReactiveProperty<bool>();
                 _direction = new ReactiveProperty<Vector2>();
                 
-                _currentSpeed.Subscribe(_stepsSoundPlayer.OnSpeedChange);
-                _isRun.Subscribe(_stepsSoundPlayer.OnIsRunChange);
-                _isRun.Subscribe(_view.OnIsRunChange);
-                _direction.Subscribe(_view.OnDirectionChange);
-                _currentSpeed.Subscribe(_view.OnSpeedChange);
+                _currentSpeed.SubscribeAndCall(_stepsSoundPlayer.OnSpeedChange);
+                _isRun.SubscribeAndCall(_stepsSoundPlayer.OnIsRunChange);
+                _isRun.SubscribeAndCall(_view.OnIsRunChange);
+                _direction.SubscribeAndCall(_view.OnDirectionChange);
+                _currentSpeed.SubscribeAndCall(_view.OnSpeedChange);
                 _useAreaChecker.Lost();
                 _playerInput.actions["Move"].canceled += OnInputMove;
             }
