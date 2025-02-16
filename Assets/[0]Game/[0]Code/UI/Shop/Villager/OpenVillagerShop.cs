@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Game
 {
-    public class OpenShop : MonoBehaviour
+    public class OpenVillagerShop : MonoBehaviour
     {
         [SerializeField]
         private ShopView _shopViewPrefab;
@@ -16,13 +16,16 @@ namespace Game
         private ShopButton _prefab;
 
         [SerializeField]
-        private ShopPresenter.InitData _initData;
+        private VillagerShopPresenter.InitData _initData;
 
         [SerializeField]
         private SerializableDictionary<string, LocalizedString> _localizedStrings;
 
         [SerializeField]
         private AudioClip _music;
+        
+        [SerializeField]
+        private ShopBackground _background;
         
         private DiContainer _diContainer;
 
@@ -51,12 +54,12 @@ namespace Game
                     inscriptionsContainer.Add(localizedString.Key, text));
             }
             
-            _diContainer.BindFactory<ShopPresenter, ShopPresenter.ShopPresenterFactory>()
-                .WithArguments(_shopViewPrefab, _prefab, _initData, inscriptionsContainer, _music);
+            _diContainer.BindFactory<VillagerShopPresenter, VillagerShopPresenter.Factory>()
+                .WithArguments(_shopViewPrefab, _prefab, _initData, inscriptionsContainer, _music, _background);
 
-            var factory = _diContainer.TryResolve<ShopPresenter.ShopPresenterFactory>();
+            var factory = _diContainer.TryResolve<VillagerShopPresenter.Factory>();
             factory.Create();
-            _diContainer.Unbind<ShopPresenter.ShopPresenterFactory>();
+            _diContainer.Unbind<VillagerShopPresenter.Factory>();
         }
     }
 }

@@ -18,6 +18,9 @@ namespace Game
 
         [SerializeField]
         private TMP_Text _productInfoLabel;
+
+        [SerializeField]
+        private Transform _backgroundContainer;
         
         [Header("Left")]
         [SerializeField]
@@ -78,6 +81,7 @@ namespace Game
         public Button GetBuyNoButton => _buyNoButton;
         public Button GetActExitButton => _actExitButton;
         public Transform GetActContainer => _actContainer;
+        public Transform GetBackgroundContainer => _backgroundContainer;
 
         public void ToggleSelectPanel(bool isActive) => 
             _selectPanel.SetActive(isActive);

@@ -18,7 +18,7 @@ namespace Game
             _gameStateController = gameStateController;
             _diContainer = diContainer;
             
-            walletService.SetMoney(125);
+            walletService.SetMoney(1250);
         }
         
         //ToDo: Код для теста потом перепишу

@@ -21,7 +21,8 @@ namespace Game
 
         ~ConsoleToggleHandler()
         {
-            _input.actions["OpenConsole"].started -= Toggle;
+            if (_input)
+                _input.actions["OpenConsole"].started -= Toggle;
         }
         
         private void Toggle(InputAction.CallbackContext context)

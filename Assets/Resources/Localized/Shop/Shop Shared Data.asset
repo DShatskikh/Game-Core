@@ -59,6 +59,38 @@ MonoBehaviour:
     m_Key: Notch_SellNotCan
     m_Metadata:
       m_Items: []
+  - m_Id: 140870625378304
+    m_Key: Notch_Speak_1_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140934261358592
+    m_Key: Notch_Speak_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 141101119160320
+    m_Key: Notch_Speak_2_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 141167045230592
+    m_Key: Notch_Speak_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 141212960276480
+    m_Key: Notch_Speak_3_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 141262511783936
+    m_Key: Notch_Speak_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 155893246574592
+    m_Key: Villager_Speak_1_Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 155900930539520
+    m_Key: Villager_Speak_1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

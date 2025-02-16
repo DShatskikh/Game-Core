@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cc2a809443248bba7563392bec1d3cf, type: 3}
-  m_Name: HealthItem
+  m_Script: {fileID: 11500000, guid: de221b82ef384289b66f2e9f85f0b81a, type: 3}
+  m_Name: Iron Sworld
   m_EditorClassIdentifier: 
-  _name: "\u0417\u041E\u041B. \u042F\u0411\u041B."
-  Health: 7
+  _id: IronSworld
+  _name: "\u0416\u0415\u041B. \u041C\u0415\u0427"
+  Attack: 3

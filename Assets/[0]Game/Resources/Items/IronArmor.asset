@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 422c07f3c4724f699897d26b344235cb, type: 3}
-  m_Name: ArmorItem
+  m_Name: IronArmor
   m_EditorClassIdentifier: 
-  _name: "\u0410\u041B\u041C. \u0411\u0420\u041E\u041D\u042F"
-  Protection: 5
+  _id: IronArmor
+  _name: "\u0416\u0415\u041B. \u0411\u0420\u041E\u041D\u042F"
+  Protection: 3

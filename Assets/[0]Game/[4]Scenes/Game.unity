@@ -1366,6 +1366,188 @@ Transform:
   - {fileID: 1475509584748946681}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1060367560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1060367561}
+  - component: {fileID: 1060367562}
+  m_Layer: 0
+  m_Name: OpenVillagerShop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1060367561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060367560}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1060367562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060367560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d16d5160711844f2bccddff5177230eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shopViewPrefab: {fileID: 2676393384388561007, guid: baba8ec533504a54b84eed3642db8d20, type: 3}
+  _prefab: {fileID: 4257783249734080108, guid: 96373fb55804675438e4f9c4417bd0cb, type: 3}
+  _initData:
+    Products:
+    - Config: {fileID: 11400000, guid: f6523155aa7174c4eae80ec53a9ef9c5, type: 2}
+      Price: 100
+      Counts: 1
+    - Config: {fileID: 11400000, guid: 726bd9cfa9928664d9bb6799bfa02bb4, type: 2}
+      Price: 200
+      Counts: 1
+    - Config: {fileID: 11400000, guid: f0f89df54738c374e9ef41783b9a0c3f, type: 2}
+      Price: 5
+      Counts: -1
+  _localizedStrings:
+    m_keys:
+    - Buy
+    - Sell
+    - Speak
+    - Exit
+    - Welcome
+    - Farewell
+    - SpeakStats
+    - BuySuccess
+    - BuyFail
+    - BuyStats
+    - SellNotCan
+    - Villager_Speak_1
+    - Villager_Speak_1_Name
+    m_values:
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 13016350720
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 2219492884480
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 2364137652224
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 2391220273152
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 9733701746688
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 9928153874432
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 10037780398080
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 10299039399936
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 10417260052480
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 11046170771456
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 11166459215872
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 155900930539520
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 155893246574592
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  _music: {fileID: 8300000, guid: 78e2439ed90d0d84c8421d8fab8feaeb, type: 3}
+  _background: {fileID: 6984877853463997981, guid: 2eab97914b751724a8c04e2b14ff5b0d, type: 3}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1161453538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,12 +1857,12 @@ GameObject:
   - component: {fileID: 1663120818}
   - component: {fileID: 1663120817}
   m_Layer: 0
-  m_Name: OpenShop
+  m_Name: OpenNotchShop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1663120817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1696,23 +1878,24 @@ MonoBehaviour:
   _shopViewPrefab: {fileID: 2676393384388561007, guid: baba8ec533504a54b84eed3642db8d20, type: 3}
   _prefab: {fileID: 4257783249734080108, guid: 96373fb55804675438e4f9c4417bd0cb, type: 3}
   _initData:
-    Products:
+    Swords:
+    - Config: {fileID: 11400000, guid: 0a011bbea23fb2e49a7b73fc44662fc1, type: 2}
+      Price: 50
+      Counts: 1
     - Config: {fileID: 11400000, guid: f6523155aa7174c4eae80ec53a9ef9c5, type: 2}
       Price: 100
       Counts: 1
-    - Config: {fileID: 11400000, guid: 726bd9cfa9928664d9bb6799bfa02bb4, type: 2}
-      Price: 200
+    Armors:
+    - Config: {fileID: 11400000, guid: d7e806d4781bdad4095a5d69e9556f48, type: 2}
+      Price: 50
       Counts: 1
+    - Config: {fileID: 11400000, guid: 726bd9cfa9928664d9bb6799bfa02bb4, type: 2}
+      Price: 100
+      Counts: 1
+    Products:
     - Config: {fileID: 11400000, guid: f0f89df54738c374e9ef41783b9a0c3f, type: 2}
       Price: 5
       Counts: -1
-    SpeakData:
-    - Name: "\u041A\u0442\u043E \u0442\u044B?"
-      Responces:
-      - "\u042F \u041D\u043E\u0442\u0447"
-    - Name: "\u041E \u0425\u0435\u0440\u043E\u0431\u0440\u0438\u043D\u0435"
-      Responces:
-      - "\u041E\u043D \u043C\u043E\u0439 \u0431\u0440\u0430\u0442"
   _localizedStrings:
     m_keys:
     - Buy
@@ -1726,6 +1909,12 @@ MonoBehaviour:
     - BuyFail
     - BuyStats
     - SellNotCan
+    - Notch_Speak_1_Name
+    - Notch_Speak_1
+    - Notch_Speak_2_Name
+    - Notch_Speak_2
+    - Notch_Speak_3
+    - Notch_Speak_3_Name
     m_values:
     - m_TableReference:
         m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
@@ -1815,7 +2004,56 @@ MonoBehaviour:
       m_FallbackState: 0
       m_WaitForCompletion: 0
       m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 140870625378304
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 140934261358592
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 141101119160320
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 141167045230592
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 141262511783936
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+    - m_TableReference:
+        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
+      m_TableEntryReference:
+        m_KeyId: 141212960276480
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   _music: {fileID: 8300000, guid: 78e2439ed90d0d84c8421d8fab8feaeb, type: 3}
+  _background: {fileID: 6984877853463997981, guid: 875ddc86548afdb488112959a64dcd82, type: 3}
   references:
     version: 2
     RefIds: []
@@ -2444,4 +2682,5 @@ SceneRoots:
   - {fileID: 2753118157221092218}
   - {fileID: 1245458575}
   - {fileID: 1663120818}
+  - {fileID: 1060367561}
   - {fileID: 1547250395}
