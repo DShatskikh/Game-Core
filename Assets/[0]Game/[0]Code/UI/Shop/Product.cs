@@ -3,9 +3,10 @@
 namespace Game
 {
     [Serializable]
-    public struct Product
+    public class Product
     {
         public ItemBaseConfig Config;
         public int Price;
+        public int Counts = -1;
     }
 }

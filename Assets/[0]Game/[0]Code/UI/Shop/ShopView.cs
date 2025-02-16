@@ -34,7 +34,7 @@ namespace Game
         
         [SerializeField]
         private Button _speakExitButton;
-        
+
         [Header("Right")]
         [SerializeField]
         private GameObject _stats;
@@ -63,6 +63,12 @@ namespace Game
         [SerializeField]
         private TMP_Text _itemCountLabel;
         
+        [SerializeField]
+        private Button _actExitButton;
+        
+        [SerializeField]
+        private Transform _actContainer;
+        
         public TextAnimationWriter GetMonologueText => _monologueText;
         public Transform GetSpeakContainer => _speakContainer;
         public Transform GetProductContainer => _products.transform;
@@ -70,6 +76,8 @@ namespace Game
         public Button GetSpeakExitButton => _speakExitButton;
         public Button GetBuyYesButton => _buyYesButton;
         public Button GetBuyNoButton => _buyNoButton;
+        public Button GetActExitButton => _actExitButton;
+        public Transform GetActContainer => _actContainer;
 
         public void ToggleSelectPanel(bool isActive) => 
             _selectPanel.SetActive(isActive);

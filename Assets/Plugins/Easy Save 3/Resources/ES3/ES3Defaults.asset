@@ -53,6 +53,7 @@ MonoBehaviour:
     - QFSW.QC.Serializers
     - QFSW.QC.Suggestors
     - QFSW.QC.UI
+    - SaveSystem
     - Sirenix.OdinInspector.Modules.UnityLocalization
     - SoundServices
     - StepSound
@@ -64,6 +65,7 @@ MonoBehaviour:
     - UniTask.TextMeshPro
     - UseArea
     - VolumeSlider
+    - YG
     - Zenject
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0

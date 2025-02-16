@@ -6,16 +6,15 @@ namespace Game
 {
     public static class LocalizedTextUtility
     {
-        public static IEnumerator AwaitLoad(LocalizedString localizedString, Action<string> onComplete)
+        public static IEnumerator AwaitLoad(this LocalizedString localizedString, Action<string> onComplete)
         {
-            /*var textOperation = localizedString.GetLocalizedStringAsync();
+            var textOperation = localizedString.GetLocalizedStringAsync();
                 
             while (!textOperation.IsDone)
                 yield return null;
 
             string t = textOperation.Result;
-            onComplete.Invoke(t);*/
-            throw new Exception();
+            onComplete.Invoke(t);
         }
 
         /*public static UniTask Load(this LocalizedString localizedString, Action<string> onComplete)

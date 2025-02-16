@@ -1,5 +1,6 @@
 ﻿using QFSW.QC;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Game
 {
@@ -16,5 +17,10 @@ namespace Game
         public QuantumConsole QuantumConsole;
         public EnderChestScreen EnderChestScreen;
         public BattleController BattleController;
+
+        [Header("Sounds")]
+        public AudioClip SelectSound;
+        public AudioClip BuySound;
+        public AudioClip FailSound;
     }
 }
