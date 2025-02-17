@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Zenject;
 
 namespace Game
@@ -6,14 +7,25 @@ namespace Game
     public class BattleInstaller : MonoInstaller
     {
         [SerializeField]
-        private Arena _arena;
+        private BattleView _view;
         
+        [SerializeField]
+        private ShopButton _buttonPrefab;
+        
+        [SerializeField]
+        private Arena _arena;
+
+        public Func<BattlePresenter> CreatePresenterCommand;
+
         public override void InstallBindings()
         {
-            var battleController = GetComponent<BattleController>();
-            
-            Container.Bind<IBattleController>().FromInstance(battleController).AsSingle();
             Container.Bind<Arena>().FromInstance(_arena).AsSingle();
+            Container.Bind<BattleView>().FromInstance(_view).AsSingle();
+            Container.Bind<ShopButton>().FromInstance(_buttonPrefab).AsSingle();
+            
+            var presenter = CreatePresenterCommand?.Invoke();
+            
+            Container.Bind<BattlePresenter>().FromInstance(presenter).AsSingle();
 
             foreach (var monoBehaviour in GetComponentsInChildren<MonoBehaviour>(true)) 
                 Container.Inject(monoBehaviour);

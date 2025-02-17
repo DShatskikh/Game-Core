@@ -6,13 +6,13 @@ namespace Game
     public interface IBattleController
     {
         IReactiveProperty<float> Progress { get; }
-        IBattleController SetEnemyController(IEnemyController enemyController);
+        IBattleController SetEnemies(IEnemy[] enemies);
         IBattleController SetIntro(IBattleIntro intro);
         IBattleController SetOutro(IBattleOutro outro);
         IBattleController SetBattleTheme(AudioClip theme);
         void StartBattle();
         void PlayerTurn();
-        IEnemyController EnemyController { get; }
+        IEnemy[] GetEnemies { get; }
         void AddBattleProgress(int progress);
     }
 }

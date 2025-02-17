@@ -2,6 +2,6 @@
 {
     public interface IEnemy
     {
-        
+        void Turn(BattlePresenter presenter);
     }
 }

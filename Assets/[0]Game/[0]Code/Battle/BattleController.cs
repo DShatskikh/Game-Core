@@ -7,7 +7,7 @@ using Zenject;
 
 namespace Game
 {
-    public class BattleController : MonoBehaviour, IBattleController
+    public abstract class BattleController : IBattleController
     {
         [SerializeField]
         private Transform[] _partyPoints;
@@ -15,19 +15,16 @@ namespace Game
         [SerializeField]
         private Transform[] _enemyPoints;
 
-        [SerializeField]
-        private CinemachineVirtualCameraBase _camera;
+        //private CinemachineVirtualCameraBase _camera;
         
         private ReactiveProperty<float> _progress = new();
         private IBattleIntro _intro;
         private IBattleOutro _outro;
         private AudioClip _theme;
         private Player _player;
-        private IEnemyController _enemyController;
         private GameStateController _gameStateController;
 
         public IReactiveProperty<float> Progress => _progress;
-        public IEnemyController EnemyController => _enemyController;
         
         [Inject]
         private void Construct(Player player, GameStateController gameStateController)
@@ -38,7 +35,6 @@ namespace Game
             gameStateController.StartBattle();
             _progress.Value = 0;
 
-            _enemyController = new TestEnemyController();
             _outro = null;
             _theme = null;
         }
@@ -46,18 +42,18 @@ namespace Game
         private IEnumerator Start()
         {
             yield return null;
-            transform.position = _player.transform.position;
-            _camera.gameObject.SetActive(true);
+            //transform.position = _player.transform.position;
+            //_camera.gameObject.SetActive(true);
             _intro = new BattleIntro(GetSquadOverWorldPositionsData(), 
                 GetEnemiesOverWorldPositionsData());
             yield return _intro.WaitIntro();
             MusicPlayer.Play(_theme);
         }
 
-        public IBattleController SetEnemyController(IEnemyController enemyController)
+
+        public IBattleController SetEnemies(IEnemy[] enemies)
         {
-            _enemyController = enemyController;
-            return this;
+            throw new System.NotImplementedException();
         }
 
         public IBattleController SetIntro(IBattleIntro intro)
@@ -88,6 +84,8 @@ namespace Game
             Debug.Log("PlayerTurn");
         }
 
+        public IEnemy[] GetEnemies { get; }
+
         public void AddBattleProgress(int progress)
         {
             _progress.Value += progress;
@@ -116,7 +114,7 @@ namespace Game
         private OverWorldPositionsData[] GetEnemiesOverWorldPositionsData()
         {
             var enemiesOverWorldPositions = new List<OverWorldPositionsData>();
-            var enemies = EnemyController.GetEnemies;
+            var enemies = GetEnemies;
             
             for (var index = 0; index < enemies.Length; index++)
             {

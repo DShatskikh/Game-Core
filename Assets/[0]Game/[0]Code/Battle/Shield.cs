@@ -21,9 +21,9 @@ namespace Game
         private IBattleController _battleController;
 
         [Inject]
-        private void Construct(IBattleController battleController)
+        private void Construct()
         {
-            _battleController = battleController;
+            
         }
         
         private void OnEnable()

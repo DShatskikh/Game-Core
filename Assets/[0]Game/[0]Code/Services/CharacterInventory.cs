@@ -21,5 +21,10 @@ namespace Game
         {
             _items.Remove(item);
         }
+
+        public void SetItems(ItemBaseConfig[] items)
+        {
+            _items = new ReactiveCollection<ItemBaseConfig>(items);
+        }
     }
 }

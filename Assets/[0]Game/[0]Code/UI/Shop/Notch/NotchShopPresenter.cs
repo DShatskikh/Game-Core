@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using ModestTree;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Game
