@@ -1,19 +1,16 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game
 {
     public class Enemy_Herobrine : MonoBehaviour, IEnemy
     {
-        public void Turn(BattlePresenter presenter)
-        {
-            StartCoroutine(AwaitTurn(presenter));
-        }
+        [SerializeField]
+        private BattleMessageBox _messageBox;
 
-        private IEnumerator AwaitTurn(BattlePresenter presenter)
-        {
-            yield return new WaitForSeconds(1);
-            presenter.Turn();
-        }
+        [SerializeField]
+        private Attack[] _attacks;
+        
+        public Attack[] GetAttacks => _attacks;
+        public BattleMessageBox GetMessageBox => _messageBox;
     }
 }

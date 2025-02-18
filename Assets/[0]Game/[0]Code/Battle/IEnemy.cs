@@ -2,6 +2,7 @@
 {
     public interface IEnemy
     {
-        void Turn(BattlePresenter presenter);
+        Attack[] GetAttacks { get; }
+        public BattleMessageBox GetMessageBox { get; }
     }
 }

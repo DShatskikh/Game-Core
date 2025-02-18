@@ -6,7 +6,7 @@ namespace Game
 {
     public class NextButton : Button, INextButton
     {
-        public void Show(Action action)
+        public void Show(Action action = null)
         {
             gameObject.SetActive(true);
             EventSystem.current.SetSelectedGameObject(gameObject);
@@ -23,6 +23,6 @@ namespace Game
 
     public interface INextButton
     {
-        void Show(Action action);
+        void Show(Action action = null);
     }
 }

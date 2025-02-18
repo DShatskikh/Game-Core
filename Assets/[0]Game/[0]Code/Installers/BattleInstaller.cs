@@ -15,6 +15,12 @@ namespace Game
         [SerializeField]
         private Arena _arena;
 
+        [SerializeField]
+        private Heart _heart;
+        
+        [SerializeField]
+        private BattlePoints _points;
+        
         public Func<BattlePresenter> CreatePresenterCommand;
 
         public override void InstallBindings()
@@ -22,6 +28,8 @@ namespace Game
             Container.Bind<Arena>().FromInstance(_arena).AsSingle();
             Container.Bind<BattleView>().FromInstance(_view).AsSingle();
             Container.Bind<ShopButton>().FromInstance(_buttonPrefab).AsSingle();
+            Container.Bind<BattlePoints>().FromInstance(_points).AsSingle();
+            Container.Bind<Heart>().FromInstance(_heart).AsSingle();
             
             var presenter = CreatePresenterCommand?.Invoke();
             
