@@ -76,7 +76,7 @@ namespace Game
 
         void IGameStartListener.OnStartGame()
         {
-            Activate(true);
+            ToggleActivate(true);
         }
 
         void IGameTickableListener.Tick(float delta)
@@ -97,75 +97,75 @@ namespace Game
 
         void IGamePauseListener.OnPauseGame()
         {
-            Activate(false);
+            ToggleActivate(false);
         }
 
         void IGameResumeListener.OnResumeGame()
         {
-            Activate(true);
+            ToggleActivate(true);
         }
 
         void IGameTransitionListener.OnStartTransition()
         {
-            Activate(false);
+            ToggleActivate(false);
         }
 
         void IGameTransitionListener.OnEndTransition()
         {
-            Activate(true);
+            ToggleActivate(true);
         }
 
         void IGameShopListener.OnOpenShop()
         {
-            Activate(false);
+            ToggleActivate(false);
         }
 
         void IGameShopListener.OnCloseShop()
         {
-            Activate(true);
+            ToggleActivate(true);
         }
 
         void IGameADSListener.OnShowADS()
         {
-            Activate(false);
+            ToggleActivate(false);
         }
 
         void IGameADSListener.OnHideADS()
         {
-            Activate(true);
+            ToggleActivate(true);
         }
 
         void IGameDialogueListener.OnShowDialogue()
         {
-            Activate(false);
+            ToggleActivate(false);
         }
 
         void IGameDialogueListener.OnHideDialogue()
         {
-            Activate(true);
+            ToggleActivate(true);
         }
 
         void IGameEnderChestListener.OnOpenEnderChest()
         {
-            Activate(false);
+            ToggleActivate(false);
         }
 
         void IGameEnderChestListener.OnCloseEnderChest()
         {
-            Activate(true);
+            ToggleActivate(true);
         }
         
         public void OnOpenBattle()
         {
-            Activate(false);
+            ToggleActivate(false);
         }
 
         public void OnCloseBattle()
         {
-            Activate(true);
+            ToggleActivate(true);
         }
         
-        private void Activate(bool isActivate)
+        private void ToggleActivate(bool isActivate)
         {
             _isPause = !isActivate;
 
@@ -184,6 +184,7 @@ namespace Game
                 _currentSpeed.SubscribeAndCall(_view.OnSpeedChange);
                 _useAreaChecker.Lost();
                 _playerInput.actions["Move"].canceled += OnInputMove;
+                _playerInput.actions["Submit"].canceled += OnSubmit;
             }
             else
             {
@@ -200,7 +201,13 @@ namespace Game
                 //_direction.Changed -= _view.OnDirectionChange;
                 //_currentSpeed.Changed -= _view.OnSpeedChange;
                 _playerInput.actions["Move"].canceled -= OnInputMove;
+                _playerInput.actions["Submit"].canceled -= OnSubmit;
             }
+        }
+
+        private void OnSubmit(InputAction.CallbackContext obj)
+        {
+            _useAreaChecker.Use();
         }
 
         private void OnInputMove(InputAction.CallbackContext obj)

@@ -30,7 +30,7 @@ namespace Game
         public ShopPresenterBase(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
             TransitionScreen transitionScreen, CharacterInventory characterInventory, WalletService walletService, 
-            DiContainer container, AudioClip music, ShopBackground background)
+            DiContainer container, AudioClip music, ShopBackground backgroundPrefab)
         {
             _shopView = Object.Instantiate(shopViewPrefab);
             _inscriptionsContainer = inscriptionsContainer;
@@ -46,7 +46,8 @@ namespace Game
 
             container.Inject(_shopView.GetMonologueText);
 
-            Object.Instantiate(background, _shopView.GetBackgroundContainer);
+            var background = Object.Instantiate(backgroundPrefab, _shopView.GetBackgroundContainer);
+            //container.Inject(background);
         }
 
         protected virtual void InitProducts(Product[] products) => 
@@ -292,7 +293,7 @@ namespace Game
             });
         }
 
-        protected void InitActButtons()
+        private void InitActButtons()
         {
             for (int i = 0; i < 3; i++)
             {
@@ -300,16 +301,10 @@ namespace Game
                 _actButtons.Add(actButton);
             }
 
-            InitButton(_actButtons[0],  _inscriptionsContainer["Buy"], OnBuyClicked);
-            InitButton(_actButtons[1], _inscriptionsContainer["Sell"], OnSellClicked);
-            InitButton(_actButtons[2], _inscriptionsContainer["Speak"], OnSpeakClicked);
-            InitButton((ShopButton)_shopView.GetActExitButton, _inscriptionsContainer["Exit"], OnExitClicked);
-        }
-        
-        private void InitButton(ShopButton shopButton, string text, UnityAction action)
-        {
-            shopButton.GetLabel.text = text;
-            shopButton.onClick.AddListener(action);
+            _actButtons[0].Init(_inscriptionsContainer["Buy"], OnBuyClicked);
+            _actButtons[1].Init(_inscriptionsContainer["Sell"], OnSellClicked);
+            _actButtons[2].Init(_inscriptionsContainer["Speak"], OnSpeakClicked);
+            _shopView.GetActExitButton.Init(_inscriptionsContainer["Exit"], OnExitClicked);
         }
         
         public void Dispose()

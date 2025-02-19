@@ -91,6 +91,10 @@ MonoBehaviour:
     m_Key: Villager_Speak_1
     m_Metadata:
       m_Items: []
+  - m_Id: 1213294083162112
+    m_Key: Attack
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

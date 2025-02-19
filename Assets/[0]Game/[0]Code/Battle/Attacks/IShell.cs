@@ -4,5 +4,6 @@
     {
         bool IsDestroy { get; }
         void Crash(Heart heart);
+        void Hide();
     }
 }

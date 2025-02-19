@@ -16,5 +16,7 @@ namespace Game
             if (_isDestroy)
                 Destroy(gameObject);
         }
+
+        public virtual void Hide() { }
     }
 }

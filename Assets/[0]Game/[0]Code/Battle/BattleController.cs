@@ -98,8 +98,6 @@ namespace Game
                 new(_player.transform, _partyPoints[0])
             };
 
-            var index = 1;
-            
             /*foreach (var companion in GameData.CompanionsManager.GetAllCompanions)
             {
                 squadOverWorldPositionsData.Add(new OverWorldPositionsData(companion.transform, 

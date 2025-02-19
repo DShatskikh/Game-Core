@@ -18,12 +18,12 @@ namespace Game
         private IShell _shell;
         private bool _isUseCoroutine;
         private Coroutine _coroutine;
-        private IBattleController _battleController;
+        private BattlePresenterBase _battlePresenterBase;
 
         [Inject]
-        private void Construct()
+        private void Construct(BattlePresenterBase battlePresenterBase)
         {
-            
+            _battlePresenterBase = battlePresenterBase;
         }
         
         private void OnEnable()
@@ -69,7 +69,7 @@ namespace Game
             _view.gameObject.SetActive(false);
             _isUseCoroutine = false;
 
-            _battleController.AddBattleProgress(1);
+            _battlePresenterBase.AddBattleProgress(1);
         }
     }
 }

@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 2213052186565317662}
   - component: {fileID: 7373183806130931723}
   - component: {fileID: 8123212843936254311}
-  - component: {fileID: 966074199093995115}
+  - component: {fileID: 5926673282329333282}
   - component: {fileID: 4369323659363495797}
   m_Layer: 0
   m_Name: Battle Button
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &966074199093995115
+--- !u!114 &5926673282329333282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,7 +300,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6640126051205346081}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 9dd87acd41df45258ce8a92406247784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -310,20 +310,20 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 2130535880278150251, guid: 51edb727d0e5b8744adce1c4af0c3d52, type: 3}
-    m_PressedSprite: {fileID: 4606908045521496030, guid: ba3c3542250d1d14d844cbf1e612976b, type: 3}
-    m_SelectedSprite: {fileID: 4606908045521496030, guid: ba3c3542250d1d14d844cbf1e612976b, type: 3}
-    m_DisabledSprite: {fileID: 2130535880278150251, guid: 51edb727d0e5b8744adce1c4af0c3d52, type: 3}
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -335,6 +335,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _label: {fileID: 2686270611766117002}
 --- !u!114 &4369323659363495797
 MonoBehaviour:
   m_ObjectHideFlags: 0

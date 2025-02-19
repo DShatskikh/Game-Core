@@ -16,13 +16,13 @@ namespace Game
         private Transform _itemsContainer;
         
         [SerializeField]
-        private Button _attackButton;
+        private ShopButton _attackButton;
         
         [SerializeField]
-        private Button _itemsButton;
+        private ShopButton _itemsButton;
         
         [SerializeField]
-        private Button _turnButton;
+        private ShopButton _turnButton;
         
         [SerializeField]
         private Button _rightSelectItemsButton;
@@ -35,12 +35,18 @@ namespace Game
 
         [SerializeField]
         private TMP_Text _stateLabel;
-        
+
+        [SerializeField]
+        private GameObject _info;
+
+        [SerializeField]
+        private TMP_Text _infoLabel;
+
         public Transform GetAttacksContainer => _attacksContainer;
         public Transform GetItemsContainer => _itemsContainer;
-        public Button GetAttackButton => _attackButton;
-        public Button GetItemsButton => _itemsButton;
-        public Button GetTurnButton => _turnButton;
+        public ShopButton GetAttackButton => _attackButton;
+        public ShopButton GetItemsButton => _itemsButton;
+        public ShopButton GetTurnButton => _turnButton;
         public Button GetRightSelectItemsButton => _rightSelectItemsButton;
         public Button GetLeftSelectItemsButton => _leftSelectItemsButton;
         public TMP_Text GetStateLabel => _stateLabel;
@@ -65,5 +71,11 @@ namespace Game
         
         public void SetStateText(string text) => 
             _stateLabel.text = text;
+
+        public void ToggleInfo(bool isActive) => 
+            _info.SetActive(isActive);
+
+        public void SetInfoText(string text) => 
+            _infoLabel.text = text;
     }
 }

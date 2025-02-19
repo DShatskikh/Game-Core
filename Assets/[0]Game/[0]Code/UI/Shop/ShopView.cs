@@ -67,7 +67,7 @@ namespace Game
         private TMP_Text _itemCountLabel;
         
         [SerializeField]
-        private Button _actExitButton;
+        private ShopButton _actExitButton;
         
         [SerializeField]
         private Transform _actContainer;
@@ -79,7 +79,7 @@ namespace Game
         public Button GetSpeakExitButton => _speakExitButton;
         public Button GetBuyYesButton => _buyYesButton;
         public Button GetBuyNoButton => _buyNoButton;
-        public Button GetActExitButton => _actExitButton;
+        public ShopButton GetActExitButton => _actExitButton;
         public Transform GetActContainer => _actContainer;
         public Transform GetBackgroundContainer => _backgroundContainer;
 

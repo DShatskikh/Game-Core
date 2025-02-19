@@ -9,6 +9,9 @@ namespace Game
         [SerializeField]
         private ItemBaseConfig[] _items;
         
+        [SerializeField]
+        private WeaponItemConfig[] _weapons;
+        
         private GameStateController _gameStateController;
         private DiContainer _diContainer;
         
@@ -21,6 +24,7 @@ namespace Game
             
             walletService.SetMoney(1250);
             inventory.SetItems(_items);
+            inventory.SetWeapons(_weapons);
         }
         
         //ToDo: Код для теста потом перепишу
@@ -28,9 +32,6 @@ namespace Game
         {
             yield return null;
             _gameStateController.StartGame();
-
-            yield break;
-            
         }
     }
 }

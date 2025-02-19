@@ -15,13 +15,13 @@ namespace Game
             if (_coroutine != null) 
                 StopCoroutine(_coroutine);
             
-            _coroutine = StartCoroutine(AwaitPlay());
+            _coroutine = StartCoroutine(WaitPlay());
         }
 
         public void Play() => 
             MusicPlayer.Play(_music);
 
-        private IEnumerator AwaitPlay()
+        private IEnumerator WaitPlay()
         {
             yield return null;
             Play();
