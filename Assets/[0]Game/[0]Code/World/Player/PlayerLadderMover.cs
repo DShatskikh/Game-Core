@@ -51,11 +51,6 @@ namespace Game
             }
         }
 
-        public void Move(System.Numerics.Vector2 directionValue, bool isRunValue)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void Stop()
         {
             

@@ -13,7 +13,7 @@ namespace Game
         private BattleInstaller _installerPrefab;
 
         [SerializeField]
-        private BattlePresenterBaseHerobrine.InitData _initData;
+        private BattleController_Herobrine.InitData _initData;
         
         [SerializeField]
         private AudioClip _music;
@@ -56,11 +56,11 @@ namespace Game
             
             installer.CreatePresenterCommand = () =>
             {
-                _diContainer.BindFactory<BattlePresenterBaseHerobrine, BattlePresenterBaseHerobrine.Factory>()
+                _diContainer.BindFactory<BattleController_Herobrine, BattleController_Herobrine.Factory>()
                     .WithArguments(_initData, _music, inscriptionsContainer);
                 
-                var factory = _diContainer.TryResolve<BattlePresenterBaseHerobrine.Factory>();
-                _diContainer.Unbind<BattlePresenterBaseHerobrine.Factory>();
+                var factory = _diContainer.TryResolve<BattleController_Herobrine.Factory>();
+                _diContainer.Unbind<BattleController_Herobrine.Factory>();
                 return factory.Create();
             };
             

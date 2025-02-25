@@ -95,6 +95,10 @@ MonoBehaviour:
     m_Key: Attack
     m_Metadata:
       m_Items: []
+  - m_Id: 2274425203703808
+    m_Key: SkipText
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

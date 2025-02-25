@@ -2,7 +2,7 @@
 
 namespace Game
 {
-    public abstract class BattlePresenterBase
+    public abstract class BattleControllerBase
     {
         public abstract void Turn();
 

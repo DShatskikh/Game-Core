@@ -1,43 +1,39 @@
-﻿using TMPro;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
-using UnityEngine.UI;
-using Zenject;
 
 namespace Game
 {
-    public sealed class VolumeSlider : MonoBehaviour
+    public sealed class VolumeSliderPresenter : IDisposable
     {
         [SerializeField]
-        private TMP_Text _label;
-
-        [SerializeField]
         private LocalizedString _localizedString;
-        
-        private Slider _slider;
-        private VolumeService _volumeService;
 
-        [Inject]
-        private void Construct(VolumeService volumeService)
+        private readonly VolumeSliderView _view;
+        private readonly VolumeService _volumeService;
+
+        public VolumeSliderPresenter(VolumeSliderView view, VolumeService volumeService)
         {
+            _view = view;
             _volumeService = volumeService;
-            _slider = GetComponent<Slider>();
-        }
-
-        private void OnEnable()
-        {
-            _slider.onValueChanged.AddListener(OnChanged);
+            
+            view.GetSlider.onValueChanged.AddListener(OnChanged);
             //_slider.value = _volumeService.Volume.Value;
             
-            LocalizationSettings.SelectedLocaleChanged += LocalizationSettingsOnSelectedLocaleChanged;
+            //LocalizationSettings.SelectedLocaleChanged += LocalizationSettingsOnSelectedLocaleChanged;
+
+            view.GetSlider.maxValue = 100;
+            view.GetSlider.value = volumeService.GetValue;
         }
 
-        private void OnDisable()
+        public void Dispose()
         {
-            _slider.onValueChanged.RemoveListener(OnChanged);
+            _view.GetSlider.onValueChanged.RemoveListener(OnChanged);
             
-            LocalizationSettings.SelectedLocaleChanged -= LocalizationSettingsOnSelectedLocaleChanged;
+            //LocalizationSettings.SelectedLocaleChanged -= LocalizationSettingsOnSelectedLocaleChanged;
+            
+            ((IDisposable)_localizedString)?.Dispose();
         }
 
         private void Start()
@@ -52,6 +48,9 @@ namespace Game
 
         private void OnChanged(float value)
         {
+            _volumeService.SetValue((int)value);
+            _view.SetText($"Звук {(int)value}%");
+            
             //_volumeService.Volume.Value = value;
             /*LocalizedTextUtility.Load(_localizedString, loadText =>
             {
@@ -60,7 +59,7 @@ namespace Game
             
             //RepositoryStorage.Set(KeyConstants.Volume, new VolumeData() { Volume = value });
         }
-        
+
         private void LocalizationSettingsOnSelectedLocaleChanged(Locale obj)
         {
             //OnChanged(_volumeService.Volume.Value);

@@ -738,6 +738,8 @@ MonoBehaviour:
   _playerInput: {fileID: 4478590859481880652}
   _assetProvider: {fileID: 11400000, guid: 887aecfb29512184e8e8f7b03e0e70f1, type: 2}
   _nextButton: {fileID: 5796656866587939475}
+  _volumeSlider: {fileID: 4137034497621211326}
+  _audioMixer: {fileID: 24100000, guid: 227a44bd4542e824f84466a8f69d2954, type: 2}
 --- !u!114 &4478590859481880652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1120,18 +1122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _label: {fileID: 4851466368084626993}
-  _localizedString:
-    m_TableReference:
-      m_TableCollectionName: 
-    m_TableEntryReference:
-      m_KeyId: 0
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  references:
-    version: 2
-    RefIds: []
+  _slider: {fileID: 3002092378073110387}
 --- !u!1 &9204421350635315142
 GameObject:
   m_ObjectHideFlags: 0

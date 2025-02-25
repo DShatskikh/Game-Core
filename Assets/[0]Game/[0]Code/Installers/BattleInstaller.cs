@@ -21,7 +21,7 @@ namespace Game
         [SerializeField]
         private BattlePoints _points;
         
-        public Func<BattlePresenterBase> CreatePresenterCommand;
+        public Func<BattleControllerBase> CreatePresenterCommand;
 
         public override void InstallBindings()
         {
@@ -33,7 +33,7 @@ namespace Game
             
             var presenter = CreatePresenterCommand?.Invoke();
             
-            Container.Bind<BattlePresenterBase>().FromInstance(presenter).AsSingle();
+            Container.Bind<BattleControllerBase>().FromInstance(presenter).AsSingle();
 
             foreach (var monoBehaviour in GetComponentsInChildren<MonoBehaviour>(true)) 
                 Container.Inject(monoBehaviour);

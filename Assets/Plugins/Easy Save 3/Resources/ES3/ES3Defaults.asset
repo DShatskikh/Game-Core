@@ -33,6 +33,7 @@ MonoBehaviour:
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
     - CameraAreaUtility
+    - DialogueSystem
     - DOTween.Modules
     - Extensions
     - FastScriptReload.Runtime
