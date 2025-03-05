@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UniRx;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,13 +17,15 @@ namespace Game
 
         [SerializeField] 
         private AudioSource _damageSource;
-
+        
         private ReactiveProperty<int> _health = new();
+        private int _maxHealth;
         private bool _isInvulnerability;
         private Arena _arena;
         private PlayerInput _playerInput;
         
-        public IReactiveProperty<int> Health => _health;
+        public IReactiveProperty<int> GetHealth => _health;
+        public int GetMaxHealth => _maxHealth;
 
         [Inject]
         private void Construct(Arena arena, PlayerInput playerInput)
@@ -30,7 +33,14 @@ namespace Game
             _arena = arena;
             _playerInput = playerInput;
 
-            _health.Value = 20;
+            _maxHealth = 20;
+            _health.Value = _maxHealth;
+        }
+
+        private void OnEnable()
+        {
+            _shield.gameObject.SetActive(true);
+            _isInvulnerability = false;
         }
 
         private void Update()
@@ -66,7 +76,7 @@ namespace Game
             if (!_isInvulnerability)
             {
                 _isInvulnerability = true;
-                StartCoroutine(TakeDamage(1));
+                StartCoroutine(TakeDamage(5));
             }
         }
         

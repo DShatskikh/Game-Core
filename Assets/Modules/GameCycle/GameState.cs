@@ -13,5 +13,6 @@
         DIALOGUE = 8,
         ENDER_CHEST = 9,
         BATTLE = 10,
+        GAME_OVER = 11,
     }
 }

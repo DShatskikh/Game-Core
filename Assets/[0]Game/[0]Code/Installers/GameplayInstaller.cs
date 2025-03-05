@@ -17,6 +17,9 @@ namespace Game
 
         [SerializeField]
         private TransitionScreen _transitionScreen;
+
+        [SerializeField]
+        private GameOverView _gameOverView;
         
         public override void InstallBindings()
         {
@@ -26,6 +29,7 @@ namespace Game
             Container.Bind<TransitionScreen>().FromInstance(_transitionScreen).AsSingle().NonLazy();
             Container.Bind<CharacterInventory>().AsSingle().NonLazy();
             Container.Bind<WalletService>().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<GameOverPresenter>().AsCached().WithArguments(_gameOverView).NonLazy();
         }
     }
 }

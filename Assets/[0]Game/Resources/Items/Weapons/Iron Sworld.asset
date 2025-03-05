@@ -15,3 +15,4 @@ MonoBehaviour:
   _id: IronSworld
   _name: "\u0416\u0415\u041B. \u041C\u0415\u0427"
   Attack: 3
+  Effect: {fileID: 6856480182940632667, guid: aa6a82c156649d646a6c009b34712a95, type: 3}

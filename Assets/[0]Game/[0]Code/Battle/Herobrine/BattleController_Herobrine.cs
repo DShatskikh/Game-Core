@@ -8,7 +8,7 @@ using Object = UnityEngine.Object;
 
 namespace Game
 {
-    public class BattleController_Herobrine : BattleControllerBase
+    public sealed class BattleController_Herobrine : BattleControllerBase
     {
         protected readonly BattleView _view;
         private readonly ShopButton _prefabButton;
@@ -25,7 +25,7 @@ namespace Game
         private readonly GameStateController _gameStateController;
         private readonly Dictionary<string,string> _inscriptionsContainer;
 
-        private int numberTurn;
+        private int _numberTurn;
 
         [Serializable]
         public struct InitData
@@ -198,7 +198,7 @@ namespace Game
             _arena.gameObject.SetActive(false);
             _heart.gameObject.SetActive(false);
 
-            numberTurn++;
+            _numberTurn++;
             Turn();
         }
         
@@ -218,10 +218,15 @@ namespace Game
             _view.ToggleStateLabel(true);
             EventSystem.current.SetSelectedGameObject(_view.GetAttackButton.gameObject);
             
-            if (numberTurn == 0)
+            if (_numberTurn == 0)
                 _view.SetStateText("Херобрин ждет вашего хода");
             else
                 _view.SetStateText("Херобрин настроен серьезно");
+        }
+
+        public override void OnGameOver()
+        {
+            Exit();
         }
 
         private void RemoveItem(ItemBaseConfig item, ShopButton button)

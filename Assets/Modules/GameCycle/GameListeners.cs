@@ -56,4 +56,9 @@
         void OnOpenBattle();
         void OnCloseBattle();
     }
+    
+    public interface IGameGameOvertListener : IGameListener
+    {
+        void OnGameOver();
+    }
 }

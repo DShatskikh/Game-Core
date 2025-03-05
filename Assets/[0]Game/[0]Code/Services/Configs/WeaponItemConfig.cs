@@ -6,6 +6,7 @@ namespace Game
     public class WeaponItemConfig : ItemBaseConfig
     {
         public int Attack;
+        public GameObject Effect;
         public override string GetInfo => $"+{Attack} АТК";
     }
 }

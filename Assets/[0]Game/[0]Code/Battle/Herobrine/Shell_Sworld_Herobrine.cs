@@ -39,8 +39,6 @@ namespace Game
                 yield return null;
             }
 
-            Debug.Log("Начало движения");
-
             var timer = 0.5f;
             
             while (timer > 0)
@@ -61,9 +59,7 @@ namespace Game
         {
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
-            
-            Debug.Log("Shell Hide");
-            
+
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
             _sequence.Append(_spriteRenderer.DOColor(Color.clear, 1f));

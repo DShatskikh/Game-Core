@@ -5,10 +5,11 @@ namespace Game
     public class PlayerView : MonoBehaviour
     {
         private static readonly int StateHash = Animator.StringToHash("State");
+        private static readonly int AttackSwordHash = Animator.StringToHash("AttackSword");
 
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
-        
+
         [SerializeField]
         private HatView _hatView;
 
@@ -58,5 +59,8 @@ namespace Game
             else
                 _animator.SetFloat(StateHash, _isRun ? 2 : 1);
         }
+
+        public void SwordAttack() => 
+            _animator.SetTrigger(AttackSwordHash);
     }
 }

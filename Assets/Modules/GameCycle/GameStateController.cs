@@ -277,5 +277,23 @@ namespace Game
                     battleListener.OnCloseBattle();
             }
         }
+        
+        public void GameOver()
+        {
+            Debug.Log("GameOver");
+            
+            if (_gameState != GameState.BATTLE)
+                return;
+
+            Debug.Log("GAME_OVER");
+            
+            _gameState = GameState.GAME_OVER;
+            
+            foreach (var listener in _listeners)
+            {
+                if (listener is IGameGameOvertListener battleListener) 
+                    battleListener.OnGameOver();
+            }
+        }
     }
 }

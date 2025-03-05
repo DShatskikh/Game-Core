@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.Cinemachine;
 using UnityEngine;
 using Zenject;
 
@@ -20,6 +21,9 @@ namespace Game
         
         [SerializeField]
         private BattlePoints _points;
+
+        [SerializeField]
+        private CinemachineVirtualCamera _virtualCamera;
         
         public Func<BattleControllerBase> CreatePresenterCommand;
 
@@ -30,13 +34,22 @@ namespace Game
             Container.Bind<ShopButton>().FromInstance(_buttonPrefab).AsSingle();
             Container.Bind<BattlePoints>().FromInstance(_points).AsSingle();
             Container.Bind<Heart>().FromInstance(_heart).AsSingle();
+            Container.Bind<CinemachineVirtualCamera>().FromInstance(_virtualCamera).AsSingle();
+            Container.Bind<ProgressStorage>().AsSingle();
             
             var presenter = CreatePresenterCommand?.Invoke();
             
             Container.Bind<BattleControllerBase>().FromInstance(presenter).AsSingle();
+            Container.Bind<IGameGameOvertListener>().FromInstance(presenter).AsCached();
 
             foreach (var monoBehaviour in GetComponentsInChildren<MonoBehaviour>(true)) 
                 Container.Inject(monoBehaviour);
+        }
+
+        [Inject]
+        private void Construct(GameStateController gameStateController)
+        {
+            gameStateController.StartBattle();
         }
     }
 }

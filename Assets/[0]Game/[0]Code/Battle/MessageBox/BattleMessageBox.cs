@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -18,7 +19,7 @@ namespace Game
             _nextButton = nextButton;
         }
         
-        public IEnumerator AwaitShow(string message)
+        public async UniTask AwaitShow(string message)
         {
             _view.ToggleActivate(true);
             _view.SetText(message);
@@ -30,7 +31,7 @@ namespace Game
             while (i > 0)
             {
                 i -= Time.deltaTime;
-                yield return null;
+                await UniTask.WaitForEndOfFrame();
             }
             
             _view.ToggleActivate(false);

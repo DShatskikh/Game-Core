@@ -20,6 +20,9 @@ namespace Game
 
         [SerializeField]
         private UseAreaChecker _useAreaChecker;
+
+        [SerializeField]
+        private CinemachineCamera _cinemachineCamera;
         
         [Header("CameraAreaChecker")]
         [SerializeField]
@@ -35,8 +38,10 @@ namespace Game
         private PlayerInput _playerInput;
         private bool _isPause;
         private Vector3 _previousPosition;
-        
+        private CameraSpeedSize _cameraSpeedSize;
+
         public IPlayerMover GetMover => _mover;
+        public IReadOnlyReactiveProperty<float> GetCurrentSpeed => _currentSpeed;
         
         public IReadOnlyReactiveProperty<MonoBehaviour> NearestUseObject => 
             _useAreaChecker.NearestUseObject;
@@ -48,7 +53,9 @@ namespace Game
             _rigidbody = GetComponent<Rigidbody2D>();
             _mover = new PlayerMover(_rigidbody);
             _cameraAreaChecker = new CameraAreaChecker(transform, _cameraLayer, confiner);
-            
+
+            _cameraSpeedSize = new CameraSpeedSize(_cinemachineCamera);
+
             _stepsSoundPlayer.Init(transform);
         }
 
@@ -182,6 +189,7 @@ namespace Game
                 _isRun.SubscribeAndCall(_view.OnIsRunChange);
                 _direction.SubscribeAndCall(_view.OnDirectionChange);
                 _currentSpeed.SubscribeAndCall(_view.OnSpeedChange);
+                _currentSpeed.SubscribeAndCall(_cameraSpeedSize.OnChangeSpeed);
                 _useAreaChecker.Lost();
                 _playerInput.actions["Move"].canceled += OnInputMove;
                 _playerInput.actions["Submit"].canceled += OnSubmit;
@@ -213,6 +221,11 @@ namespace Game
         private void OnInputMove(InputAction.CallbackContext obj)
         {
             _mover.Stop();
+        }
+
+        public void PlaySwordAttack()
+        {
+            _view.SwordAttack();
         }
     }
 }

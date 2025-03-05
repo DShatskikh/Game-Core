@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4540418261342461505}
   - component: {fileID: 948812493894853731}
-  - component: {fileID: 5608445049254085734}
+  - component: {fileID: 1628354147682680278}
   m_Layer: 0
   m_Name: Shell_Sworld_Herobrine
   m_TagString: Untagged
@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestroy: 0
---- !u!68 &5608445049254085734
-EdgeCollider2D:
+--- !u!61 &1628354147682680278
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -168,27 +168,15 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0019290149, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1.1504588, y: 0.25156403}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.49643004, y: 0.4958539}
-  - {x: 0.33087498, y: 0.5057502}
-  - {x: -0.17648092, y: -0.013688296}
-  - {x: -0.25730324, y: 0.11264216}
-  - {x: -0.37029237, y: 0.13311875}
-  - {x: -0.3752024, y: 0.01169882}
-  - {x: -0.26890475, y: -0.14312916}
-  - {x: -0.49685097, y: -0.31894895}
-  - {x: -0.4936741, y: -0.49739635}
-  - {x: -0.33269608, y: -0.50085807}
-  - {x: -0.16599423, y: -0.23495838}
-  - {x: 0.009182155, y: -0.37592077}
-  - {x: 0.11739289, y: -0.37395003}
-  - {x: 0.10728754, y: -0.24108532}
-  - {x: 0.01338473, y: -0.122777455}
-  - {x: 0.49671346, y: 0.32403708}
-  - {x: 0.50472236, y: 0.49585387}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 1
-  m_UseAdjacentEndPoint: 1

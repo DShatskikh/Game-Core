@@ -15,3 +15,4 @@ MonoBehaviour:
   _id: Fireworks
   _name: "\u0424\u0435\u0439\u0440\u0432\u0435\u0440\u043A"
   Attack: 20
+  Effect: {fileID: 6856480182940632667, guid: aa6a82c156649d646a6c009b34712a95, type: 3}

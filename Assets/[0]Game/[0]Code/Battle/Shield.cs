@@ -18,12 +18,12 @@ namespace Game
         private IShell _shell;
         private bool _isUseCoroutine;
         private Coroutine _coroutine;
-        private BattleControllerBase _battleControllerBase;
+        private ProgressStorage _progressStorage;
 
         [Inject]
-        private void Construct(BattleControllerBase battleControllerBase)
+        private void Construct(ProgressStorage progressStorage)
         {
-            _battleControllerBase = battleControllerBase;
+            _progressStorage = progressStorage;
         }
         
         private void OnEnable()
@@ -65,11 +65,10 @@ namespace Game
         {
             _source.Play();
             _view.gameObject.SetActive(true);
+            _progressStorage.AddBattleProgress(10);
             yield return new WaitForSeconds(_delayUse);
             _view.gameObject.SetActive(false);
             _isUseCoroutine = false;
-
-            _battleControllerBase.AddBattleProgress(1);
         }
     }
 }
