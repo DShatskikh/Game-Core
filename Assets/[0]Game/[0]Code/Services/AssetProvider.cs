@@ -17,10 +17,5 @@ namespace Game
         public QuantumConsole QuantumConsole;
         public EnderChestScreen EnderChestScreen;
         public BattleController BattleController;
-
-        [Header("Sounds")]
-        public AudioClip SelectSound;
-        public AudioClip BuySound;
-        public AudioClip FailSound;
     }
 }

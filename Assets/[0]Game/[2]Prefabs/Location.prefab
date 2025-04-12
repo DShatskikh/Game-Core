@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160082bffecae6046b6c4fb580dbe933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
-  _points: []
+  _id: 
+  _points:
+  - {fileID: 7551194586935589299}
 --- !u!1 &2708420971766018587
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +224,7 @@ GameObject:
   - component: {fileID: 2475165797563835484}
   - component: {fileID: 268484270169312587}
   - component: {fileID: 143568076401739200}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7551194586935589299}
   m_Layer: 0
-  m_Name: Point_0
+  m_Name: Spawnpoint_0
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -660,7 +661,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -100
+  m_SortingOrder: -90
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

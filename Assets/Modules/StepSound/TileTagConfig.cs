@@ -15,27 +15,27 @@ namespace StepSound
         public List<TileBase> Sponge;
         public List<TileBase> Sand;
 
-        public StepSoundPair GetPair(TileBase tile, StepSoundPairsConfig config)
+        public float GetPair(TileBase tile)
         {
             if (Stone.Any(currentTile => tile == currentTile))
-                return config.StoneStepPair;
+                return 0;
 
             if (Grass.Any(currentTile => tile == currentTile))
-                return config.GrassStepPair;
+                return 1;
 
             if (Dirt.Any(currentTile => tile == currentTile))
-                return config.DirtStepPair;
+                return 2;
 
             if (Wood.Any(currentTile => tile == currentTile))
-                return config.WoodStepPair;
+                return 3;
             
             if (Sponge.Any(currentTile => tile == currentTile))
-                return config.SpongeStepPair;
+                return 4;
             
             if (Sand.Any(currentTile => tile == currentTile))
-                return config.SandStepPair;
+                return 5;
 
-            return config.StoneStepPair;
+            return 6;
         }
     }
 }

@@ -1,30 +1,35 @@
-﻿using UnityEngine;
-using UnityEngine.Audio;
+﻿using FMOD.Studio;
+using UnityEngine;
 
 namespace Game
 {
     public sealed class VolumeService
     {
-        private const string VolumeHash = "MasterVolume";
-        private int _value;
-        private readonly AudioMixer _audioMixer;
+        private const string BUS_HASH = "bus:/";
+        private readonly Bus _musicBus;
+        private float _value;
+        
+        public float GetValue => _value;
 
-        public int GetValue => _value;
 
-
-        public VolumeService(AudioMixer audioMixer)
+        public VolumeService()
         {
-            _audioMixer = audioMixer;
-            
-            SetValue(PlayerPrefs.GetInt(VolumeHash, 80));
+            _musicBus = FMODUnity.RuntimeManager.GetBus(BUS_HASH);
+            var volume = GetLinearVolume(80f);
+            SetValue(PlayerPrefs.GetFloat(BUS_HASH, volume));
         }
 
-        public void SetValue(int value)
+        public void SetValue(float value)
         {
             _value = value;
-            _audioMixer.SetFloat(VolumeHash, Mathf.Lerp(-80, 0, value / 100f));
+            _musicBus.setVolume(GetLinearVolume(Mathf.Lerp(-80, 0, value / 100f)));
             
-            PlayerPrefs.SetInt(VolumeHash, _value);
+            PlayerPrefs.SetFloat(BUS_HASH, _value);
+        }
+
+        private float GetLinearVolume(float volume)
+        {
+            return Mathf.Pow(10.0f, volume / 20f);
         }
     }
 }

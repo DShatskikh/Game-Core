@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using FMODUnity;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Localization;
@@ -22,10 +23,10 @@ namespace Game
         private SerializableDictionary<string, LocalizedString> _localizedStrings;
 
         [SerializeField]
-        private AudioClip _music;
+        private ShopBackground _background;
 
         [SerializeField]
-        private ShopBackground _background;
+        private StudioEventEmitter _studioEvent;
         
         private DiContainer _diContainer;
 
@@ -58,7 +59,7 @@ namespace Game
             }
             
             _diContainer.BindFactory<ShopPresenter_Notch, ShopPresenter_Notch.Factory>()
-                .WithArguments(_shopViewPrefab, _prefab, _initData, inscriptionsContainer, _music, _background);
+                .WithArguments(_shopViewPrefab, _prefab, _initData, inscriptionsContainer, _studioEvent, _background);
 
             var factory = _diContainer.TryResolve<ShopPresenter_Notch.Factory>();
             factory.Create();

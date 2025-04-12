@@ -7,31 +7,36 @@ namespace Game
     public sealed class TransitionService
     {
         private GameStateController _gameStateController;
-        private TransitionScreen _transitionScreen;
         private LocationsManager _locationsManager;
+        private ScreenManager _screenManager;
 
         [Inject]
-        private void Construct(GameStateController gameStateController, TransitionScreen transitionScreen, LocationsManager locationsManager)
+        private void Construct(GameStateController gameStateController, LocationsManager locationsManager, 
+            ScreenManager screenManager)
         {
             _gameStateController = gameStateController;
-            _transitionScreen = transitionScreen;
             _locationsManager = locationsManager;
+            _screenManager = screenManager;
         }
 
-        public void Transition(string nextLocationIndex, int pointIndex, AudioClip audioClip = null) => 
-            CoroutineRunner.Instance.StartCoroutine(AwaitTransition(nextLocationIndex, pointIndex, audioClip));
+        public void Transition(string id, int pointIndex, AudioClip audioClip = null) => 
+            CoroutineRunner.Instance.StartCoroutine(AwaitTransition(id, pointIndex, audioClip));
 
-        public IEnumerator AwaitTransition(string nextLocationIndex, int pointIndex, AudioClip audioClip = null)
+        public IEnumerator AwaitTransition(string id, int pointIndex, AudioClip audioClip = null)
         {
+            var transitionScreen = (TransitionPresenter)_screenManager.Open(ScreensEnum.TRANSITION);
+            
             _gameStateController.StartTransition();
-            yield return _transitionScreen.AwaitShow();
+            transitionScreen.Show();
+            yield return transitionScreen.AwaitShow();
             
-            if (audioClip)
-                SoundPlayer.Play(audioClip);
+           // if (audioClip)
+                //SoundPlayer.Play(audioClip);
             
-            _locationsManager.SwitchLocation(nextLocationIndex, pointIndex);
-            yield return _transitionScreen.AwaitHide();
+            _locationsManager.SwitchLocation(id, pointIndex);
+            yield return transitionScreen.AwaitHide();
             _gameStateController.EndTransition();
+            _screenManager.Close(ScreensEnum.TRANSITION);
         }
     }
 }

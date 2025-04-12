@@ -1,16 +1,16 @@
-﻿using System.Collections;
+﻿using UnityEngine;
 
 namespace Game
 {
-    public sealed class CoroutineRunner
+    public sealed class CoroutineRunner : MonoBehaviour
     {
         private static CoroutineRunner _coroutineRunner;
 
         public static CoroutineRunner Instance => _coroutineRunner;
 
-        public void StartCoroutine(IEnumerator awaitTransition)
+        private void Awake()
         {
-            throw new System.NotImplementedException();
+            _coroutineRunner = this;
         }
     }
 }

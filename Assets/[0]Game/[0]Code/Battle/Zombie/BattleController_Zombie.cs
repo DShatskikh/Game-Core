@@ -14,7 +14,7 @@ namespace Game
 {
     public sealed class BattleController_Zombie : BattleControllerBase
     {
-        protected readonly BattleView _view;
+        private readonly BattleView _view;
         private readonly ShopButton _prefabButton;
         private readonly InitData _initData;
         private readonly BattlePoints _points;
@@ -65,8 +65,8 @@ namespace Game
             gameStateController.StartBattle();
             CloseAllPanel();
 
-            _previousMusic = MusicPlayer.Instance.Clip;
-            MusicPlayer.Play(music);
+            //_previousMusic = MusicPlayer.Instance.Clip;
+           // MusicPlayer.Play(music);
 
             _heart.GetHealth.Subscribe(value =>
             {
@@ -88,7 +88,7 @@ namespace Game
                 _view.ToggleTurnPanel(true);
                 _view.ToggleAttacksContainer(true);
                 
-                SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+                //SoundPlayer.Play(AssetProvider.Instance.SelectSound);
                 EventSystem.current.SetSelectedGameObject(_attackButtons[0].gameObject);
             });
 
@@ -110,12 +110,12 @@ namespace Game
                     _view.ToggleInfo(false);
                     
                     EventSystem.current.SetSelectedGameObject(_view.GetTurnButton.gameObject);
-                    SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+                    //SoundPlayer.Play(AssetProvider.Instance.SelectSound);
                     
                     _view.GetTurnButton.onClick.RemoveAllListeners();
                     _view.GetTurnButton.onClick.AddListener(() =>
                     {
-                        SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+                        //SoundPlayer.Play(AssetProvider.Instance.SelectSound);
                         _view.ToggleTurnPanel(false);
                         EnemyTurn(weapon.Attack);
                     });
@@ -135,7 +135,7 @@ namespace Game
                 _view.ToggleTurnPanel(true);
                 _view.ToggleItemsContainer(true);
 
-                SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+                //SoundPlayer.Play(AssetProvider.Instance.SelectSound);
                 EventSystem.current.SetSelectedGameObject(_itemButtons[0].gameObject);
             });
             
@@ -157,7 +157,7 @@ namespace Game
                     _view.GetTurnButton.onClick.RemoveAllListeners();
                     RemoveItem(item, itemButton);
                     
-                    SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+                    //SoundPlayer.Play(AssetProvider.Instance.SelectSound);
                     EventSystem.current.SetSelectedGameObject(_view.GetItemsButton.gameObject);
                 });
                 
@@ -284,7 +284,7 @@ namespace Game
 
         private void Exit()
         {
-            MusicPlayer.Play(_previousMusic);
+            //MusicPlayer.Play(_previousMusic);
             _gameStateController.CloseBattle();
             Object.Destroy(_view.gameObject);
             _winDialog.OnUse();

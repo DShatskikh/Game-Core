@@ -47,9 +47,8 @@ namespace Game
             _intro = new BattleIntro(GetSquadOverWorldPositionsData(), 
                 GetEnemiesOverWorldPositionsData());
             yield return _intro.WaitIntro();
-            MusicPlayer.Play(_theme);
+           // MusicPlayer.Play(_theme);
         }
-
 
         public IBattleController SetEnemies(IEnemy[] enemies)
         {

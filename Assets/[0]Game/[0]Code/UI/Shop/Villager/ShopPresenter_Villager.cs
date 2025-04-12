@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 using Zenject;
 
@@ -25,10 +26,10 @@ namespace Game
 
         public ShopPresenter_Villager(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
-            TransitionScreen transitionScreen, CharacterInventory characterInventory, WalletService walletService, 
-            DiContainer container, AudioClip music, InitData data, ShopBackground background) : base(shopViewPrefab, shopButtonPrefab,
-            inscriptionsContainer, gameStateController, transitionScreen, characterInventory, walletService, 
-            container, music, background)
+            CharacterInventory characterInventory, WalletService walletService, 
+            DiContainer container, StudioEventEmitter studioEmitter, InitData data, ShopBackground background) : base(shopViewPrefab, shopButtonPrefab,
+            inscriptionsContainer, gameStateController, characterInventory, walletService, 
+            container, studioEmitter, background)
         {
             _initData = data;
             

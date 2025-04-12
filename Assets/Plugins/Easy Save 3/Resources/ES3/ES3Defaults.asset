@@ -36,8 +36,9 @@ MonoBehaviour:
     - DialogueSystem
     - DOTween.Modules
     - Extensions
-    - FastScriptReload.Runtime
     - Febucci.TextAnimator.Runtime
+    - FMODUnity
+    - FMODUnityResonance
     - Game
     - GameCycle
     - MoreMountains.Feedbacks
@@ -55,8 +56,9 @@ MonoBehaviour:
     - QFSW.QC.Suggestors
     - QFSW.QC.UI
     - SaveSystem
+    - ScreenManager
+    - Sirenix.OdinInspector.Modules.Unity.Addressables
     - Sirenix.OdinInspector.Modules.UnityLocalization
-    - SoundServices
     - StepSound
     - UniRx
     - UniTask

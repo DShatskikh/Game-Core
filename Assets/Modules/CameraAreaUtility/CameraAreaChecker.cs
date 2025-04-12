@@ -32,6 +32,8 @@ namespace CameraAreaUtility
             _confiner2D.BoundingShape2D = nearestUseObject
                 ? nearestUseObject.GetComponent<PolygonCollider2D>()
                 : null;
+            
+            _confiner2D.InvalidateLensCache();
         }
     }
 }

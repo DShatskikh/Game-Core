@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d412c1a27cec4a17b553dc9939c23894, type: 3}
   m_Name: TileTagConfig
   m_EditorClassIdentifier: 
-  Stone: []
+  Stone:
+  - {fileID: 11400000, guid: 85c3fa483bc7fc24ea727222f9ffa527, type: 2}
+  - {fileID: 11400000, guid: 072df6d72935aaa469ce2e23925d9264, type: 2}
   Grass:
   - {fileID: 11400000, guid: 0d6b4ef52f97fe347a0b2a2402a6ff91, type: 2}
   Dirt:

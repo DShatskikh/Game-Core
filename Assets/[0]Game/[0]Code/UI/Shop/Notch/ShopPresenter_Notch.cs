@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FMODUnity;
 using ModestTree;
 using UnityEngine;
 using Zenject;
@@ -30,10 +31,10 @@ namespace Game
 
         public ShopPresenter_Notch(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
-            TransitionScreen transitionScreen, CharacterInventory characterInventory, WalletService walletService, 
-            DiContainer container, AudioClip music, InitData data, ShopBackground shopBackgroundPrefab) : base(shopViewPrefab, shopButtonPrefab,
-            inscriptionsContainer, gameStateController, transitionScreen, characterInventory, walletService, 
-            container, music, shopBackgroundPrefab)
+            CharacterInventory characterInventory, WalletService walletService, 
+            DiContainer container, StudioEventEmitter studioEmitter, InitData data, ShopBackground shopBackgroundPrefab) : base(shopViewPrefab, shopButtonPrefab,
+            inscriptionsContainer, gameStateController, characterInventory, walletService, 
+            container, studioEmitter, shopBackgroundPrefab)
         {
             _initData = data;
             
@@ -57,7 +58,7 @@ namespace Game
         {
             _characterInventory.AddItem(product.Config);
             _shopView.SetStatsText(_inscriptionsContainer["BuySuccess"]);
-            SoundPlayer.Play(AssetProvider.Instance.BuySound);
+            PlayBuySound();
 
             var sword = _initData.Swords.FirstOrDefault(sword => sword.Config.GetID == product.Config.GetID);
             

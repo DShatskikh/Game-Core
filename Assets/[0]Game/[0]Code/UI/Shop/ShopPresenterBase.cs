@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FMODUnity;
 using UnityEngine;
 using UniRx;
 using UnityEngine.Events;
@@ -14,11 +15,9 @@ namespace Game
     {
         protected readonly ShopView _shopView;
         private readonly GameStateController _gameStateController;
-        private readonly TransitionScreen _transitionScreen;
         protected readonly CharacterInventory _characterInventory;
         private readonly WalletService _walletService;
         protected readonly Dictionary<string, string> _inscriptionsContainer;
-        private readonly AudioClip _currentMusic;
         private readonly ShopButton _shopButtonPrefab;
 
         protected List<ShopButton> _productButtons = new();
@@ -29,20 +28,18 @@ namespace Game
 
         public ShopPresenterBase(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
-            TransitionScreen transitionScreen, CharacterInventory characterInventory, WalletService walletService, 
-            DiContainer container, AudioClip music, ShopBackground backgroundPrefab)
+             CharacterInventory characterInventory, WalletService walletService, 
+            DiContainer container, StudioEventEmitter studioEmitter, ShopBackground backgroundPrefab)
         {
             _shopView = Object.Instantiate(shopViewPrefab);
             _inscriptionsContainer = inscriptionsContainer;
             _gameStateController = gameStateController;
-            _transitionScreen = transitionScreen;
             _characterInventory = characterInventory;
             _walletService = walletService;
             _shopButtonPrefab = shopButtonPrefab;
 
             _gameStateController.OpenDialog();
-            _currentMusic = MusicPlayer.Instance.Clip;
-            MusicPlayer.Play(music);
+            studioEmitter.Play();
 
             container.Inject(_shopView.GetMonologueText);
 
@@ -118,9 +115,8 @@ namespace Game
         private void OnExitClicked()
         {
             CloseAllPanel();
-            SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+            PlaySelectSound();
             _shopView.GetMonologueText.StartWrite(new[] { _inscriptionsContainer["Farewell"] }, Close);
-            MusicPlayer.Play(_currentMusic);
             Save();
         }
 
@@ -132,7 +128,7 @@ namespace Game
             _shopView.ToggleStats(true);
             _shopView.SetStatsText(_inscriptionsContainer["SpeakStats"]);
             
-            SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+            PlaySelectSound();
             EventSystem.current.SetSelectedGameObject(_speakButtons[0].gameObject);
         }
 
@@ -142,7 +138,7 @@ namespace Game
             _shopView.GetMonologueText.StartWrite(
                 new[] { _inscriptionsContainer["SellNotCan"] }, OpenStartPanel);
             
-            SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+            PlaySelectSound();
         }
 
         private void OnBuyClicked()
@@ -153,7 +149,7 @@ namespace Game
             _shopView.ToggleProducts(true);
             _shopView.SetStatsText(_inscriptionsContainer["BuyStats"]);
 
-            SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+            PlaySelectSound();
             EventSystem.current.SetSelectedGameObject(_productButtons[0].gameObject);
         }
         
@@ -169,7 +165,7 @@ namespace Game
             _shopView.GetProductExitButton.onClick.AddListener(() =>
             {
                 OpenStartPanel();
-                SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+                PlaySelectSound();
             });
             
             ((ShopButton)_shopView.GetProductExitButton).OnSelectAction += () => { _shopView.ToggleProductInfo(false); };
@@ -207,7 +203,7 @@ namespace Game
                 _shopView.ToggleBuy(true);
                 _shopView.SetBuyText($"Купить за {product.Price}М");
                 EventSystem.current.SetSelectedGameObject(_shopView.GetBuyYesButton.gameObject);
-                SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+                PlaySelectSound();
 
                 _shopView.GetBuyYesButton.onClick.RemoveAllListeners();
                 _shopView.GetBuyYesButton.onClick.AddListener(() =>
@@ -223,7 +219,7 @@ namespace Game
                     else
                     {
                         _shopView.SetStatsText(_inscriptionsContainer["BuyFail"]);
-                        SoundPlayer.Play(AssetProvider.Instance.FailSound);
+                        PlayFailSound();
                     }
                 });
 
@@ -232,7 +228,7 @@ namespace Game
                 {
                     _shopView.ToggleProductInfo(true);
                     _shopView.ToggleBuy(false);
-                    SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+                    PlaySelectSound();
                     EventSystem.current.SetSelectedGameObject(_shopView.GetProductExitButton.gameObject);
                 });
             });
@@ -245,7 +241,7 @@ namespace Game
         {
             _characterInventory.AddItem(product.Config);
             _shopView.SetStatsText(_inscriptionsContainer["BuySuccess"]);
-            SoundPlayer.Play(AssetProvider.Instance.BuySound);
+            PlaySelectSound();
 
             if (product.Counts > 0)
                 product.Counts -= 1;
@@ -264,7 +260,7 @@ namespace Game
             _shopView.GetSpeakExitButton.onClick.AddListener(() =>
             {
                 OpenStartPanel();
-                SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+                PlaySelectSound();
             });
         }
 
@@ -289,7 +285,7 @@ namespace Game
                 _shopView.ToggleSpeakContainer(false);
                 _shopView.ToggleStats(false);
                 _shopView.ToggleSelectPanel(false);
-                SoundPlayer.Play(AssetProvider.Instance.SelectSound);
+                PlaySelectSound();
             });
         }
 
@@ -310,10 +306,25 @@ namespace Game
         public void Dispose()
         {
             Object.Destroy(_shopView.gameObject);
-            _transitionScreen.Hide(() => _gameStateController.CloseDialog());
+            //_transitionScreen.Hide(() => _gameStateController.CloseDialog());
         }
         
         private void Close() => 
             Dispose();
+
+        private void PlaySelectSound()
+        {
+            
+        }
+        
+        private void PlayFailSound()
+        {
+            
+        }
+        
+        public void PlayBuySound()
+        {
+            
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,19 +12,16 @@ namespace StepSound
 
         [Header("Components")]
         [SerializeField] 
-        private AudioSource _stepSource1;
-
+        private StudioEventEmitter _studioEventEmitter;
+        
         [SerializeField] 
-        private AudioSource _stepSource2;
+        private StudioParameterTrigger _studioParameterTrigger;
 
         [Header("Settings")]
         [SerializeField]
         private LayerMask _layerMask;
 
         [Header("Configs")]
-        [SerializeField]
-        private StepSoundPairsConfig _config;
-
         [SerializeField]
         private TileTagConfig _tileTagConfig;
         
@@ -38,11 +36,8 @@ namespace StepSound
             _transform = transform;
         }
 
-        public void OnSpeedChange(float value)
+        public void Upgrade()
         {
-            if (value == 0)
-                return;
-            
             _currentStepTime += Time.deltaTime;
                 
             if (_currentStepTime >= (_isRun ? INTERVAL_STEP / 1.5f : INTERVAL_STEP))
@@ -73,20 +68,9 @@ namespace StepSound
 
         private void PlayFootstepSound(TileBase tile)
         {
-            var pair = _tileTagConfig.GetPair(tile, _config);
-            
-            if (_isStepRight)
-            {
-                AudioClip clipToPlay = pair.Right;
-                _stepSource1.clip = clipToPlay;
-                _stepSource1.Play();
-            }
-            else
-            {
-                AudioClip clipToPlay = pair.Left;
-                _stepSource2.clip = clipToPlay;
-                _stepSource2.Play();   
-            }
+            var pair = _tileTagConfig.GetPair(tile);
+            _studioEventEmitter.Params[0].Value = pair;
+            _studioEventEmitter.Play();
         }
     }
 }

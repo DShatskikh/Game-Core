@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
-    public sealed class GameOverView : MonoBehaviour
+    public sealed class GameOverView : ScreenBase
     {
         [SerializeField]
         private Button _button;

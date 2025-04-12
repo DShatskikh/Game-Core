@@ -59,15 +59,23 @@ namespace Game
             _stepsSoundPlayer.Init(transform);
         }
 
+        private void Update()
+        {
+            _cameraAreaChecker.Check();
+        }
+
         public void FixedUpdate()
         {
             var position = transform.position;
             _currentSpeed.Value = ((Vector2)(_previousPosition - position)).magnitude;
             _previousPosition = position;
-
+            
             if (!_isPause)
             {
                 _useAreaChecker.Search();
+                
+                if (_currentSpeed.Value != 0)
+                    _stepsSoundPlayer.Upgrade();
             }
         }
 
@@ -184,7 +192,6 @@ namespace Game
                 _isRun = new ReactiveProperty<bool>();
                 _direction = new ReactiveProperty<Vector2>();
                 
-                _currentSpeed.SubscribeAndCall(_stepsSoundPlayer.OnSpeedChange);
                 _isRun.SubscribeAndCall(_stepsSoundPlayer.OnIsRunChange);
                 _isRun.SubscribeAndCall(_view.OnIsRunChange);
                 _direction.SubscribeAndCall(_view.OnDirectionChange);

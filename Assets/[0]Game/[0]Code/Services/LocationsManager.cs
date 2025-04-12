@@ -1,10 +1,35 @@
-﻿namespace Game
+﻿using System.Linq;
+using UnityEngine;
+
+namespace Game
 {
     public sealed class LocationsManager
     {
-        public void SwitchLocation(string nextLocationIndex, int pointIndex)
+        private readonly Location[] _locations;
+        private readonly Player _player;
+        private readonly Location.Factory _factory;
+
+        private Location _location;
+
+        public LocationsManager(Location[] locations, Player player, Location.Factory factory)
         {
-            throw new System.NotImplementedException();
+            _locations = locations;
+            _player = player;
+            _factory = factory;
+        }
+        
+        public void SwitchLocation(string id, int pointIndex)
+        {
+            if (!_location)
+                _location = Object.FindFirstObjectByType<Location>();
+            
+            if (_location)
+                Object.Destroy(_location.gameObject);
+            
+            var prefab = _locations.First(x => x.GetID == id);
+            _location = _factory.Create(prefab);
+
+            _player.transform.position = _location.GetPoints[pointIndex].transform.position;
         }
     }
 }

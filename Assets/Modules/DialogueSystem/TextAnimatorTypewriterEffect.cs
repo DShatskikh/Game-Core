@@ -1,8 +1,8 @@
 using Febucci.UI;
+using FMODUnity;
 using MoreMountains.Feedbacks;
 using PixelCrushers.DialogueSystem;
 using UnityEngine;
-using Zenject;
 
 namespace Game
 {
@@ -11,10 +11,10 @@ namespace Game
         [Header("TextAnimator")]
         [SerializeField]
         private TextAnimatorPlayer _textAnimatorPlayer;
-       
-        [SerializeField]
-        private AudioSource[] _audioSources;
 
+        [SerializeField]
+        private StudioEventEmitter _studioEventEmitter;
+        
         [SerializeField]
         private GameObject _button;
         
@@ -60,14 +60,16 @@ namespace Game
             print("StopTyping");
         }
 
-        // private void OnWrite()
-        // {
-        //     _audioSources[_indexAudioSource].Play();
-        //     //_indexAudioSource++;
-        //
-        //     if (_indexAudioSource >= _audioSources.Length) 
-        //         _indexAudioSource = 0;
-        // }
+        private void OnWrite()
+        {
+            // _audioSources[_indexAudioSource].Play();
+            // //_indexAudioSource++;
+            //
+            // if (_indexAudioSource >= _audioSources.Length) 
+            //     _indexAudioSource = 0;
+            
+            _studioEventEmitter.Play();
+        }
         
         public override void Awake()
         {
@@ -80,7 +82,7 @@ namespace Game
         {
             base.OnEnable();
             // gameObject.SetActive(true);
-            // _textAnimatorPlayer.onCharacterVisible.AddListener((c) => OnWrite());
+            _textAnimatorPlayer.onCharacterVisible.AddListener((c) => OnWrite());
             // _textAnimatorPlayer.onTextShowed.AddListener(Stop);
             // _textAnimatorPlayer.onTypewriterStart.AddListener(OnTypewriterStart);
             // _button.SetActive(false);
@@ -92,7 +94,7 @@ namespace Game
         public override void OnDisable()
         {
             base.OnDisable();
-            // _textAnimatorPlayer.onCharacterVisible.RemoveListener((c) => OnWrite());
+            _textAnimatorPlayer.onCharacterVisible.RemoveListener((c) => OnWrite());
             // _textAnimatorPlayer.onTextShowed.RemoveListener(Stop);
             // _textAnimatorPlayer.onTypewriterStart.RemoveListener(OnTypewriterStart);
             // gameObject.SetActive(false);
