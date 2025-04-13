@@ -380,8 +380,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../Undertale-In-Minecraft-2/FMOD/FMOD.fspro
-  sourceBankPath: ../Undertale-In-Minecraft-2/FMOD/Build
+  sourceProjectPath: FMOD/FMOD.fspro
+  sourceBankPath: FMOD/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1

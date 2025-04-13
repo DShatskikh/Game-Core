@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{b8138515-76db-4426-8025-92b749abbd68}">
+		<property name="name">
+			<value>Блок по которому идем</value>
+		</property>
+		<relationship name="folder">
+			<destination>{0a4d68a8-4976-4833-9196-f893ddac7cd7}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{225f4e0b-9775-435b-ba4b-0dd112532aae}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{225f4e0b-9775-435b-ba4b-0dd112532aae}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>4</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Камень</value>
+			<value>Трава</value>
+			<value>Земля</value>
+			<value>Дерево</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

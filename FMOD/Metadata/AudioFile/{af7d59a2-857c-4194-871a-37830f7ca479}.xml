@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{af7d59a2-857c-4194-871a-37830f7ca479}">
+		<property name="assetPath">
+			<value>snd_text_ch1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.7142857142857142</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3488923d-d02d-4c71-863b-aa3a63875560}</destination>
+		</relationship>
+	</object>
+</objects>

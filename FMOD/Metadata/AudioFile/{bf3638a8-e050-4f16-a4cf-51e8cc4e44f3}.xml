@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{bf3638a8-e050-4f16-a4cf-51e8cc4e44f3}">
+		<property name="assetPath">
+			<value>Dirt_1.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.36571428571428571</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3488923d-d02d-4c71-863b-aa3a63875560}</destination>
+		</relationship>
+	</object>
+</objects>

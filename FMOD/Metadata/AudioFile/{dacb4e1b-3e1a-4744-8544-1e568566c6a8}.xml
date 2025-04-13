@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{dacb4e1b-3e1a-4744-8544-1e568566c6a8}">
+		<property name="assetPath">
+			<value>Wood_2.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.3395918367346939</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3488923d-d02d-4c71-863b-aa3a63875560}</destination>
+		</relationship>
+	</object>
+</objects>
