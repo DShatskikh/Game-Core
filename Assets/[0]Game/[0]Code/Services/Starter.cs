@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Game.Editor;
 using UnityEngine;
 using Zenject;
 
@@ -11,20 +12,24 @@ namespace Game
         
         [SerializeField]
         private WeaponItemConfig[] _weapons;
+
+        [LocationID]
+        [SerializeField]
+        private string _locationID;
         
         private GameStateController _gameStateController;
-        private DiContainer _diContainer;
         
         [Inject]
-        private void Construct(GameStateController gameStateController, DiContainer diContainer, 
-            WalletService walletService, CharacterInventory inventory)
+        private void Construct(GameStateController gameStateController, WalletService walletService, 
+            CharacterInventory inventory, LocationsManager locationsManager)
         {
             _gameStateController = gameStateController;
-            _diContainer = diContainer;
             
             walletService.SetMoney(1250);
             inventory.SetItems(_items);
             inventory.SetWeapons(_weapons);
+            
+            locationsManager.SwitchLocation(_locationID, 0);
         }
         
         //ToDo: Код для теста потом перепишу

@@ -1,5 +1,4 @@
 ﻿using System;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Game
@@ -25,7 +24,7 @@ namespace Game
             return false;
         }
     }
-
+    
     [Serializable]
     public sealed class ScreenData
     {

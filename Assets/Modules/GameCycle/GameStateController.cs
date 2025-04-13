@@ -64,7 +64,7 @@ namespace Game
         
         public void StartGame() 
         {
-            if (_gameState != GameState.OFF && _gameState != GameState.FINISHED)
+            if (_gameState != GameState.OFF)
                 return;
 
             for (int i = 0; i < _listeners.Count; i++)
@@ -74,49 +74,6 @@ namespace Game
             }
 
             _gameState = GameState.PLAYING;
-        }
-
-        public void PauseGame()
-        {
-            if (_gameState != GameState.PLAYING)
-                return;
-            
-            for (int i = 0; i < _listeners.Count; i++)
-            {
-                if (_listeners[i] is IGamePauseListener pauseListeners) 
-                    pauseListeners.OnPauseGame();
-            }
-
-            _gameState = GameState.PAUSED;
-        }
-
-        public void ResumeGame()
-        {
-            if (_gameState != GameState.PAUSED)
-                return;
-            
-            for (int i = 0; i < _listeners.Count; i++)
-            {
-                if (_listeners[i] is IGameResumeListener resumeListeners) 
-                    resumeListeners.OnResumeGame();
-            }
-            
-            _gameState = GameState.PLAYING;
-        }
-
-        public void FinishGame()
-        {
-            if (_gameState != GameState.PAUSED && _gameState != GameState.PLAYING)
-                return;
-            
-            for (int i = 0; i < _listeners.Count; i++)
-            {
-                if (_listeners[i] is IGameFinishListener finishListeners) 
-                    finishListeners.OnFinishGame();
-            }
-
-            _gameState = GameState.FINISHED;
-            Debug.Log("Game over!");
         }
 
         public void StartTransition()
@@ -205,26 +162,26 @@ namespace Game
 
         public void OpenDialog()
         {
-            _gameState = GameState.DIALOGUE;
+            _gameState = GameState.CUTSCENE;
             
             foreach (var listener in _listeners)
             {
-                if (listener is IGameDialogueListener dialogueListener) 
-                    dialogueListener.OnShowDialogue();
+                if (listener is IGameCutsceneListener dialogueListener) 
+                    dialogueListener.OnShowCutscene();
             }
         }
 
         public void CloseDialog()
         {
-            if (_gameState != GameState.DIALOGUE)
+            if (_gameState != GameState.CUTSCENE)
                 return;
 
             _gameState = GameState.PLAYING;
             
             foreach (var listener in _listeners)
             {
-                if (listener is IGameDialogueListener dialogueListener) 
-                    dialogueListener.OnHideDialogue();
+                if (listener is IGameCutsceneListener dialogueListener) 
+                    dialogueListener.OnHideCutscene();
             }
         }
         

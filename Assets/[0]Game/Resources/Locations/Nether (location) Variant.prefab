@@ -60819,6 +60819,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2837582108558635557, guid: 39edcf45da619d447afb01f8f8ea32e4, type: 3}
+      propertyPath: _id
+      value: Spawn_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2837582108558635557, guid: 39edcf45da619d447afb01f8f8ea32e4, type: 3}
+      propertyPath: _pointIndex
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6316652367380257188, guid: 39edcf45da619d447afb01f8f8ea32e4, type: 3}
       propertyPath: m_Name
       value: Portal
@@ -60844,6 +60852,10 @@ PrefabInstance:
     - target: {fileID: 145841283574170736, guid: 782f09e12053c0c40b94aa9971efd37a, type: 3}
       propertyPath: m_Name
       value: TransitionLocation
+      objectReference: {fileID: 0}
+    - target: {fileID: 1353746438852918800, guid: 782f09e12053c0c40b94aa9971efd37a, type: 3}
+      propertyPath: _id
+      value: Test_Arena_Lobby
       objectReference: {fileID: 0}
     - target: {fileID: 2868218619535427821, guid: 782f09e12053c0c40b94aa9971efd37a, type: 3}
       propertyPath: m_Size.x

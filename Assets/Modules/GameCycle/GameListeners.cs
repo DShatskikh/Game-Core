@@ -6,20 +6,6 @@
     {
         void OnStartGame();
     }
-    public interface IGameFinishListener : IGameListener
-    {
-        void OnFinishGame();
-    }
-
-    public interface IGamePauseListener : IGameListener
-    {
-        void OnPauseGame();
-    }
-
-    public interface IGameResumeListener : IGameListener
-    {
-        void OnResumeGame();
-    }
 
     public interface IGameTransitionListener : IGameListener
     {
@@ -39,10 +25,10 @@
         void OnHideADS();
     }
     
-    public interface IGameDialogueListener : IGameListener
+    public interface IGameCutsceneListener : IGameListener
     {
-        void OnShowDialogue();
-        void OnHideDialogue();
+        void OnShowCutscene();
+        void OnHideCutscene();
     }
     
     public interface IGameEnderChestListener : IGameListener

@@ -8,9 +8,9 @@ using Zenject;
 
 namespace Game
 {
-    public sealed class Player : MonoBehaviour, IGameStartListener, IGamePauseListener, IGameResumeListener, 
-        IGameTickableListener,IGameFixedTickableListener, IGameTransitionListener,
-        IGameShopListener, IGameADSListener, IGameDialogueListener, IGameEnderChestListener, IGameBattleListener
+    public sealed class Player : MonoBehaviour, IGameStartListener, IGameTickableListener, IGameFixedTickableListener,
+        IGameTransitionListener, IGameShopListener, IGameADSListener, IGameCutsceneListener, IGameEnderChestListener,
+        IGameBattleListener
     {
         [SerializeField]
         private PlayerView _view;
@@ -110,16 +110,6 @@ namespace Game
             
         }
 
-        void IGamePauseListener.OnPauseGame()
-        {
-            ToggleActivate(false);
-        }
-
-        void IGameResumeListener.OnResumeGame()
-        {
-            ToggleActivate(true);
-        }
-
         void IGameTransitionListener.OnStartTransition()
         {
             ToggleActivate(false);
@@ -150,12 +140,12 @@ namespace Game
             ToggleActivate(true);
         }
 
-        void IGameDialogueListener.OnShowDialogue()
+        void IGameCutsceneListener.OnShowCutscene()
         {
             ToggleActivate(false);
         }
 
-        void IGameDialogueListener.OnHideDialogue()
+        void IGameCutsceneListener.OnHideCutscene()
         {
             ToggleActivate(true);
         }

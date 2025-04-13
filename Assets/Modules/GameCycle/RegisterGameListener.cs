@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Game
 {
-    public sealed class GameKernel : MonoKernel
+    public sealed class RegisterGameListener : MonoBehaviour
     {
         [Inject]
         private GameStateController _gameStateController;
@@ -13,20 +13,16 @@ namespace Game
         [InjectLocal]
         private List<IGameListener> _listeners;
 
-        public override void Start()
+        public void Awake()
         {
-            base.Start();
-            
             _listeners.AddRange(FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include, FindObjectsSortMode.None).OfType<IGameListener>());
 
             foreach (var listener in _listeners) 
                 _gameStateController.AddListener(listener);
         }
 
-        public override void OnDestroy()
+        public void OnDestroy()
         {
-            base.OnDestroy();
-            
             foreach (var listener in _listeners) 
                 _gameStateController.RemoveListener(listener);
         }

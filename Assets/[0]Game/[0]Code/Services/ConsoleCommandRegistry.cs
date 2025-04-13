@@ -80,35 +80,21 @@ namespace Game
                             break;
                         case GameState.OFF:
                         case GameState.PLAYING:
-                        case GameState.PAUSED:
-                        case GameState.FINISHED:
                         case GameState.MAIN_MENU:
                         case GameState.SHOP:
                         case GameState.ADS:
-                        case GameState.DIALOGUE:
                         case GameState.ENDER_CHEST:
                             gameStateController.CloseEnderChest();
                             break;
-                        default:
-                            gameStateController.ResumeGame();
-                            break;
                     }
                     
-                    break;
-                case GameState.PAUSED:
-                    gameStateController.PauseGame();
-                    break;
-                case GameState.FINISHED:
-                    break;
-                case GameState.MAIN_MENU:
+                    break;NU:
                     break;
                 case GameState.TRANSITION:
                     break;
                 case GameState.SHOP:
                     break;
                 case GameState.ADS:
-                    break;
-                case GameState.DIALOGUE:
                     break;
                 case GameState.ENDER_CHEST:
                     gameStateController.OpenEnderChest();

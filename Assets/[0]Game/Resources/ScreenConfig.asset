@@ -16,11 +16,24 @@ MonoBehaviour:
   - Enum: 0
     Screen: {fileID: 8834689059655496130, guid: 15a944f090b612849bb25dabb614fd18, type: 3}
     Presenter:
-      rid: 2880720755818234150
+      rid: 2880720768947191896
+  - Enum: 1
+    Screen: {fileID: 7225760709380373984, guid: 64652a887d1d46f49a7770450c6644fe, type: 3}
+    Presenter:
+      rid: 2880720768947191899
+  - Enum: 2
+    Screen: {fileID: 1624472903560820176, guid: 8721f83c771909540a33c8535577b2e6, type: 3}
+    Presenter:
+      rid: 2880720768947191898
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 2880720755818234150
-      type: {class: MainPresenter, ns: Game, asm: Game}
+    - rid: 2880720768947191896
+      type: {class: MainScreenPresenter, ns: Game, asm: Game}
+      data: 
+    - rid: 2880720768947191898
+      type: {class: GameOverPresenter, ns: Game, asm: Game}
+      data: 
+    - rid: 2880720768947191899
+      type: {class: TransitionPresenter, ns: Game, asm: Game}
+      data: 

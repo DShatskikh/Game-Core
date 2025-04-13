@@ -4,7 +4,7 @@ using Zenject;
 namespace Game
 {
     [Serializable]
-    public sealed class MainScreenPresenter : IScreenPresenter, IGameDialogueListener, IGameBattleListener
+    public sealed class MainScreenPresenter : IScreenPresenter, IGameCutsceneListener, IGameBattleListener
     {
         private MainScreenView _view;
 
@@ -22,10 +22,10 @@ namespace Game
             
         }
         
-        void IGameDialogueListener.OnShowDialogue() => 
+        void IGameCutsceneListener.OnShowCutscene() => 
             _view.ToggleActivate(false);
         
-        void IGameDialogueListener.OnHideDialogue() => 
+        void IGameCutsceneListener.OnHideCutscene() => 
             _view.ToggleActivate(true);
         
         void IGameBattleListener.OnOpenBattle() => 

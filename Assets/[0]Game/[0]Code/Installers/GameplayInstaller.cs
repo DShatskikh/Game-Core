@@ -29,6 +29,8 @@ namespace Game
             Container.BindFactory<Location, Location, Location.Factory>();
             Container.Bind<TransitionService>().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<GameOverPresenter>().AsCached().WithArguments(_gameOverView).NonLazy();
+            
+            Container.BindInterfacesAndSelfTo<MainScreenHandler>().AsCached().NonLazy();
         }
     }
 }
