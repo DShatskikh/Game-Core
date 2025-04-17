@@ -27,7 +27,7 @@ namespace Game
         [Header("CameraAreaChecker")]
         [SerializeField]
         private LayerMask _cameraLayer;
-        
+
         private ReactiveProperty<float> _currentSpeed = new();
         private ReactiveProperty<bool> _isRun = new();
         private ReactiveProperty<Vector2> _direction = new();
@@ -39,6 +39,7 @@ namespace Game
         private bool _isPause;
         private Vector3 _previousPosition;
         private CameraSpeedSize _cameraSpeedSize;
+        private MainInventory _mainInventory;
 
         public IPlayerMover GetMover => _mover;
         public IReadOnlyReactiveProperty<float> GetCurrentSpeed => _currentSpeed;
@@ -47,14 +48,14 @@ namespace Game
             _useAreaChecker.NearestUseObject;
 
         [Inject]
-        private void Construct(CinemachineConfiner2D confiner, PlayerInput playerInput)
+        private void Construct(CinemachineConfiner2D confiner, PlayerInput playerInput, MainInventory mainInventory)
         {
             _playerInput = playerInput;
             _rigidbody = GetComponent<Rigidbody2D>();
             _mover = new PlayerMover(_rigidbody);
             _cameraAreaChecker = new CameraAreaChecker(transform, _cameraLayer, confiner);
-
             _cameraSpeedSize = new CameraSpeedSize(_cinemachineCamera);
+            _mainInventory = mainInventory;
 
             _stepsSoundPlayer.Init(transform);
         }

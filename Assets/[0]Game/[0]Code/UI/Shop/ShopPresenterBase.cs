@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using FMODUnity;
 using UnityEngine;
-using UniRx;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using Zenject;
 using Object = UnityEngine.Object;
@@ -15,7 +13,7 @@ namespace Game
     {
         protected readonly ShopView _shopView;
         private readonly GameStateController _gameStateController;
-        protected readonly CharacterInventory _characterInventory;
+        protected readonly MainInventory _mainInventory;
         private readonly WalletService _walletService;
         protected readonly Dictionary<string, string> _inscriptionsContainer;
         private readonly ShopButton _shopButtonPrefab;
@@ -28,13 +26,13 @@ namespace Game
 
         public ShopPresenterBase(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
-             CharacterInventory characterInventory, WalletService walletService, 
+            MainInventory mainInventory, WalletService walletService, 
             DiContainer container, StudioEventEmitter studioEmitter, ShopBackground backgroundPrefab)
         {
             _shopView = Object.Instantiate(shopViewPrefab);
             _inscriptionsContainer = inscriptionsContainer;
             _gameStateController = gameStateController;
-            _characterInventory = characterInventory;
+            _mainInventory = mainInventory;
             _walletService = walletService;
             _shopButtonPrefab = shopButtonPrefab;
 
@@ -77,9 +75,8 @@ namespace Game
 
         protected void InitItemCountText()
         {
-            _shopView.SetItemCountText($"{_characterInventory.Items.Count}/{_characterInventory.MaxCount}");
-            _characterInventory.Items.ObserveCountChanged().Subscribe(count =>
-                _shopView.SetItemCountText($"{count}/{_characterInventory.MaxCount}"));
+            _shopView.SetItemCountText($"{_mainInventory.MainSlots.Length}/{_mainInventory.MainSlots.Length}");
+            _mainInventory.OnSlotChange += (item, slot) => _shopView.SetItemCountText($"{_mainInventory.MainSlots.Length}/{_mainInventory.MainSlots.Length}");
         }
         
         private void CloseAllPanel()
@@ -115,7 +112,6 @@ namespace Game
         private void OnExitClicked()
         {
             CloseAllPanel();
-            PlaySelectSound();
             _shopView.GetMonologueText.StartWrite(new[] { _inscriptionsContainer["Farewell"] }, Close);
             Save();
         }
@@ -128,7 +124,6 @@ namespace Game
             _shopView.ToggleStats(true);
             _shopView.SetStatsText(_inscriptionsContainer["SpeakStats"]);
             
-            PlaySelectSound();
             EventSystem.current.SetSelectedGameObject(_speakButtons[0].gameObject);
         }
 
@@ -137,8 +132,6 @@ namespace Game
             CloseAllPanel();
             _shopView.GetMonologueText.StartWrite(
                 new[] { _inscriptionsContainer["SellNotCan"] }, OpenStartPanel);
-            
-            PlaySelectSound();
         }
 
         private void OnBuyClicked()
@@ -149,7 +142,6 @@ namespace Game
             _shopView.ToggleProducts(true);
             _shopView.SetStatsText(_inscriptionsContainer["BuyStats"]);
 
-            PlaySelectSound();
             EventSystem.current.SetSelectedGameObject(_productButtons[0].gameObject);
         }
         
@@ -165,7 +157,6 @@ namespace Game
             _shopView.GetProductExitButton.onClick.AddListener(() =>
             {
                 OpenStartPanel();
-                PlaySelectSound();
             });
             
             ((ShopButton)_shopView.GetProductExitButton).OnSelectAction += () => { _shopView.ToggleProductInfo(false); };
@@ -189,11 +180,11 @@ namespace Game
         
         private void InitProductButton(ShopButton productButton, Product product)
         {
-            productButton.GetLabel.text = $"{product.Price}М - {product.Config.GetName}";
+            productButton.GetLabel.text = $"{product.Price}М - {product.Config.Prototype.MetaData.Name}";
             productButton.OnSelectAction += () =>
             {
                 _shopView.ToggleProductInfo(true);
-                _shopView.SetProductInfoText(product.Config.GetInfo);
+                _shopView.SetProductInfoText(product.Config.Prototype.MetaData.Description);
             };
 
             productButton.onClick.AddListener(() =>
@@ -203,7 +194,6 @@ namespace Game
                 _shopView.ToggleBuy(true);
                 _shopView.SetBuyText($"Купить за {product.Price}М");
                 EventSystem.current.SetSelectedGameObject(_shopView.GetBuyYesButton.gameObject);
-                PlaySelectSound();
 
                 _shopView.GetBuyYesButton.onClick.RemoveAllListeners();
                 _shopView.GetBuyYesButton.onClick.AddListener(() =>
@@ -228,7 +218,6 @@ namespace Game
                 {
                     _shopView.ToggleProductInfo(true);
                     _shopView.ToggleBuy(false);
-                    PlaySelectSound();
                     EventSystem.current.SetSelectedGameObject(_shopView.GetProductExitButton.gameObject);
                 });
             });
@@ -239,9 +228,8 @@ namespace Game
 
         protected virtual void BuySuccess(Product product, ShopButton productButton)
         {
-            _characterInventory.AddItem(product.Config);
+            _mainInventory.Add(product.Config.Prototype.Clone());
             _shopView.SetStatsText(_inscriptionsContainer["BuySuccess"]);
-            PlaySelectSound();
 
             if (product.Counts > 0)
                 product.Counts -= 1;
@@ -260,7 +248,6 @@ namespace Game
             _shopView.GetSpeakExitButton.onClick.AddListener(() =>
             {
                 OpenStartPanel();
-                PlaySelectSound();
             });
         }
 
@@ -285,7 +272,6 @@ namespace Game
                 _shopView.ToggleSpeakContainer(false);
                 _shopView.ToggleStats(false);
                 _shopView.ToggleSelectPanel(false);
-                PlaySelectSound();
             });
         }
 
@@ -312,11 +298,6 @@ namespace Game
         private void Close() => 
             Dispose();
 
-        private void PlaySelectSound()
-        {
-            
-        }
-        
         private void PlayFailSound()
         {
             

@@ -1,0 +1,343 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f0b0c553be8edd4682e9180fdd13e37, type: 3}
+  m_Name: I2Languages
+  m_EditorClassIdentifier: 
+  mSource:
+    UserAgreesToHaveItOnTheScene: 0
+    UserAgreesToHaveItInsideThePluginsFolder: 0
+    GoogleLiveSyncIsUptoDate: 1
+    mTerms:
+    - Term: Attack
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0410\u0422\u0410\u041A"
+      - Attacks
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Buy
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041A\u0443\u043F\u0438\u0442\u044C"
+      - Buy
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Exit
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0412\u044B\u0439\u0442\u0438"
+      - Get Out
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_BuyFail
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041F\u0440\u0438\u0445\u043E\u0434\u0438 \u043A\u0430\u043A \u0431\u0443\u0434\u0443\u0442
+        \u0434\u0435\u043D\u044C\u0433\u0438"
+      - Come when you have money
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_BuyStats
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0427\u0442\u043E\u0431\u044B \u0432\u044B \u0445\u043E\u0442\u0435\u043B\u0438
+        \u043A\u0443\u043F\u0438\u0442\u044C?"
+      - What would you like to buy?
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_BuySuccess
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u0437\u0430 \u043F\u043E\u043A\u0443\u043F\u043A\u0443"
+      - Thanks for your purchase
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_Farewell
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0414\u043E \u0432\u0441\u0442\u0440\u0435\u0447\u0438"
+      - See you
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_SellNotCan
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u042D\u0442\u043E \u043D\u0435 \u0442\u0430\u043A \u0440\u0430\u0431\u043E\u0442\u0430\u0435\u0442,
+        \u044F \u0442\u043E\u043B\u044C\u043A\u043E \u043F\u0440\u043E\u0434\u0430\u044E\",
+        \"\u041D\u043E \u0442\u044B \u0432\u0441\u0435 \u0435\u0449\u0435 \u043C\u043E\u0436\u0435\u0448\u044C
+        \u0447\u0442\u043E-\u043D\u0438\u0431\u0443\u0434\u044C \u043A\u0443\u043F\u0438\u0442\u044C"
+      - That's not how it works, I only sell", "But you can still buy something
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_SpeakStats
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041E \u0447\u0435\u043C \u0442\u044B \u0445\u043E\u0447\u0435\u0448\u044C
+        \u043F\u043E\u0433\u043E\u0432\u043E\u0440\u0438\u0442\u044C?"
+      - What do you want to talk about?
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_Speak_1
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u042F \u041D\u043E\u0442\u0447 \u0441\u043E\u0437\u0434\u0430\u0442\u0435\u043B\u044C
+        \u041C\u0430\u0439\u043D\u043A\u0440\u0430\u0444\u0442\u0430"
+      - I'm Notch the creator of Minecraft
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_Speak_1_Name
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041A\u0442\u043E \u0442\u044B?"
+      - Who are you?
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_Speak_2
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041E\u043D \u043C\u043E\u0439 \u0431\u0440\u0430\u0442"
+      - He's my brother
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_Speak_2_Name
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041E \u0425\u0435\u0440\u043E\u0431\u0440\u0438\u043D\u0435"
+      - About Herobrine
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_Speak_3
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u044F\u044E \u0442\u044B
+        \u0437\u0430\u0432\u0435\u0440\u0448\u0438\u043B \u0442\u0430\u0441\u043A\u0443"
+      - Congratulations, you completed the task
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_Speak_3_Name
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0425\u0435\u0440\u043E\u0431\u0440\u0438\u043D?"
+      - Herobrine?
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Notch_Welcome
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041F\u0440\u0438\u0432\u0435\u0442\u0438\u043A"
+      - Hi
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Sell
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041F\u0440\u043E\u0434\u0430\u0442\u044C"
+      - Sell
+      Flags: 0000
+      Languages_Touch: []
+    - Term: SkipText
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041D\u0430\u0436\u043C\u0438\u0442\u0435, \u0447\u0442\u043E\u0431\u044B
+        \u043F\u0440\u043E\u043F\u0443\u0441\u0442\u0438\u0442\u044C"
+      - Click to skip
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Speak
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0413\u043E\u0432\u043E\u0440\u0438\u0442\u044C"
+      - Speak
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Villager_Speak_1
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0414\u0430 \u044F"
+      - Yes I am
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Villager_Speak_1_Name
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0416\u0438\u0442\u0435\u043B\u044C?"
+      - Inhabitant?
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Block Dirt
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0411\u041B. \u0417\u0415\u041C\u041B."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Block Dirt Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "+1 \u0417\u0414"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Diamond Armor
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0410\u041B\u041C. \u0411\u0420\u041E\u041D\u042F"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Diamond Armor Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "5 \u0417\u0410\u0429."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Diamond Sworld
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0410\u041B\u041C. \u041C\u0415\u0427"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Diamond Sworld Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "5 \u0410\u0422\u041A."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Fireworks
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0424\u0415\u0419\u0415\u0420\u0412\u0415\u0420\u041A"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Fireworks Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "20 \u0410\u0422\u041A."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Gold Apple
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0417\u041E\u041B. \u042F\u0411\u041B."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Gold Apple Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "+20 \u0417\u0414."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Iron Armor
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0416\u0415\u041B. \u0411\u0420\u041E\u041D\u042F"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Iron Sworld
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0416\u0415\u041B. \u041C\u0415\u0427"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Iron Sworld Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "3 \u0410\u0422\u041A."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Iron Armor Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "2 \u0417\u0410\u0429."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Zombie
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0417\u043E\u043C\u0431\u0438"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    CaseInsensitiveTerms: 0
+    OnMissingTranslation: 1
+    mTerm_AppName: 
+    mLanguages:
+    - Name: Russian
+      Code: ru
+      Flags: 0
+    - Name: English
+      Code: en
+      Flags: 0
+    IgnoreDeviceLanguage: 0
+    _AllowUnloadingLanguages: 0
+    Google_WebServiceURL: https://script.google.com/macros/s/AKfycbwo4OQQsbXNBRdYLJpZadicNQezeqsMESop_xfPUctVqzc72H5kBjha4Grb1SZcCnLqWQ/exec
+    Google_SpreadsheetKey: 1BvBxYyjnEasjpw4x9yFeZKFHsZRjQWLO25a_NML3vOc
+    Google_SpreadsheetName: I2Loc Game Core Localization
+    Google_LastUpdatedVersion: 
+    Google_Password: change_this
+    GoogleUpdateFrequency: 3
+    GoogleInEditorCheckFrequency: 2
+    GoogleUpdateSynchronization: 1
+    GoogleUpdateDelay: 0
+    Assets: []
+    Spreadsheet_LocalFileName: 
+    Spreadsheet_LocalCSVSeparator: ','
+    Spreadsheet_LocalCSVEncoding: utf-8
+    Spreadsheet_SpecializationAsRows: 1
+    Spreadsheet_SortRows: 1

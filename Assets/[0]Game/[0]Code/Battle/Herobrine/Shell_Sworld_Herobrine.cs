@@ -60,6 +60,8 @@ namespace Game
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
 
+            IsAlive = false;
+            
             _sequence?.Kill();
             _sequence = DOTween.Sequence();
             _sequence.Append(_spriteRenderer.DOColor(Color.clear, 1f));

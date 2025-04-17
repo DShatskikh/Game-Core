@@ -26,9 +26,9 @@ namespace Game
 
         public ShopPresenter_Villager(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
-            CharacterInventory characterInventory, WalletService walletService, 
+            MainInventory mainInventory, WalletService walletService, 
             DiContainer container, StudioEventEmitter studioEmitter, InitData data, ShopBackground background) : base(shopViewPrefab, shopButtonPrefab,
-            inscriptionsContainer, gameStateController, characterInventory, walletService, 
+            inscriptionsContainer, gameStateController, mainInventory, walletService, 
             container, studioEmitter, background)
         {
             _initData = data;
@@ -50,7 +50,7 @@ namespace Game
             {
                 foreach (var productSaveData in saveData.ProductSavesData)
                 {
-                    if (product.Config.GetID == productSaveData.Id)
+                    if (product.Config.Prototype.ID == productSaveData.Id)
                         product.Counts = productSaveData.Counts;
                 }
             }
@@ -65,7 +65,7 @@ namespace Game
 
             foreach (var productData in _initData.Products)
             {
-                saveData.ProductSavesData.Add(new ProductSaveData() {Id = productData.Config.GetID,
+                saveData.ProductSavesData.Add(new ProductSaveData() {Id = productData.Config.Prototype.ID,
                     Counts = productData.Counts});
             }
             

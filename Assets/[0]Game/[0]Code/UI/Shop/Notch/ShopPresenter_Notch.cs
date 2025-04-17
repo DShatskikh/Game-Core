@@ -31,9 +31,9 @@ namespace Game
 
         public ShopPresenter_Notch(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
-            CharacterInventory characterInventory, WalletService walletService, 
+            MainInventory mainInventory, WalletService walletService, 
             DiContainer container, StudioEventEmitter studioEmitter, InitData data, ShopBackground shopBackgroundPrefab) : base(shopViewPrefab, shopButtonPrefab,
-            inscriptionsContainer, gameStateController, characterInventory, walletService, 
+            inscriptionsContainer, gameStateController, mainInventory, walletService, 
             container, studioEmitter, shopBackgroundPrefab)
         {
             _initData = data;
@@ -56,11 +56,11 @@ namespace Game
 
         protected override void BuySuccess(Product product, ShopButton productButton)
         {
-            _characterInventory.AddItem(product.Config);
+            _mainInventory.Add(product.Config.Prototype);
             _shopView.SetStatsText(_inscriptionsContainer["BuySuccess"]);
             PlayBuySound();
 
-            var sword = _initData.Swords.FirstOrDefault(sword => sword.Config.GetID == product.Config.GetID);
+            var sword = _initData.Swords.FirstOrDefault(sword => sword.Config.Prototype.ID == product.Config.Prototype.ID);
             
             if (sword != null)
             {
@@ -74,7 +74,7 @@ namespace Game
                 }
             }
             
-            var armor = _initData.Armors.FirstOrDefault(armor => armor.Config.GetID == product.Config.GetID);
+            var armor = _initData.Armors.FirstOrDefault(armor => armor.Config.Prototype.ID == product.Config.Prototype.ID);
             
             if (armor != null)
             {
@@ -132,7 +132,7 @@ namespace Game
             
             foreach (var productSaveData in saveData.ProductsData)
             {
-                foreach (var product in allProducts.Where(product => product.Config.GetID == productSaveData.Id))
+                foreach (var product in allProducts.Where(product => product.Config.Prototype.ID == productSaveData.Id))
                 {
                     product.Counts = productSaveData.Counts;
                     currentProducts.Add(product);
@@ -153,7 +153,7 @@ namespace Game
             
             foreach (var productData in _products)
             {
-                saveData.ProductsData.Add(new ProductSaveData() {Id = productData.Config.GetID,
+                saveData.ProductsData.Add(new ProductSaveData() {Id = productData.Config.Prototype.ID,
                     Counts = productData.Counts});
             }
 

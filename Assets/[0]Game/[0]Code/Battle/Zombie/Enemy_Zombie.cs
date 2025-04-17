@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using DG.Tweening;
+﻿using DG.Tweening;
+using I2.Loc;
 using UnityEngine;
 
 namespace Game
@@ -9,6 +9,9 @@ namespace Game
         private static readonly int DamageHash = Animator.StringToHash("Damage");
         private static readonly int DeathHash = Animator.StringToHash("Death");
 
+        [SerializeField]
+        private LocalizedString _name;
+        
         [SerializeField]
         private BattleMessageBox _messageBox;
 
@@ -26,12 +29,20 @@ namespace Game
 
         [SerializeField]
         private TextMesh _damageLabelPrefab;
+
+        [SerializeField]
+        private ActionBattle[] _actions;
         
         private int _health;
 
-        public Attack[] GetAttacks => _attacks;
-        public BattleMessageBox GetMessageBox => _messageBox;
-        public int GetHealth => _health;
+        public ActionBattle[] Actions => _actions;
+        public LocalizedString Name => _name;
+        public Attack[] Attacks => _attacks;
+        public BattleMessageBox MessageBox => _messageBox;
+        public int Health => _health;
+        public int MaxHealth => _maxHealth;
+        public int Mercy  { get; set; }
+        public bool IsMercy { get; set; }
 
         private void Start()
         {
@@ -60,19 +71,6 @@ namespace Game
         public void Death(int damage)
         {
             _animator.SetTrigger(DeathHash);
-            
-            var damageLabel = Instantiate(_damageLabelPrefab, transform.position.AddY(0.5f), Quaternion.identity);
-            damageLabel.color = Color.red;
-            damageLabel.text = $"-{damage}";
-            
-            var sequence = DOTween.Sequence();
-            sequence
-                .Append(damageLabel.transform.DOJump(transform.position.AddX(1), 1, 1, 1))
-                //.Append(damageLabel.transform.DOJump(transform.position.AddX(1), 0.25f, 1, 0.5f))
-                .Append(damageLabel.transform.DOMoveY(transform.position.AddY(1).y, 0.5f))
-                .Insert(1f, damageLabel.transform.DOScaleY(2, 0.5f))
-                .Insert(1f, DOTween.To(x => damageLabel.color = damageLabel.color.SetA(x), 1, 0, 0.5f))
-                .OnComplete(() => Destroy(damageLabel.gameObject));
         }
     }
 }

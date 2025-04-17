@@ -1,4 +1,5 @@
 ﻿using System;
+using FMODUnity;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,12 +13,16 @@ namespace Game
         [SerializeField]
         private TMP_Text _label;
         
+        [SerializeField]
+        private StudioEventEmitter _selectSound;
+        
         public TMP_Text GetLabel => _label;
         public event Action OnSelectAction;
 
         public override void OnSelect(BaseEventData eventData)
         {
             base.OnSelect(eventData);
+            _selectSound.Play();
             OnSelectAction?.Invoke();
         }
         

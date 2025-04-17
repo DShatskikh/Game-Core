@@ -41,6 +41,7 @@ MonoBehaviour:
     - FMODUnityResonance
     - Game
     - GameCycle
+    - I2
     - MoreMountains.Feedbacks
     - MoreMountains.Feedbacks.Authorizations
     - MoreMountains.Feedbacks.Cinemachine
@@ -58,7 +59,6 @@ MonoBehaviour:
     - SaveSystem
     - ScreenManager
     - Sirenix.OdinInspector.Modules.Unity.Addressables
-    - Sirenix.OdinInspector.Modules.UnityLocalization
     - StepSound
     - UniRx
     - UniTask

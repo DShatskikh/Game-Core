@@ -9,9 +9,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cc2a809443248bba7563392bec1d3cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 15c84788fb944d9cb09c240de243be19, type: 3}
   m_Name: Gold Apple
   m_EditorClassIdentifier: 
-  _name: "\u0417\u041E\u041B. \u042F\u0411\u041B."
-  _id: GoldApple
-  Health: 7
+  Prototype:
+    ID: Gold Apple
+    MetaData:
+      Name:
+        mTerm: Gold Apple
+        mRTL_IgnoreArabicFix: 0
+        mRTL_MaxLineLength: 0
+        mRTL_ConvertNumbers: 0
+        m_DontLocalizeParameters: 0
+      Description:
+        mTerm: Gold Apple Description
+        mRTL_IgnoreArabicFix: 0
+        mRTL_MaxLineLength: 0
+        mRTL_ConvertNumbers: 0
+        m_DontLocalizeParameters: 0
+      Icon: {fileID: 0}
+    Flags: 2
+    Components:
+    - rid: 2880720768947192177
+  references:
+    version: 2
+    RefIds:
+    - rid: 2880720768947192177
+      type: {class: EatComponent, ns: Game, asm: Game}
+      data:
+        Health: 20

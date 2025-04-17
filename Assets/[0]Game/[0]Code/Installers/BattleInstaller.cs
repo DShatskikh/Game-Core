@@ -12,6 +12,9 @@ namespace Game
         
         [SerializeField]
         private ShopButton _buttonPrefab;
+
+        [SerializeField]
+        private EnemyBattleButton _enemyBattleButton;
         
         [SerializeField]
         private Arena _arena;
@@ -32,6 +35,7 @@ namespace Game
             Container.Bind<Arena>().FromInstance(_arena).AsSingle();
             Container.Bind<BattleView>().FromInstance(_view).AsSingle();
             Container.Bind<ShopButton>().FromInstance(_buttonPrefab).AsSingle();
+            Container.Bind<EnemyBattleButton>().FromInstance(_enemyBattleButton).AsSingle();
             Container.Bind<BattlePoints>().FromInstance(_points).AsSingle();
             Container.Bind<Heart>().FromInstance(_heart).AsSingle();
             Container.Bind<CinemachineVirtualCamera>().FromInstance(_virtualCamera).AsSingle();

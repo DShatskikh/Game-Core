@@ -34,7 +34,7 @@ namespace Game
 
         private void Update()
         {
-            if (_shell != null && !_isUseCoroutine)
+            if (_shell != null && !_isUseCoroutine && _shell.IsAlive)
             {
                 _isUseCoroutine = true;
                 

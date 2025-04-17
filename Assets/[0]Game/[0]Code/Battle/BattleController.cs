@@ -44,9 +44,9 @@ namespace Game
             yield return null;
             //transform.position = _player.transform.position;
             //_camera.gameObject.SetActive(true);
-            _intro = new BattleIntro(GetSquadOverWorldPositionsData(), 
-                GetEnemiesOverWorldPositionsData());
-            yield return _intro.WaitIntro();
+            //_intro = new BattleIntroUseCases(GetSquadOverWorldPositionsData(), 
+            //    GetEnemiesOverWorldPositionsData());
+            //yield return _intro.WaitIntro();
            // MusicPlayer.Play(_theme);
         }
 

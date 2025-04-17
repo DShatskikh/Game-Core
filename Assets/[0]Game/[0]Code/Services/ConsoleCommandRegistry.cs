@@ -1,7 +1,7 @@
 ﻿using System;
+using I2.Loc;
 using QFSW.QC;
 using UnityEngine;
-using UnityEngine.Localization.Settings;
 using Zenject;
 
 namespace Game
@@ -35,8 +35,7 @@ namespace Game
         [Command()]
         public static void GetLocale()
         {
-            //Debug.Log($"YG: {YG2.lang}");
-            Debug.Log($"System: {LocalizationSettings.SelectedLocale}");
+            Debug.Log($"System: {LocalizationManager.CurrentLanguage}");
         }
         
         [Command()]

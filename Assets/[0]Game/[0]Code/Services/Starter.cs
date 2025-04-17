@@ -8,10 +8,10 @@ namespace Game
     public class Starter : MonoBehaviour
     {
         [SerializeField]
-        private ItemBaseConfig[] _items;
+        private ItemConfig[] _items;
         
         [SerializeField]
-        private WeaponItemConfig[] _weapons;
+        private ItemConfig[] _weapons;
 
         [LocationID]
         [SerializeField]
@@ -21,14 +21,18 @@ namespace Game
         
         [Inject]
         private void Construct(GameStateController gameStateController, WalletService walletService, 
-            CharacterInventory inventory, LocationsManager locationsManager)
+            MainInventory inventory, LocationsManager locationsManager)
         {
             _gameStateController = gameStateController;
             
             walletService.SetMoney(1250);
-            inventory.SetItems(_items);
-            inventory.SetWeapons(_weapons);
-            
+
+            foreach (var item in _items) 
+                inventory.Add(item.Prototype.Clone());
+
+            foreach (var item in _weapons) 
+                inventory.Add(item.Prototype.Clone());
+
             locationsManager.SwitchLocation(_locationID, 0);
         }
         

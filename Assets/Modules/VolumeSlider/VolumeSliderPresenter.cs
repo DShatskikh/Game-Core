@@ -1,7 +1,6 @@
 ﻿using System;
+using I2.Loc;
 using UnityEngine;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
 
 namespace Game
 {
@@ -32,8 +31,6 @@ namespace Game
             _view.GetSlider.onValueChanged.RemoveListener(OnChanged);
             
             //LocalizationSettings.SelectedLocaleChanged -= LocalizationSettingsOnSelectedLocaleChanged;
-            
-            ((IDisposable)_localizedString)?.Dispose();
         }
 
         private void Start()
@@ -60,9 +57,9 @@ namespace Game
             //RepositoryStorage.Set(KeyConstants.Volume, new VolumeData() { Volume = value });
         }
 
-        private void LocalizationSettingsOnSelectedLocaleChanged(Locale obj)
-        {
-            //OnChanged(_volumeService.Volume.Value);
-        }
+        // private void LocalizationSettingsOnSelectedLocaleChanged(Locale obj)
+        // {
+        //     //OnChanged(_volumeService.Volume.Value);
+        // }
     }
 }

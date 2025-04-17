@@ -9,9 +9,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cc2a809443248bba7563392bec1d3cf, type: 3}
+  m_Script: {fileID: 11500000, guid: 15c84788fb944d9cb09c240de243be19, type: 3}
   m_Name: Block Dirt
   m_EditorClassIdentifier: 
-  _id: BlockDirt
-  _name: "\u0411\u041B. \u0417\u0415\u041C\u041B."
-  Health: 1
+  Prototype:
+    ID: Block Dirt
+    MetaData:
+      Name:
+        mTerm: Block Dirt
+        mRTL_IgnoreArabicFix: 0
+        mRTL_MaxLineLength: 0
+        mRTL_ConvertNumbers: 0
+        m_DontLocalizeParameters: 0
+      Description:
+        mTerm: Block Dirt Description
+        mRTL_IgnoreArabicFix: 0
+        mRTL_MaxLineLength: 0
+        mRTL_ConvertNumbers: 0
+        m_DontLocalizeParameters: 0
+      Icon: {fileID: 0}
+    Flags: 3
+    Components:
+    - rid: 2880720768947192146
+    - rid: 2880720768947192170
+  references:
+    version: 2
+    RefIds:
+    - rid: 2880720768947192146
+      type: {class: StackableItemComponent, ns: Game, asm: Game}
+      data:
+        Count: 1
+        MaxCount: 8
+    - rid: 2880720768947192170
+      type: {class: EatComponent, ns: Game, asm: Game}
+      data:
+        Health: 1

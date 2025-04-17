@@ -8,7 +8,8 @@ namespace Game
         private bool _isDestroy;
 
         public bool IsDestroy => _isDestroy;
-        
+        public bool IsAlive { get; set; } = true;
+
         public void Crash(Heart heart)
         {
             heart.Crash();

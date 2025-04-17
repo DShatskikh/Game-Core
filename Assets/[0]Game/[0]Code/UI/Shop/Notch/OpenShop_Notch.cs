@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using FMODUnity;
+using I2.Loc;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Localization;
 using Zenject;
 
 namespace Game
@@ -45,17 +45,11 @@ namespace Game
         public void Open()
         {
             gameObject.SetActive(true);
-            StartCoroutine(AwaitOpen());
-        }
-
-        private IEnumerator AwaitOpen()
-        {
             var inscriptionsContainer = new Dictionary<string, string>();
 
             foreach (var localizedString in _localizedStrings)
             {
-                yield return localizedString.Value.AwaitLoad(text => 
-                    inscriptionsContainer.Add(localizedString.Key, text));
+                inscriptionsContainer.Add(localizedString.Key, localizedString.Value);
             }
             
             _diContainer.BindFactory<ShopPresenter_Notch, ShopPresenter_Notch.Factory>()

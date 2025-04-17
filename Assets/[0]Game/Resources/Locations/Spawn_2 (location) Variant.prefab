@@ -1153,115 +1153,73 @@ MonoBehaviour:
     - Villager_Speak_1
     - Villager_Speak_1_Name
     m_values:
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 13016350720
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 2219492884480
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 2364137652224
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 2391220273152
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 9733701746688
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 9928153874432
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 10037780398080
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 10299039399936
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 10417260052480
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 11046170771456
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 11166459215872
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 155900930539520
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 155893246574592
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+    - mTerm: Buy
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Sell
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Speak
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Exit
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_Welcome
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_Farewell
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_SpeakStats
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_BuySuccess
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_BuyFail
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_BuyStats
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_SellNotCan
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Villager_Speak_1
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Villager_Speak_1_Name
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
   _studioEvent: {fileID: 6773032051175818377}
   _background: {fileID: 6984877853463997981, guid: 2eab97914b751724a8c04e2b14ff5b0d, type: 3}
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &6773032051175818377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1454,147 +1412,93 @@ MonoBehaviour:
     - Notch_Speak_3
     - Notch_Speak_3_Name
     m_values:
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 13016350720
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 2219492884480
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 2364137652224
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 2391220273152
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 9733701746688
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 9928153874432
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 10037780398080
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 10299039399936
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 10417260052480
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 11046170771456
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 11166459215872
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 140870625378304
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 140934261358592
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 141101119160320
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 141167045230592
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 141262511783936
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 141212960276480
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+    - mTerm: Buy
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Sell
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Speak
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Exit
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: 
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_Farewell
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: 
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_BuySuccess
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_BuyFail
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_BuyStats
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_SellNotCan
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_Speak_1_Name
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_Speak_1
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_Speak_2_Name
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_Speak_2
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_Speak_3
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_Speak_3_Name
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
   _background: {fileID: 2780641278491211072, guid: 875ddc86548afdb488112959a64dcd82, type: 3}
   _studioEvent: {fileID: 3221133708595891265}
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &3221133708595891265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1787,115 +1691,73 @@ MonoBehaviour:
     - Villager_Speak_1
     - Villager_Speak_1_Name
     m_values:
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 13016350720
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 2219492884480
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 2364137652224
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 2391220273152
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 9733701746688
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 9928153874432
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 10037780398080
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 10299039399936
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 10417260052480
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 11046170771456
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 11166459215872
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 155900930539520
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
-    - m_TableReference:
-        m_TableCollectionName: GUID:e5e1b734f253b574fa74835443f9190f
-      m_TableEntryReference:
-        m_KeyId: 155893246574592
-        m_Key: 
-      m_FallbackState: 0
-      m_WaitForCompletion: 0
-      m_LocalVariables: []
+    - mTerm: Buy
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Sell
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Speak
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Exit
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_Welcome
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_Farewell
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_SpeakStats
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_BuySuccess
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_BuyFail
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_BuyStats
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Notch_SellNotCan
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Villager_Speak_1
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Villager_Speak_1_Name
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
   _studioEvent: {fileID: 4745604929910742934}
   _background: {fileID: 6984877853463997981, guid: 2eab97914b751724a8c04e2b14ff5b0d, type: 3}
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &4745604929910742934
 MonoBehaviour:
   m_ObjectHideFlags: 0

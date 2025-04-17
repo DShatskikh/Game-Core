@@ -16,10 +16,28 @@ namespace Game
         private Transform _itemsContainer;
         
         [SerializeField]
+        private Transform _actionsContainer;
+        
+        [SerializeField]
+        private Transform _mercyContainer;
+        
+        [SerializeField]
+        private Transform _enemiesContainer;
+        
+        [SerializeField]
+        private Transform _actionEnemiesContainer;
+        
+        [SerializeField]
         private ShopButton _attackButton;
         
         [SerializeField]
         private ShopButton _itemsButton;
+        
+        [SerializeField]
+        private ShopButton _actionsButton;
+        
+        [SerializeField]
+        private ShopButton _mercyButton;
         
         [SerializeField]
         private ShopButton _turnButton;
@@ -42,24 +60,45 @@ namespace Game
         [SerializeField]
         private TMP_Text _infoLabel;
 
+        [SerializeField]
+        private ProgressBar _progressBar;
+        
         public Transform GetAttacksContainer => _attacksContainer;
         public Transform GetItemsContainer => _itemsContainer;
+        public Transform GetActionsContainer => _actionsContainer;
+        public Transform GetMercyContainer => _mercyContainer;
+        public Transform GetEnemiesContainer => _enemiesContainer;
+        public Transform GetActionEnemiesContainer => _actionEnemiesContainer;
         public ShopButton GetAttackButton => _attackButton;
         public ShopButton GetItemsButton => _itemsButton;
+        public ShopButton GetActionsButton => _actionsButton;
+        public ShopButton GetMercyButton => _mercyButton;
         public ShopButton GetTurnButton => _turnButton;
         public Button GetRightSelectItemsButton => _rightSelectItemsButton;
         public Button GetLeftSelectItemsButton => _leftSelectItemsButton;
         public TMP_Text GetStateLabel => _stateLabel;
-        
+
         public void ToggleTurnPanel(bool isActive) => 
             _turnPanel.SetActive(isActive);
         
         public void ToggleAttacksContainer(bool isActive) => 
             _attacksContainer.gameObject.SetActive(isActive);
-        
+
         public void ToggleItemsContainer(bool isActive) => 
             _itemsContainer.gameObject.SetActive(isActive);
+
+        public void ToggleActionsContainer(bool isActive) => 
+            _actionsContainer.gameObject.SetActive(isActive);
+
+        public void ToggleMercyContainer(bool isActive) => 
+            _mercyContainer.gameObject.SetActive(isActive);
         
+        public void ToggleEnemiesContainer(bool isActive) => 
+            _enemiesContainer.gameObject.SetActive(isActive);
+        
+        public void ToggleActionEnemiesContainer(bool isActive) => 
+            _actionEnemiesContainer.gameObject.SetActive(isActive);
+
         public void ToggleStateLabel(bool isActive) => 
             _stateLabel.gameObject.SetActive(isActive);
         
@@ -77,5 +116,8 @@ namespace Game
 
         public void SetInfoText(string text) => 
             _infoLabel.text = text;
+        
+        public void ToggleProgressBar(bool isActive) => 
+            _progressBar.gameObject.SetActive(isActive);
     }
 }
