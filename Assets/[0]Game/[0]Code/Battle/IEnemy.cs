@@ -14,5 +14,9 @@ namespace Game
         bool IsMercy { get; set; }
         void Damage(int damage);
         void Death(int damage);
+        string GetReaction(BattleActionType actionType, Item item = null);
+        string GetDeathReaction();
+        string GetDeathFriendReaction(IEnemy enemy);
+        string GetStartReaction(int index);
     }
 }

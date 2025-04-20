@@ -1,11 +1,12 @@
 ﻿using System.Collections;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 
 namespace Game
 {
     public static class BattleIntroUseCases
     {
-        public static IEnumerator WaitIntro(OverWorldPositionsData[] partyPositionsData, OverWorldPositionsData[] enemyPositionsData)
+        public static async UniTask WaitIntro(OverWorldPositionsData[] partyPositionsData, OverWorldPositionsData[] enemyPositionsData)
         {
             var moveAnimation = DOTween.Sequence();
 
@@ -15,7 +16,7 @@ namespace Game
             foreach (var overWorldPositionData in enemyPositionsData)
                 moveAnimation.Insert(0, overWorldPositionData.Transform.DOMove(overWorldPositionData.Point.position, 0.75f));
             
-            yield return moveAnimation.WaitForCompletion();
+            await moveAnimation.AsyncWaitForCompletion();
         }
     }
 }

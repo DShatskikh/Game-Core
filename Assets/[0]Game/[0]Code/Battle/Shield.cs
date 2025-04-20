@@ -18,12 +18,12 @@ namespace Game
         private IShell _shell;
         private bool _isUseCoroutine;
         private Coroutine _coroutine;
-        private ProgressStorage _progressStorage;
+        private TurnProgressStorage _turnProgressStorage;
 
         [Inject]
-        private void Construct(ProgressStorage progressStorage)
+        private void Construct(TurnProgressStorage turnProgressStorage)
         {
-            _progressStorage = progressStorage;
+            _turnProgressStorage = turnProgressStorage;
         }
         
         private void OnEnable()
@@ -65,7 +65,7 @@ namespace Game
         {
             _source.Play();
             _view.gameObject.SetActive(true);
-            _progressStorage.AddBattleProgress(10);
+            _turnProgressStorage.AddBattleProgress(10);
             yield return new WaitForSeconds(_delayUse);
             _view.gameObject.SetActive(false);
             _isUseCoroutine = false;

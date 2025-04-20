@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-    public sealed class ProgressStorage
+    public sealed class TurnProgressStorage
     {
         private readonly ReactiveProperty<int> _progress = new();
         

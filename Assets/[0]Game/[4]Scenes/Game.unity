@@ -164,11 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92147d25d6d4d59a8cd238c0a68d6cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _messageBox: {fileID: 0}
-  _attacks: []
-  _maxHealth: 0
-  _spriteRenderer: {fileID: 0}
-  _health: 0
 --- !u!1 &14972227
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,8 +396,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cinemachineConfiner: {fileID: 393864012}
   _player: {fileID: 5200975742571103045}
-  _screens: {fileID: 0}
-  _gameOverView: {fileID: 0}
 --- !u!114 &16250076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -998,18 +991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38544aa5f5394855b4e2aa4089325517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _installerPrefab: {fileID: 4886416113025025765, guid: cefccb6127741a54ea5bce8f32052922, type: 3}
-  _initData: {EnemyHerobrine: {fileID: 1397496156}}
-  _music: {fileID: 8300000, guid: 84ef16f277cbf784f85d3dbeed1da227, type: 3}
-  _localizedStrings:
-    m_keys:
-    - Attack
-    m_values:
-    - mTerm: 
-      mRTL_IgnoreArabicFix: 0
-      mRTL_MaxLineLength: 0
-      mRTL_ConvertNumbers: 0
-      m_DontLocalizeParameters: 0
 --- !u!4 &234580962
 Transform:
   m_ObjectHideFlags: 0
@@ -1194,7 +1175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1702,7 +1683,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -3860,6 +3841,10 @@ PrefabInstance:
       value: 1.. 2.. 3..
       objectReference: {fileID: 0}
     - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
       propertyPath: m_fontSize
       value: 61.7
       objectReference: {fileID: 0}
@@ -3878,6 +3863,10 @@ PrefabInstance:
     - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
       propertyPath: m_fontSizeMax
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
       propertyPath: m_enableAutoSizing
@@ -4101,7 +4090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1173570725
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4211,6 +4200,10 @@ MonoBehaviour:
     Enemy_Zombie: {fileID: 1772123730}
     Enemy_Zombie_1: {fileID: 154032245}
     Enemy_Zombie_2: {fileID: 205005067}
+    TwoZombieAttacks:
+    - {fileID: 1344649036916751669, guid: 485bb024625801b4288b3f86db0656a9, type: 3}
+    ThreeZombieAttacks:
+    - {fileID: 1344649036916751669, guid: 485bb024625801b4288b3f86db0656a9, type: 3}
   _studioEventEmitter: {fileID: 1173570730}
   _localizedStrings:
     m_keys:
@@ -4627,6 +4620,10 @@ PrefabInstance:
       value: 1.. 2.. 3..
       objectReference: {fileID: 0}
     - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
       propertyPath: m_fontSize
       value: 61.7
       objectReference: {fileID: 0}
@@ -4645,6 +4642,10 @@ PrefabInstance:
     - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
       propertyPath: m_fontSizeMax
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
       propertyPath: m_enableAutoSizing
@@ -5331,12 +5332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92147d25d6d4d59a8cd238c0a68d6cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _messageBox: {fileID: 487611829}
-  _attacks:
-  - {fileID: 1344649036916751669, guid: 485bb024625801b4288b3f86db0656a9, type: 3}
-  _maxHealth: 20
-  _spriteRenderer: {fileID: 198368327}
-  _health: 0
 --- !u!4 &1397496157
 Transform:
   m_ObjectHideFlags: 0
@@ -5406,7 +5401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6981,6 +6976,10 @@ PrefabInstance:
       value: 1.. 2.. 3..
       objectReference: {fileID: 0}
     - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
       propertyPath: m_fontSize
       value: 61.7
       objectReference: {fileID: 0}
@@ -6999,6 +6998,10 @@ PrefabInstance:
     - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
       propertyPath: m_fontSizeMax
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8455135727836691994, guid: 01b47ec43ce11d04ca1e35250a3762a4, type: 3}
       propertyPath: m_enableAutoSizing

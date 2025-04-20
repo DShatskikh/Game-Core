@@ -72,5 +72,77 @@ namespace Game
         {
             _animator.SetTrigger(DeathHash);
         }
+        
+        public string GetReaction(BattleActionType actionType, Item item = null)
+        {
+            switch (actionType)
+            {
+                case BattleActionType.Attack:
+                    if (Health < MaxHealth * 0.3f) 
+                        return "(Слабый стон)";
+                    else
+                        return "(Рычание)";
+
+                case BattleActionType.Item:
+                    if (item != null && item.MetaData.Name == "Лечебная трава")
+                        return "(Зомби смотрит с интересом)";
+                    else
+                        return "(Безразличный взгляд)";
+
+                case BattleActionType.Mercy:
+                    if (Mercy >= 80)
+                        return "(Зомби кивает головой)";
+                    else
+                        return "(Недовольное урчание)";
+
+                case BattleActionType.Action:
+                    return "";
+                
+                case BattleActionType.NoAction:
+
+                    var random = Random.Range(0, 3);
+                    
+                    if (random == 0)
+                    {
+                        return "Что-то";
+                    }
+                    
+                    if (random == 1)
+                    {
+                        return "(...)";
+                    }
+                    
+                    return "Как-то";
+                
+                default:
+                    return "(...)";
+            }
+        }
+
+        public string GetDeathReaction()
+        {
+            return "О нет я умер";
+        }
+
+        public string GetDeathFriendReaction(IEnemy enemy)
+        {
+            return "О нет! он был моим лучшим другом!";
+        }
+        
+        public string GetStartReaction(int index)
+        {
+            if (index == 0)
+                return "Эписное начало";
+            
+            if (index == 1)
+                return "Берегись";
+            
+            return "Начинаем";
+        }
+        
+        public string GetReaction(ActionBattle actionBattle)
+        {
+            return actionBattle.Reaction;
+        }
     }
 }

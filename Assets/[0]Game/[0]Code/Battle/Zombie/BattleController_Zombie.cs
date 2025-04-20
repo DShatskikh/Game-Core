@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using FMODUnity;
+using ModestTree;
 using PixelCrushers.DialogueSystem.Wrappers;
 using UniRx;
 using Unity.Cinemachine;
@@ -25,7 +26,7 @@ namespace Game
         private readonly AudioClip _previousMusic;
         private readonly List<ShopButton> _itemButtons = new();
         private readonly List<ShopButton> _attackButtons = new();
-        private readonly List<EnemyBattleButton> _enemyButtons = new();
+        private readonly List<EnemyBattleButton> _attackEnemyButtons = new();
         private readonly List<EnemyBattleButton> _actionEnemyButtons = new();
         private readonly DiContainer _container;
         private readonly MainInventory _inventory;
@@ -33,8 +34,9 @@ namespace Game
         private readonly Dictionary<string,string> _inscriptionsContainer;
         private readonly DialogueSystemTrigger _winDialog;
         private readonly CinemachineVirtualCamera _virtualCamera;
-        private readonly ProgressStorage _progressStorage;
+        private readonly TurnProgressStorage _turnProgressStorage;
         private readonly EnemyBattleButton _enemyPrefabButton;
+        private readonly TimeBasedTurnBooster _timeBasedTurnBooster;
 
         private int _numberTurn = -1;
         private IEnemy[] _enemies;
@@ -49,6 +51,9 @@ namespace Game
             public Enemy_Zombie Enemy_Zombie;
             public Enemy_Zombie Enemy_Zombie_1;
             public Enemy_Zombie Enemy_Zombie_2;
+            
+            public Attack[] TwoZombieAttacks;
+            public Attack[] ThreeZombieAttacks;
         }
 
         public sealed class Factory : PlaceholderFactory<BattleController_Zombie> { }
@@ -56,7 +61,7 @@ namespace Game
         public BattleController_Zombie(BattleView view, ShopButton prefabButton, MainInventory inventory, 
             GameStateController gameStateController, InitData initData, BattlePoints points, Player player,
             Arena arena, Heart heart, StudioEventEmitter studioEventEmitter, DiContainer container, Dictionary<string, string> inscriptionsContainer, 
-            DialogueSystemTrigger winDialog, CinemachineVirtualCamera virtualCamera, ProgressStorage progressStorage, EnemyBattleButton enemyBattleButton)
+            DialogueSystemTrigger winDialog, CinemachineVirtualCamera virtualCamera, TurnProgressStorage turnProgressStorage, TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton)
         {
             _view = view;
             _prefabButton = prefabButton;
@@ -71,7 +76,8 @@ namespace Game
             _inscriptionsContainer = inscriptionsContainer;
             _winDialog = winDialog;
             _virtualCamera = virtualCamera;
-            _progressStorage = progressStorage;
+            _turnProgressStorage = turnProgressStorage;
+            _timeBasedTurnBooster = timeBasedTurnBooster;
             _enemyPrefabButton = enemyBattleButton;
 
             _enemies = new IEnemy[]
@@ -92,26 +98,12 @@ namespace Game
                 if (_numberTurn == -1)
                     return;
                 
-                Debug.Log(value);
-                
                 if (value <= 0) 
                     _gameStateController.GameOver();
             });
 
             _numberTurn = 0;
-            
-            _view.GetAttackButton.Init(_inscriptionsContainer["Attack"], () =>
-            {
-                CloseAllPanel();
-                
-                _view.ToggleTurnPanel(true);
-                _view.ToggleAttacksContainer(true);
-                
-                EventSystem.current.SetSelectedGameObject(_attackButtons[0].gameObject);
-            });
 
-            _view.GetAttackButton.OnSelectAction += () => _view.ToggleInfo(false);
-            
             foreach (var attackSlot in inventory.MainSlots)
             {
                 if (!attackSlot.HasItem)
@@ -126,13 +118,13 @@ namespace Game
                 attackButton.onClick.AddListener(() =>
                 {
                     CloseAllPanel();
-                    UpgradeEnemies();
+                    UpgradeEnemies(_attackEnemyButtons);
 
                     _view.ToggleTurnPanel(true);
                     _view.ToggleEnemiesContainer(true);
                     _view.ToggleInfo(false);
                     
-                    EventSystem.current.SetSelectedGameObject(_enemyButtons[0].gameObject);
+                    EventSystem.current.SetSelectedGameObject(_attackEnemyButtons[0].gameObject);
                     
                     _attackItem = attackSlot.Item;
                 });
@@ -143,28 +135,36 @@ namespace Game
                     _view.SetInfoText(attackSlot.Item.MetaData.Description);
                 };
             }
-            
-            _view.GetItemsButton.onClick.AddListener(() =>
+
+            _view.GetAttackButton.Init(_inscriptionsContainer["Attack"], () =>
             {
                 CloseAllPanel();
                 
+                _view.ToggleTurnPanel(true);
+                _view.ToggleAttacksContainer(true);
+                
+                EventSystem.current.SetSelectedGameObject(_attackButtons[0].gameObject);
+            });
+
+            _view.GetItemsButton.onClick.AddListener(() =>
+            {
+                CloseAllPanel();
+
                 _view.ToggleTurnPanel(true);
                 _view.ToggleItemsContainer(true);
 
                 EventSystem.current.SetSelectedGameObject(_itemButtons[0].gameObject);
             });
-            
-            _view.GetItemsButton.OnSelectAction += () => _view.ToggleInfo(false);
-            
+
             _view.GetActionsButton.onClick.AddListener(() =>
             {
                 CloseAllPanel();
                 
                 _view.ToggleTurnPanel(true);
-                UpgradeEnemies();
+                UpgradeEnemies(_actionEnemyButtons);
                 _view.ToggleActionEnemiesContainer(true);
 
-                EventSystem.current.SetSelectedGameObject(_itemButtons[0].gameObject);
+                EventSystem.current.SetSelectedGameObject(_actionEnemyButtons[0].gameObject);
             });
 
             _view.GetMercyButton.onClick.AddListener(() =>
@@ -185,9 +185,53 @@ namespace Game
                 _view.ToggleTurnPanel(true);
                 _view.ToggleMercyContainer(true);
 
-                EventSystem.current.SetSelectedGameObject(_itemButtons[0].gameObject);
+                EventSystem.current.SetSelectedGameObject(_mercyButton.gameObject);
             });
             
+            _view.GetAttackButton.OnSelectAction += () =>
+            {
+                if (!_view.GetStateLabel.gameObject.activeSelf)
+                    _view.SetStateText(GetStateText());
+                
+                CloseAllPanel();
+                _view.ToggleTurnPanel(true);
+                _view.ToggleStateLabel(true);
+            };
+
+            _view.GetItemsButton.OnSelectAction += () =>
+            {
+                if (!_view.GetStateLabel.gameObject.activeSelf)
+                    _view.SetStateText(GetStateText());
+                
+                CloseAllPanel();
+
+                _view.ToggleTurnPanel(true);
+                _view.ToggleStateLabel(true);
+            };
+            
+            _view.GetActionsButton.OnSelectAction += () =>
+            {
+                if (!_view.GetStateLabel.gameObject.activeSelf)
+                    _view.SetStateText(GetStateText());
+                
+                CloseAllPanel();
+                
+                _view.ToggleTurnPanel(true);
+                _view.ToggleStateLabel(true);
+            };
+
+            _view.GetMercyButton.OnSelectAction += () =>
+            {
+                if (!_view.GetStateLabel.gameObject.activeSelf)
+                    _view.SetStateText(GetStateText());
+                
+                CloseAllPanel();
+                
+                _view.ToggleTurnPanel(true);
+                _view.ToggleStateLabel(true);
+            };
+
+
             foreach (var slot in inventory.MainSlots)
             {
                 if (!slot.HasItem)
@@ -199,10 +243,11 @@ namespace Game
                 CreateItemButton(slot);
             }
             
+            // Выбираем цель для атаки
             foreach (var enemy in _enemies)
             {
                 var enemyButton = Object.Instantiate(_enemyPrefabButton, _view.GetEnemiesContainer);
-                _enemyButtons.Add(enemyButton);
+                _attackEnemyButtons.Add(enemyButton);
                 enemyButton.GetLabel.text = enemy.Name;
                 enemyButton.onClick.AddListener(() =>
                 {
@@ -257,14 +302,13 @@ namespace Game
                         {
                             CloseAllPanel();
                             _selectedEnemy.Mercy += action.Progress;
-                            Debug.Log("Вывести текст");
                             EnemyTurn(enemy);
                         });
 
                         _actionButtons.Add(actionButton);
                     }
                     
-                    EventSystem.current.SetSelectedGameObject(_view.GetTurnButton.gameObject);
+                    EventSystem.current.SetSelectedGameObject(_actionButtons[0].gameObject);
                     //SoundPlayer.Play(AssetProvider.Instance.SelectSound);
                 });
             }
@@ -275,11 +319,11 @@ namespace Game
             Intro();
         }
 
-        private void UpgradeEnemies()
+        private void UpgradeEnemies(List<EnemyBattleButton> buttons)
         {
-            for (var i = 0; i < _actionEnemyButtons.Count; i++)
+            for (var i = 0; i < buttons.Count; i++)
             {
-                var enemyButton = _actionEnemyButtons[i];
+                var enemyButton = buttons[i];
                 enemyButton.GetHealthSlider.maxValue = _enemies[i].MaxHealth;
                 enemyButton.GetHealthSlider.value = _enemies[i].Health;
 
@@ -308,13 +352,13 @@ namespace Game
             _mercyButton.Init("Пощада", () =>
             {
                 Debug.Log("Пощада");
-
+                CloseAllPanel();
+                
                 foreach (var enemy in _enemies)
                 {
                     if (enemy.Mercy >= 100)
                     {
-                        enemy.IsMercy = true;   
-                        CloseAllPanel();
+                        enemy.IsMercy = true;
                         Debug.Log("Пощажен");
                     }
                 }
@@ -374,40 +418,61 @@ namespace Game
             _view.ToggleStateLabel(true);
             EventSystem.current.SetSelectedGameObject(_view.GetAttackButton.gameObject);
             
+            _view.SetStateText(GetStateText());
+        }
+
+        private string GetStateText()
+        {
             if (_initData.Enemy_Zombie.Health < 15)
-                _view.SetStateText("У зомби осталось здоровье на 1 удар");
-            else if (_numberTurn == 0)
-                _view.SetStateText("Зомби ждет вашего хода");
-            else if (_numberTurn == 1)
-                _view.SetStateText("Зомби просто стоит и тупит");
-            else
-                _view.SetStateText("Зомби покорно ждет вашего хода");
+                return "У зомби осталось здоровье на 1 удар";
+            
+            if (_numberTurn == 0)
+                return "Зомби ждет вашего хода";
+            
+            if (_numberTurn == 1)
+                return "Зомби просто стоит и тупит";
+            
+            return "Зомби покорно ждет вашего хода";
         }
-
-        private void Intro()
+        
+        private async UniTask Intro()
         {
-            _initData.Enemy_Zombie.StartCoroutine(WaitIntro()); //
-        }
-
-        private IEnumerator WaitIntro()
-        {
-            yield return BattleIntroUseCases.WaitIntro(_points.GetPartyPositionsData(_player), 
+            await BattleIntroUseCases.WaitIntro(_points.GetPartyPositionsData(_player), 
                 _points.GetEnemiesPositionsData(new IEnemy[]{ _initData.Enemy_Zombie, 
                     _initData.Enemy_Zombie_1, _initData.Enemy_Zombie_2 }));
             
-            yield return BattleMessageBox.AwaitShow(new[]
-            {
-                _initData.Enemy_Zombie.MessageBox,
-                _initData.Enemy_Zombie_1.MessageBox,
-                _initData.Enemy_Zombie_2.MessageBox
-            }, new[]
-            {
-                "(Звуки зомби)",
-                "(Звуки зомби 1)",
-                "(Звуки зомби 2)"
-            });
-            
             Turn();
+            
+            await ShowEnemiesReactions(
+                _enemies[0].GetStartReaction(0),
+                _enemies[1].GetStartReaction(1),
+                _enemies[2].GetStartReaction(2));
+            
+            EventSystem.current.SetSelectedGameObject(_view.GetAttackButton.gameObject);
+        }
+
+        private async UniTask ShowEnemyMessage(IEnemy enemy, string message)
+        {
+            await enemy.MessageBox.AwaitShow(message);
+        }
+
+        private async UniTask ShowEnemiesReactions(params string[] messages)
+        {
+            var messageBoxes = new List<BattleMessageBox>();
+
+            if (_initData.Enemy_Zombie.Health > 0) 
+                messageBoxes.Add(_initData.Enemy_Zombie.MessageBox);
+
+            if (_initData.Enemy_Zombie_1.Health > 0) 
+                messageBoxes.Add(_initData.Enemy_Zombie_1.MessageBox);
+            
+            if (_initData.Enemy_Zombie_2.Health > 0) 
+                messageBoxes.Add(_initData.Enemy_Zombie_2.MessageBox);
+            
+            await BattleMessageBox.AwaitShow(
+                messageBoxes.ToArray(),
+                messages
+            );
         }
 
         private async UniTask AttackTurn(IEnemy enemy, int damage)
@@ -420,6 +485,8 @@ namespace Game
             
             if (enemy.Health <= 0)
             {
+                await ShowEnemyMessage(enemy, enemy.GetDeathReaction());
+                
                 await UniTask.WaitForSeconds(0.5f);
                 enemy.Death(damage);
 
@@ -457,14 +524,55 @@ namespace Game
             EnemyTurn(enemy);
         }
 
+        private Attack GetAttack()
+        {
+            if (_enemies.Length == 1)
+            {
+                if (_enemies[0].Attacks.Length >= _attackIndex)
+                    _attackIndex = 0;
+                
+                return _enemies[0].Attacks[_attackIndex];
+            }
+
+            if (_enemies.Length == 2)
+            {
+                if (_initData.TwoZombieAttacks.Length >= _attackIndex)
+                    _attackIndex = 0;
+                
+                return _initData.TwoZombieAttacks[_attackIndex];
+            }
+
+            if (_initData.ThreeZombieAttacks.Length >= _attackIndex)
+                _attackIndex = 0;
+            
+            return _initData.ThreeZombieAttacks[_attackIndex];
+        }
+
+        private int _attackIndex;
+        
         private async UniTask EnemyTurn(IEnemy enemy)
         {
-            if (_numberTurn == 0)
-                await enemy.MessageBox.AwaitShow("Р-р-р-р");
-            else if (_numberTurn == 1)
-                await enemy.MessageBox.AwaitShow("(Звуки зомби)");
+            // if (_numberTurn == 0)
+            //     await enemy.MessageBox.AwaitShow();
+            // else if (_numberTurn == 1)
+            //     await enemy.MessageBox.AwaitShow();
+            // else
+            //     await enemy.MessageBox.AwaitShow();
+
+            if (enemy.Health <= 0)
+            {
+                await ShowEnemiesReactions(
+                    _enemies[0].GetDeathFriendReaction(enemy),
+                    _enemies[1].GetDeathFriendReaction(enemy),
+                    _enemies[2].GetDeathFriendReaction(enemy));
+            }
             else
-                await enemy.MessageBox.AwaitShow("(Недовольное рычание)");
+            {
+                await ShowEnemiesReactions(
+                    _enemies[0].GetReaction(_enemies[0] == enemy ? BattleActionType.Attack : BattleActionType.NoAction),
+                    _enemies[1].GetReaction(_enemies[1] == enemy ? BattleActionType.Attack : BattleActionType.NoAction),
+                    _enemies[2].GetReaction(_enemies[2] == enemy ? BattleActionType.Attack : BattleActionType.NoAction));
+            }
             
             _heart.transform.position = _arena.transform.position;
             
@@ -472,21 +580,25 @@ namespace Game
             _heart.gameObject.SetActive(true);
             _view.ToggleProgressBar(true);
             
-            _progressStorage.Reset();
+            _turnProgressStorage.Reset();
 
             await UniTask.WaitForSeconds(1f);
-            var attackPrefab = enemy.Attacks[0];
+            var attackPrefab = GetAttack();
             var attack = Object.Instantiate(attackPrefab, _arena.transform);
             _container.Inject(attack);
+            _attackIndex++;
+            
+            _timeBasedTurnBooster.ToggleActivate(true);
             
             //await UniTask.WaitForSeconds(10f);
-            await UniTask.WaitUntil(() => _progressStorage.Progress.Value == 100);
+            await UniTask.WaitUntil(() => _turnProgressStorage.Progress.Value == 100);
             attack.Hide();
             
             await UniTask.WaitForSeconds(1f);
             Object.Destroy(attack.gameObject);
             _arena.gameObject.SetActive(false);
             _heart.gameObject.SetActive(false);
+            _timeBasedTurnBooster.ToggleActivate(false);
 
             _numberTurn++;
             Turn();

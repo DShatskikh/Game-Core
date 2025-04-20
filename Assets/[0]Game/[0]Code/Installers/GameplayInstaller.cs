@@ -11,15 +11,11 @@ namespace Game
 
         [SerializeField]
         private Player _player;
-
-        [SerializeField]
-        private Transform _screens;
         
         public override void InstallBindings()
         {
             Container.Bind<CinemachineConfiner2D>().FromInstance(_cinemachineConfiner).AsSingle();
             Container.BindInterfacesAndSelfTo<Player>().FromInstance(_player).AsCached();
-            Container.BindInterfacesAndSelfTo<EnderChestToggleHandler>().AsCached().WithArguments(_screens, AssetProvider.Instance.EnderChestScreen).NonLazy();
             Container.Bind<MainInventory>().AsSingle().NonLazy();
             Container.Bind<WalletService>().AsSingle().NonLazy();
             Container.Bind<LocationsManager>().AsSingle().WithArguments(Resources.LoadAll<Location>("")).NonLazy();

@@ -6120,6 +6120,7 @@ GameObject:
   - component: {fileID: 933341214205385357}
   - component: {fileID: 4886416113025025765}
   - component: {fileID: 2060673020776120654}
+  - component: {fileID: 1930527000664271232}
   m_Layer: 0
   m_Name: Battle
   m_TagString: Untagged
@@ -6163,6 +6164,7 @@ MonoBehaviour:
   _heart: {fileID: 8348961709563192213}
   _points: {fileID: 6154808529766661584}
   _virtualCamera: {fileID: 2678939463793074963}
+  _timeBasedTurnBooster: {fileID: 1930527000664271232}
 --- !u!114 &2060673020776120654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6194,6 +6196,18 @@ MonoBehaviour:
   _info: {fileID: 6177116709549848386}
   _infoLabel: {fileID: 2383166638805793136}
   _progressBar: {fileID: 7258024210091355917}
+--- !u!114 &1930527000664271232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611656004407829223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26cfbde729b4796853f1e1502f3f833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4692255396472224295
 GameObject:
   m_ObjectHideFlags: 0
@@ -10870,6 +10884,10 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u041F\u041E\u0429\u0410\u0414\u0410"
       objectReference: {fileID: 0}
+    - target: {fileID: 2686270611766117002, guid: 5d12c46dc8fb5da4b85678854d1c26db, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4293227530
+      objectReference: {fileID: 0}
     - target: {fileID: 3368344745236669208, guid: 5d12c46dc8fb5da4b85678854d1c26db, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -10995,6 +11013,10 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u0414\u0415\u0419\u0421\u0422\u0412\u0418\u042F"
       objectReference: {fileID: 0}
+    - target: {fileID: 2686270611766117002, guid: 5d12c46dc8fb5da4b85678854d1c26db, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4293227530
+      objectReference: {fileID: 0}
     - target: {fileID: 3368344745236669208, guid: 5d12c46dc8fb5da4b85678854d1c26db, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -11119,6 +11141,10 @@ PrefabInstance:
     - target: {fileID: 2686270611766117002, guid: 5d12c46dc8fb5da4b85678854d1c26db, type: 3}
       propertyPath: m_text
       value: "\u041F\u0420\u0415\u0414\u041C\u0415\u0422\u042B"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686270611766117002, guid: 5d12c46dc8fb5da4b85678854d1c26db, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4293227530
       objectReference: {fileID: 0}
     - target: {fileID: 3368344745236669208, guid: 5d12c46dc8fb5da4b85678854d1c26db, type: 3}
       propertyPath: m_Sprite
@@ -11380,6 +11406,10 @@ PrefabInstance:
       propertyPath: m_text
       value: "\u0410\u0422\u0410\u041A\u0410"
       objectReference: {fileID: 0}
+    - target: {fileID: 2686270611766117002, guid: 5d12c46dc8fb5da4b85678854d1c26db, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4293227530
+      objectReference: {fileID: 0}
     - target: {fileID: 3368344745236669208, guid: 5d12c46dc8fb5da4b85678854d1c26db, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -11626,6 +11656,10 @@ PrefabInstance:
     - target: {fileID: 2686270611766117002, guid: 5d12c46dc8fb5da4b85678854d1c26db, type: 3}
       propertyPath: m_text
       value: "\u0425\u041E\u0414"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686270611766117002, guid: 5d12c46dc8fb5da4b85678854d1c26db, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4293227530
       objectReference: {fileID: 0}
     - target: {fileID: 2686270611766117002, guid: 5d12c46dc8fb5da4b85678854d1c26db, type: 3}
       propertyPath: m_HorizontalAlignment

@@ -15,9 +15,9 @@ namespace Game
         private MMProgressBar _bar;
         
         [Inject]
-        private void Construct(ProgressStorage progressStorage)
+        private void Construct(TurnProgressStorage turnProgressStorage)
         {
-            progressStorage.Progress.Subscribe(value =>
+            turnProgressStorage.Progress.Subscribe(value =>
             {
                 _label.text = $"Прогресс хода {value}%";
                 _bar.SetBar(value, 0, 100);
