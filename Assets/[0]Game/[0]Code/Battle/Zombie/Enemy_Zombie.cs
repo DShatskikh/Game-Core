@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System.Linq;
+using DG.Tweening;
 using I2.Loc;
 using UnityEngine;
 
@@ -72,7 +73,12 @@ namespace Game
         {
             _animator.SetTrigger(DeathHash);
         }
-        
+
+        public void Spared()
+        {
+            gameObject.SetActive(false);
+        }
+
         public string GetReaction(BattleActionType actionType, Item item = null)
         {
             switch (actionType)
@@ -95,9 +101,6 @@ namespace Game
                     else
                         return "(Недовольное урчание)";
 
-                case BattleActionType.Action:
-                    return "";
-                
                 case BattleActionType.NoAction:
 
                     var random = Random.Range(0, 3);
@@ -139,7 +142,13 @@ namespace Game
             
             return "Начинаем";
         }
-        
+
+        public string GetActionReaction(ActionBattle actionBattle)
+        {
+            var action = Actions.First(x => x.Name == actionBattle.Name);
+            return action.Reaction;
+        }
+
         public string GetReaction(ActionBattle actionBattle)
         {
             return actionBattle.Reaction;

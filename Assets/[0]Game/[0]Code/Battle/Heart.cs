@@ -23,8 +23,10 @@ namespace Game
         private bool _isInvulnerability;
         private Arena _arena;
         private PlayerInput _playerInput;
+        private Animator _animator;
         
         public IReactiveProperty<int> GetHealth => _health;
+        public event Action OnDeath;
         public int GetMaxHealth => _maxHealth;
 
         [Inject]
@@ -33,6 +35,7 @@ namespace Game
             _arena = arena;
             _playerInput = playerInput;
 
+            _animator = GetComponent<Animator>();
             _maxHealth = 20;
             _health.Value = _maxHealth;
         }
@@ -45,6 +48,9 @@ namespace Game
 
         private void Update()
         {
+            if (_health.Value <= 0)
+                return;
+            
             var position = (Vector2)transform.position;
             
             var direction = _playerInput.actions["Move"].ReadValue<Vector2>().normalized;
@@ -91,14 +97,18 @@ namespace Game
                 yield break;
             }
 
+            _animator.CrossFade("Damage", 0);
             _shield.gameObject.SetActive(false);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(3);
+            _animator.CrossFade("Normal", 0);
             _shield.gameObject.SetActive(true);
             _isInvulnerability = false;
         }
 
         private void Death()
         {
+            _animator.CrossFade("Death", 0);
+            OnDeath?.Invoke();
             //EventBus.OnDeath?.Invoke();
             //GameData.GameOver.SetActive(true);
 

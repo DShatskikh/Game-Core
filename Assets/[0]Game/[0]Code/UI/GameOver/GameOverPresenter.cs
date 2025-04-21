@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using UnityEngine;
+using Zenject;
 
 namespace Game
 {
@@ -22,6 +23,11 @@ namespace Game
 
         public void Destroy()
         {
+        }
+
+        public void SetMessage(string message)
+        {
+            _view.SetLabel(message);
         }
     }
 }

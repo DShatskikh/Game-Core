@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Game
@@ -8,7 +9,15 @@ namespace Game
         [SerializeField]
         private Button _button;
 
+        [SerializeField]
+        private TMP_Text _label;
+        
         public void Show() => 
             gameObject.SetActive(true);
+
+        public void SetLabel(string message)
+        {
+            _label.text = message;
+        }
     }
 }

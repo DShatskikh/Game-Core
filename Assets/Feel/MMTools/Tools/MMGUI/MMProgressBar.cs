@@ -424,6 +424,10 @@ namespace MoreMountains.Tools
 		public virtual void SetBar(float currentValue, float minValue, float maxValue)
 		{
 			float newPercent = MMMaths.Remap(currentValue, minValue, maxValue, 0f, 1f);
+
+			if (float.IsNaN(newPercent))
+				newPercent = 0;
+			
 			SetBar01(newPercent);
 		}
 
