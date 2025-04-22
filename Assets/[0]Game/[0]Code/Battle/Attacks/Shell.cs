@@ -12,7 +12,7 @@ namespace Game
 
         public void Crash(Heart heart)
         {
-            heart.Crash();
+            heart.Crash(this);
             
             if (_isDestroy)
                 Destroy(gameObject);

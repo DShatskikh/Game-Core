@@ -42,6 +42,7 @@ namespace Game
         private readonly StudioEventEmitter _battleThemeEmitter;
         private readonly bool _isRun = true;
         private readonly string _gameOverMessage = "Ты умер от Зомбиии!";
+        private readonly int _damage = 5;
 
         private int _numberTurn = -1;
         private IEnemy[] _enemies;
@@ -90,6 +91,7 @@ namespace Game
             _attackIndicator = attackIndicator;
             _battleThemeEmitter = battleThemeEmitter;
 
+            _heart.SetDamage(_damage);
             _heart.OnDeath += Death;
             
             _enemies = new IEnemy[]
@@ -204,8 +206,14 @@ namespace Game
             {
                 if (!_view.GetStateLabel.gameObject.activeSelf)
                     _view.SetStateText(GetStateText());
-                
+
+                var isTurnActive = _view.GetTurnButton.gameObject.activeSelf;
+
                 CloseAllPanel();
+                
+                if (isTurnActive)
+                    _view.ToggleTurnButton(true);
+                
                 _view.ToggleTurnPanel(true);
                 _view.ToggleStateLabel(true);
             };
@@ -215,8 +223,16 @@ namespace Game
                 if (!_view.GetStateLabel.gameObject.activeSelf)
                     _view.SetStateText(GetStateText());
                 
+                if (!_view.GetStateLabel.gameObject.activeSelf)
+                    _view.SetStateText(GetStateText());
+
+                var isTurnActive = _view.GetTurnButton.gameObject.activeSelf;
+                
                 CloseAllPanel();
 
+                if (isTurnActive)
+                    _view.ToggleTurnButton(true);
+                
                 _view.ToggleTurnPanel(true);
                 _view.ToggleStateLabel(true);
             };
@@ -226,7 +242,15 @@ namespace Game
                 if (!_view.GetStateLabel.gameObject.activeSelf)
                     _view.SetStateText(GetStateText());
                 
+                if (!_view.GetStateLabel.gameObject.activeSelf)
+                    _view.SetStateText(GetStateText());
+
+                var isTurnActive = _view.GetTurnButton.gameObject.activeSelf;
+                
                 CloseAllPanel();
+                
+                if (isTurnActive)
+                    _view.ToggleTurnButton(true);
                 
                 _view.ToggleTurnPanel(true);
                 _view.ToggleStateLabel(true);
@@ -237,7 +261,15 @@ namespace Game
                 if (!_view.GetStateLabel.gameObject.activeSelf)
                     _view.SetStateText(GetStateText());
                 
+                if (!_view.GetStateLabel.gameObject.activeSelf)
+                    _view.SetStateText(GetStateText());
+
+                var isTurnActive = _view.GetTurnButton.gameObject.activeSelf;
+                
                 CloseAllPanel();
+                
+                if (isTurnActive)
+                    _view.ToggleTurnButton(true);
                 
                 _view.ToggleTurnPanel(true);
                 _view.ToggleStateLabel(true);
@@ -440,23 +472,28 @@ namespace Game
 
         private string GetStateText()
         {
-            if (_initData.Enemy_Zombie.Health < 15)
-                return "У зомби осталось здоровье на 1 удар";
+            if ((_initData.Enemy_Zombie.Mercy >= 100 && !_initData.Enemy_Zombie.IsMercy) 
+                || (_initData.Enemy_Zombie_1.Mercy >= 100 && !_initData.Enemy_Zombie_1.IsMercy) 
+                || (_initData.Enemy_Zombie_2.Mercy >= 100 && !_initData.Enemy_Zombie_2.IsMercy))
+                return "Зомби щадит вас";
+
+            if (_initData.Enemy_Zombie.Health <= 0 || _initData.Enemy_Zombie_1.Health <= 0 || _initData.Enemy_Zombie_2.Health <= 0)
+                return "Атмосфера накалилась";
             
             if (_numberTurn == 0)
-                return "Зомби ждет вашего хода";
+                return "Зомби ждут вашего хода";
             
             if (_numberTurn == 1)
-                return "Зомби просто стоит и тупит";
+                return "Зомби просто стоят и тупят";
             
-            return "Зомби покорно ждет вашего хода";
+            return "Зомби покорно ждут вашего хода";
         }
 
         private async UniTask Intro()
         {
             await BattleIntroUseCases.WaitIntro(_points.GetPartyPositionsData(_player), 
-                _points.GetEnemiesPositionsData(new IEnemy[]{ _initData.Enemy_Zombie, 
-                    _initData.Enemy_Zombie_1, _initData.Enemy_Zombie_2 }));
+                _points.GetEnemiesPositionsData(new IEnemy[]{
+                    _initData.Enemy_Zombie_1, _initData.Enemy_Zombie, _initData.Enemy_Zombie_2 }));
             
             Turn();
             

@@ -1849,6 +1849,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7166233371136461926}
   - component: {fileID: 1139962406632042369}
+  - component: {fileID: 8117168387081574807}
   m_Layer: 0
   m_Name: AttackIndicator
   m_TagString: Untagged
@@ -1910,6 +1911,19 @@ MonoBehaviour:
     Multiply: 0
   - Point: {fileID: 1976631215309116343}
     Multiply: 0
+  _canvasGroup: {fileID: 8117168387081574807}
+--- !u!225 &8117168387081574807
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928546312032719801}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &942942802425446335
 GameObject:
   m_ObjectHideFlags: 0

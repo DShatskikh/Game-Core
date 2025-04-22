@@ -35,6 +35,7 @@ namespace Game
         private ActionBattle[] _actions;
         
         private int _health;
+        private Sequence _sequence;
 
         public ActionBattle[] Actions => _actions;
         public LocalizedString Name => _name;
@@ -64,18 +65,33 @@ namespace Game
             damageLabel.color = Color.red;
             damageLabel.text = $"-{damage}";
 
-            var sequence = DOTween.Sequence();
-            sequence
+            _sequence?.Kill();
+            _sequence = DOTween.Sequence();
+            _sequence
                 .Append(damageLabel.transform.DOJump(transform.position.AddX(1), 1, 1, 1))
                 //.Append(damageLabel.transform.DOJump(transform.position.AddX(1), 0.25f, 1, 0.5f))
                 .Append(damageLabel.transform.DOMoveY(transform.position.AddY(1).y, 0.5f))
                 .Insert(1f, damageLabel.transform.DOScaleY(2, 0.5f))
                 .Insert(1f, DOTween.To(x => damageLabel.color = damageLabel.color.SetA(x), 1, 0, 0.5f))
-                .OnComplete(() => Destroy(damageLabel.gameObject));
+                .OnComplete(() =>
+                    {
+                        Destroy(damageLabel.gameObject);
+
+                        if (Health <= 0)
+                        {
+                            _sequence.Kill();
+                            _sequence = DOTween.Sequence();
+                            _sequence
+                                .Append(transform.DOShakePosition(10, 0.05f, 100))
+                                .SetLoops(-1, LoopType.Restart);
+                        }
+                    });
         }
 
         public void Death(int damage)
         {
+            _sequence.Kill();
+            _sequence = DOTween.Sequence();
             _animator.SetTrigger(DeathHash);
         }
 

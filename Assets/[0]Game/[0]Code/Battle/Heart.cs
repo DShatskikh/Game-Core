@@ -27,7 +27,8 @@ namespace Game
         private Arena _arena;
         private PlayerInput _playerInput;
         private Animator _animator;
-        
+        private int _damage = 1;
+
         public IReactiveProperty<int> GetHealth => _health;
         public event Action OnDeath;
         public int GetMaxHealth => _maxHealth;
@@ -80,12 +81,17 @@ namespace Game
             }
         }
 
-        public void Crash()
+        public void SetDamage(int damage)
         {
-            if (!_isInvulnerability)
+            _damage = damage;
+        }
+        
+        public void Crash(IShell shell)
+        {
+            if (!_isInvulnerability && shell.IsAlive)
             {
                 _isInvulnerability = true;
-                StartCoroutine(TakeDamage(5));
+                StartCoroutine(TakeDamage(_damage));
             }
         }
         
