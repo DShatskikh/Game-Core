@@ -1,5 +1,6 @@
 ﻿using System;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace Game
 {
@@ -19,7 +20,7 @@ namespace Game
 
         public void Destroy()
         {
-            
+            Object.Destroy(_view.gameObject);
         }
         
         void IGameCutsceneListener.OnShowCutscene() => 

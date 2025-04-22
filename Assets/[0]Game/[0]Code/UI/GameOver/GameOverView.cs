@@ -11,13 +11,14 @@ namespace Game
 
         [SerializeField]
         private TMP_Text _label;
-        
+
+        public Button GetButton =>
+            _button;
+
         public void Show() => 
             gameObject.SetActive(true);
 
-        public void SetLabel(string message)
-        {
+        public void SetLabel(string message) => 
             _label.text = message;
-        }
     }
 }

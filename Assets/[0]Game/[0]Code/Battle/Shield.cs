@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using FMODUnity;
 using UnityEngine;
 using Zenject;
 
@@ -6,15 +7,14 @@ namespace Game
 {
     public class Shield : MonoBehaviour
     {
+        private const string SOUND_PATH = "event:/Звуки/Битва/Щит";
+        
         [SerializeField]
         private SpriteRenderer _view;
 
         [SerializeField]
         private float _delayUse;
-        
-        [SerializeField]
-        private AudioSource _source;
-        
+
         private IShell _shell;
         private bool _isUseCoroutine;
         private Coroutine _coroutine;
@@ -63,7 +63,7 @@ namespace Game
 
         private IEnumerator Use()
         {
-            _source.Play();
+            RuntimeManager.PlayOneShot(SOUND_PATH);
             _view.gameObject.SetActive(true);
             _turnProgressStorage.AddBattleProgress(10);
             yield return new WaitForSeconds(_delayUse);

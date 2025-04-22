@@ -52,6 +52,11 @@ namespace Game
 
         public void Damage(int damage)
         {
+            if (Mercy >= 100)
+            {
+                damage = _health;
+            }
+            
             _health -= damage;
             _animator.SetTrigger(DamageHash);
 

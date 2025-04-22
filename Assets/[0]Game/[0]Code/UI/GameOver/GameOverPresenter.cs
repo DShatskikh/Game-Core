@@ -1,21 +1,23 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Game
 {
-    public sealed class GameOverPresenter : IScreenPresenter, IGameGameOvertListener
+    public sealed class GameOverPresenter : IScreenPresenter
     {
         private GameOverView _view;
+        private ScreenManager _screenManager;
 
         [Inject]
-        private void Construct(GameOverView view)
+        private void Construct(GameOverView view, ScreenManager screenManager)
         {
             _view = view;
-        }
-
-        public void OnGameOver()
-        {
-            _view.Show();
+            _screenManager = screenManager;
+            
+            _view.GetButton.onClick.AddListener(OnClick);
+            EventSystem.current.SetSelectedGameObject(_view.GetButton.gameObject);
         }
 
         public IScreenPresenter Prototype() => 
@@ -23,11 +25,18 @@ namespace Game
 
         public void Destroy()
         {
+            Object.Destroy(_view.gameObject);
         }
 
         public void SetMessage(string message)
         {
             _view.SetLabel(message);
+        }
+
+        private void OnClick()
+        {
+            _screenManager.Close(ScreensEnum.GAME_OVER);
+            SceneManager.LoadScene(1);
         }
     }
 }

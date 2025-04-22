@@ -14,6 +14,8 @@ namespace Game
 {
     public sealed class BattleController_Zombie : BattleControllerBase
     {
+        private const string START_BATTLE_SOUND_PATH = "event:/Звуки/Битва/Начало боя";
+        
         private readonly BattleView _view;
         private readonly ShopButton _prefabButton;
         private readonly InitData _initData;
@@ -36,6 +38,8 @@ namespace Game
         private readonly EnemyBattleButton _enemyPrefabButton;
         private readonly TimeBasedTurnBooster _timeBasedTurnBooster;
         private readonly ScreenManager _screenManager;
+        private readonly AttackIndicator _attackIndicator;
+        private readonly StudioEventEmitter _battleThemeEmitter;
         private readonly bool _isRun = true;
         private readonly string _gameOverMessage = "Ты умер от Зомбиии!";
 
@@ -62,9 +66,9 @@ namespace Game
 
         public BattleController_Zombie(BattleView view, ShopButton prefabButton, MainInventory inventory, 
             GameStateController gameStateController, InitData initData, BattlePoints points, Player player,
-            Arena arena, Heart heart, StudioEventEmitter studioEventEmitter, DiContainer container, Dictionary<string, string> inscriptionsContainer, 
+            Arena arena, Heart heart, StudioEventEmitter battleThemeEmitter, DiContainer container, Dictionary<string, string> inscriptionsContainer, 
             DialogueSystemTrigger winDialog, CinemachineVirtualCamera virtualCamera, TurnProgressStorage turnProgressStorage, 
-            TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager)
+            TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, AttackIndicator attackIndicator)
         {
             _view = view;
             _prefabButton = prefabButton;
@@ -83,6 +87,8 @@ namespace Game
             _timeBasedTurnBooster = timeBasedTurnBooster;
             _enemyPrefabButton = enemyBattleButton;
             _screenManager = screenManager;
+            _attackIndicator = attackIndicator;
+            _battleThemeEmitter = battleThemeEmitter;
 
             _heart.OnDeath += Death;
             
@@ -137,6 +143,8 @@ namespace Game
                     _view.ToggleInfo(true);
                     _view.SetInfoText(attackSlot.Item.MetaData.Description);
                 };
+                
+                RuntimeManager.PlayOneShot(START_BATTLE_SOUND_PATH);
             }
 
             _view.GetAttackButton.Init(_inscriptionsContainer["Attack"], () =>
@@ -457,6 +465,7 @@ namespace Game
                 _enemies[1].GetStartReaction(1),
                 _enemies[2].GetStartReaction(2));
             
+            _battleThemeEmitter.Play();
             EventSystem.current.SetSelectedGameObject(_view.GetAttackButton.gameObject);
         }
 
@@ -535,10 +544,22 @@ namespace Game
 
         private async UniTask AttackTurn(IEnemy enemy, int damage)
         {
+            _view.ToggleTurnPanel(true);
+            var multiply = await _attackIndicator.GetMultiply();
+            damage = (int)(damage * multiply / 100f);
+            CloseAllPanel();
+            
             _player.PlaySwordAttack();
             await UniTask.WaitForSeconds(0.5f);
             //var attackEffect = Object.Instantiate(_inventory.Weapons[0].Effect, _initData.Enemy_Zombie.transform.position.AddY(0.5f), Quaternion.identity);
 
+            if (damage == 0)
+            {
+                await ShowEnemiesReactions("...", "...", "...");
+                EnemyTurn();
+                return;
+            }
+            
             enemy.Damage(damage);
             
             if (enemy.Health <= 0)
@@ -700,6 +721,7 @@ namespace Game
             _gameStateController.CloseBattle();
             Object.Destroy(_view.gameObject);
             _winDialog.OnUse();
+            _battleThemeEmitter.Stop();
         }
 
         public override void OnGameOver()
@@ -711,6 +733,7 @@ namespace Game
         private void Death()
         {
             Debug.Log("GameOver");
+            _battleThemeEmitter.Stop();
             Object.Destroy(_view.gameObject);
             _gameStateController.GameOver();
 

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FMODUnity;
 using I2.Loc;
 using PixelCrushers.DialogueSystem;

@@ -30,6 +30,9 @@ namespace Game
 
         [SerializeField]
         private TimeBasedTurnBooster _timeBasedTurnBooster;
+
+        [SerializeField]
+        private AttackIndicator _attackIndicator;
         
         public Func<BattleControllerBase> CreatePresenterCommand;
 
@@ -44,6 +47,7 @@ namespace Game
             Container.Bind<CinemachineVirtualCamera>().FromInstance(_virtualCamera).AsSingle();
             Container.Bind<TurnProgressStorage>().AsSingle();
             Container.BindInstance(_timeBasedTurnBooster).AsSingle().NonLazy();
+            Container.BindInstance(_attackIndicator).AsSingle().NonLazy();
             
             var presenter = CreatePresenterCommand?.Invoke();
             

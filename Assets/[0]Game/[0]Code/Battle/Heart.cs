@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using FMODUnity;
 using UniRx;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,8 @@ namespace Game
 {
     public class Heart : MonoBehaviour
     {
+        private const string DAMAGE_SOUND_PATH = "event:/Звуки/Битва/Получили урон";
+        
         [SerializeField]
         private float _speed;
         
@@ -88,6 +91,7 @@ namespace Game
         
         private IEnumerator TakeDamage(int damage)
         {
+            RuntimeManager.PlayOneShot(DAMAGE_SOUND_PATH);
             _health.Value -= damage;
             _damageSource.Play();
 
