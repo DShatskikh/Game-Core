@@ -33,6 +33,9 @@ namespace Game
 
         [SerializeField]
         private ActionBattle[] _actions;
+
+        [SerializeField]
+        private DeathAnimation _deathAnimation;
         
         private int _health;
         private Sequence _sequence;
@@ -90,9 +93,13 @@ namespace Game
 
         public void Death(int damage)
         {
+            _animator.SetTrigger(DeathHash);
+            
             _sequence.Kill();
             _sequence = DOTween.Sequence();
-            _animator.SetTrigger(DeathHash);
+            _sequence
+                .AppendInterval(0.5f)
+                .OnComplete(() => _deathAnimation.StartAnimation());
         }
 
         public void Spared()

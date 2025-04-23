@@ -40,6 +40,7 @@ namespace Game
         private readonly ScreenManager _screenManager;
         private readonly AttackIndicator _attackIndicator;
         private readonly StudioEventEmitter _battleThemeEmitter;
+        private readonly INextButton _nextButton;
         private readonly bool _isRun = true;
         private readonly string _gameOverMessage = "Ты умер от Зомбиии!";
         private readonly int _damage = 5;
@@ -67,9 +68,11 @@ namespace Game
 
         public BattleController_Zombie(BattleView view, ShopButton prefabButton, MainInventory inventory, 
             GameStateController gameStateController, InitData initData, BattlePoints points, Player player,
-            Arena arena, Heart heart, StudioEventEmitter battleThemeEmitter, DiContainer container, Dictionary<string, string> inscriptionsContainer, 
-            DialogueSystemTrigger winDialog, CinemachineVirtualCamera virtualCamera, TurnProgressStorage turnProgressStorage, 
-            TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, AttackIndicator attackIndicator)
+            Arena arena, Heart heart, StudioEventEmitter battleThemeEmitter, DiContainer container, 
+            Dictionary<string, string> inscriptionsContainer, DialogueSystemTrigger winDialog,
+            CinemachineVirtualCamera virtualCamera, TurnProgressStorage turnProgressStorage, 
+            TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, 
+            AttackIndicator attackIndicator, INextButton nextButton)
         {
             _view = view;
             _prefabButton = prefabButton;
@@ -90,6 +93,7 @@ namespace Game
             _screenManager = screenManager;
             _attackIndicator = attackIndicator;
             _battleThemeEmitter = battleThemeEmitter;
+            _nextButton = nextButton;
 
             _heart.SetDamage(_damage);
             _heart.OnDeath += Death;
@@ -605,6 +609,7 @@ namespace Game
                 
                 await UniTask.WaitForSeconds(0.5f);
                 enemy.Death(damage);
+                await UniTask.WaitForSeconds(1f);
 
                 bool isAllDeath = true;
                 
@@ -619,19 +624,11 @@ namespace Game
 
                 if (isAllDeath)
                 {
-                    await UniTask.WaitForSeconds(1f);
-                    Object.Destroy(_initData.Enemy_Zombie.gameObject);
-                    _virtualCamera.gameObject.SetActive(false);
-                    await UniTask.WaitForSeconds(1f);
                     Exit();
                     return;
                 }
 
                 //Object.Destroy(attackEffect.gameObject);
-            }
-            else
-            {
-                await UniTask.WaitForSeconds(0.5f);
             }
 
             await UniTask.WaitForSeconds(1f);
@@ -753,8 +750,23 @@ namespace Game
             Object.Destroy(button.gameObject);
         }
 
-        private void Exit()
+        private async UniTask Exit()
         {
+            Object.Destroy(_initData.Enemy_Zombie.gameObject);
+            Object.Destroy(_initData.Enemy_Zombie_1.gameObject);
+            Object.Destroy(_initData.Enemy_Zombie_2.gameObject);
+
+            CloseAllPanel();
+            _view.ToggleTurnPanel(true);
+            _view.ToggleStateLabel(true);
+            _view.SetStateText("123");
+
+            await _nextButton.WaitShow(3);
+
+            _virtualCamera.gameObject.SetActive(false);
+
+            await UniTask.WaitForSeconds(0.5f);
+            
             _gameStateController.CloseBattle();
             Object.Destroy(_view.gameObject);
             _winDialog.OnUse();

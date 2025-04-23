@@ -27,7 +27,7 @@ namespace Game
             if (_time < 0)
             {
                 _time = START_TIMER;
-                _turnProgressStorage.AddBattleProgress(1);
+                _turnProgressStorage.AddBattleProgress(3);
             }
         }
 

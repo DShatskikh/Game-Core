@@ -37,5 +37,5 @@ MonoBehaviour:
     - rid: 2880720768947192150
       type: {class: AttackComponent, ns: Game, asm: Game}
       data:
-        Attack: 20
+        Attack: 30
         Effect: {fileID: 6856480182940632667, guid: aa6a82c156649d646a6c009b34712a95, type: 3}

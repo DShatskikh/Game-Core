@@ -65,7 +65,7 @@ namespace Game
         {
             RuntimeManager.PlayOneShot(SOUND_PATH);
             _view.gameObject.SetActive(true);
-            _turnProgressStorage.AddBattleProgress(10);
+            _turnProgressStorage.AddBattleProgress(5);
             yield return new WaitForSeconds(_delayUse);
             _view.gameObject.SetActive(false);
             _isUseCoroutine = false;

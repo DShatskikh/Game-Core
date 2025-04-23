@@ -248,10 +248,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   waitForNormalChars: 0.05
-  waitLong: 0.6
-  waitMiddle: 0.2
+  waitLong: 0.2
+  waitMiddle: 0.1
   avoidMultiplePunctuactionWait: 0
-  waitForNewLines: 1
+  waitForNewLines: 0
   waitForLastCharacter: 1
   useTypewriterWaitForDisappearances: 1
   disappearanceWaitTime: 0.015
