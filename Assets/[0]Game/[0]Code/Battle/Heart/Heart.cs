@@ -10,35 +10,53 @@ namespace Game
 {
     public class Heart : MonoBehaviour
     {
-        private const string DAMAGE_SOUND_PATH = "event:/Звуки/Битва/Получили урон";
+        public enum Mode
+        {
+            Red,
+            Blue
+        }
         
-        [SerializeField]
-        private float _speed;
+        private const string DAMAGE_SOUND_PATH = "event:/Звуки/Битва/Получили урон";
         
         [SerializeField]
         private Shield _shield;
 
         [SerializeField] 
         private AudioSource _damageSource;
-        
+
+        [SerializeField]
+        private SpriteRenderer _spriteRenderer;
+
+        [SerializeField]
+        private HeartRedMover _redMover;
+
+        [SerializeField]
+        private HeartBlueMover _blueMover;
+
         private ReactiveProperty<int> _health = new();
         private int _maxHealth;
         private bool _isInvulnerability;
         private Arena _arena;
-        private PlayerInput _playerInput;
         private Animator _animator;
         private int _damage = 1;
+        private IHeartMover _mover;
+        private HeartModeService _heartModeService;
 
         public IReactiveProperty<int> GetHealth => _health;
         public event Action OnDeath;
         public int GetMaxHealth => _maxHealth;
 
         [Inject]
-        private void Construct(Arena arena, PlayerInput playerInput)
+        private void Construct(Arena arena, PlayerInput playerInput, HeartModeService heartModeService)
         {
             _arena = arena;
-            _playerInput = playerInput;
+            _heartModeService = heartModeService;
 
+            heartModeService.Upgrade += SetMode;
+            _redMover.Init(playerInput, transform);
+            _blueMover.Init(playerInput, transform);
+            
+            _mover = _redMover;
             _animator = GetComponent<Animator>();
             _maxHealth = 20;
             _health.Value = _maxHealth;
@@ -54,23 +72,25 @@ namespace Game
         {
             if (_health.Value <= 0)
                 return;
-            
-            var position = (Vector2)transform.position;
-            
-            var direction = _playerInput.actions["Move"].ReadValue<Vector2>().normalized;
-            
-            position += direction * _speed * Time.deltaTime;
 
-            if (_arena.IsActive)
-            {
-                var limitX = _arena.SizeField.x / 2;
-                var limitY = _arena.SizeField.y / 2;
-                position = new Vector2(
-                    Mathf.Clamp(position.x, -limitX + _arena.transform.position.x, limitX + _arena.transform.position.x), 
-                    Mathf.Clamp(position.y, -limitY + _arena.transform.position.y, limitY + _arena.transform.position.y));
-            }
+            _mover.Move();
+            // var position = (Vector2)transform.position;
+            //
+            // if (_arena.IsActive)
+            // {
+            //     var limitX = _arena.SizeField.x / 2;
+            //     var limitY = _arena.SizeField.y / 2;
+            //     position = new Vector2(
+            //         Mathf.Clamp(position.x, -limitX + _arena.transform.position.x, limitX + _arena.transform.position.x), 
+            //         Mathf.Clamp(position.y, -limitY + _arena.transform.position.y, limitY + _arena.transform.position.y));
+            // }
+            //
+            // transform.position = position;
+        }
 
-            transform.position = position;
+        private void FixedUpdate()
+        {
+            _mover.FixedUpdate();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -81,6 +101,23 @@ namespace Game
             }
         }
 
+        public void SetMode(Mode mode)
+        {
+            switch (mode)
+            {
+                case Mode.Red:
+                    _mover = _redMover;
+                    break;
+                case Mode.Blue:
+                    _mover = _blueMover;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
+            }
+
+            _spriteRenderer.sprite = _heartModeService.GetIcon();
+        }
+        
         public void SetDamage(int damage)
         {
             _damage = damage;

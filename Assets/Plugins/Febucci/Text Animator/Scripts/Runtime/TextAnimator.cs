@@ -1767,6 +1767,18 @@ namespace Febucci.UI
 
         private void Update()
         {
+            if (tmproText == null)
+            {
+                Debug.Log("Мы не нашли TMP_TEXT");
+                tmproText = GetComponent<TMP_Text>();
+            }
+
+            if (tmproText.text == null)
+            {
+                Debug.Log("Мы не нашли TEXT " + text);
+                //tmproText.text = string.Empty;
+            }
+
             //TMPRO's text changed, setting the text again
             if (!tmproText.text.Equals(text))
             {

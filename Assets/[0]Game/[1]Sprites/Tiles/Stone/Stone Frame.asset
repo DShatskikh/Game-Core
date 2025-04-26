@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
-  m_Name: Stone
+  m_Name: Stone Frame
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: 8046235658175446820, guid: 1e32934fcf09d4f45b72305b97a66265, type: 3}
   m_DefaultGameObject: {fileID: 0}

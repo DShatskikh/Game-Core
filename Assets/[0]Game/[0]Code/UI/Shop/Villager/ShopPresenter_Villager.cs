@@ -27,9 +27,10 @@ namespace Game
         public ShopPresenter_Villager(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
             MainInventory mainInventory, WalletService walletService, 
-            DiContainer container, StudioEventEmitter studioEmitter, InitData data, ShopBackground background) : base(shopViewPrefab, shopButtonPrefab,
+            DiContainer container, StudioEventEmitter studioEmitter, InitData data, ShopBackground background, 
+            ScreenManager screenManager) : base(shopViewPrefab, shopButtonPrefab,
             inscriptionsContainer, gameStateController, mainInventory, walletService, 
-            container, studioEmitter, background)
+            container, studioEmitter, background, screenManager)
         {
             _initData = data;
             

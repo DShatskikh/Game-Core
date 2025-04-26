@@ -393,7 +393,6 @@ namespace Febucci.UI.Core
 
             if (!gameObject.activeInHierarchy)
             {
-                Debug.LogWarning("TextAnimator: couldn't start coroutine because the gameobject is not active");
                 return false;
             }
 

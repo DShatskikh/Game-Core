@@ -49,7 +49,6 @@ namespace Game
             _nextButton.Show(() =>
             {
                 isClicked = true;
-                Debug.Log(_multiply);
             });
             
             foreach (var point in _pointPairs)

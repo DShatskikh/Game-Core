@@ -1096,7 +1096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6594983108692923680
 Transform:
   m_ObjectHideFlags: 0
@@ -1128,13 +1128,13 @@ MonoBehaviour:
   _prefab: {fileID: 4257783249734080108, guid: 96373fb55804675438e4f9c4417bd0cb, type: 3}
   _initData:
     Products:
-    - Config: {fileID: 11400000, guid: f6523155aa7174c4eae80ec53a9ef9c5, type: 2}
+    - Config: {fileID: 11400000, guid: 07610f00bd2deab4287ecda6b80a8fec, type: 2}
       Price: 100
       Counts: 1
-    - Config: {fileID: 11400000, guid: 726bd9cfa9928664d9bb6799bfa02bb4, type: 2}
+    - Config: {fileID: 11400000, guid: 3e16643ce1af06f46a1fe9d878d65f70, type: 2}
       Price: 200
       Counts: 1
-    - Config: {fileID: 11400000, guid: f0f89df54738c374e9ef41783b9a0c3f, type: 2}
+    - Config: {fileID: 11400000, guid: b15d05e011346954f93169cfc67ea029, type: 2}
       Price: 5
       Counts: -1
   _localizedStrings:
@@ -1375,21 +1375,21 @@ MonoBehaviour:
   _prefab: {fileID: 4257783249734080108, guid: 96373fb55804675438e4f9c4417bd0cb, type: 3}
   _initData:
     Swords:
-    - Config: {fileID: 11400000, guid: 0a011bbea23fb2e49a7b73fc44662fc1, type: 2}
+    - Config: {fileID: 11400000, guid: 77bee802ba24f0643b9b9cac9262e40e, type: 2}
       Price: 50
       Counts: 1
-    - Config: {fileID: 11400000, guid: f6523155aa7174c4eae80ec53a9ef9c5, type: 2}
+    - Config: {fileID: 11400000, guid: 70da9895fedc5c64493675b8fe05c09a, type: 2}
       Price: 100
       Counts: 1
     Armors:
-    - Config: {fileID: 11400000, guid: d7e806d4781bdad4095a5d69e9556f48, type: 2}
+    - Config: {fileID: 11400000, guid: 3e16643ce1af06f46a1fe9d878d65f70, type: 2}
       Price: 50
       Counts: 1
-    - Config: {fileID: 11400000, guid: 726bd9cfa9928664d9bb6799bfa02bb4, type: 2}
+    - Config: {fileID: 11400000, guid: 25cc869e4ab5a3649b6d6d9ffcb019f7, type: 2}
       Price: 100
       Counts: 1
     Products:
-    - Config: {fileID: 11400000, guid: f0f89df54738c374e9ef41783b9a0c3f, type: 2}
+    - Config: {fileID: 11400000, guid: 6da854b1c7d4f024f9fe3c8c2e134362, type: 2}
       Price: 5
       Counts: -1
   _localizedStrings:
@@ -1432,7 +1432,7 @@ MonoBehaviour:
       mRTL_MaxLineLength: 0
       mRTL_ConvertNumbers: 0
       m_DontLocalizeParameters: 0
-    - mTerm: 
+    - mTerm: Notch_Welcome
       mRTL_IgnoreArabicFix: 0
       mRTL_MaxLineLength: 0
       mRTL_ConvertNumbers: 0
@@ -1442,7 +1442,7 @@ MonoBehaviour:
       mRTL_MaxLineLength: 0
       mRTL_ConvertNumbers: 0
       m_DontLocalizeParameters: 0
-    - mTerm: 
+    - mTerm: Notch_SpeakStats
       mRTL_IgnoreArabicFix: 0
       mRTL_MaxLineLength: 0
       mRTL_ConvertNumbers: 0
@@ -1634,7 +1634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &306713945367471259
 Transform:
   m_ObjectHideFlags: 0

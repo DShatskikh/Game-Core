@@ -1,4 +1,5 @@
-﻿using UniRx;
+﻿using System;
+using UniRx;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ namespace Game
         private Player _player;
         private PlayerInput _playerInput;
         private Button _button;
+        private IDisposable _disposable;
 
         [Inject]
         private void Construct(Player player, PlayerInput playerInput)
@@ -22,7 +24,7 @@ namespace Game
             
             _button.onClick.AddListener(OnClick);
 
-            _player.NearestUseObject.Subscribe(_ =>
+            _disposable = _player.NearestUseObject.Subscribe(_ =>
             {
                 gameObject.SetActive(_ != null);
             });
@@ -31,6 +33,7 @@ namespace Game
         private void OnDestroy()
         {
             _button.onClick.RemoveAllListeners();
+            _disposable.Dispose();
         }
 
         private void OnClick()

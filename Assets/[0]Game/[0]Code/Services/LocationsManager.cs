@@ -26,7 +26,11 @@ namespace Game
             if (_location)
                 Object.Destroy(_location.gameObject);
             
-            var prefab = _locations.First(x => x.GetID == id);
+            var prefab = _locations.FirstOrDefault(x => x.GetID == id);
+            
+            if (prefab == null)
+                return;
+            
             _location = _factory.Create(prefab);
 
             _player.transform.position = _location.GetPoints[pointIndex].transform.position;

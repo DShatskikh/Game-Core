@@ -35,7 +35,7 @@ namespace Game
                 time = 0;
                 action?.Invoke();
             });
-
+            
             while (time > 0)
             {
                 time -= Time.deltaTime;

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8009039706824186082}
   - component: {fileID: 5363657907496057690}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4540418261342461505}
   - component: {fileID: 948812493894853731}
   - component: {fileID: 1628354147682680278}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shell_Sworld_Herobrine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -53,7 +53,7 @@ namespace Febucci.UI
                 }
 
                 //skips waiting for a new line
-                if (IsUnicodeNewLine(textAnimator.latestCharacterShown.textElement.unicode))
+                if (textAnimator.latestCharacterShown.textElement == null || IsUnicodeNewLine(textAnimator.latestCharacterShown.textElement.unicode))
                     return 0;
             }
 

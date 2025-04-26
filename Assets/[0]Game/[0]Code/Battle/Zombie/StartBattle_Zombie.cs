@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using FMODUnity;
+﻿using FMODUnity;
 using I2.Loc;
-using PixelCrushers.DialogueSystem;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -22,9 +20,6 @@ namespace Game
         [SerializeField]
         private SerializableDictionary<string, LocalizedString> _localizedStrings;
 
-        [SerializeField]
-        private DialogueSystemTrigger _winDialog;
-
         private DiContainer _diContainer;
 
         [Inject]
@@ -42,12 +37,6 @@ namespace Game
         private void Open()
         {
             gameObject.SetActive(true);
-            var inscriptionsContainer = new Dictionary<string, string>();
-
-            foreach (var localizedString in _localizedStrings)
-            {
-                inscriptionsContainer.Add(localizedString.Key, localizedString.Value);
-            }
             
             var installer = Instantiate(_installerPrefab, Camera.main.transform.position.SetZ(0), Quaternion.identity);
             _diContainer.Inject(installer);
@@ -55,7 +44,7 @@ namespace Game
             installer.CreatePresenterCommand = () =>
             {
                 _diContainer.BindFactory<BattleController_Zombie, BattleController_Zombie.Factory>()
-                    .WithArguments(_initData, _studioEventEmitter, inscriptionsContainer, _winDialog);
+                    .WithArguments(_initData, _studioEventEmitter, _localizedStrings);
                 
                 var factory = _diContainer.TryResolve<BattleController_Zombie.Factory>();
                 _diContainer.Unbind<BattleController_Zombie.Factory>();

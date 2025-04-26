@@ -179,6 +179,8 @@ MonoBehaviour:
     Reaction: "\u0412\u044B \u0442\u0430\u043D\u0446\u0443\u0435\u0442\u0435"
     Progress: 100
   _deathAnimation: {fileID: 765474218279143059}
+  _op: 15
+  _money: 35
 --- !u!114 &6426515508156893616
 MonoBehaviour:
   m_ObjectHideFlags: 0

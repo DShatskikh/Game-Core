@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using FMODUnity;
-using PixelCrushers.DialogueSystem.Wrappers;
 using UniRx;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
+using I2.Loc;
 using Object = UnityEngine.Object;
 
 namespace Game
@@ -31,8 +31,6 @@ namespace Game
         private readonly DiContainer _container;
         private readonly MainInventory _inventory;
         private readonly GameStateController _gameStateController;
-        private readonly Dictionary<string,string> _inscriptionsContainer;
-        private readonly DialogueSystemTrigger _winDialog;
         private readonly CinemachineVirtualCamera _virtualCamera;
         private readonly TurnProgressStorage _turnProgressStorage;
         private readonly EnemyBattleButton _enemyPrefabButton;
@@ -44,6 +42,7 @@ namespace Game
         private readonly bool _isRun = true;
         private readonly string _gameOverMessage = "Ты умер от Зомбиии!";
         private readonly int _damage = 5;
+        private readonly SerializableDictionary<string, LocalizedString> _localizedPairs;
 
         private int _numberTurn = -1;
         private IEnemy[] _enemies;
@@ -68,11 +67,10 @@ namespace Game
 
         public BattleController_Zombie(BattleView view, ShopButton prefabButton, MainInventory inventory, 
             GameStateController gameStateController, InitData initData, BattlePoints points, Player player,
-            Arena arena, Heart heart, StudioEventEmitter battleThemeEmitter, DiContainer container, 
-            Dictionary<string, string> inscriptionsContainer, DialogueSystemTrigger winDialog,
+            Arena arena, Heart heart, StudioEventEmitter battleThemeEmitter, DiContainer container,
             CinemachineVirtualCamera virtualCamera, TurnProgressStorage turnProgressStorage, 
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, 
-            AttackIndicator attackIndicator, INextButton nextButton)
+            AttackIndicator attackIndicator, INextButton nextButton, SerializableDictionary<string, LocalizedString> localizedPairs)
         {
             _view = view;
             _prefabButton = prefabButton;
@@ -84,8 +82,6 @@ namespace Game
             _container = container;
             _inventory = inventory;
             _gameStateController = gameStateController;
-            _inscriptionsContainer = inscriptionsContainer;
-            _winDialog = winDialog;
             _virtualCamera = virtualCamera;
             _turnProgressStorage = turnProgressStorage;
             _timeBasedTurnBooster = timeBasedTurnBooster;
@@ -94,7 +90,8 @@ namespace Game
             _attackIndicator = attackIndicator;
             _battleThemeEmitter = battleThemeEmitter;
             _nextButton = nextButton;
-
+            _localizedPairs = localizedPairs;
+            
             _heart.SetDamage(_damage);
             _heart.OnDeath += Death;
             
@@ -153,7 +150,7 @@ namespace Game
                 RuntimeManager.PlayOneShot(START_BATTLE_SOUND_PATH);
             }
 
-            _view.GetAttackButton.Init(_inscriptionsContainer["Attack"], () =>
+            _view.GetAttackButton.Init(_localizedPairs["Attack"], () =>
             {
                 CloseAllPanel();
                 
@@ -422,8 +419,7 @@ namespace Game
                 escapeButton.Init("Сбежать", () =>
                 {
                     Debug.Log("Сбежать");
-                    CloseAllPanel();
-                    Exit();
+                    EndFight();
                 }); 
             }
         }
@@ -536,8 +532,6 @@ namespace Game
 
         private async UniTask MercyTurn()
         {
-            Debug.Log("Пощада");
-            
             await ShowEnemiesReactions(
                 _enemies[0].GetReaction(_enemies[0].Mercy >= 100 ? BattleActionType.Mercy : BattleActionType.NoAction),
                 _enemies[1].GetReaction(_enemies[1].Mercy >= 100 ? BattleActionType.Mercy : BattleActionType.NoAction),
@@ -553,26 +547,31 @@ namespace Game
                 }
             }
             
-            bool isAllMercy = true;
-                
-            foreach (var enemy1 in _enemies)
+            if (IsAllDontFight())
             {
-                if (!enemy1.IsMercy)
-                {
-                    isAllMercy = false;
-                    break;
-                }
-            }
-
-            if (isAllMercy)
-            {
-                Exit();
+                EndFight();
                 return;
             }
             
             EnemyTurn();
         }
 
+        private bool IsAllDontFight()
+        {
+            bool isAllDontFight = true;
+                
+            foreach (var enemy1 in _enemies)
+            {
+                if (!enemy1.IsMercy && enemy1.Health > 0)
+                {
+                    isAllDontFight = false;
+                    break;
+                }
+            }
+
+            return isAllDontFight;
+        }
+        
         private async UniTask ActionTurn(IEnemy enemy, ActionBattle actionBattle)
         {
             await ShowEnemiesReactions(
@@ -611,20 +610,9 @@ namespace Game
                 enemy.Death(damage);
                 await UniTask.WaitForSeconds(1f);
 
-                bool isAllDeath = true;
-                
-                foreach (var enemy1 in _enemies)
+                if (IsAllDontFight())
                 {
-                    if (enemy1.Health > 0)
-                    {
-                        isAllDeath = false;
-                        break;
-                    }
-                }
-
-                if (isAllDeath)
-                {
-                    Exit();
+                    EndFight();
                     return;
                 }
 
@@ -750,18 +738,41 @@ namespace Game
             Object.Destroy(button.gameObject);
         }
 
+        private async UniTask EndFight()
+        {
+            CloseAllPanel();
+            _view.ToggleTurnPanel(true);
+            _view.ToggleStateLabel(true);
+            
+            var endText = _localizedPairs["End"].ToString();
+            var op = 0;
+
+            foreach (var enemy in _enemies)
+            {
+                if (enemy.Health < 0) 
+                    op += enemy.GetOP;
+            }
+            
+            var money = 0;
+            
+            foreach (var enemy in _enemies)
+            {
+                money += enemy.GetMoney;
+            }
+
+            string formattedText = string.Format(endText, op, money);
+            _view.SetStateText(formattedText);
+            
+            await _nextButton.WaitShow(float.PositiveInfinity);
+
+            Exit().Forget();
+        }
+        
         private async UniTask Exit()
         {
             Object.Destroy(_initData.Enemy_Zombie.gameObject);
             Object.Destroy(_initData.Enemy_Zombie_1.gameObject);
             Object.Destroy(_initData.Enemy_Zombie_2.gameObject);
-
-            CloseAllPanel();
-            _view.ToggleTurnPanel(true);
-            _view.ToggleStateLabel(true);
-            _view.SetStateText("123");
-
-            await _nextButton.WaitShow(3);
 
             _virtualCamera.gameObject.SetActive(false);
 
@@ -769,7 +780,6 @@ namespace Game
             
             _gameStateController.CloseBattle();
             Object.Destroy(_view.gameObject);
-            _winDialog.OnUse();
             _battleThemeEmitter.Stop();
         }
 

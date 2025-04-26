@@ -314,6 +314,16 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
+    - Term: Battle_End
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0412\u044B \u043F\u043E\u0431\u0435\u0434\u0438\u043B\u0438! \u0412\u044B
+        \u043F\u043E\u043B\u0443\u0447\u0438\u043B\u0438 {0} \u041E\u041F \u0438
+        {1} \u041C\u041E\u041D"
+      - 
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 

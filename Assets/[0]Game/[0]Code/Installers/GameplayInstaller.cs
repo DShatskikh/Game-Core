@@ -11,6 +11,9 @@ namespace Game
 
         [SerializeField]
         private Player _player;
+
+        [SerializeField]
+        private Sprite[] _heartIcons;
         
         public override void InstallBindings()
         {
@@ -21,6 +24,7 @@ namespace Game
             Container.Bind<LocationsManager>().AsSingle().WithArguments(Resources.LoadAll<Location>("")).NonLazy();
             Container.BindFactory<Location, Location, Location.Factory>();
             Container.Bind<TransitionService>().AsSingle().NonLazy();
+            Container.Bind<HeartModeService>().AsSingle().WithArguments(_heartIcons).NonLazy();
             
             Container.BindInterfacesAndSelfTo<MainScreenHandler>().AsCached().NonLazy();
         }

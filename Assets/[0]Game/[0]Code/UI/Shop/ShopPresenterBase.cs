@@ -17,6 +17,7 @@ namespace Game
         private readonly WalletService _walletService;
         protected readonly Dictionary<string, string> _inscriptionsContainer;
         private readonly ShopButton _shopButtonPrefab;
+        private readonly ScreenManager _screenManager;
 
         protected List<ShopButton> _productButtons = new();
         private List<ShopButton> _speakButtons = new();
@@ -27,7 +28,8 @@ namespace Game
         public ShopPresenterBase(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
             MainInventory mainInventory, WalletService walletService, 
-            DiContainer container, StudioEventEmitter studioEmitter, ShopBackground backgroundPrefab)
+            DiContainer container, StudioEventEmitter studioEmitter, ShopBackground backgroundPrefab, 
+            ScreenManager screenManager)
         {
             _shopView = Object.Instantiate(shopViewPrefab);
             _inscriptionsContainer = inscriptionsContainer;
@@ -35,6 +37,7 @@ namespace Game
             _mainInventory = mainInventory;
             _walletService = walletService;
             _shopButtonPrefab = shopButtonPrefab;
+            _screenManager = screenManager;
 
             _gameStateController.OpenDialog();
             studioEmitter.Play();
@@ -292,11 +295,18 @@ namespace Game
         public void Dispose()
         {
             Object.Destroy(_shopView.gameObject);
-            //_transitionScreen.Hide(() => _gameStateController.CloseDialog());
+            var transitionScreen = (TransitionPresenter)_screenManager.Open(ScreensEnum.TRANSITION);
+            transitionScreen.Hide(() =>
+            {
+                _gameStateController.CloseDialog();
+                _screenManager.Close(ScreensEnum.TRANSITION);
+            });
         }
         
-        private void Close() => 
+        private void Close()
+        {
             Dispose();
+        }
 
         private void PlayFailSound()
         {

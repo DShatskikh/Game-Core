@@ -13,11 +13,13 @@ namespace Game
         private List<IShell> _shells = new();
         private DiContainer _container;
         private Coroutine _coroutine;
+        private HeartModeService _heartModeService;
 
         [Inject]
-        private void Construct(DiContainer container)
+        private void Construct(DiContainer container, HeartModeService heartModeService)
         {
             _container = container;
+            _heartModeService = heartModeService;
         }
         
         private void Start()
@@ -27,8 +29,8 @@ namespace Game
 
         private IEnumerator WaitAttack()
         {
-            Debug.Log("Attack_Herobrine_1");
-
+            _heartModeService.SetMode(Heart.Mode.Blue);
+            
             while (true)
             {
                 var point = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)).normalized * 3;
@@ -42,8 +44,6 @@ namespace Game
         
         public override void Hide()
         {
-            Debug.Log("Attack Hide");
-            
             if (_coroutine != null)
                 StopCoroutine(_coroutine);
             

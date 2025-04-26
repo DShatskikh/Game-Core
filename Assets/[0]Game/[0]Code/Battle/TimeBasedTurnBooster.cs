@@ -34,7 +34,6 @@ namespace Game
         public void ToggleActivate(bool value)
         {
             _isActive = value;
-            Debug.Log(_isActive);
         }
     }
 }

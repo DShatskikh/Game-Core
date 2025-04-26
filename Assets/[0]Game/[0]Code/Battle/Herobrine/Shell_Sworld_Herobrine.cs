@@ -16,7 +16,6 @@ namespace Game
         private void Construct(Heart heart)
         {
             _heart = heart;
-
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
         
@@ -27,6 +26,8 @@ namespace Game
 
         private IEnumerator WaitMove()
         {
+            IsAlive = false;
+            
             var targetRotate = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y,
                 Mathf.Atan2(_heart.transform.position.y - transform.position.y,
                     _heart.transform.position.x - transform.position.x) * Mathf.Rad2Deg);
@@ -39,6 +40,8 @@ namespace Game
                 yield return null;
             }
 
+            IsAlive = true;
+            
             var timer = 0.5f;
             
             while (timer > 0)

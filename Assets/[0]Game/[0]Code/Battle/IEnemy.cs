@@ -12,6 +12,8 @@ namespace Game
         int MaxHealth { get; }
         int Mercy { get; set; }
         bool IsMercy { get; set; }
+        int GetOP { get; }
+        int GetMoney { get; }
         void Damage(int damage);
         void Death(int damage);
         void Spared();

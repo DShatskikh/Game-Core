@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6105236609001700277}
   - component: {fileID: 1181552104807818317}
   - component: {fileID: 1716573641410798589}
+  - component: {fileID: 5954158031256709360}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
@@ -75,6 +76,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5954158031256709360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619736546630816057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b82e3549e70b42b7b6d677dece100758, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4417156905761625265
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +162,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278255615
+    rgba: 4293227530
   m_fontColor: {r: 0.039215688, g: 0.45490196, b: 0.8980392, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

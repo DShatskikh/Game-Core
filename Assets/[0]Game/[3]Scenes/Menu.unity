@@ -130,7 +130,6 @@ GameObject:
   - component: {fileID: 480259836}
   - component: {fileID: 480259835}
   - component: {fileID: 480259834}
-  - component: {fileID: 480259837}
   m_Layer: 0
   m_Name: '[INSTALLER]'
   m_TagString: Untagged
@@ -182,7 +181,6 @@ MonoBehaviour:
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
   _parentContractNames: []
-  _monoKernel: {fileID: 480259837}
 --- !u!4 &480259836
 Transform:
   m_ObjectHideFlags: 0
@@ -198,18 +196,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &480259837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 480259833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd0065b85220401f9c7120ad6bc90ac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,8 +577,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fc0686553145edb47916d96bd80313b1, type: 2}
+  m_sharedMaterial: {fileID: -3637446276047295747, guid: fc0686553145edb47916d96bd80313b1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -668,72 +654,10 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575676301}
   m_CullTransparentMesh: 1
---- !u!1001 &1388599396959802715
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 961924019854133937, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961924019854133937, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961924019854133937, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961924019854133937, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 961924019854133937, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961924019854133937, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961924019854133937, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961924019854133937, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961924019854133937, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 961924019854133937, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3046347154485829741, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
-      propertyPath: _music
-      value: 
-      objectReference: {fileID: 8300000, guid: 5d93625eb742e394f9dfc64540089b0f, type: 3}
-    - target: {fileID: 4736509990267481739, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
-      propertyPath: m_Name
-      value: MusicPlayer
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 26a6e0bb896ef334a8ac65d5d326c95a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 480259836}
   - {fileID: 519420032}
-  - {fileID: 1388599396959802715}
   - {fileID: 1427767151}
