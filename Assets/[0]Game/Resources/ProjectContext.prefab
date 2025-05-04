@@ -349,6 +349,9 @@ MonoBehaviour:
   _screenConfig: {fileID: 11400000, guid: b4e701617b646524f9f116115f297df4, type: 2}
   _ui: {fileID: 5657816157183001501}
   _coroutineRunner: {fileID: 4090953367740282027}
+  _heartIcons:
+  - {fileID: 4606908045521496030, guid: ba3c3542250d1d14d844cbf1e612976b, type: 3}
+  - {fileID: -4195582761621981391, guid: ba3c3542250d1d14d844cbf1e612976b, type: 3}
 --- !u!114 &4478590859481880652
 MonoBehaviour:
   m_ObjectHideFlags: 0

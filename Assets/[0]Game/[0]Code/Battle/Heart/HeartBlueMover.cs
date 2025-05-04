@@ -7,165 +7,149 @@ namespace Game
     [Serializable]
     public sealed class HeartBlueMover : IHeartMover
     {
+        [Header("Movement Settings")]
         [SerializeField]
-        private float _speed = 5f;
+        private float _moveAcceleration = 10f;
 
         [SerializeField]
-        private float _jumpForce = 10f;
+        private float _maxHorizontalSpeed = 2f;
 
         [SerializeField]
-        private float _blueModeDuration = 2f;
+        private float _jumpPower = 3f;
 
         [SerializeField]
-        private float _blueModeGravityScale = -3f;
+        private float _jumpAdditional = 5f;
 
         [SerializeField]
-        private GroundChecker _groundChecker;
+        private float _friction = 0.2f;
+
+        [SerializeField]
+        private float _gravity = -10f;
+
+        [SerializeField]
+        private float _maxFallSpeed = -120f;
+
+        [SerializeField]
+        private LayerMask _floorLayer;
+
+        [SerializeField]
+        private CeilingChecker _ceilingChecker;
 
         [SerializeField]
         private Rigidbody2D _rigidbody2D;
-
+        
+        [SerializeField]
+        private Collider2D _collider;
+        
+        private float _horizontalSpeed;
+        private float _verticalSpeed;
+        private bool _isGrounded;
         private PlayerInput _playerInput;
-        private Transform _transform;
-        private float _gravity;
-        private float _originalGravity;
-        private bool _isBlueMode = false;
-        private float _blueModeTimer = 0f;
-        private bool _isPressedJump;
-        private bool _wasGroundedLastFrame;
 
-        public void Init(PlayerInput playerInput, Transform transform)
+        public void Init(PlayerInput playerInput)
         {
-            _transform = transform;
             _playerInput = playerInput;
-            _originalGravity = Physics2D.gravity.y;
-            _playerInput.actions["Jump"].performed += OnJump;
-            //_playerInput.actions["BlueMode"].performed += OnBlueMode;
-            _wasGroundedLastFrame = _groundChecker.GetIsGrounded;
-        }
-
-        public void Move()
-        {
-            // Обработка таймера синего режима
-            if (_isBlueMode)
-            {
-                _blueModeTimer -= Time.deltaTime;
-                if (_blueModeTimer <= 0f)
-                {
-                    DeactivateBlueMode();
-                }
-            }
-
-            // Получаем ввод движения
-            var direction = _playerInput.actions["Move"].ReadValue<Vector2>().normalized;
             
-            // В синем режиме движение по вертикали заменяется на управление гравитацией
-            if (_isBlueMode)
+            _playerInput.actions["Jump"].started += OnClickJumpStarted;
+        }
+
+        void IHeartMover.Move()
+        {
+            HandleInput();
+            CheckGrounded();
+        }
+
+        void IHeartMover.FixedUpdate()
+        {
+            ApplyMovement();
+            ApplyGravity();
+            ApplyFriction();
+            ClampSpeed();
+            CheckCeiling();
+        }
+
+        private void OnClickJumpStarted(InputAction.CallbackContext obj)
+        {
+            if (_isGrounded)
             {
-                // В синем режиме горизонтальное движение нормальное, а вертикальное влияет на гравитацию
-                float horizontal = direction.x;
-                float vertical = direction.y;
-                
-                // Управление гравитацией в синем режиме
-                if (Mathf.Abs(vertical) > 0.1f)
+                _verticalSpeed = _jumpPower;
+                _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, _verticalSpeed);
+                _isGrounded = false;
+            }
+        }
+
+        private void HandleInput()
+        {
+            var moveInput =_playerInput.actions["Move"].ReadValue<Vector2>().normalized.x;
+            _horizontalSpeed = moveInput * _moveAcceleration;
+
+            if (_playerInput.actions["Jump"].IsPressed())
+            {
+                if (!_isGrounded)
                 {
-                    _rigidbody2D.gravityScale = Mathf.Sign(vertical) * Mathf.Abs(_blueModeGravityScale);
+                    _verticalSpeed += _jumpAdditional * Time.deltaTime;
                 }
-                else
-                {
-                    // Если нет ввода, гравитация остается как была (но с обратным знаком)
-                    _rigidbody2D.gravityScale = _blueModeGravityScale;
-                }
-                
-                // Применяем только горизонтальное движение
-                _transform.position += new Vector3(horizontal * _speed * Time.deltaTime, 0, 0);
-            }
-            else
-            {
-                // Обычный режим - стандартная платформерная физика
-                float horizontal = direction.x;
-                
-                // Обработка гравитации и прыжка
-                if (_groundChecker.GetIsGrounded)
-                {
-                    _gravity = 0;
-                    
-                    // Сброс вертикальной скорости при приземлении
-                    if (!_wasGroundedLastFrame)
-                    {
-                        _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, 0);
-                    }
-                }
-                else
-                {
-                    _gravity += Time.deltaTime * _originalGravity;
-                }
-                
-                _wasGroundedLastFrame = _groundChecker.GetIsGrounded;
-                
-                // Применяем движение
-                Vector2 movement = new Vector2(horizontal * _speed, _rigidbody2D.linearVelocity.y + _gravity * Time.deltaTime);
-                _rigidbody2D.linearVelocity = new Vector2(movement.x, Mathf.Clamp(movement.y, -20f, 20f));
             }
         }
 
-        public void FixedUpdate()
+        private void ApplyMovement()
         {
-            if (_isBlueMode && _groundChecker.GetIsGrounded)
+            _rigidbody2D.linearVelocity = new Vector2(_horizontalSpeed, _rigidbody2D.linearVelocity.y);
+        }
+
+        private void ApplyGravity()
+        {
+            if (!_isGrounded)
             {
-                // Принудительно останавливаем при приземлении в синем режиме
-                _rigidbody2D.linearVelocity = Vector2.zero;
-                DeactivateBlueMode();
+                _verticalSpeed += _gravity * Time.fixedDeltaTime;
+                _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, _verticalSpeed);
+            }
+            else if (_verticalSpeed < 0)
+            {
+                _verticalSpeed = 0;
             }
         }
 
-        public void Dispose()
+        private void ApplyFriction()
         {
-            if (_playerInput != null)
+            if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) < 0.1f)
             {
-                _playerInput.actions["Jump"].performed -= OnJump;
-                //_playerInput.actions["BlueMode"].performed -= OnBlueMode;
+                _horizontalSpeed *= (1 - _friction);
+                if (Mathf.Abs(_horizontalSpeed) < 0.1f)
+                    _horizontalSpeed = 0f;
             }
         }
 
-        private void OnJump(InputAction.CallbackContext context)
+        private void ClampSpeed()
         {
-            if (_groundChecker.GetIsGrounded && !_isBlueMode)
+            _rigidbody2D.linearVelocity = new Vector2(
+                Mathf.Clamp(_rigidbody2D.linearVelocity.x, -_maxHorizontalSpeed, _maxHorizontalSpeed),
+                _rigidbody2D.linearVelocity.y
+            );
+
+            if (_rigidbody2D.linearVelocity.y < _maxFallSpeed)
             {
-                _rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+                _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, _maxFallSpeed);
             }
         }
 
-        private void OnBlueMode(InputAction.CallbackContext context)
+        private void CheckGrounded()
         {
-            // Активируем синий режим только если в воздухе и не в синем режиме
-            if (!_groundChecker.GetIsGrounded && !_isBlueMode)
-            {
-                ActivateBlueMode();
-            }
-            // Деактивируем синий режим при повторном нажатии
-            else if (_isBlueMode)
-            {
-                DeactivateBlueMode();
-            }
+            float rayLength = 0.1f;
+            RaycastHit2D hit = Physics2D.Raycast(_collider.bounds.center, Vector2.down, _collider.bounds.extents.y + rayLength,
+                _floorLayer);
+            _isGrounded = hit.collider != null;
+
+            Debug.DrawRay(_collider.bounds.center, Vector2.down * (_collider.bounds.extents.y + rayLength), Color.red);
         }
 
-        private void ActivateBlueMode()
+        private void CheckCeiling()
         {
-            _isBlueMode = true;
-            _blueModeTimer = _blueModeDuration;
-            _rigidbody2D.gravityScale = _blueModeGravityScale;
-            
-            // При активации синего режима сохраняем текущую горизонтальную скорость
-            Vector2 velocity = _rigidbody2D.linearVelocity;
-            _rigidbody2D.linearVelocity = new Vector2(velocity.x, 0);
-        }
-
-        private void DeactivateBlueMode()
-        {
-            _isBlueMode = false;
-            _blueModeTimer = 0f;
-            _rigidbody2D.gravityScale = 1f;
+            if (_ceilingChecker.GetIsTouchingCeiling)
+            {
+                _verticalSpeed = _gravity * Time.fixedDeltaTime;
+                _rigidbody2D.linearVelocity = new Vector2(_rigidbody2D.linearVelocity.x, _verticalSpeed);
+            }
         }
     }
 }

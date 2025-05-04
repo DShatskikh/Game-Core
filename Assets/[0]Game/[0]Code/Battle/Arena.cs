@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using DG.Tweening;
+using UnityEngine;
 
 namespace Game
 {
@@ -12,6 +14,14 @@ namespace Game
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        public IEnumerator AwaitSetSize(Vector2 size)
+        {
+            var startSize = _spriteRenderer.size;
+            yield return DOTween
+                .To(x => _spriteRenderer.size = Vector2.Lerp(startSize, size, x), 0f, 1f, 1f)
+                .WaitForCompletion();
         }
     }
 }

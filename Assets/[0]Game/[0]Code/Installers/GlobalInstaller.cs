@@ -28,6 +28,9 @@ namespace Game
         [SerializeField]
         private CoroutineRunner _coroutineRunner;
         
+        [SerializeField]
+        private Sprite[] _heartIcons;
+        
         public override void InstallBindings()
         {
             _assetProvider.Init();
@@ -40,6 +43,7 @@ namespace Game
             Container.Bind<VolumeService>().AsSingle().NonLazy();
             Container.Bind<ScreenManager>().AsSingle().WithArguments(_screenConfig, _ui).NonLazy();
             Container.Bind<CoroutineRunner>().FromInstance(_coroutineRunner).AsSingle().NonLazy();
+            Container.Bind<HeartModeService>().AsSingle().WithArguments(_heartIcons).NonLazy();
         }
     }
 }

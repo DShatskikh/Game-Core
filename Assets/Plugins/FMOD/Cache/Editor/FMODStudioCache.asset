@@ -183,10 +183,10 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638809214121250682
+  lastModified: 638816297532275311
   FileSizes:
   - Name: Desktop
-    Value: 7939936
+    Value: 7940640
   Exists: 1
 --- !u!114 &-2142014446790017239
 MonoBehaviour:
@@ -326,12 +326,13 @@ MonoBehaviour:
   - {fileID: 8667158802462077749}
   - {fileID: -881743806429092509}
   - {fileID: -5556868160603258253}
+  - {fileID: 4801337548138465396}
   EditorParameters: []
   MasterBanks:
   - {fileID: -2374295709359499160}
   StringsBanks:
   - {fileID: 4812863242613628976}
-  cacheTime: 638809214121265794
+  cacheTime: 638816297532295384
   cacheVersion: 131624
 --- !u!114 &415007838709113536
 MonoBehaviour:
@@ -414,7 +415,34 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 231288
+  Length: 230448
+--- !u!114 &4801337548138465396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/\u041C\u0443\u0437\u044B\u043A\u0430/\u0417\u0430\u0441\u0442\u0430\u0432\u043A\u0430"
+  m_EditorClassIdentifier: 
+  Path: "event:/\u041C\u0443\u0437\u044B\u043A\u0430/\u0417\u0430\u0441\u0442\u0430\u0432\u043A\u0430"
+  Guid:
+    Data1: 2009254495
+    Data2: 1187354020
+    Data3: 1608715913
+    Data4: -324325503
+  Banks:
+  - {fileID: -2374295709359499160}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 230426
 --- !u!114 &4812863242613628976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,10 +458,10 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638809214121265794
+  lastModified: 638816297532295384
   FileSizes:
   - Name: Desktop
-    Value: 1520
+    Value: 1566
   Exists: 1
 --- !u!114 &8667158802462077749
 MonoBehaviour:

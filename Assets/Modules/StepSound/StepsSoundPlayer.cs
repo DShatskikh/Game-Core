@@ -14,9 +14,6 @@ namespace StepSound
         [SerializeField] 
         private StudioEventEmitter _studioEventEmitter;
         
-        [SerializeField] 
-        private StudioParameterTrigger _studioParameterTrigger;
-
         [Header("Settings")]
         [SerializeField]
         private LayerMask _layerMask;

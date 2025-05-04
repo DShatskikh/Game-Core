@@ -54,12 +54,13 @@ namespace Game
 
             heartModeService.Upgrade += SetMode;
             _redMover.Init(playerInput, transform);
-            _blueMover.Init(playerInput, transform);
+            _blueMover.Init(playerInput);
             
-            _mover = _redMover;
             _animator = GetComponent<Animator>();
             _maxHealth = 20;
             _health.Value = _maxHealth;
+            
+            SetMode(heartModeService.GetMode);
         }
 
         private void OnEnable()
@@ -74,18 +75,18 @@ namespace Game
                 return;
 
             _mover.Move();
-            // var position = (Vector2)transform.position;
-            //
-            // if (_arena.IsActive)
-            // {
-            //     var limitX = _arena.SizeField.x / 2;
-            //     var limitY = _arena.SizeField.y / 2;
-            //     position = new Vector2(
-            //         Mathf.Clamp(position.x, -limitX + _arena.transform.position.x, limitX + _arena.transform.position.x), 
-            //         Mathf.Clamp(position.y, -limitY + _arena.transform.position.y, limitY + _arena.transform.position.y));
-            // }
-            //
-            // transform.position = position;
+            var position = (Vector2)transform.position;
+            
+             if (_arena.IsActive)
+             {
+                 var limitX = _arena.SizeField.x / 2;
+                 var limitY = _arena.SizeField.y / 2;
+                 position = new Vector2(
+                     Mathf.Clamp(position.x, -limitX + _arena.transform.position.x, limitX + _arena.transform.position.x), 
+                     Mathf.Clamp(position.y, -limitY + _arena.transform.position.y, limitY + _arena.transform.position.y));
+             }
+            
+            transform.position = position;
         }
 
         private void FixedUpdate()

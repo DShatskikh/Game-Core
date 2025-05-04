@@ -641,7 +641,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -663,7 +663,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -672,6 +672,28 @@ TextureImporter:
       bones: []
       spriteID: 7a7b6ac4326684543bc487392fbe3065
       internalID: 1396415165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ground_22
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 112
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79990864110278b42b15e22800bf9e09
+      internalID: -529418432
       vertices: []
       indices: 
       edges: []
@@ -705,6 +727,7 @@ TextureImporter:
       Ground_2: -4970410492042351176
       Ground_20: -322266539
       Ground_21: 1396415165
+      Ground_22: -529418432
       Ground_3: -5930158604282628446
       Ground_4: -4233739483619845583
       Ground_5: -6551456632857933372

@@ -5,7 +5,7 @@ namespace Game
 {
     public sealed class HeartModeService
     {
-        private Heart.Mode _mode;
+        private Heart.Mode _mode = Heart.Mode.Blue;
         private readonly Sprite[] _icons;
 
         public Heart.Mode GetMode => _mode;

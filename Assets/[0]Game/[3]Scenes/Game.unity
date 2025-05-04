@@ -417,7 +417,7 @@ MonoBehaviour:
   _weapons:
   - {fileID: 11400000, guid: 70da9895fedc5c64493675b8fe05c09a, type: 2}
   - {fileID: 11400000, guid: b15d05e011346954f93169cfc67ea029, type: 2}
-  _locationID: 
+  _locationID: Spawn_2
 --- !u!114 &16250077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,7 +733,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &232192250
@@ -10505,7 +10505,6 @@ GameObject:
   - component: {fileID: 3532971424292859048}
   - component: {fileID: 5200975742571103045}
   - component: {fileID: 7638276109208025838}
-  - component: {fileID: 7638276109208025837}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -10634,7 +10633,6 @@ MonoBehaviour:
   _view: {fileID: 5632793077086007937}
   _stepsSoundPlayer:
     _studioEventEmitter: {fileID: 7638276109208025838}
-    _studioParameterTrigger: {fileID: 7638276109208025837}
     _layerMask:
       serializedVersion: 2
       m_Bits: 64
@@ -10752,26 +10750,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.4014691, y: 0.08893374}
   m_EdgeRadius: 0.05
---- !u!114 &7638276109208025837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3761341157714858412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 744a208c85da6d04c861d81b992e4ead, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  Emitters:
-  - Target: {fileID: 7638276109208025838}
-    Params:
-    - Name: "\u0411\u043B\u043E\u043A \u043F\u043E \u043A\u043E\u0442\u043E\u0440\u043E\u043C\u0443
-        \u0438\u0434\u0435\u043C"
-      Value: 0
-  TriggerEvent: 0
 --- !u!114 &7638276109208025838
 MonoBehaviour:
   m_ObjectHideFlags: 0
