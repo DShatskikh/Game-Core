@@ -396,9 +396,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cinemachineConfiner: {fileID: 393864012}
   _player: {fileID: 5200975742571103045}
-  _heartIcons:
-  - {fileID: 4606908045521496030, guid: ba3c3542250d1d14d844cbf1e612976b, type: 3}
-  - {fileID: -4195582761621981391, guid: ba3c3542250d1d14d844cbf1e612976b, type: 3}
 --- !u!114 &16250076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +414,7 @@ MonoBehaviour:
   _weapons:
   - {fileID: 11400000, guid: 70da9895fedc5c64493675b8fe05c09a, type: 2}
   - {fileID: 11400000, guid: b15d05e011346954f93169cfc67ea029, type: 2}
-  _locationID: Spawn_2
+  _locationID: MobArena
 --- !u!114 &16250077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,7 +579,7 @@ PrefabInstance:
       objectReference: {fileID: 519420031}
     - target: {fileID: 1804999715851264589, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_Name
-      value: Zombie_1
+      value: Zombie Pigman 1
       objectReference: {fileID: 0}
     - target: {fileID: 1804999715851264589, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_IsActive
@@ -628,6 +625,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5345114338678861518, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3569492739797920881, guid: 62014eab1e987134aa9e1d78c9d6462e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -733,7 +734,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &232192250
@@ -1479,7 +1480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1804999715851264589, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_Name
-      value: Zombie_2
+      value: Zombie Pigman 2
       objectReference: {fileID: 0}
     - target: {fileID: 1804999715851264589, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_IsActive
@@ -1487,11 +1488,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.616
       objectReference: {fileID: 0}
     - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.049
       objectReference: {fileID: 0}
     - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1529,6 +1530,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -480293286, guid: 38033310404475448b3c5caa92ed05b8, type: 3}
+    - target: {fileID: 5345114338678861518, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3569492739797920881, guid: 62014eab1e987134aa9e1d78c9d6462e, type: 3}
     - target: {fileID: 7175568565751008052, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1903,6 +1908,107 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1001 &612005656
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1362548292}
+    m_Modifications:
+    - target: {fileID: 219719114573490144, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 1641242764583824490, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.146
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804999715851264589, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_Name
+      value: Zombie Pigman
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804999715851264589, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.952
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4960156023925059980, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1455532041, guid: 38033310404475448b3c5caa92ed05b8, type: 3}
+    - target: {fileID: 5345114338678861518, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3569492739797920881, guid: 62014eab1e987134aa9e1d78c9d6462e, type: 3}
+    - target: {fileID: 5345114338678861518, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7175568565751008052, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+--- !u!114 &612005657 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5368005972275650080, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+  m_PrefabInstance: {fileID: 612005656}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 861532d513184c859f0c2986358081ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &612005658 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+  m_PrefabInstance: {fileID: 612005656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &627141704
 GameObject:
   m_ObjectHideFlags: 0
@@ -3286,16 +3392,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1173570728}
   - component: {fileID: 1173570729}
-  - component: {fileID: 1173570726}
   - component: {fileID: 1173570725}
   - component: {fileID: 1173570730}
   m_Layer: 0
-  m_Name: StartBattle (Zombie)
+  m_Name: StartBattle (Zombie Pigman 3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1173570725
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3342,33 +3447,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.6707144, y: 0.2591082}
   m_EdgeRadius: 0
---- !u!114 &1173570726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173570724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7e74b123e014120ac64cf701f0a47aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1173570729}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!4 &1173570728
 Transform:
   m_ObjectHideFlags: 0
@@ -3378,7 +3456,7 @@ Transform:
   m_GameObject: {fileID: 1173570724}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.744, y: -2.39, z: 0}
+  m_LocalPosition: {x: 5.98, y: -2.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3401,12 +3479,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _installerPrefab: {fileID: 4886416113025025765, guid: cefccb6127741a54ea5bce8f32052922, type: 3}
   _initData:
-    Enemy_Zombie: {fileID: 1772123730}
-    Enemy_Zombie_1: {fileID: 185930974}
-    Enemy_Zombie_2: {fileID: 409547325}
-    TwoZombieAttacks:
+    Enemy_ZombiePigman: {fileID: 1772123730}
+    Enemy_ZombiePigman_1: {fileID: 185930974}
+    Enemy_ZombiePigman_2: {fileID: 409547325}
+    TwoZombiePigmanAttacks:
     - {fileID: 1344649036916751669, guid: 485bb024625801b4288b3f86db0656a9, type: 3}
-    ThreeZombieAttacks:
+    ThreeZombiePigmanAttacks:
     - {fileID: 1344649036916751669, guid: 485bb024625801b4288b3f86db0656a9, type: 3}
   _studioEventEmitter: {fileID: 1173570730}
   _localizedStrings:
@@ -4018,6 +4096,149 @@ RectTransform:
   m_AnchoredPosition: {x: -9.11, y: 8.89}
   m_SizeDelta: {x: 120, y: 174.077}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1362548288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1362548292}
+  - component: {fileID: 1362548291}
+  - component: {fileID: 1362548290}
+  - component: {fileID: 1362548289}
+  m_Layer: 0
+  m_Name: StartBattle (Zombie Pigman)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1362548289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362548288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -66688733
+      Data2: 1197716395
+      Data3: -453240138
+      Data4: 1814300400
+    Path: "event:/\u041C\u0443\u0437\u044B\u043A\u0430/\u0411\u043E\u0439"
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!61 &1362548290
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362548288}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.02352047, y: 0.14700228}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.6707144, y: 0.2591082}
+  m_EdgeRadius: 0
+--- !u!114 &1362548291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362548288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eff6154e8994f2cbb1751112a7e9b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _installerPrefab: {fileID: 4886416113025025765, guid: cefccb6127741a54ea5bce8f32052922, type: 3}
+  _initData:
+    Enemy_ZombiePigman: {fileID: 612005657}
+  _studioEventEmitter: {fileID: 1362548289}
+  _localizedStrings:
+    m_keys:
+    - Attack
+    - End
+    m_values:
+    - mTerm: Attack
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+    - mTerm: Battle_End
+      mRTL_IgnoreArabicFix: 0
+      mRTL_MaxLineLength: 0
+      mRTL_ConvertNumbers: 0
+      m_DontLocalizeParameters: 0
+--- !u!4 &1362548292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362548288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.98, y: -2.39, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 612005658}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1364968869
 GameObject:
   m_ObjectHideFlags: 0
@@ -10429,7 +10650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1804999715851264589, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_Name
-      value: Zombie
+      value: Zombie Pigman
       objectReference: {fileID: 0}
     - target: {fileID: 1804999715851264589, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_IsActive
@@ -10437,11 +10658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.952
       objectReference: {fileID: 0}
     - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.625
       objectReference: {fileID: 0}
     - target: {fileID: 4727593995840257182, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10479,6 +10700,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1455532041, guid: 38033310404475448b3c5caa92ed05b8, type: 3}
+    - target: {fileID: 5345114338678861518, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3569492739797920881, guid: 62014eab1e987134aa9e1d78c9d6462e, type: 3}
     - target: {fileID: 5345114338678861518, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_MaskInteraction
       value: 0
@@ -10805,4 +11030,5 @@ SceneRoots:
   - {fileID: 1245458575}
   - {fileID: 234580962}
   - {fileID: 1173570728}
+  - {fileID: 1362548292}
   - {fileID: 1551230924}

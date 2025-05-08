@@ -457,6 +457,15 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
+    - Term: Intro/Slide_0/Main
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0417\u0430 3 \u0434\u043D\u044F \u0434\u043E \u0441\u043E\u0431\u044B\u0442\u0438\u0439
+        1 \u0447\u0430\u0441\u0442\u0438"
+      - 
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 

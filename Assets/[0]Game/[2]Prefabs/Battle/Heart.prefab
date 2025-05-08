@@ -156,6 +156,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1994576084968993982}
   _redMover:
     _speed: 3
+    _rigidbody: {fileID: 1484523762894742038}
   _blueMover:
     _moveAcceleration: 10
     _maxHorizontalSpeed: 2

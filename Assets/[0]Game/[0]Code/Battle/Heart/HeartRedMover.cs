@@ -10,6 +10,9 @@ namespace Game
         [SerializeField]
         private float _speed;
 
+        [SerializeField]
+        private Rigidbody2D _rigidbody;
+        
         private PlayerInput _playerInput;
         private Transform _transform;
 
@@ -19,13 +22,23 @@ namespace Game
             _playerInput = playerInput;
         }
 
-        public void Move()
+        void IHeartMover.Enable()
+        {
+            _rigidbody.linearVelocity = Vector2.zero;
+        }
+
+        void IHeartMover.Disable()
+        {
+            
+        }
+
+        void IHeartMover.Move()
         {
             var direction = _playerInput.actions["Move"].ReadValue<Vector2>().normalized;
             _transform.position = (Vector2)_transform.position + direction * _speed * Time.deltaTime;
         }
 
-        public void FixedUpdate()
+        void IHeartMover.FixedUpdate()
         {
             
         }

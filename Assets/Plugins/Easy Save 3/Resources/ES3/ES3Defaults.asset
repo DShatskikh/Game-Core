@@ -39,6 +39,7 @@ MonoBehaviour:
     - Febucci.TextAnimator.Runtime
     - FMODUnity
     - FMODUnityResonance
+    - FullScreen.Editor
     - Game
     - GameCycle
     - I2

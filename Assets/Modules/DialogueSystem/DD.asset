@@ -285,7 +285,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 160
+        x: 159
         y: 80
         width: 160
         height: 30
@@ -389,8 +389,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 160
-        y: 30
+        x: 154
+        y: 27
         width: 160
         height: 30
     - id: 1
@@ -416,11 +416,19 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\u041D\u0443\u0431\u0438\u043A, \u0442\u044B \u0434\u043E\u043B\u0436\u0435\u043D
-          \u043F\u043E\u0431\u0435\u0434\u0438\u0442\u044C \u0425\u0435\u0440\u043E\u0431\u0440\u0438\u043D\u0430"
+        value: "\u042D\u0439 \u0442\u044B \u043D\u0435 \u041F\u0412\u041F \u0430\u0440\u0435\u043D\u0443
+          \u0438\u0449\u0435\u0448\u044C?"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
+        value: 'SetDialoguePanel(false);
+
+          SendMessage(MoveToNotch, Spawn_2(Clone));
+
+          SetDialoguePanel(true)@Message(MovedToNotch)'
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Response Menu Sequence
         value: 
         type: 0
         typeString: CustomFieldType_Text
@@ -445,7 +453,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 160
+        x: 154
         y: 80
         width: 160
         height: 30
@@ -460,11 +468,11 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 1
+        value: 3
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 3
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -472,13 +480,18 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\u041D\u0435 \u0445\u043E\u0447\u0443"
+        value: "\u041E\u043D\u0430 \u0441\u043F\u0440\u0430\u0432\u0430 \u043E\u0442
+          \u0442\u0435\u0431\u044F"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
         value: 
         type: 0
         typeString: CustomFieldType_Text
+      - title: Response Menu Sequence
+        value: 
+        type: 0
+        typeString: 
       conversationID: 2
       isRoot: 0
       isGroup: 0
@@ -500,8 +513,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 160
-        y: 130
+        x: 154
+        y: 129
         width: 160
         height: 30
     - id: 3
@@ -515,11 +528,11 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 3
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 1
+        value: 3
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -527,8 +540,8 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\u041D\u0443\u0443\u0443\u0431\u0438\u0438\u0438\u0438\u043A! \u0421\u0435\u0440\u0432\u0435\u0440
-          \u043D\u0443\u0436\u0434\u0430\u0435\u0442\u0441\u044F \u0432 \u0442\u0435\u0431\u0435!"
+        value: "\u0421\u043F\u0430\u0441\u0438\u0431\u043E \u043B\u044B\u0441\u044B\u0439
+          \u0434\u044F\u0434\u044C\u043A\u0430"
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -556,8 +569,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 160
-        y: 180
+        x: 154
+        y: 181
         width: 160
         height: 30
     - id: 4
@@ -571,11 +584,11 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Actor
-        value: 1
+        value: 3
         type: 5
         typeString: CustomFieldType_Actor
       - title: Conversant
-        value: 3
+        value: 1
         type: 5
         typeString: CustomFieldType_Actor
       - title: Menu Text
@@ -583,7 +596,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: "\u041D\u0443 \u043B\u0430\u0434\u043D\u043E"
+        value: ...
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -605,8 +618,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 160
-        y: 230
+        x: 154
+        y: 231
         width: 160
         height: 30
     entryGroups: []

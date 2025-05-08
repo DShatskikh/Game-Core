@@ -2,6 +2,7 @@ using Febucci.UI;
 using FMODUnity;
 using MoreMountains.Feedbacks;
 using PixelCrushers.DialogueSystem;
+using TMPro;
 using UnityEngine;
 
 namespace Game
@@ -86,7 +87,13 @@ namespace Game
             // _textAnimatorPlayer.onTextShowed.AddListener(Stop);
             // _textAnimatorPlayer.onTypewriterStart.AddListener(OnTypewriterStart);
             // _button.SetActive(false);
-            
+
+            Debug.Log(33);
+            var text = DialogueManager.currentConversationState.subtitle.formattedText.text;
+            Debug.Log(text);
+            _textAnimatorPlayer.ShowText(text);
+            _textAnimatorPlayer.StartShowingText(false);
+
             //_playerInput.actions["Submit"].canceled += ShowAllText;
             //_playerInput.actions["Cancel"].canceled += ShowAllText;
         }

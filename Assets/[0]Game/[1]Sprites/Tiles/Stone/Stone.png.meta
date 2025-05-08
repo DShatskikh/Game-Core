@@ -978,7 +978,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1000,7 +1000,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1009,6 +1009,28 @@ TextureImporter:
       bones: []
       spriteID: 6aed1377568548347a4afdb06e163d8b
       internalID: -748952210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Stone_38
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05499c05bf5d9c4abbfae76b31369ad
+      internalID: -1227350939
       vertices: []
       indices: 
       edges: []
@@ -1059,6 +1081,7 @@ TextureImporter:
       Stone_35: -314216345
       Stone_36: -537320608
       Stone_37: -748952210
+      Stone_38: -1227350939
       Stone_4: 1779410674617963968
       Stone_5: 7490473108122916349
       Stone_6: 6323242447520240221

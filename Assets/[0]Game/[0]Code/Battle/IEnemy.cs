@@ -11,6 +11,7 @@ namespace Game
         int Health { get; }
         int MaxHealth { get; }
         int Mercy { get; set; }
+        bool CanMercy { get; }
         bool IsMercy { get; set; }
         int GetOP { get; }
         int GetMoney { get; }

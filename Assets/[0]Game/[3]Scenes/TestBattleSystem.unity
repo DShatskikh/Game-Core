@@ -2217,7 +2217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e832cee6ae4846f1bc8ae9404d15c7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attack: {fileID: 8432322786264434938, guid: 03bf4d6b692afc8438c3187e58a30ef6, type: 3}
+  _attack: {fileID: 271866567241069981, guid: 60e94659575d8794cbaaed476d5a2794, type: 3}
   _container: {fileID: 9050274617510201846}
 --- !u!114 &1467522436
 MonoBehaviour:
@@ -8773,6 +8773,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1310886766523618462, guid: 18ffc8fe87301f74eb8db886de170eb4, type: 3}
   m_PrefabInstance: {fileID: 9164407095888168101}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &5133282638404893469 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 1484523762894742038, guid: 18ffc8fe87301f74eb8db886de170eb4, type: 3}
+  m_PrefabInstance: {fileID: 9164407095888168101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!222 &5208253488803117941
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9688,7 +9693,6 @@ GameObject:
   - component: {fileID: 2943548459081548240}
   - component: {fileID: 1558476877798908316}
   - component: {fileID: 3403263030505125498}
-  - component: {fileID: 6566969448360980475}
   - component: {fileID: 6566969448360980476}
   m_Layer: 6
   m_Name: Arena
@@ -10855,52 +10859,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &6566969448360980475
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5443602792837465183}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0.0039048195, y: -1.6205463}
-  m_SpriteTilingProperty:
-    border: {x: 0.0625, y: 0.0625, z: 0.0625, w: 0.0625}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.1875, y: 0.1875}
-    newSize: {x: 3, y: 3}
-    adaptiveTilingThreshold: 0.578
-    drawMode: 1
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 7, y: 0.3515072}
-  m_EdgeRadius: 0
 --- !u!331 &6566969448360980476
 SpriteMask:
   m_ObjectHideFlags: 0
@@ -14773,6 +14731,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3099770416175347873, guid: 18ffc8fe87301f74eb8db886de170eb4, type: 3}
+      propertyPath: _blueMover._arena
+      value: 
+      objectReference: {fileID: 3403263030505125498}
+    - target: {fileID: 3099770416175347873, guid: 18ffc8fe87301f74eb8db886de170eb4, type: 3}
+      propertyPath: _redMover._rigidbody
+      value: 
+      objectReference: {fileID: 5133282638404893469}
     - target: {fileID: 3264268919548479249, guid: 18ffc8fe87301f74eb8db886de170eb4, type: 3}
       propertyPath: m_Name
       value: Heart

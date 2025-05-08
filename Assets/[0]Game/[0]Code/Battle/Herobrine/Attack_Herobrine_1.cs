@@ -29,13 +29,13 @@ namespace Game
 
         private IEnumerator WaitAttack()
         {
-            _heartModeService.SetMode(Heart.Mode.Blue);
+            _heartModeService.SetMode(Heart.Mode.Red);
             
             while (true)
             {
                 var point = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)).normalized * 3;
                 
-                var shell = Instantiate(_prefab, point, Quaternion.identity, transform);
+                var shell = Instantiate(_prefab, (Vector2)transform.position + point, Quaternion.identity, transform);
                 _container.Inject(shell);
                 _shells.Add(shell);
                 yield return new WaitForSeconds(2);

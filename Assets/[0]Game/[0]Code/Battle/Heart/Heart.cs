@@ -54,7 +54,7 @@ namespace Game
 
             heartModeService.Upgrade += SetMode;
             _redMover.Init(playerInput, transform);
-            _blueMover.Init(playerInput);
+            _blueMover.Init(playerInput, _arena);
             
             _animator = GetComponent<Animator>();
             _maxHealth = 20;
@@ -104,6 +104,8 @@ namespace Game
 
         public void SetMode(Mode mode)
         {
+            _mover?.Disable();
+            
             switch (mode)
             {
                 case Mode.Red:
@@ -117,6 +119,7 @@ namespace Game
             }
 
             _spriteRenderer.sprite = _heartModeService.GetIcon();
+            _mover.Enable();
         }
         
         public void SetDamage(int damage)

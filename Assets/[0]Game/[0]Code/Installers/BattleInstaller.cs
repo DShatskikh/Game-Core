@@ -26,7 +26,7 @@ namespace Game
         private BattlePoints _points;
         
         [SerializeField]
-        private CinemachineVirtualCamera _virtualCamera;
+        private CinemachineCamera _virtualCamera;
 
         [SerializeField]
         private TimeBasedTurnBooster _timeBasedTurnBooster;
@@ -44,7 +44,7 @@ namespace Game
             Container.Bind<EnemyBattleButton>().FromInstance(_enemyBattleButton).AsSingle();
             Container.Bind<BattlePoints>().FromInstance(_points).AsSingle();
             Container.Bind<Heart>().FromInstance(_heart).AsSingle();
-            Container.Bind<CinemachineVirtualCamera>().FromInstance(_virtualCamera).AsSingle();
+            Container.Bind<CinemachineCamera>().FromInstance(_virtualCamera).AsSingle();
             Container.Bind<TurnProgressStorage>().AsSingle();
             Container.BindInstance(_timeBasedTurnBooster).AsSingle().NonLazy();
             Container.BindInstance(_attackIndicator).AsSingle().NonLazy();

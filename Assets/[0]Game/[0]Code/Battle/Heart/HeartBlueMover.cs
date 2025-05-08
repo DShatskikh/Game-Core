@@ -40,17 +40,29 @@ namespace Game
         
         [SerializeField]
         private Collider2D _collider;
-        
+
         private float _horizontalSpeed;
         private float _verticalSpeed;
-        private bool _isGrounded;
+        private bool _isGrounded = false;
         private PlayerInput _playerInput;
+        private Arena _arena;
 
-        public void Init(PlayerInput playerInput)
+        public void Init(PlayerInput playerInput, Arena arena)
         {
             _playerInput = playerInput;
-            
+            _arena = arena;
+        }
+
+        void IHeartMover.Enable()
+        {
             _playerInput.actions["Jump"].started += OnClickJumpStarted;
+        }
+
+        void IHeartMover.Disable()
+        {
+            _playerInput.actions["Jump"].started -= OnClickJumpStarted;
+
+            _isGrounded = false;
         }
 
         void IHeartMover.Move()
@@ -138,8 +150,8 @@ namespace Game
             float rayLength = 0.1f;
             RaycastHit2D hit = Physics2D.Raycast(_collider.bounds.center, Vector2.down, _collider.bounds.extents.y + rayLength,
                 _floorLayer);
-            _isGrounded = hit.collider != null;
-
+            
+            _isGrounded = hit.collider != null || _collider.transform.position.y <= _arena.transform.position.y - _arena.SizeField.y / 2;
             Debug.DrawRay(_collider.bounds.center, Vector2.down * (_collider.bounds.extents.y + rayLength), Color.red);
         }
 
