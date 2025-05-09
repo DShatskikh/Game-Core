@@ -19,6 +19,9 @@ namespace Game
         private float _direction = 1;
         private List<Shell> _shells = new();
 
+        public override Vector2 GetSizeArena => new(5, 1.5f);
+        public override int GetAddProgress => 1;
+
         [Inject]
         private void Construct(HeartModeService heartModeService, Arena arena)
         {
@@ -35,7 +38,6 @@ namespace Game
         private IEnumerator WaitAttack()
         {
             _heartModeService.SetMode(Heart.Mode.Blue);
-            yield return _arena.AwaitSetSize(new Vector2(5, 1.5f));
             
             while (true)
             {

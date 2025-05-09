@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -23,6 +24,9 @@ namespace Game
         private List<Platform> _platformsDown = new();
         private List<Shell> _shells = new();
 
+        public override Vector2 GetSizeArena => new(5, 3);
+        public override int GetAddProgress => 2;
+
         [Inject]
         private void Construct(HeartModeService heartModeService, Arena arena)
         {
@@ -38,7 +42,6 @@ namespace Game
         private IEnumerator WaitAttack()
         {
             _heartModeService.SetMode(Heart.Mode.Blue);
-            yield return _arena.AwaitSetSize(new Vector2(5, 3));
             
             while (true)
             {
@@ -62,6 +65,8 @@ namespace Game
         
         public override void Hide()
         {
+            StopCoroutine(_coroutine);
+            
             foreach (var shell in _shells)
             {
                 shell.Hide();

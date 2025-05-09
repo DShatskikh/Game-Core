@@ -22,7 +22,7 @@ namespace Game
             });
         }
         
-        public async UniTask WaitShow(float time, Action action = null)
+        public async UniTask WaitShow(float time = float.PositiveInfinity, Action action = null)
         {
             gameObject.SetActive(true);
             EventSystem.current.SetSelectedGameObject(gameObject);
@@ -47,6 +47,6 @@ namespace Game
     public interface INextButton
     {
         void Show(Action action = null);
-        UniTask WaitShow(float time, Action action = null);
+        UniTask WaitShow(float time = float.PositiveInfinity, Action action = null);
     }
 }

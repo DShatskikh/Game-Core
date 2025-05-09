@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using I2.Loc;
 using UnityEngine;
@@ -48,8 +49,30 @@ namespace Game
         private Sequence _deathSequence;
         private Sequence _shakeSequence;
         private bool _isStartDeathAnimation;
+        private bool _isSelectedInfo;
 
-        public ActionBattle[] Actions => _actions;
+        public ActionBattle[] Actions
+        {
+            get
+            {
+                var actions = new List<ActionBattle>();
+
+                for (var i = 0; i < _actions.Length; i++)
+                {
+                    if (i == 1 && !_isSelectedInfo)
+                        continue;
+
+                    if (i == 0 && _isSelectedInfo)
+                        continue;
+                    
+                    var action = _actions[i];
+                    actions.Add(action);
+                }
+
+                return actions.ToArray();
+            }
+        }
+
         public LocalizedString Name => _name;
         public Attack[] Attacks => _attacks;
         public BattleMessageBox MessageBox => _messageBox;
@@ -166,6 +189,11 @@ namespace Game
 
         public string GetActionReaction(ActionBattle actionBattle)
         {
+            if (actionBattle.Name == _actions[2].Name)
+            {
+                _isSelectedInfo = true;
+            }
+            
             var action = Actions.First(x => x.Name == actionBattle.Name);
             return action.Reaction;
         }

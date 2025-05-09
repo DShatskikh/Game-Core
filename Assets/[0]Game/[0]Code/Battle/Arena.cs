@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
@@ -16,12 +17,12 @@ namespace Game
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        public IEnumerator AwaitSetSize(Vector2 size)
+        public async UniTask AwaitSetSize(Vector2 size)
         {
             var startSize = _spriteRenderer.size;
-            yield return DOTween
+            await DOTween
                 .To(x => _spriteRenderer.size = Vector2.Lerp(startSize, size, x), 0f, 1f, 1f)
-                .WaitForCompletion();
+                .AsyncWaitForCompletion();
         }
     }
 }

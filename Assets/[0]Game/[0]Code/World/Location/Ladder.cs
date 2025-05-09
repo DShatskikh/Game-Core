@@ -5,7 +5,10 @@ namespace Game
     public sealed class Ladder : MonoBehaviour
     {
         [SerializeField]
-        private Transform _target, _start;
+        private Transform _point1;
+
+        [SerializeField]
+        private Transform _point2;
 
         private IPlayerMover _previousMover;
         
@@ -13,10 +16,11 @@ namespace Game
         {
             if (other.TryGetComponent(out Player player))
             {
-                bool isRight = Vector2.Distance(player.transform.position, _start.position) >
-                               Vector2.Distance(player.transform.position, _target.position);
+                var isRight = Vector2.Distance(player.transform.position, _point2.position) >
+                              Vector2.Distance(player.transform.position, _point1.position);
+                
                 _previousMover = player.GetMover;
-                player.SetMover(new PlayerLadderMover(player.transform, _start.position, _target.position, isRight));
+                player.SetMover(new PlayerLadderMover(player.transform, _point2.position, _point1.position, isRight));
             }
         }
 

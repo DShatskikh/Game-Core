@@ -17,6 +17,9 @@ namespace Game
         }
         
         private const string DAMAGE_SOUND_PATH = "event:/Звуки/Битва/Получили урон";
+        private const string DAMAGE_HASH = "Damage";
+        private const string NORMAL_HASH = "Normal";
+        private const string DEATH_HASH = "Death";
         
         [SerializeField]
         private Shield _shield;
@@ -148,22 +151,23 @@ namespace Game
                 yield break;
             }
 
-            _animator.CrossFade("Damage", 0);
+            _animator.CrossFade(DAMAGE_HASH, 0);
             _shield.gameObject.SetActive(false);
             yield return new WaitForSeconds(3);
-            _animator.CrossFade("Normal", 0);
+            _animator.CrossFade(NORMAL_HASH, 0);
             _shield.gameObject.SetActive(true);
             _isInvulnerability = false;
         }
 
         private void Death()
         {
-            _animator.CrossFade("Death", 0);
+            _animator.CrossFade(DEATH_HASH, 0);
             OnDeath?.Invoke();
-            //EventBus.OnDeath?.Invoke();
-            //GameData.GameOver.SetActive(true);
+        }
 
-            //Analytics.CustomEvent("Death " + GameData.EnemyData.EnemyConfig.name);
+        public void SetProgress(int progress)
+        {
+            _shield.SetProgress(progress);
         }
     }
 }

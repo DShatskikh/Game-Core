@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
@@ -34,7 +35,7 @@ namespace Game
         private IEnumerator WaitAttack()
         {
             _heartModeService.SetMode(Heart.Mode.Blue);
-            yield return _arena.AwaitSetSize(new Vector2(5, 3));
+            yield return _arena.AwaitSetSize(new Vector2(5, 3)).ToCoroutine();
             
             while (true)
             {

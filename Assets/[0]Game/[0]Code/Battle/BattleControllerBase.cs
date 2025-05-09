@@ -514,13 +514,16 @@ namespace Game
             _heart.transform.position = _arena.transform.position;
             
             _arena.gameObject.SetActive(true);
-            _heart.gameObject.SetActive(true);
-            _view.ToggleProgressBar(true);
-            
-            _turnProgressStorage.Reset();
-
-            await UniTask.WaitForSeconds(1f);
             var attackPrefab = GetAttack();
+            _heart.gameObject.SetActive(true);
+            await _arena.AwaitSetSize(attackPrefab.GetSizeArena);
+            
+            _view.ToggleProgressBar(true);
+            _turnProgressStorage.Reset();
+            _heart.SetProgress(attackPrefab.GetAddProgress);
+
+            //await UniTask.WaitForSeconds(1f);
+            
             var attack = Object.Instantiate(attackPrefab, _arena.transform.position, Quaternion.identity, _arena.transform);
             _container.Inject(attack);
             _attackIndex++;
@@ -533,7 +536,7 @@ namespace Game
             await UniTask.WaitForSeconds(1f);
             Object.Destroy(attack.gameObject);
             
-            await _arena.AwaitSetSize(new Vector2(3, 3)).ToUniTask();
+            await _arena.AwaitSetSize(new Vector2(3, 3));
             
             _arena.gameObject.SetActive(false);
             _heart.gameObject.SetActive(false);
@@ -611,7 +614,7 @@ namespace Game
             string formattedText = string.Format(endText, op, money);
             _view.SetStateText(formattedText);
             
-            await _nextButton.WaitShow(float.PositiveInfinity);
+            await _nextButton.WaitShow();
 
             Exit().Forget();
         }
@@ -727,10 +730,54 @@ namespace Game
         
         private async UniTask ActionTurn(IEnemy enemy, ActionBattle actionBattle)
         {
+            Debug.Log("Добавь текст перед реакцией");
+            
+            _view.ToggleTurnPanel(true);
+            _view.ToggleStateLabel(true);
+            _view.SetStateText(actionBattle.Info);
+            await _nextButton.WaitShow();
+            _view.ToggleTurnPanel(false);
+            
             await ShowEnemiesReactions(GetActionReactions(enemy, actionBattle));
             EnemyTurn();
         }
 
+        private string[] GetDeathFriendReactions(IEnemy enemy)
+        {
+            var messages = new List<string>();
+
+            foreach (var enemy1 in _enemies)
+            {
+                messages.Add(enemy1.GetDeathFriendReaction(enemy));
+            }
+
+            return messages.ToArray();
+        }
+        
+        private string[] GeAttackReactions(IEnemy enemy)
+        {
+            var messages = new List<string>();
+
+            foreach (var enemy1 in _enemies)
+            {
+                messages.Add(enemy1.GetReaction(enemy1 == enemy ? BattleActionType.Attack : BattleActionType.NoAction));
+            }
+
+            return messages.ToArray();
+        }
+        
+        private string[] GeMissReactions()
+        {
+            var messages = new List<string>();
+
+            foreach (var enemy1 in _enemies)
+            {
+                messages.Add("...");
+            }
+
+            return messages.ToArray();
+        }
+        
         private async UniTask AttackTurn(IEnemy enemy, int damage)
         {
             _view.ToggleTurnPanel(true);
@@ -744,7 +791,7 @@ namespace Game
 
             if (damage == 0)
             {
-                await ShowEnemiesReactions("...", "...", "...");
+                await ShowEnemiesReactions(GeMissReactions());
                 EnemyTurn();
                 return;
             }
@@ -773,17 +820,11 @@ namespace Game
 
             if (enemy.Health <= 0)
             {
-                await ShowEnemiesReactions(
-                    _enemies[0].GetDeathFriendReaction(enemy),
-                    _enemies[1].GetDeathFriendReaction(enemy),
-                    _enemies[2].GetDeathFriendReaction(enemy));
+                await ShowEnemiesReactions(GetDeathFriendReactions(enemy));
             }
             else
             {
-                await ShowEnemiesReactions(
-                    _enemies[0].GetReaction(_enemies[0] == enemy ? BattleActionType.Attack : BattleActionType.NoAction),
-                    _enemies[1].GetReaction(_enemies[1] == enemy ? BattleActionType.Attack : BattleActionType.NoAction),
-                    _enemies[2].GetReaction(_enemies[2] == enemy ? BattleActionType.Attack : BattleActionType.NoAction));
+                await ShowEnemiesReactions(GeAttackReactions(enemy));
             }
             
             EnemyTurn();
@@ -796,12 +837,13 @@ namespace Game
                 Object.Destroy(((MonoBehaviour)enemy).gameObject);
             }
             
+            CloseAllPanel();
             _virtualCamera.gameObject.SetActive(false);
 
             await UniTask.WaitForSeconds(0.5f);
-            
-            _gameStateController.CloseBattle();
+
             Object.Destroy(_view.gameObject);
+            _gameStateController.CloseBattle();
             _battleThemeEmitter.Stop();
         }
         
