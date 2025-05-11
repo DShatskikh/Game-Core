@@ -28,7 +28,7 @@ namespace Game
                 var location = Instantiate(prefab);
                 _container.Inject(location);
 
-                foreach (var monoBehaviour in location.GetComponentsInChildren<MonoBehaviour>())
+                foreach (var monoBehaviour in location.GetComponentsInChildren<MonoBehaviour>(true))
                 {
                     _container.Inject(monoBehaviour);
                 }

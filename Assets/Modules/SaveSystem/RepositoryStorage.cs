@@ -1,68 +1,40 @@
 ﻿using System.Collections.Generic;
 using PixelCrushers;
+using Sirenix.Utilities;
+using UnityEngine;
 using YG;
 
 namespace Game
 {
     public static class RepositoryStorage
     {
-        public static List<SerializablePair<string, string>> Container => YG2.saves.Container;
+        private static Dictionary<string, string> _container = new();
 
         public static void Set<T>(string id, T saveData)
         {
-            if (Container == null)
-                YG2.saves.Container = new List<SerializablePair<string, string>>();
-
-            var value = SaveSystem.Serialize(saveData);
-            
-            for (int i = 0; i < Container.Count; i++)
-            {
-                var pair = Container[i];
-
-                if (id == pair.Key)
-                {
-                    YG2.saves.Container[i] = new SerializablePair<string, string>(id, value);  
-                    return;
-                }
-            }
-            
-            YG2.saves.Container.Add(new SerializablePair<string, string>(id, value));
+            Debug.Log($"string: {id} T: {saveData} Serialize: {SaveSystem.Serialize(saveData)}");
+            _container[id] = SaveSystem.Serialize(saveData);
         }
 
-        public static T Get<T>(string id) where T : new()
+        public static T Get<T>(string id)
         {
-            if (Container == null)
-                YG2.saves.Container = new List<SerializablePair<string, string>>();
-            
-            for (int i = 0; i < Container.Count; i++)
-            {
-                var pair = Container[i];
+            if (!_container.ContainsKey(id))
+                return default;
 
-                if (id == pair.Key)
-                    return SaveSystem.Deserialize<T>(YG2.saves.Container[i].Value);
-            }
-            
-            return new T();
+            Debug.Log($"string: {id} T: {_container[id]} Serialize: {SaveSystem.Deserialize<T>(_container[id])}");
+            return SaveSystem.Deserialize<T>(_container[id]);
         }
         
-        public static bool TryGet<T>(string id, out T value) where T : new()
+        public static bool TryGet<T>(string id, out T value)
         {
-            if (Container == null)
-                YG2.saves.Container = new List<SerializablePair<string, string>>();
-            
-            for (int i = 0; i < Container.Count; i++)
+            if (!_container.ContainsKey(id))
             {
-                var pair = Container[i];
-
-                if (id == pair.Key)
-                {
-                    value = SaveSystem.Deserialize<T>(YG2.saves.Container[i].Value);
-                    return true;
-                }
+                value = default;
+                return false;
             }
-
-            value = new T();
-            return false;
+            
+            value = SaveSystem.Deserialize<T>(_container[id]);
+            return true;
         }
     }
 }

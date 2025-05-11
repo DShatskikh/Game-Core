@@ -59,6 +59,7 @@ MonoBehaviour:
     - QFSW.QC.UI
     - SaveSystem
     - ScreenManager
+    - SerializableGUID
     - Sirenix.OdinInspector.Modules.Unity.Addressables
     - StepSound
     - UniRx

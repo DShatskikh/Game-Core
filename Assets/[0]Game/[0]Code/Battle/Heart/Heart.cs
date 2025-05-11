@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using DG.Tweening;
 using FMODUnity;
 using UniRx;
 using UnityEngine;
@@ -30,6 +31,12 @@ namespace Game
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
 
+        [SerializeField]
+        private SpriteRenderer _switchEffectView;
+
+        [SerializeField]
+        private StudioEventEmitter _switchEffectSound;
+        
         [SerializeField]
         private HeartRedMover _redMover;
 
@@ -121,8 +128,25 @@ namespace Game
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
 
-            _spriteRenderer.sprite = _heartModeService.GetIcon();
-            _mover.Enable();
+            _switchEffectView.gameObject.SetActive(true);
+            _switchEffectView.transform.localScale = Vector3.one;
+            _switchEffectView.sprite = _heartModeService.GetIcon();
+            _switchEffectSound.Play();
+            _switchEffectView.color = _switchEffectView.color.SetA(0.5f);
+            
+            var sequence = DOTween.Sequence();
+            sequence
+                .Insert(0, _switchEffectView.transform.DOScale(Vector3.one * 2, 0.5f))
+                .Insert(0, _switchEffectView.DOColor(_switchEffectView.color.SetA(0), 0.5f))
+                .OnStepComplete(() =>
+                {
+                    _spriteRenderer.sprite = _heartModeService.GetIcon();
+                    _mover.Enable();
+                })
+                .OnComplete(() =>
+                {
+                    _switchEffectView.gameObject.SetActive(false);
+                });
         }
         
         public void SetDamage(int damage)
