@@ -25,6 +25,10 @@ MonoBehaviour:
     Screen: {fileID: 1624472903560820176, guid: 8721f83c771909540a33c8535577b2e6, type: 3}
     Presenter:
       rid: 2880720768947191898
+  - Enum: 3
+    Screen: {fileID: 7505934610143203884, guid: 4ff205529019fb7419a73b5d4257dd2e, type: 3}
+    Presenter:
+      rid: 5757848009003237482
   references:
     version: 2
     RefIds:
@@ -36,4 +40,7 @@ MonoBehaviour:
       data: 
     - rid: 2880720768947191899
       type: {class: TransitionPresenter, ns: Game, asm: Game}
+      data: 
+    - rid: 5757848009003237482
+      type: {class: SavePresenter, ns: Game, asm: Game}
       data: 

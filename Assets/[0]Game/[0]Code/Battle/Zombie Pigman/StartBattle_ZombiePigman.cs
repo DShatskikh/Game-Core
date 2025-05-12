@@ -15,9 +15,6 @@ namespace Game
         private BattleController_ZombiePigman.InitData _initData;
         
         [SerializeField]
-        private StudioEventEmitter _studioEventEmitter;
-        
-        [SerializeField]
         private SerializableDictionary<string, LocalizedString> _localizedStrings;
 
         private DiContainer _diContainer;
@@ -44,7 +41,7 @@ namespace Game
             installer.CreatePresenterCommand = () =>
             {
                 _diContainer.BindFactory<BattleController_ZombiePigman, BattleController_ZombiePigman.Factory>()
-                    .WithArguments(_initData, _studioEventEmitter, _localizedStrings);
+                    .WithArguments(_initData, _localizedStrings);
                 
                 var factory = _diContainer.TryResolve<BattleController_ZombiePigman.Factory>();
                 _diContainer.Unbind<BattleController_ZombiePigman.Factory>();

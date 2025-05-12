@@ -421,6 +421,14 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
+        value: 'SetDialoguePanel(false);
+
+          SendMessage(MoveToNotch, Spawn_2(Clone));
+
+          SetDialoguePanel(true)@Message(MovedToNotch)'
+        type: 0
+        typeString: CustomFieldType_Text
+      - title: Response Menu Sequence
         value: 
         type: 0
         typeString: CustomFieldType_Text
@@ -446,7 +454,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 154
-        y: 81
+        y: 80
         width: 160
         height: 30
     - id: 2
@@ -480,6 +488,10 @@ MonoBehaviour:
         value: 
         type: 0
         typeString: CustomFieldType_Text
+      - title: Response Menu Sequence
+        value: 
+        type: 0
+        typeString: 
       conversationID: 2
       isRoot: 0
       isGroup: 0
@@ -502,7 +514,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 154
-        y: 128
+        y: 129
         width: 160
         height: 30
     - id: 3

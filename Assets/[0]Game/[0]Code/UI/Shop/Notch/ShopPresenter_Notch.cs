@@ -32,10 +32,10 @@ namespace Game
         public ShopPresenter_Notch(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
             MainInventory mainInventory, WalletService walletService, 
-            DiContainer container, StudioEventEmitter studioEmitter, InitData data, ShopBackground shopBackgroundPrefab,
+            DiContainer container, InitData data, ShopBackground shopBackgroundPrefab,
             ScreenManager screenManager) : base(shopViewPrefab, shopButtonPrefab,
             inscriptionsContainer, gameStateController, mainInventory, walletService, 
-            container, studioEmitter, shopBackgroundPrefab, screenManager)
+            container, shopBackgroundPrefab, screenManager)
         {
             _initData = data;
             

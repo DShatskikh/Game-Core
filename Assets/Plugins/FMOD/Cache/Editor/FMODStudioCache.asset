@@ -189,7 +189,7 @@ MonoBehaviour:
     Data4: -519593853
   Banks:
   - {fileID: -2374295709359499160}
-  IsStream: 1
+  IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters: []
@@ -295,20 +295,22 @@ MonoBehaviour:
   Name: "\u0418\u0433\u0440\u043E\u0432\u0430\u044F \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044F"
   StudioPath: "parameter:/\u0418\u0433\u0440\u043E\u0432\u0430\u044F \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044F"
   Min: 0
-  Max: 5
-  Default: 0
+  Max: 7
+  Default: 1
   ID:
     data1: 3625039015
     data2: 3462921004
   Type: 2
   IsGlobal: 1
   Labels:
+  - "\u0422\u0438\u0448\u0438\u043D\u0430"
   - "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u043B\u043E\u043A\u0430\u0446\u0438\u044F"
   - "\u0411\u043E\u0439"
   - "\u041C\u0435\u043D\u044E"
   - "\u0417\u0430\u0441\u0442\u0430\u0432\u043A\u0430"
   - "\u041F\u0440\u043E\u0438\u0433\u0440\u044B\u0448"
   - "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
+  - "\u041F\u043E\u0434\u0437\u0435\u043C\u0435\u043B\u044C\u0435"
   Exists: 1
 --- !u!114 &-2374295709359499160
 MonoBehaviour:
@@ -325,10 +327,43 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638826005145762266
+  lastModified: 638826779017366432
   FileSizes:
   - Name: Desktop
-    Value: 7978784
+    Value: 16294400
+  Exists: 1
+--- !u!114 &-2320241791731008783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: "parameter:/\u041C\u0443\u0437\u044B\u043A\u0430/\u0418\u0433\u0440\u043E\u0432\u0430\u044F
+    \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044F"
+  m_EditorClassIdentifier: 
+  Name: "\u0418\u0433\u0440\u043E\u0432\u0430\u044F \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044F"
+  StudioPath: 
+  Min: 0
+  Max: 7
+  Default: 1
+  ID:
+    data1: 3625039015
+    data2: 3462921004
+  Type: 2
+  IsGlobal: 1
+  Labels:
+  - "\u0422\u0438\u0448\u0438\u043D\u0430"
+  - "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u043B\u043E\u043A\u0430\u0446\u0438\u044F"
+  - "\u0411\u043E\u0439"
+  - "\u041C\u0435\u043D\u044E"
+  - "\u0417\u0430\u0441\u0442\u0430\u0432\u043A\u0430"
+  - "\u041F\u0440\u043E\u0438\u0433\u0440\u044B\u0448"
+  - "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
+  - "\u041F\u043E\u0434\u0437\u0435\u043C\u0435\u043B\u044C\u0435"
   Exists: 1
 --- !u!114 &-2142014446790017239
 MonoBehaviour:
@@ -474,13 +509,14 @@ MonoBehaviour:
   - {fileID: -4782918334251737012}
   - {fileID: -8712974680716955044}
   - {fileID: 2875992002665162324}
+  - {fileID: 5155628507890403202}
   EditorParameters:
   - {fileID: -2968169414142040041}
   MasterBanks:
   - {fileID: -2374295709359499160}
   StringsBanks:
   - {fileID: 4812863242613628976}
-  cacheTime: 638826005145782321
+  cacheTime: 638826779017386435
   cacheVersion: 131624
 --- !u!114 &415007838709113536
 MonoBehaviour:
@@ -566,7 +602,7 @@ MonoBehaviour:
   - {fileID: 6398592470803478438}
   MinDistance: 1
   MaxDistance: 20
-  Length: 398720
+  Length: 1357368
 --- !u!114 &3806436533211981679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,11 +672,39 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638826005145782321
+  lastModified: 638826779017386435
   FileSizes:
   - Name: Desktop
-    Value: 1916
+    Value: 1970
   Exists: 1
+--- !u!114 &5155628507890403202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/\u041C\u0443\u0437\u044B\u043A\u0430/\u041C\u0443\u0437\u044B\u043A\u0430"
+  m_EditorClassIdentifier: 
+  Path: "event:/\u041C\u0443\u0437\u044B\u043A\u0430/\u041C\u0443\u0437\u044B\u043A\u0430"
+  Guid:
+    Data1: -15751778
+    Data2: 1174451347
+    Data3: 1434656913
+    Data4: -1669157669
+  Banks:
+  - {fileID: -2374295709359499160}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -2320241791731008783}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1200482
 --- !u!114 &6398592470803478438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,20 +721,22 @@ MonoBehaviour:
   Name: "\u0418\u0433\u0440\u043E\u0432\u0430\u044F \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044F"
   StudioPath: 
   Min: 0
-  Max: 5
-  Default: 0
+  Max: 7
+  Default: 1
   ID:
     data1: 3625039015
     data2: 3462921004
   Type: 2
   IsGlobal: 1
   Labels:
+  - "\u0422\u0438\u0448\u0438\u043D\u0430"
   - "\u041E\u0441\u043D\u043E\u0432\u043D\u0430\u044F \u043B\u043E\u043A\u0430\u0446\u0438\u044F"
   - "\u0411\u043E\u0439"
   - "\u041C\u0435\u043D\u044E"
   - "\u0417\u0430\u0441\u0442\u0430\u0432\u043A\u0430"
   - "\u041F\u0440\u043E\u0438\u0433\u0440\u044B\u0448"
   - "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
+  - "\u041F\u043E\u0434\u0437\u0435\u043C\u0435\u043B\u044C\u0435"
   Exists: 1
 --- !u!114 &8667158802462077749
 MonoBehaviour:

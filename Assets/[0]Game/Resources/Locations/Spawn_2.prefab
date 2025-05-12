@@ -1113,7 +1113,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6594983108692923680}
   - component: {fileID: 8634154307024978867}
-  - component: {fileID: 6773032051175818377}
   m_Layer: 0
   m_Name: OpenShop
   m_TagString: Untagged
@@ -1242,39 +1241,8 @@ MonoBehaviour:
       mRTL_MaxLineLength: 0
       mRTL_ConvertNumbers: 0
       m_DontLocalizeParameters: 0
-  _studioEvent: {fileID: 6773032051175818377}
+  _studioEvent: {fileID: 0}
   _background: {fileID: 6984877853463997981, guid: 2eab97914b751724a8c04e2b14ff5b0d, type: 3}
---- !u!114 &6773032051175818377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823787492390699472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 1677170758
-      Data2: 1249426133
-      Data3: -754328678
-      Data4: 930912225
-    Path: "event:/\u041C\u0443\u0437\u044B\u043A\u0430/\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &1987617155002962860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1449,6 @@ GameObject:
   m_Component:
   - component: {fileID: 369501136584842688}
   - component: {fileID: 2396361374160197875}
-  - component: {fileID: 3221133708595891265}
   m_Layer: 0
   m_Name: OpenShop
   m_TagString: Untagged
@@ -1643,38 +1610,6 @@ MonoBehaviour:
       mRTL_ConvertNumbers: 0
       m_DontLocalizeParameters: 0
   _background: {fileID: 2780641278491211072, guid: 875ddc86548afdb488112959a64dcd82, type: 3}
-  _studioEvent: {fileID: 3221133708595891265}
---- !u!114 &3221133708595891265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2512637853362875454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 1677170758
-      Data2: 1249426133
-      Data3: -754328678
-      Data4: 930912225
-    Path: "event:/\u041C\u0443\u0437\u044B\u043A\u0430/\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &2892089517383983422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,7 +1881,6 @@ GameObject:
   m_Component:
   - component: {fileID: 306713945367471259}
   - component: {fileID: 3809035479035599141}
-  - component: {fileID: 4745604929910742934}
   m_Layer: 0
   m_Name: OpenShop
   m_TagString: Untagged
@@ -2075,39 +2009,8 @@ MonoBehaviour:
       mRTL_MaxLineLength: 0
       mRTL_ConvertNumbers: 0
       m_DontLocalizeParameters: 0
-  _studioEvent: {fileID: 4745604929910742934}
+  _studioEvent: {fileID: 0}
   _background: {fileID: 6984877853463997981, guid: 2eab97914b751724a8c04e2b14ff5b0d, type: 3}
---- !u!114 &4745604929910742934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3605957594996605032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 1677170758
-      Data2: 1249426133
-      Data3: -754328678
-      Data4: 930912225
-    Path: "event:/\u041C\u0443\u0437\u044B\u043A\u0430/\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &3914022578129952430
 GameObject:
   m_ObjectHideFlags: 0
@@ -7167,68 +7070,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6285704753469475885, guid: a3633ebe219e4df4faa327c0b1be04b3, type: 3}
   m_PrefabInstance: {fileID: 2524926352880835981}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &2595508016272267721
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 7821603134849889273}
-    m_Modifications:
-    - target: {fileID: 656863408710339382, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
-      propertyPath: m_Name
-      value: Music Switch Parametr
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923867072174566376, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923867072174566376, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923867072174566376, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923867072174566376, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923867072174566376, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923867072174566376, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923867072174566376, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923867072174566376, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923867072174566376, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7923867072174566376, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
---- !u!4 &5328360705491431969 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7923867072174566376, guid: d71b88735b0a4f2478301c73b9c14617, type: 3}
-  m_PrefabInstance: {fileID: 2595508016272267721}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2685098211755396174
 PrefabInstance:
@@ -55126,9 +54967,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6838419908720450096, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1870641622259560375}
-    - targetCorrespondingSourceObject: {fileID: 6838419908720450096, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 5328360705491431969}
     - targetCorrespondingSourceObject: {fileID: 6838419908720450096, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6724313937990199183}

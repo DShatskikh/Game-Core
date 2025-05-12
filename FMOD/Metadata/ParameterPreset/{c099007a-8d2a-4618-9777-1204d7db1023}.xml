@@ -16,21 +16,23 @@
 			<value>2</value>
 		</property>
 		<property name="maximum">
-			<value>6</value>
+			<value>8</value>
 		</property>
 		<property name="enumerationLabels">
+			<value>Тишина</value>
 			<value>Основная локация</value>
 			<value>Бой</value>
 			<value>Меню</value>
 			<value>Заставка</value>
 			<value>Проигрыш</value>
 			<value>Магазин</value>
+			<value>Подземелье</value>
 		</property>
 		<property name="isGlobal">
 			<value>true</value>
 		</property>
 		<property name="initialValue">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<property name="isExposedRecursively">
 			<value>false</value>

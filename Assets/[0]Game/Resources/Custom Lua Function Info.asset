@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Custom Lua Function Info
   m_EditorClassIdentifier: 
   conditionFunctions: []
-  scriptFunctions: []
+  scriptFunctions:
+  - functionName: OpenSaveScreen
+    parameters: 
+    returnValue: 0

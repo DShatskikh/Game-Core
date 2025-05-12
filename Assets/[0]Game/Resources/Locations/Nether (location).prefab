@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 986463550564492629, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
       propertyPath: m_Name
-      value: Nether (location) Variant
+      value: Nether (location)
       objectReference: {fileID: 0}
     - target: {fileID: 2272562125743521065, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
       propertyPath: m_Size.x
@@ -57510,6 +57510,10 @@ PrefabInstance:
     - target: {fileID: 3303112222548871427, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
       value: 48.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693325806449454126, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
+      propertyPath: Value
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6838419908720450096, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
       propertyPath: m_LocalPosition.x

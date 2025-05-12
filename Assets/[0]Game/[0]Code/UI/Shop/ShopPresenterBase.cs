@@ -11,6 +11,9 @@ namespace Game
 {
     public abstract class ShopPresenterBase : IDisposable
     {
+        private const string MUSIC_EVENT_PARAMETER_PATH = "Игровая ситуация";
+        private const int MUSIC_EVENT_INDEX_HASH = 6;
+        
         protected readonly ShopView _shopView;
         private readonly GameStateController _gameStateController;
         protected readonly MainInventory _mainInventory;
@@ -19,16 +22,18 @@ namespace Game
         private readonly ShopButton _shopButtonPrefab;
         private readonly ScreenManager _screenManager;
 
-        protected List<ShopButton> _productButtons = new();
+        private List<ShopButton> _productButtons = new();
         private List<ShopButton> _speakButtons = new();
         private List<ShopButton> _actButtons = new();
         protected Product[] _products;
         protected List<SpeakData> _speakData = new();
+        
+        private readonly float _startMusicParameterIndex;
 
         public ShopPresenterBase(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
             MainInventory mainInventory, WalletService walletService, 
-            DiContainer container, StudioEventEmitter studioEmitter, ShopBackground backgroundPrefab, 
+            DiContainer container, ShopBackground backgroundPrefab, 
             ScreenManager screenManager)
         {
             _shopView = Object.Instantiate(shopViewPrefab);
@@ -40,7 +45,11 @@ namespace Game
             _screenManager = screenManager;
 
             _gameStateController.OpenDialog();
-            studioEmitter.Play();
+            
+            RuntimeManager.StudioSystem.getParameterByName(MUSIC_EVENT_PARAMETER_PATH,
+                out float startMusicParameterIndex);
+            _startMusicParameterIndex = startMusicParameterIndex;
+            RuntimeManager.StudioSystem.setParameterByName(MUSIC_EVENT_PARAMETER_PATH, MUSIC_EVENT_INDEX_HASH);
 
             container.Inject(_shopView.GetMonologueText);
 
@@ -305,6 +314,7 @@ namespace Game
         
         private void Close()
         {
+            RuntimeManager.StudioSystem.setParameterByName(MUSIC_EVENT_PARAMETER_PATH, _startMusicParameterIndex);
             Dispose();
         }
 

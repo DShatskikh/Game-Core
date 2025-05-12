@@ -581,6 +581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9169174733938006394}
   - component: {fileID: 7025171199441953608}
+  - component: {fileID: 737324659501951760}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -618,16 +619,15 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -2064565605
-      Data2: 1139575584
-      Data3: -819027571
-      Data4: 29081220
-    Path: "event:/\u041C\u0443\u0437\u044B\u043A\u0430/\u0424\u043E\u043D\u043E\u0432\u0430\u044F
-      \u043C\u0443\u0437\u044B\u043A\u0430"
+      Data1: -15751778
+      Data2: 1174451347
+      Data3: 1434656913
+      Data4: -1669157669
+    Path: "event:/\u041C\u0443\u0437\u044B\u043A\u0430/\u041C\u0443\u0437\u044B\u043A\u0430"
   Event: 
   EventPlayTrigger: 1
   EventStopTrigger: 2
-  AllowFadeout: 1
+  AllowFadeout: 0
   TriggerOnce: 0
   Preload: 0
   NonRigidbodyVelocity: 0
@@ -635,6 +635,22 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!114 &737324659501951760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557880604382106883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b0e04e2572f9a940a47465f6f3c2f00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Parameter: "\u0418\u0433\u0440\u043E\u0432\u0430\u044F \u0441\u0438\u0442\u0443\u0430\u0446\u0438\u044F"
+  TriggerEvent: 11
+  Value: 0
 --- !u!1 &6879901898199224546
 GameObject:
   m_ObjectHideFlags: 0

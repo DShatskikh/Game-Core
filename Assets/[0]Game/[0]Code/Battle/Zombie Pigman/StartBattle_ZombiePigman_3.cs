@@ -1,5 +1,4 @@
-﻿using FMODUnity;
-using I2.Loc;
+﻿using I2.Loc;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -13,9 +12,6 @@ namespace Game
 
         [SerializeField]
         private BattleController_ZombiePigman_3.InitData _initData;
-        
-        [SerializeField]
-        private StudioEventEmitter _studioEventEmitter;
         
         [SerializeField]
         private SerializableDictionary<string, LocalizedString> _localizedStrings;
@@ -44,7 +40,7 @@ namespace Game
             installer.CreatePresenterCommand = () =>
             {
                 _diContainer.BindFactory<BattleController_ZombiePigman_3, BattleController_ZombiePigman_3.Factory>()
-                    .WithArguments(_initData, _studioEventEmitter, _localizedStrings);
+                    .WithArguments(_initData, _localizedStrings);
                 
                 var factory = _diContainer.TryResolve<BattleController_ZombiePigman_3.Factory>();
                 _diContainer.Unbind<BattleController_ZombiePigman_3.Factory>();

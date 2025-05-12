@@ -44,6 +44,7 @@ namespace Game
             Container.Bind<ScreenManager>().AsSingle().WithArguments(_screenConfig, _ui).NonLazy();
             Container.Bind<CoroutineRunner>().FromInstance(_coroutineRunner).AsSingle().NonLazy();
             Container.Bind<HeartModeService>().AsSingle().WithArguments(_heartIcons).NonLazy();
+            Container.Bind<LuaCommandRegister>().AsSingle().NonLazy();
         }
     }
 }

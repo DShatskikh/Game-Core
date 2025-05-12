@@ -5,5 +5,6 @@
         MAIN = 0,
         TRANSITION = 1,
         GAME_OVER = 2,
+        SAVE = 3,
     }
 }

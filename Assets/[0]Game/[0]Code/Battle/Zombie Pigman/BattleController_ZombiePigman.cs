@@ -21,12 +21,12 @@ namespace Game
 
         public BattleController_ZombiePigman(BattleView view, ShopButton prefabButton, MainInventory inventory, 
             GameStateController gameStateController, InitData initData, BattlePoints points, Player player,
-            Arena arena, Heart heart, StudioEventEmitter battleThemeEmitter, DiContainer container,
+            Arena arena, Heart heart, DiContainer container,
             CinemachineCamera virtualCamera, TurnProgressStorage turnProgressStorage, 
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, 
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs) : base(view, prefabButton, inventory, 
-            gameStateController, points, player, arena, heart, battleThemeEmitter, container, virtualCamera, 
+            gameStateController, points, player, arena, heart, container, virtualCamera, 
             turnProgressStorage, timeBasedTurnBooster, enemyBattleButton, screenManager, attackIndicator, nextButton,
             localizedPairs)
         {

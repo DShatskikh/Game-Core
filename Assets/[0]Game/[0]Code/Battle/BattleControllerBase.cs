@@ -14,7 +14,8 @@ namespace Game
 {
     public abstract class BattleControllerBase : IGameGameOvertListener
     {
-        private const string START_BATTLE_SOUND_PATH = "event:/Звуки/Битва/Начало боя";
+        private const string MUSIC_EVENT_PARAMETER_PATH = "Игровая ситуация";
+        private const int MUSIC_EVENT_INDEX_HASH = 2;
         
         private readonly BattleView _view;
         private readonly ShopButton _prefabButton;
@@ -35,7 +36,6 @@ namespace Game
         private readonly TimeBasedTurnBooster _timeBasedTurnBooster;
         private readonly ScreenManager _screenManager;
         private readonly AttackIndicator _attackIndicator;
-        private readonly StudioEventEmitter _battleThemeEmitter;
         private readonly INextButton _nextButton;
         private readonly SerializableDictionary<string, LocalizedString> _localizedPairs;
         private readonly int _damage = 5;
@@ -50,10 +50,11 @@ namespace Game
         private protected int _attackIndex;
         private Item _attackItem;
         private readonly bool _isRun = true;
-        
+        private float _startMusicParameterIndex;
+
         public BattleControllerBase(BattleView view, ShopButton prefabButton, MainInventory inventory, 
             GameStateController gameStateController, BattlePoints points, Player player,
-            Arena arena, Heart heart, StudioEventEmitter battleThemeEmitter, DiContainer container,
+            Arena arena, Heart heart, DiContainer container,
             CinemachineCamera virtualCamera, TurnProgressStorage turnProgressStorage, 
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, 
             AttackIndicator attackIndicator, INextButton nextButton, SerializableDictionary<string, LocalizedString> localizedPairs)
@@ -73,7 +74,6 @@ namespace Game
             _enemyPrefabButton = enemyBattleButton;
             _screenManager = screenManager;
             _attackIndicator = attackIndicator;
-            _battleThemeEmitter = battleThemeEmitter;
             _nextButton = nextButton;
             _localizedPairs = localizedPairs;
         }
@@ -409,8 +409,6 @@ namespace Game
                 _view.ToggleInfo(true);
                 _view.SetInfoText(attackSlot.Item.MetaData.Description);
             };
-
-            RuntimeManager.PlayOneShot(START_BATTLE_SOUND_PATH);
         }
 
         private GameObject GetFirstActiveEnemyButton(List<EnemyBattleButton> enemyBattleButtons)
@@ -636,11 +634,14 @@ namespace Game
             await BattleIntroUseCases.WaitIntro(_points.GetPartyPositionsData(_player), 
                 _points.GetEnemiesPositionsData(_enemies));
             
+            RuntimeManager.StudioSystem.getParameterByName(MUSIC_EVENT_PARAMETER_PATH,
+                out float startMusicParameterIndex);
+            _startMusicParameterIndex = startMusicParameterIndex;
+            RuntimeManager.StudioSystem.setParameterByName(MUSIC_EVENT_PARAMETER_PATH, MUSIC_EVENT_INDEX_HASH);
+            
             Turn();
             
             await ShowEnemiesReactions(GetStartReactions());
-            
-            _battleThemeEmitter.Play();
             EventSystem.current.SetSelectedGameObject(_view.GetAttackButton.gameObject);
         }
 
@@ -844,13 +845,12 @@ namespace Game
 
             Object.Destroy(_view.gameObject);
             _gameStateController.CloseBattle();
-            _battleThemeEmitter.Stop();
+            RuntimeManager.StudioSystem.setParameterByName(MUSIC_EVENT_PARAMETER_PATH, _startMusicParameterIndex);
         }
         
         private protected virtual void Death()
         {
             Debug.Log("GameOver");
-            _battleThemeEmitter.Stop();
             Object.Destroy(_view.gameObject);
             _gameStateController.GameOver();
 

@@ -3428,7 +3428,6 @@ GameObject:
   - component: {fileID: 1173570728}
   - component: {fileID: 1173570729}
   - component: {fileID: 1173570725}
-  - component: {fileID: 1173570730}
   m_Layer: 0
   m_Name: StartBattle (Zombie Pigman 3)
   m_TagString: Untagged
@@ -3521,7 +3520,6 @@ MonoBehaviour:
     - {fileID: 1344649036916751669, guid: 485bb024625801b4288b3f86db0656a9, type: 3}
     ThreeZombiePigmanAttacks:
     - {fileID: 1344649036916751669, guid: 485bb024625801b4288b3f86db0656a9, type: 3}
-  _studioEventEmitter: {fileID: 1173570730}
   _localizedStrings:
     m_keys:
     - Attack
@@ -3537,37 +3535,6 @@ MonoBehaviour:
       mRTL_MaxLineLength: 0
       mRTL_ConvertNumbers: 0
       m_DontLocalizeParameters: 0
---- !u!114 &1173570730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173570724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -66688733
-      Data2: 1197716395
-      Data3: -453240138
-      Data4: 1814300400
-    Path: "event:/\u041C\u0443\u0437\u044B\u043A\u0430/\u0411\u043E\u0439"
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &1220962811
 GameObject:
   m_ObjectHideFlags: 0
@@ -4142,45 +4109,13 @@ GameObject:
   - component: {fileID: 1362548292}
   - component: {fileID: 1362548291}
   - component: {fileID: 1362548290}
-  - component: {fileID: 1362548289}
   m_Layer: 0
   m_Name: StartBattle (Zombie Pigman)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1362548289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362548288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -66688733
-      Data2: 1197716395
-      Data3: -453240138
-      Data4: 1814300400
-    Path: "event:/\u041C\u0443\u0437\u044B\u043A\u0430/\u0411\u043E\u0439"
-  Event: 
-  EventPlayTrigger: 0
-  EventStopTrigger: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
+  m_IsActive: 0
 --- !u!61 &1362548290
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4242,7 +4177,6 @@ MonoBehaviour:
   _installerPrefab: {fileID: 4886416113025025765, guid: cefccb6127741a54ea5bce8f32052922, type: 3}
   _initData:
     Enemy_ZombiePigman: {fileID: 612005657}
-  _studioEventEmitter: {fileID: 1362548289}
   _localizedStrings:
     m_keys:
     - Attack

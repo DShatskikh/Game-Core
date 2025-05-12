@@ -25,9 +25,6 @@ namespace Game
         [SerializeField]
         private ShopBackground _background;
 
-        [SerializeField]
-        private StudioEventEmitter _studioEvent;
-        
         private DiContainer _diContainer;
 
         [Inject]
@@ -53,7 +50,7 @@ namespace Game
             }
             
             _diContainer.BindFactory<ShopPresenter_Notch, ShopPresenter_Notch.Factory>()
-                .WithArguments(_shopViewPrefab, _prefab, _initData, inscriptionsContainer, _studioEvent, _background);
+                .WithArguments(_shopViewPrefab, _prefab, _initData, inscriptionsContainer, _background);
 
             var factory = _diContainer.TryResolve<ShopPresenter_Notch.Factory>();
             factory.Create();

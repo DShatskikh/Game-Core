@@ -167,7 +167,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 986463550564492629, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
       propertyPath: m_Name
-      value: Test_Arena_Boss Variant
+      value: Test_Arena_Boss
       objectReference: {fileID: 0}
     - target: {fileID: 2475165797563835484, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
       propertyPath: m_Size.x
@@ -17420,6 +17420,10 @@ PrefabInstance:
     - target: {fileID: 2475165797563835484, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
       propertyPath: m_Tiles.Array.data[719].second.m_TileObjectToInstantiateIndex
       value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693325806449454126, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
+      propertyPath: Value
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6838419908720450096, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
       propertyPath: m_LocalPosition.x
