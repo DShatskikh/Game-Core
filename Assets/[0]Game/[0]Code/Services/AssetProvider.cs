@@ -15,7 +15,5 @@ namespace Game
         public static AssetProvider Instance { get; private set; }
 
         public QuantumConsole QuantumConsole;
-        public EnderChestScreen EnderChestScreen;
-        public BattleController BattleController;
     }
 }

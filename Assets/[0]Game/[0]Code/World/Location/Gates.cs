@@ -51,7 +51,7 @@ namespace Game
         {
             if (RepositoryStorage.Get<Data>(SAVE_HASH).IsOpened)
             {
-                _gameStateController.CloseDialog();
+                _gameStateController.CloseCutscene();
                 _transitionTrigger.gameObject.SetActive(true);
                 GetComponent<Collider2D>().enabled = false;
 
@@ -67,7 +67,7 @@ namespace Game
 
         private void LeverUsable()
         {
-            _gameStateController.OpenDialog();
+            _gameStateController.OpenCutscene();
             
             if (!RepositoryStorage.Get<Lever.Data>("TestArena_Laver1").IsActivated || !RepositoryStorage.Get<Lever.Data>("TestArena_Laver2").IsActivated)
             {
@@ -81,7 +81,7 @@ namespace Game
                 .DOMoveY(_upPoint.position.y, 2)
                 .OnComplete(() =>
                 {
-                    _gameStateController.CloseDialog();
+                    _gameStateController.CloseCutscene();
                     _transitionTrigger.gameObject.SetActive(true);
                     GetComponent<Collider2D>().enabled = false;
                     
@@ -93,7 +93,7 @@ namespace Game
         {
             yield return new WaitForSeconds(1);
             _lever.Reset();
-            _gameStateController.CloseDialog();
+            _gameStateController.CloseCutscene();
         }
     }
 }

@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9103473981098461960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: "event:/\u0417\u0432\u0443\u043A\u0438/\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0441\u044C"
+  m_EditorClassIdentifier: 
+  Path: "event:/\u0417\u0432\u0443\u043A\u0438/\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u043B\u0438\u0441\u044C"
+  Guid:
+    Data1: 28918796
+    Data2: 1313392854
+    Data3: -1286477907
+    Data4: 787564882
+  Banks:
+  - {fileID: -2374295709359499160}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-8712974680716955044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,10 +354,10 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638826779017366432
+  lastModified: 638828585072172710
   FileSizes:
   - Name: Desktop
-    Value: 16294400
+    Value: 16303296
   Exists: 1
 --- !u!114 &-2320241791731008783
 MonoBehaviour:
@@ -510,13 +537,14 @@ MonoBehaviour:
   - {fileID: -8712974680716955044}
   - {fileID: 2875992002665162324}
   - {fileID: 5155628507890403202}
+  - {fileID: -9103473981098461960}
   EditorParameters:
   - {fileID: -2968169414142040041}
   MasterBanks:
   - {fileID: -2374295709359499160}
   StringsBanks:
   - {fileID: 4812863242613628976}
-  cacheTime: 638826779017386435
+  cacheTime: 638828585072193218
   cacheVersion: 131624
 --- !u!114 &415007838709113536
 MonoBehaviour:
@@ -672,10 +700,10 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638826779017386435
+  lastModified: 638828585072193218
   FileSizes:
   - Name: Desktop
-    Value: 1970
+    Value: 2022
   Exists: 1
 --- !u!114 &5155628507890403202
 MonoBehaviour:

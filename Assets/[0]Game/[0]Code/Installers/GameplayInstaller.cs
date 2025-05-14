@@ -12,6 +12,7 @@ namespace Game
         [SerializeField]
         private Player _player;
 
+        // Регистрация сервисов
         public override void InstallBindings()
         {
             Container.Bind<CinemachineConfiner2D>().FromInstance(_cinemachineConfiner).AsSingle();

@@ -17,14 +17,14 @@ namespace Game
         public void OpenDialogueState()
         {
             if (_isInit)
-                _gameStateController.OpenDialog();
+                _gameStateController.OpenCutscene();
             else
                 _isInit = true;
         }
         
         public void CloseDialogueState()
         {
-            _gameStateController.CloseDialog();
+            _gameStateController.CloseCutscene();
         }
     }
 }

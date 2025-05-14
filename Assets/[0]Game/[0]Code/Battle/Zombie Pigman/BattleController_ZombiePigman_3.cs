@@ -43,18 +43,18 @@ namespace Game
             if ((_initData.Enemy_ZombiePigman.CanMercy && !_initData.Enemy_ZombiePigman.IsMercy) 
                 || (_initData.Enemy_ZombiePigman_1.CanMercy && !_initData.Enemy_ZombiePigman_1.IsMercy) 
                 || (_initData.Enemy_ZombiePigman_2.CanMercy && !_initData.Enemy_ZombiePigman_2.IsMercy))
-                return "Зомби щадит вас";
+                return "Свинозомби щадит вас";
 
             if (_initData.Enemy_ZombiePigman.Health <= 0 || _initData.Enemy_ZombiePigman_1.Health <= 0 || _initData.Enemy_ZombiePigman_2.Health <= 0)
                 return "Атмосфера накалилась";
             
-            if (_numberTurn == 0)
-                return "Зомби ждут вашего хода";
+            // if (_numberTurn == 0)
+            //     return "";
             
-            if (_numberTurn == 1)
-                return "Зомби просто стоят и тупят";
+            // if (_numberTurn == 1)
+            //     return "Свинозомби просит добавки";
             
-            return "Зомби покорно ждут вашего хода";
+            return "Свинозомби хотят вас побить";
         }
 
         private protected override Attack GetAttack()

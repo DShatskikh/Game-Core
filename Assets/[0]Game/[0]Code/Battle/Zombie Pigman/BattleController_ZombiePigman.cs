@@ -37,29 +37,19 @@ namespace Game
         private protected override string GetStateText()
         {
             if ((_initData.Enemy_ZombiePigman.CanMercy && !_initData.Enemy_ZombiePigman.IsMercy))
-                return "Товарищь щадит вас";
-
-            if (_initData.Enemy_ZombiePigman.Health <= 0)
-                return "Товарищ хочет отправить вас в Гулаг";
+                return "Свинозомби нечем драться он щадит вас";
             
-            return "Товарищ ждет пока вы покащите документы";
+            return "Свинозомби хочет вас побить";
         }
 
         private protected override Attack GetAttack()
         {
-            var aliveCount = 0;
-
-            foreach (var enemy in _enemies)
-            {
-                if (enemy.Health > 0)
-                    aliveCount++;
-            }
-
-            Debug.Log($"{aliveCount} {_enemies[0].Attacks.Length}");
-            
             if (_enemies[0].Attacks.Length <= _attackIndex)
                 _attackIndex = 0;
                 
+            if (_initData.Enemy_ZombiePigman.IsBuySword)
+                return null;
+            
             return _enemies[0].Attacks[_attackIndex];
         }
 

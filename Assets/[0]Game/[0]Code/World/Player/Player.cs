@@ -202,10 +202,6 @@ namespace Game
                 _isRun.Dispose();
                 _direction.Dispose();
                 
-                //_currentSpeed.Changed -= _stepsSoundPlayer.OnSpeedChange;
-                //_isRun.Changed -= _stepsSoundPlayer.OnIsRunChange;
-                //_direction.Changed -= _view.OnDirectionChange;
-                //_currentSpeed.Changed -= _view.OnSpeedChange;
                 _playerInput.actions["Move"].canceled -= OnInputMove;
                 _playerInput.actions["Submit"].canceled -= OnSubmit;
             }

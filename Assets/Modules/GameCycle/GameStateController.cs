@@ -62,6 +62,7 @@ namespace Game
             }
         }
         
+        // Переход в состояние начала игры
         public void StartGame() 
         {
             if (_gameState != GameState.OFF)
@@ -160,7 +161,7 @@ namespace Game
             }
         }
 
-        public void OpenDialog()
+        public void OpenCutscene()
         {
             _gameState = GameState.CUTSCENE;
             
@@ -171,7 +172,7 @@ namespace Game
             }
         }
 
-        public void CloseDialog()
+        public void CloseCutscene()
         {
             if (_gameState != GameState.CUTSCENE)
                 return;

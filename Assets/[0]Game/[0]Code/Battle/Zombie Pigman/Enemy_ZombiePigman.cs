@@ -43,6 +43,9 @@ namespace Game
         
         [SerializeField]
         private int _money;
+
+        [SerializeField]
+        private SpriteRenderer _sword;
         
         private int _health;
         private Sequence _damageSequence;
@@ -50,6 +53,9 @@ namespace Game
         private Sequence _shakeSequence;
         private bool _isStartDeathAnimation;
         private bool _isSelectedInfo;
+        private bool _isBuySword;
+        
+        public bool IsBuySword => _isBuySword;
 
         public ActionBattle[] Actions
         {
@@ -63,6 +69,9 @@ namespace Game
                         continue;
 
                     if (i == 0 && _isSelectedInfo)
+                        continue;
+                    
+                    if (i == 3 && _isBuySword)
                         continue;
                     
                     var action = _actions[i];
@@ -151,21 +160,26 @@ namespace Game
             {
                 case BattleActionType.Attack:
                     if (Health < MaxHealth * 0.3f) 
-                        return "Я передумал проверять документы";
+                        return "Можно не надо?";
                     else
-                        return "Это не потоварищески";
-
-                case BattleActionType.Item:
-                    if (item != null && item.MetaData.Name == "Лечебная трава")
-                        return "(Зомби смотрит с интересом)";
-                    else
-                        return "(Зырк)";
+                        return "Эээ...";
 
                 case BattleActionType.Mercy:
-                    return "(Всё впорядке вы гражданан сервера)";
+                    if (_isBuySword)
+                    {
+                        return "С тобой приятно иметь дело, давай пока";
+                    }
+                    
+                    return "Я обьелся мне лень драться";
+                    // return "Он был моим лучшим другом, ну лан пофиг";
 
                 case BattleActionType.NoAction:
-                    return "Покажите свои документы";
+                    if (_isBuySword)
+                    {
+                        return "А чем сражаться?";
+                    }
+                    
+                    return "Хрю-хрю";
                 
                 default:
                     return "(...)";
@@ -184,17 +198,24 @@ namespace Game
         
         public string GetStartReaction(int index)
         {
-            return "Здравствуйте товарищ, покажите ваши документы";
+            return "Ты дурачек?";
         }
 
         public string GetActionReaction(ActionBattle actionBattle)
         {
+            var action = Actions.First(x => x.Name == actionBattle.Name);
+            
             if (actionBattle.Name == _actions[2].Name)
             {
                 _isSelectedInfo = true;
             }
+
+            if (actionBattle.Name == _actions[3].Name)
+            {
+                _isBuySword = true;
+                _sword.gameObject.SetActive(false);
+            }
             
-            var action = Actions.First(x => x.Name == actionBattle.Name);
             return action.Reaction;
         }
 

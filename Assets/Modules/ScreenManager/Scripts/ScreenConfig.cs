@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Конфиг хранящий компоненты окон
     [CreateAssetMenu(fileName = "ScreenConfig", menuName = "Data/ScreenConfig", order = 200)]
     public sealed class ScreenConfig : ScriptableObject
     {

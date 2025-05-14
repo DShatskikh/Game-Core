@@ -510,30 +510,35 @@ namespace Game
         private async UniTask EnemyTurn()
         {
             _heart.transform.position = _arena.transform.position;
-            
+
             _arena.gameObject.SetActive(true);
             var attackPrefab = GetAttack();
             _heart.gameObject.SetActive(true);
-            await _arena.AwaitSetSize(attackPrefab.GetSizeArena);
-            
-            _view.ToggleProgressBar(true);
-            _turnProgressStorage.Reset();
-            _heart.SetProgress(attackPrefab.GetAddProgress);
+           
+            if (attackPrefab)
+            {
+                await _arena.AwaitSetSize(attackPrefab.GetSizeArena);
 
-            //await UniTask.WaitForSeconds(1f);
-            
-            var attack = Object.Instantiate(attackPrefab, _arena.transform.position, Quaternion.identity, _arena.transform);
-            _container.Inject(attack);
-            _attackIndex++;
-            
-            _timeBasedTurnBooster.ToggleActivate(true);
-            
-            await UniTask.WaitUntil(() => _turnProgressStorage.Progress.Value == 100);
-            attack.Hide();
-            
-            await UniTask.WaitForSeconds(1f);
-            Object.Destroy(attack.gameObject);
-            
+                _view.ToggleProgressBar(true);
+                _heart.SetProgress(attackPrefab.GetAddProgress);
+                _timeBasedTurnBooster.ToggleActivate(true);
+                _turnProgressStorage.Reset();
+                
+                var attack = Object.Instantiate(attackPrefab, _arena.transform.position, Quaternion.identity, _arena.transform);
+                _container.Inject(attack);
+                _attackIndex++;
+
+                await UniTask.WaitUntil(() => _turnProgressStorage.Progress.Value == 100);
+                attack.Hide();
+                
+                await UniTask.WaitForSeconds(1f);
+                Object.Destroy(attack.gameObject);
+            }
+            else
+            {
+                
+            }
+
             await _arena.AwaitSetSize(new Vector2(3, 3));
             
             _arena.gameObject.SetActive(false);

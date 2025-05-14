@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
+using Object = UnityEngine.Object;
 
 namespace Game
 {
+    [Serializable]
     public sealed class SavePresenter : IScreenPresenter
     {
         private SaveView _view;
@@ -17,18 +21,49 @@ namespace Game
             _screenManager = screenManager;
             _gameStateController = gameStateController;
 
-            _gameStateController.OpenDialog();
+            _gameStateController.OpenCutscene();
             
-            //_view.GetButton.onClick.AddListener(OnClick);
-            //EventSystem.current.SetSelectedGameObject(_view.GetButton.gameObject);
+            _view.GetSaveButton.onClick.AddListener(OnClickSaveButton);
+            _view.GetReturnButton.onClick.AddListener(OnClickReturnButton);
+            EventSystem.current.SetSelectedGameObject(_view.GetSaveButton.gameObject);
         }
-        
+
+        private void OnClickSaveButton()
+        {
+            WaitSaveAnimation().Forget();
+        }
+
+        private void OnClickReturnButton()
+        {
+            _screenManager.Close(ScreensEnum.SAVE);
+        }
+
+        private async UniTask WaitSaveAnimation()
+        {
+            _view.GetSaveButton.gameObject.SetActive(false);
+            _view.GetReturnButton.gameObject.SetActive(false);
+            _view.GetSavedLabel.gameObject.SetActive(true);
+            _view.GetInfoLabel.color = Color.yellow;
+            _view.PlaySound();
+            
+            await UniTask.WaitForSeconds(2);
+            
+            _screenManager.Close(ScreensEnum.SAVE);
+        }
+
         public IScreenPresenter Prototype() => 
-            new GameOverPresenter();
+            new SavePresenter();
 
         public void Destroy()
         {
+            PlayerOn().Forget();
             Object.Destroy(_view.gameObject);
+        }
+
+        private async UniTask PlayerOn()
+        {
+            await UniTask.WaitForSeconds(0.5f);
+            _gameStateController.CloseCutscene();
         }
     }
 }

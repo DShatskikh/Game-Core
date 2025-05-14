@@ -1,7 +1,8 @@
 ﻿namespace Game
 {
     public interface IGameListener { }
-        
+    
+    // Пример интерфейса вызывается при старте игры
     public interface IGameStartListener : IGameListener
     {
         void OnStartGame();

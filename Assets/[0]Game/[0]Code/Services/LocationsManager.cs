@@ -32,7 +32,6 @@ namespace Game
                 return;
             
             _location = _factory.Create(prefab);
-
             _player.transform.position = _location.GetPoints[pointIndex].transform.position;
         }
     }

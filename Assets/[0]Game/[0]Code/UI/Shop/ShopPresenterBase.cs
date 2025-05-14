@@ -44,7 +44,7 @@ namespace Game
             _shopButtonPrefab = shopButtonPrefab;
             _screenManager = screenManager;
 
-            _gameStateController.OpenDialog();
+            _gameStateController.OpenCutscene();
             
             RuntimeManager.StudioSystem.getParameterByName(MUSIC_EVENT_PARAMETER_PATH,
                 out float startMusicParameterIndex);
@@ -307,7 +307,7 @@ namespace Game
             var transitionScreen = (TransitionPresenter)_screenManager.Open(ScreensEnum.TRANSITION);
             transitionScreen.Hide(() =>
             {
-                _gameStateController.CloseDialog();
+                _gameStateController.CloseCutscene();
                 _screenManager.Close(ScreensEnum.TRANSITION);
             });
         }
