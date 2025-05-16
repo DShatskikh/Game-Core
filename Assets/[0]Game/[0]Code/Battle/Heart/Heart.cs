@@ -128,11 +128,13 @@ namespace Game
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
 
+            var icon = _heartModeService.GetIcon();
             _switchEffectView.gameObject.SetActive(true);
             _switchEffectView.transform.localScale = Vector3.one;
-            _switchEffectView.sprite = _heartModeService.GetIcon();
+            _switchEffectView.sprite = icon;
             _switchEffectSound.Play();
             _switchEffectView.color = _switchEffectView.color.SetA(0.5f);
+            _spriteRenderer.sprite = icon;
             
             var sequence = DOTween.Sequence();
             sequence
@@ -140,7 +142,6 @@ namespace Game
                 .Insert(0, _switchEffectView.DOColor(_switchEffectView.color.SetA(0), 0.5f))
                 .OnStepComplete(() =>
                 {
-                    _spriteRenderer.sprite = _heartModeService.GetIcon();
                     _mover.Enable();
                 })
                 .OnComplete(() =>

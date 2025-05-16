@@ -17,7 +17,7 @@ namespace Game
         private const string MUSIC_EVENT_PARAMETER_PATH = "Игровая ситуация";
         private const int MUSIC_EVENT_INDEX_HASH = 2;
         
-        private readonly BattleView _view;
+        protected readonly BattleView _view;
         private readonly ShopButton _prefabButton;
         private readonly BattlePoints _points;
         private readonly Player _player;
@@ -232,39 +232,25 @@ namespace Game
             }
         }
 
-        private void InitMercyButton()
+        private void InitAttackButton()
         {
-            _view.GetMercyButton.onClick.AddListener(() =>
+            _view.GetAttackButton.Init(_localizedPairs["Attack"], () =>
             {
                 CloseAllPanel();
 
-                _mercyButton.GetLabel.color = Color.white;
-
-                foreach (var enemy in _enemies)
-                {
-                    if (enemy.CanMercy && !enemy.IsMercy)
-                    {
-                        _mercyButton.GetLabel.color = Color.yellow;
-                        break;
-                    }
-                }
-
                 _view.ToggleTurnPanel(true);
-                _view.ToggleMercyContainer(true);
+                _view.ToggleAttacksContainer(true);
 
-                EventSystem.current.SetSelectedGameObject(_mercyButton.gameObject);
+                EventSystem.current.SetSelectedGameObject(_attackButtons[0].gameObject);
             });
             
-            _view.GetMercyButton.OnSelectAction += () =>
+            _view.GetAttackButton.OnSelectAction += () =>
             {
-                if (!_view.GetStateLabel.gameObject.activeSelf)
-                    _view.SetStateText(GetStateText());
-                
                 if (!_view.GetStateLabel.gameObject.activeSelf)
                     _view.SetStateText(GetStateText());
 
                 var isTurnActive = _view.GetTurnButton.gameObject.activeSelf;
-                
+
                 CloseAllPanel();
                 
                 if (isTurnActive)
@@ -350,25 +336,39 @@ namespace Game
             };
         }
 
-        private void InitAttackButton()
+        private void InitMercyButton()
         {
-            _view.GetAttackButton.Init(_localizedPairs["Attack"], () =>
+            _view.GetMercyButton.onClick.AddListener(() =>
             {
                 CloseAllPanel();
 
-                _view.ToggleTurnPanel(true);
-                _view.ToggleAttacksContainer(true);
+                _mercyButton.GetLabel.color = Color.white;
 
-                EventSystem.current.SetSelectedGameObject(_attackButtons[0].gameObject);
+                foreach (var enemy in _enemies)
+                {
+                    if (enemy.CanMercy && !enemy.IsMercy)
+                    {
+                        _mercyButton.GetLabel.color = Color.yellow;
+                        break;
+                    }
+                }
+
+                _view.ToggleTurnPanel(true);
+                _view.ToggleMercyContainer(true);
+
+                EventSystem.current.SetSelectedGameObject(_mercyButton.gameObject);
             });
             
-            _view.GetAttackButton.OnSelectAction += () =>
+            _view.GetMercyButton.OnSelectAction += () =>
             {
+                if (!_view.GetStateLabel.gameObject.activeSelf)
+                    _view.SetStateText(GetStateText());
+                
                 if (!_view.GetStateLabel.gameObject.activeSelf)
                     _view.SetStateText(GetStateText());
 
                 var isTurnActive = _view.GetTurnButton.gameObject.activeSelf;
-
+                
                 CloseAllPanel();
                 
                 if (isTurnActive)
@@ -507,7 +507,7 @@ namespace Game
             itemButton.OnSelectAction += () => select?.Invoke();
         }
 
-        private async UniTask EnemyTurn()
+        protected async UniTask EnemyTurn()
         {
             _heart.transform.position = _arena.transform.position;
 
@@ -549,7 +549,7 @@ namespace Game
             Turn();
         }
 
-        private void CloseAllPanel()
+        protected void CloseAllPanel()
         {
             _view.ToggleAttacksContainer(false);
             _view.ToggleItemsContainer(false);
@@ -622,7 +622,7 @@ namespace Game
             Exit().Forget();
         }
         
-        private string[] GetStartReactions()
+        protected string[] GetStartReactions()
         {
             var messages = new List<string>();
 
@@ -643,19 +643,24 @@ namespace Game
                 out float startMusicParameterIndex);
             _startMusicParameterIndex = startMusicParameterIndex;
             RuntimeManager.StudioSystem.setParameterByName(MUSIC_EVENT_PARAMETER_PATH, MUSIC_EVENT_INDEX_HASH);
-            
+
+            await StartBattle();
+        }
+
+        protected virtual async UniTask StartBattle()
+        {
             Turn();
             
             await ShowEnemiesReactions(GetStartReactions());
             EventSystem.current.SetSelectedGameObject(_view.GetAttackButton.gameObject);
         }
-
+        
         private async UniTask ShowEnemyMessage(IEnemy enemy, string message)
         {
             await enemy.MessageBox.AwaitShow(message);
         }
 
-        private async UniTask ShowEnemiesReactions(params string[] messages)
+        protected async UniTask ShowEnemiesReactions(params string[] messages)
         {
             var messageBoxes = new List<BattleMessageBox>();
 
@@ -699,11 +704,11 @@ namespace Game
             
             if (IsAllDontFight())
             {
-                EndFight();
+                EndFight().Forget();
                 return;
             }
             
-            EnemyTurn();
+            EnemyTurn().Forget();
         }
 
         private bool IsAllDontFight()
@@ -793,7 +798,6 @@ namespace Game
             
             _player.PlaySwordAttack();
             await UniTask.WaitForSeconds(0.5f);
-            //var attackEffect = Object.Instantiate(_inventory.Weapons[0].Effect, _initData.Enemy_Zombie.transform.position.AddY(0.5f), Quaternion.identity);
 
             if (damage == 0)
             {
@@ -803,6 +807,10 @@ namespace Game
             }
             
             enemy.Damage(damage);
+
+            _attackItem.TryGetComponent(out AttackComponent attackComponent);
+            
+            Object.Instantiate(attackComponent.Effect, ((MonoBehaviour)enemy).transform.position.AddY(0.5f), Quaternion.identity);
             
             if (enemy.Health <= 0)
             {
@@ -822,7 +830,6 @@ namespace Game
             }
 
             await UniTask.WaitForSeconds(1f);
-            //Object.Destroy(attackEffect.gameObject);
 
             if (enemy.Health <= 0)
             {

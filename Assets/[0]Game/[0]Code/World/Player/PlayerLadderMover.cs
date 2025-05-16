@@ -29,8 +29,11 @@ namespace Game
 
         public void Move(Vector2 directionValue, bool isRunValue)
         {
-            var speed = isRunValue ? 2 : 1;
+            if (directionValue.x == 0)
+                return;
             
+            var speed = isRunValue ? 2 : 1;
+
             if (directionValue.x < 0)
             {
                 _progress += Time.deltaTime * speed;

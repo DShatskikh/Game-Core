@@ -87,8 +87,10 @@ namespace Game
             // _textAnimatorPlayer.onTextShowed.AddListener(Stop);
             // _textAnimatorPlayer.onTypewriterStart.AddListener(OnTypewriterStart);
             // _button.SetActive(false);
-
-            Debug.Log(33);
+            
+            if (DialogueManager.currentConversationState == null)
+                return;
+            
             var text = DialogueManager.currentConversationState.subtitle.formattedText.text;
             Debug.Log(text);
             _textAnimatorPlayer.ShowText(text);

@@ -21,7 +21,7 @@ MonoBehaviour:
   - rid: 5757847957449474148
   - rid: 5757847957449474153
   - rid: 5757847957449474204
-  m_VersionTimestamp: 638824942911001000
+  m_VersionTimestamp: 638829392939410041
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: 925783984983585933}
@@ -98,7 +98,7 @@ MonoBehaviour:
   - rid: 5757847956154745201
   - rid: 5757847957449474183
   - rid: 5757847957449474223
-  m_VersionTimestamp: 638824942911031734
+  m_VersionTimestamp: 638829392939535473
   m_DebugInfo: {fileID: 6041482491846240190}
   m_RuntimeGraph: {fileID: 2260484261976550916}
   AssetID:
@@ -185,7 +185,7 @@ MonoBehaviour:
     - rid: 5757847956154745127
       type: {class: StartNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
       data:
-        Position: {x: 0, y: 0}
+        Position: {x: 90.399994, y: -3.9999998}
         ID:
           m_Value0: 7366447659672589502
           m_Value1: 6467897352782359170
@@ -638,7 +638,7 @@ MonoBehaviour:
           rid: 5757847957449474235
         m_EndedNodes:
           rid: 5757847957449474236
-        m_VersionTimestamp: 638824942911031734
+        m_VersionTimestamp: 638829392939535473
     - rid: 5757847957449474233
       type: {class: ParallelAllComposite, ns: Unity.Behavior, asm: Unity.Behavior}
       data:

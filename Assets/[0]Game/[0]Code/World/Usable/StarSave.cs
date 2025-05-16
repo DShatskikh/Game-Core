@@ -16,6 +16,7 @@ namespace Game
         [Inject]
         private void Construct(ScreenManager screenManager)
         {
+            // Получаем ScreenManager из DI контейнера
             _screenManager = screenManager;
         }
         

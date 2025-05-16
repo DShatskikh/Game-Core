@@ -23,16 +23,18 @@ namespace Game
                 _container = container;
             }
             
+            // Создание уровня
             public override Location Create(Location prefab)
             {
                 var location = Instantiate(prefab);
+                
+                // Прокидываем зависимости в компоненты обьекта уровня
                 _container.Inject(location);
 
+                // Прокидываем зависимости в дочерние обьекты уровня
                 foreach (var monoBehaviour in location.GetComponentsInChildren<MonoBehaviour>(true))
-                {
                     _container.Inject(monoBehaviour);
-                }
-                
+
                 return location;
             }
         }

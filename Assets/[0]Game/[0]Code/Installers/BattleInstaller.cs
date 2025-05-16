@@ -35,13 +35,15 @@ namespace Game
         private AttackIndicator _attackIndicator;
         
         public Func<BattleControllerBase> CreatePresenterCommand;
+        private BattleControllerBase _presenter;
 
         public override void InstallBindings()
         {
-            Container.Bind<Arena>().FromInstance(_arena).AsSingle();
             Container.Bind<BattleView>().FromInstance(_view).AsSingle();
+
             Container.Bind<ShopButton>().FromInstance(_buttonPrefab).AsSingle();
             Container.Bind<EnemyBattleButton>().FromInstance(_enemyBattleButton).AsSingle();
+            Container.Bind<Arena>().FromInstance(_arena).AsSingle();
             Container.Bind<BattlePoints>().FromInstance(_points).AsSingle();
             Container.Bind<Heart>().FromInstance(_heart).AsSingle();
             Container.Bind<CinemachineCamera>().FromInstance(_virtualCamera).AsSingle();
@@ -56,6 +58,11 @@ namespace Game
 
             foreach (var monoBehaviour in GetComponentsInChildren<MonoBehaviour>(true)) 
                 Container.Inject(monoBehaviour);
+        }
+
+        private void OnDestroy()
+        {
+            Container.UnbindAll();
         }
 
         [Inject]

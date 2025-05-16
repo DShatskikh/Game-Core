@@ -49,6 +49,7 @@ MonoBehaviour:
     - MoreMountains.Feedbacks.MMTools
     - MoreMountains.Feedbacks.TextMeshPro
     - MoreMountains.Tools
+    - NavMeshPlus
     - PixelCrushers
     - QFSW.QC
     - QFSW.QC.Grammar

@@ -22,7 +22,8 @@ namespace Game
 
         private void OnDestroy()
         {
-            _heartModeService.Upgrade -= Upgrade;
+            if (_heartModeService != null)
+                _heartModeService.Upgrade -= Upgrade;
         }
 
         private void Upgrade(Heart.Mode mode)
