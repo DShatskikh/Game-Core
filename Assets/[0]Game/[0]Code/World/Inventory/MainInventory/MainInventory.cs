@@ -9,6 +9,8 @@ namespace Game
         
         public Slot[] MainSlots = new Slot[SIZE];
         public Slot ArmorSlot = new();
+        public Slot WeaponSlot = new();
+        public Slot WeaponAdditionalSlot = new();
         
         public event Action<Item> OnItemAdded; 
         public event Action<Item> OnItemRemoved; 
@@ -28,6 +30,12 @@ namespace Game
 
         public void PutOn(Slot slot) => 
             InventoryUseCases.PutOn(this, slot);
+
+        public void EquipWeapon(ItemConfig weapon) => 
+            InventoryUseCases.EquipWeapon(this, weapon);
+
+        public void EquipAdditionalWeapon(ItemConfig additionalWeapon) => 
+            InventoryUseCases.EquipAdditionalWeapon(this, additionalWeapon);
 
         public void NotifyAddItem(Item item) => 
             OnItemAdded?.Invoke(item);

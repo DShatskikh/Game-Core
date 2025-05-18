@@ -3,6 +3,7 @@ using FMODUnity;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
+using Zenject;
 
 namespace Game
 {
@@ -38,8 +39,15 @@ namespace Game
         private SpriteRenderer _spriteRenderer;
         private Sprite _startSprite;
         private Collider2D _collider;
+        private MainRepositoryStorage _mainRepositoryStorage;
         public event Action OnUsable;
 
+        [Inject]
+        private void Construct(MainRepositoryStorage mainRepositoryStorage)
+        {
+            _mainRepositoryStorage = mainRepositoryStorage;
+        }
+        
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -51,8 +59,11 @@ namespace Game
         {
             if (_isWrite && !_saveKey.IsNullOrWhitespace())
             {
-                _isActivated = RepositoryStorage.Get<Data>(_saveKey).IsActivated;
-
+                if (_mainRepositoryStorage.TryGet(_saveKey, out Data data))
+                {
+                    _isActivated = data.IsActivated;
+                }
+                
                 if (_isActivated)
                 {
                     ActivateNoAnimation();
@@ -67,7 +78,7 @@ namespace Game
             _spriteRenderer.sprite = _activatedSprite;
 
             if (_isWrite && !_saveKey.IsNullOrWhitespace()) 
-                RepositoryStorage.Set(_saveKey, new Data(true));
+                _mainRepositoryStorage.Set(_saveKey, new Data(true));
 
             _activatedSound.Play();
             OnUsable?.Invoke();

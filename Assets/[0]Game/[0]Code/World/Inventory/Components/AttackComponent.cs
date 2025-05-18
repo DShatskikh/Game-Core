@@ -8,8 +8,9 @@ namespace Game
     {
         public int Attack;
         public GameObject Effect;
-        
+        public Sprite WeaponSprite;
+
         public IItemComponent Clone() => 
-            new AttackComponent() { Attack = Attack, Effect = Effect };
+            new AttackComponent() { Attack = Attack, Effect = Effect, WeaponSprite = WeaponSprite };
     }
 }

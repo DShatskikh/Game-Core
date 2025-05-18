@@ -2,8 +2,6 @@
     "name": "SaveSystem",
     "rootNamespace": "",
     "references": [
-        "GUID:454324f28083dd840988fe4c268e82f8",
-        "GUID:8624cc49d5e18834aaed7fb8913e038b",
         "GUID:4a4a00043450ff8459c396987c6e4655"
     ],
     "includePlatforms": [],

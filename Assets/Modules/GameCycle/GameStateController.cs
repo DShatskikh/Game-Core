@@ -61,6 +61,11 @@ namespace Game
                     fixedTickable.FixedTick(delta);
             }
         }
+
+        public void Off()
+        {
+            _gameState = GameState.OFF;
+        }
         
         // Переход в состояние начала игры
         public void StartGame() 

@@ -62,7 +62,7 @@ namespace Game
             _player.PlaySwordAttack();
             yield return new WaitForSeconds(0.5f);
             _enemyZombiePigman.Damage(1);
-            _mainInventory.MainSlots[0].Item.TryGetComponent(out AttackComponent attackComponent);
+            _mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent);
             Instantiate(attackComponent.Effect, _enemyZombiePigman.transform.position.AddY(0.5f), Quaternion.identity);
             yield return _enemyZombiePigman.transform.DOJump(_enemyZombiePigman.transform.position.AddX(1), 1, 1, 1);
             yield return new WaitForSeconds(1);

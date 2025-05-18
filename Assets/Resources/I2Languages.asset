@@ -466,6 +466,54 @@ MonoBehaviour:
       - 
       Flags: 0000
       Languages_Touch: []
+    - Term: Item/Wood Sword
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0414\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u044B\u0439 \u043C\u0435\u0447"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Gold Sword
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0417\u043E\u043B\u043E\u0442\u043E\u0439 \u043C\u0435\u0447"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/God Sword
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041C\u0435\u0447 \u0431\u043E\u0433\u0430"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/God Sword Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "9999+ \u0443\u0440\u043E\u043D"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Gold Sword Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0417\u043E\u043B\u043E\u0442\u043E\u0439 3423432"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Wood Sword Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0414\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u044B\u0439 4"
+      - 
+      Flags: 0000
+      Languages_Touch: []
     CaseInsensitiveTerms: 0
     OnMissingTranslation: 1
     mTerm_AppName: 

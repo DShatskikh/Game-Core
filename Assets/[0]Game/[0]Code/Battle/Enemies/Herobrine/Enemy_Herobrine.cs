@@ -1,52 +1,65 @@
-﻿// using System;
-// using System.Collections;
-// using I2.Loc;
-// using UnityEngine;
-//
-// namespace Game
-// {
-//     public class Enemy_Herobrine : MonoBehaviour, IEnemy
-//     {
-//         [SerializeField]
-//         private BattleMessageBox _messageBox;
-//
-//         [SerializeField]
-//         private Attack[] _attacks;
-//
-//         [SerializeField]
-//         private int _maxHealth;
-//
-//         [SerializeField]
-//         private SpriteRenderer _spriteRenderer;
-//         
-//         private int _health;
-//
-//         public LocalizedString Name { get; }
-//         public Attack[] Attacks => _attacks;
-//         public BattleMessageBox MessageBox => _messageBox;
-//         public int Health => _health;
-//
-//         private void Start()
-//         {
-//             _health = _maxHealth;
-//         }
-//
-//         public void Damage(int damage)
-//         {
-//             _health -= damage;
-//             StartCoroutine(WaitDamageAnimation());
-//         }
-//
-//         public void Death(int damage)
-//         {
-//             throw new NotImplementedException();
-//         }
-//
-//         private IEnumerator WaitDamageAnimation()
-//         {
-//             _spriteRenderer.color = Color.red;
-//             yield return new WaitForSeconds(0.5f);
-//             _spriteRenderer.color = Color.white;
-//         }
-//     }
-// }
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace Game
+{
+    public sealed class Enemy_Herobrine : EnemyBase
+    {
+        public override ActionBattle[] Actions
+        {
+            get
+            {
+                var actions = new List<ActionBattle>();
+
+                for (var i = 0; i < _actions.Length; i++)
+                {
+                    if (i == 2)
+                        continue;
+
+                    var action = _actions[i];
+                    actions.Add(action);
+                }
+
+                return actions.ToArray();
+            }
+        }
+        
+        public override string GetReaction(BattleActionType actionType, Item item = null)
+        {
+            switch (actionType)
+            {
+                case BattleActionType.Attack:
+                    return "Ай. Это не круто";
+
+                case BattleActionType.Mercy:
+                    return "Я не хочу обижать своих фанатов";
+
+                case BattleActionType.NoAction:
+                    return "Херобрин будет гордиться мной";
+                
+                default:
+                    return "(...)";
+            }
+        }
+
+        public override string GetDeathReaction()
+        {
+            return "Я надеялся что превзойду херобрина...";
+        }
+
+        public override string GetStartReaction(int index)
+        {
+            return "Йоу! зацени мой реп";
+        }
+
+        public override string GetActionReaction(ActionBattle actionBattle)
+        {
+            var action = Actions.First(x => x.Name == actionBattle.Name);
+            
+            if (actionBattle.Name == _actions[1].Name && Mercy >= 75)
+                return _actions[2].Reaction;
+
+            return action.Reaction;
+        }
+    }
+}

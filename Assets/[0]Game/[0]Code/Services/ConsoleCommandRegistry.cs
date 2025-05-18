@@ -87,7 +87,6 @@ namespace Game
                             break;
                     }
                     
-                    break;NU:
                     break;
                 case GameState.TRANSITION:
                     break;

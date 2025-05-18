@@ -194,5 +194,10 @@ namespace Game
         {
             _shield.SetProgress(progress);
         }
+
+        private void OnDestroy()
+        {
+            _mover?.Disable();
+        }
     }
 }

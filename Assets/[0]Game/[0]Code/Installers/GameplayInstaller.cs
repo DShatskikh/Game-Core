@@ -19,7 +19,7 @@ namespace Game
             Container.BindInterfacesAndSelfTo<Player>().FromInstance(_player).AsCached();
             Container.Bind<MainInventory>().AsSingle().NonLazy();
             Container.Bind<WalletService>().AsSingle().NonLazy();
-            Container.Bind<LocationsManager>().AsSingle().WithArguments(Resources.LoadAll<Location>("")).NonLazy();
+            Container.Bind<LocationsManager>().AsSingle().WithArguments(Resources.LoadAll<Location>("Locations")).NonLazy();
             Container.BindFactory<Location, Location, Location.Factory>();
             Container.Bind<TransitionService>().AsSingle().NonLazy();
 

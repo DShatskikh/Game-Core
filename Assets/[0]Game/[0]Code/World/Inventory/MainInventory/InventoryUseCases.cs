@@ -29,5 +29,15 @@ namespace Game
             mainInventory.NotifyChangeSlot(slot.Item, mainInventory.ArmorSlot.Item,slot);
             mainInventory.NotifyChangeSlot(slot.Item, mainInventory.ArmorSlot.Item, mainInventory.ArmorSlot);
         }
+
+        public static void EquipWeapon(MainInventory mainInventory, ItemConfig weapon)
+        {
+            mainInventory.WeaponSlot.Item = weapon.Prototype.Clone();
+        }
+
+        public static void EquipAdditionalWeapon(MainInventory mainInventory, ItemConfig additionalWeapon)
+        {
+            mainInventory.WeaponAdditionalSlot.Item = additionalWeapon.Prototype.Clone();
+        }
     }
 }

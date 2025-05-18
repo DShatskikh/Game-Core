@@ -33,9 +33,9 @@ namespace Game
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
             MainInventory mainInventory, WalletService walletService, 
             DiContainer container, InitData data, ShopBackground shopBackgroundPrefab,
-            ScreenManager screenManager) : base(shopViewPrefab, shopButtonPrefab,
+            ScreenManager screenManager, MainRepositoryStorage mainRepositoryStorage) : base(shopViewPrefab, shopButtonPrefab,
             inscriptionsContainer, gameStateController, mainInventory, walletService, 
-            container, shopBackgroundPrefab, screenManager)
+            container, shopBackgroundPrefab, screenManager, mainRepositoryStorage)
         {
             _initData = data;
             
@@ -57,7 +57,6 @@ namespace Game
 
         protected override void BuySuccess(Product product, ShopButton productButton)
         {
-            _mainInventory.Add(product.Config.Prototype);
             _shopView.SetStatsText(_inscriptionsContainer["BuySuccess"]);
             PlayBuySound();
 
@@ -65,6 +64,8 @@ namespace Game
             
             if (sword != null)
             {
+                _mainInventory.EquipWeapon(sword.Config);
+                
                 var index = _initData.Swords.IndexOf(sword);
 
                 if (index != _initData.Swords.Length - 1)
@@ -79,6 +80,8 @@ namespace Game
             
             if (armor != null)
             {
+                Debug.Log("Добавь надевание брони");
+                
                 var index = _initData.Armors.IndexOf(armor);
 
                 if (index != _initData.Armors.Length - 1)
@@ -88,6 +91,9 @@ namespace Game
                     return;
                 }
             }
+            
+            if (sword != null && armor != null)
+                _mainInventory.Add(product.Config.Prototype);
             
             if (product.Counts > 0)
                 product.Counts -= 1;
@@ -122,7 +128,7 @@ namespace Game
 
         protected override void Load()
         {
-            if (!RepositoryStorage.TryGet(nameof(ShopPresenter_Notch), out SaveData saveData))
+            if (!_mainRepositoryStorage.TryGet(nameof(ShopPresenter_Notch), out SaveData saveData))
                 return;
 
             var allProducts = new List<Product>(_initData.Products);
@@ -160,7 +166,7 @@ namespace Game
 
             saveData.SpeaksData = _speakData;
             
-            RepositoryStorage.Set(nameof(ShopPresenter_Notch), saveData);
+            _mainRepositoryStorage.Set(nameof(ShopPresenter_Notch), saveData);
         }
     }
 }

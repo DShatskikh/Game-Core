@@ -25,16 +25,17 @@ namespace Game
         private List<ShopButton> _productButtons = new();
         private List<ShopButton> _speakButtons = new();
         private List<ShopButton> _actButtons = new();
-        protected Product[] _products;
-        protected List<SpeakData> _speakData = new();
+        private protected Product[] _products;
+        private protected List<SpeakData> _speakData = new();
         
         private readonly float _startMusicParameterIndex;
+        private protected readonly MainRepositoryStorage _mainRepositoryStorage;
 
         public ShopPresenterBase(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
             MainInventory mainInventory, WalletService walletService, 
             DiContainer container, ShopBackground backgroundPrefab, 
-            ScreenManager screenManager)
+            ScreenManager screenManager, MainRepositoryStorage mainRepositoryStorage)
         {
             _shopView = Object.Instantiate(shopViewPrefab);
             _inscriptionsContainer = inscriptionsContainer;
@@ -43,6 +44,7 @@ namespace Game
             _walletService = walletService;
             _shopButtonPrefab = shopButtonPrefab;
             _screenManager = screenManager;
+            _mainRepositoryStorage = mainRepositoryStorage;
 
             _gameStateController.OpenCutscene();
             

@@ -1,4 +1,5 @@
-﻿using FMOD.Studio;
+﻿using System;
+using FMOD.Studio;
 using UnityEngine;
 
 namespace Game
@@ -6,17 +7,33 @@ namespace Game
     public sealed class VolumeService
     {
         private const string BUS_HASH = "bus:/";
+        private const string SAVE_KEY = "Volume";
         private readonly Bus _musicBus;
         private float _value;
-        
+        private readonly SettingsRepositoryStorage _settingsRepositoryStorage;
+
         public float GetValue => _value;
-
-
-        public VolumeService()
+        
+        [Serializable]
+        public struct Data
         {
+            public float Volume;
+        }
+        
+        public VolumeService(SettingsRepositoryStorage settingsRepositoryStorage)
+        {
+            _settingsRepositoryStorage = settingsRepositoryStorage;
+            _settingsRepositoryStorage.Load();
+            
             _musicBus = FMODUnity.RuntimeManager.GetBus(BUS_HASH);
             var volume = GetLinearVolume(80f);
-            SetValue(PlayerPrefs.GetFloat(BUS_HASH, volume));
+
+            if (_settingsRepositoryStorage.TryGet(SAVE_KEY, out Data data))
+            {
+                volume = data.Volume;
+            }
+            
+            SetValue(volume);
         }
 
         public void SetValue(float value)
@@ -24,7 +41,8 @@ namespace Game
             _value = value;
             _musicBus.setVolume(GetLinearVolume(Mathf.Lerp(-80, 0, value / 100f)));
             
-            PlayerPrefs.SetFloat(BUS_HASH, _value);
+            _settingsRepositoryStorage.Set(SAVE_KEY, new Data() { Volume = _value });
+            _settingsRepositoryStorage.Save();
         }
 
         private float GetLinearVolume(float volume)

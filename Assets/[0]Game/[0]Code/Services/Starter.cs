@@ -11,8 +11,11 @@ namespace Game
         private ItemConfig[] _items;
         
         [SerializeField]
-        private ItemConfig[] _weapons;
-
+        private ItemConfig _weapon;
+        
+        [SerializeField]
+        private ItemConfig _additionalWeapon;
+        
         [LocationID]
         [SerializeField]
         private string _locationID;
@@ -21,16 +24,17 @@ namespace Game
         
         [Inject]
         private void Construct(GameStateController gameStateController, WalletService walletService, 
-            MainInventory inventory, LocationsManager locationsManager)
+            MainInventory inventory, LocationsManager locationsManager, MainRepositoryStorage mainRepositoryStorage)
         {
             _gameStateController = gameStateController;
             
+            mainRepositoryStorage.Load();
+            
             walletService.SetMoney(1250);
+            inventory.EquipWeapon(_weapon);
+            inventory.EquipAdditionalWeapon(_additionalWeapon);
 
             foreach (var item in _items) 
-                inventory.Add(item.Prototype.Clone());
-
-            foreach (var item in _weapons) 
                 inventory.Add(item.Prototype.Clone());
 
             locationsManager.SwitchLocation(_locationID, 0);

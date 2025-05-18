@@ -29,6 +29,9 @@ namespace Game
 
         public void OnCloseBattle()
         {
+            if (!gameObject.activeSelf)
+                return;
+            
             _battleIndex++;
             
             if (_battles.Length == _battleIndex)

@@ -125,6 +125,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -181,7 +194,7 @@ TextureImporter:
         width: 12
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -190,6 +203,182 @@ TextureImporter:
       bones: []
       spriteID: d90c9737cf0c5e64bbe2e61cf68f78bb
       internalID: -493458723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit Effect_3
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 58
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90257e9eb9534094387f022cce1bcd3b
+      internalID: 1830323837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit Effect_4
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 58
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb50d15fb6f68e24cae59ef9e98383e1
+      internalID: -1353611174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit Effect_5
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 45
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b27cbfb6413954cb03b226c2b10d1b
+      internalID: 1085354816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit Effect_6
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 45
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ca7318e5974ef348ba2912e71dadc55
+      internalID: -1275584838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit Effect_7
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 30
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93dfb17ac32d1724f85407e2a3773967
+      internalID: 406351160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit Effect_8
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 30
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c01af472ef5dbe842a01a55ec465a869
+      internalID: -806319308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit Effect_9
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 15
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd59d341b0dfe374da5479909f50ef3d
+      internalID: -1370436606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hit Effect_10
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 15
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270c79b2cdeed98408341c41d8576643
+      internalID: 1924436363
       vertices: []
       indices: 
       edges: []
@@ -210,7 +399,15 @@ TextureImporter:
     nameFileIdTable:
       Hit Effect_0: -4806144475621984
       Hit Effect_1: 5652245086901320735
+      Hit Effect_10: 1924436363
       Hit Effect_2: -493458723
+      Hit Effect_3: 1830323837
+      Hit Effect_4: -1353611174
+      Hit Effect_5: 1085354816
+      Hit Effect_6: -1275584838
+      Hit Effect_7: 406351160
+      Hit Effect_8: -806319308
+      Hit Effect_9: -1370436606
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

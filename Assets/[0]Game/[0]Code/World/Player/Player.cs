@@ -1,4 +1,5 @@
-﻿using CameraAreaUtility;
+﻿using System;
+using CameraAreaUtility;
 using StepSound;
 using UniRx;
 using Unity.Cinemachine;
@@ -77,6 +78,24 @@ namespace Game
                 
                 if (_currentSpeed.Value != 0)
                     _stepsSoundPlayer.Upgrade();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (_playerInput)
+            {
+                _playerInput.actions["Move"].canceled -= OnInputMove;
+                _playerInput.actions["Submit"].canceled -= OnSubmit;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (_playerInput)
+            {
+                _playerInput.actions["Move"].canceled -= OnInputMove;
+                _playerInput.actions["Submit"].canceled -= OnSubmit;
             }
         }
 
@@ -219,7 +238,8 @@ namespace Game
 
         public void PlaySwordAttack()
         {
-            _view.SwordAttack();
+            _mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent);
+            _view.SwordAttack(attackComponent.WeaponSprite);
         }
     }
 }

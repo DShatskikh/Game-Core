@@ -45,6 +45,8 @@ namespace Game
             Container.Bind<CoroutineRunner>().FromInstance(_coroutineRunner).AsSingle().NonLazy();
             Container.Bind<HeartModeService>().AsSingle().WithArguments(_heartIcons).NonLazy();
             Container.Bind<LuaCommandRegister>().AsSingle().NonLazy();
+            Container.Bind<MainRepositoryStorage>().AsSingle().NonLazy();
+            Container.Bind<SettingsRepositoryStorage>().AsSingle().NonLazy();
         }
     }
 }

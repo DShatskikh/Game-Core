@@ -51,13 +51,15 @@ namespace Game
         private Item _attackItem;
         private readonly bool _isRun = true;
         private float _startMusicParameterIndex;
+        private protected readonly MainRepositoryStorage _mainRepositoryStorage;
 
         public BattleControllerBase(BattleView view, ShopButton prefabButton, MainInventory inventory, 
             GameStateController gameStateController, BattlePoints points, Player player,
             Arena arena, Heart heart, DiContainer container,
             CinemachineCamera virtualCamera, TurnProgressStorage turnProgressStorage, 
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, 
-            AttackIndicator attackIndicator, INextButton nextButton, SerializableDictionary<string, LocalizedString> localizedPairs)
+            AttackIndicator attackIndicator, INextButton nextButton, 
+            SerializableDictionary<string, LocalizedString> localizedPairs, MainRepositoryStorage mainRepositoryStorage)
         {
             _view = view;
             _prefabButton = prefabButton;
@@ -76,9 +78,8 @@ namespace Game
             _attackIndicator = attackIndicator;
             _nextButton = nextButton;
             _localizedPairs = localizedPairs;
+            _mainRepositoryStorage = mainRepositoryStorage;
         }
-
-        public abstract void OnGameOver();
 
         public virtual void Turn()
         {
@@ -89,6 +90,7 @@ namespace Game
             
             _view.SetStateText(GetStateText());
         }
+
 
         private protected abstract IEnemy[] GetAllEnemies();
 
@@ -122,15 +124,15 @@ namespace Game
             CreateActionEnemyButtons();
             InitMercy();
             CloseAllPanel();
-            Intro();
+            Intro().Forget();
         }
 
         private void CreateWeaponSlots(MainInventory inventory)
         {
-            foreach (var attackSlot in inventory.MainSlots)
-            {
-                CreateWeaponSlot(attackSlot);
-            }
+            CreateWeaponSlot(inventory.WeaponSlot);
+         
+            if (inventory.WeaponAdditionalSlot.HasItem)
+                CreateWeaponSlot(inventory.WeaponAdditionalSlot);
         }
 
         private void CreateActionEnemyButtons()
@@ -179,13 +181,13 @@ namespace Game
                 {
                     CloseAllPanel();
                     _selectedEnemy.Mercy += action.Progress;
-                    ActionTurn(_selectedEnemy, action);
+                    ActionTurn(_selectedEnemy, action).Forget();
                 });
 
                 _actionButtons.Add(actionButton);
             }
         }
-        
+
         private void CreateAttackEnemyButtons()
         {
             foreach (var enemy in _enemies)
@@ -212,7 +214,7 @@ namespace Game
                         //SoundPlayer.Play(AssetProvider.Instance.SelectSound);
                         CloseAllPanel();
                         _attackItem.TryGetComponent(out AttackComponent attackComponent);
-                        AttackTurn(enemy, attackComponent.Attack);
+                        AttackTurn(enemy, attackComponent.Attack).Forget();
                     });
                 });
             }
@@ -381,12 +383,6 @@ namespace Game
 
         private void CreateWeaponSlot(Slot attackSlot)
         {
-            if (!attackSlot.HasItem)
-                return;
-
-            if (!ItemUseCases.TryGetComponent(attackSlot.Item, out AttackComponent attackComponent))
-                return;
-
             var attackButton = Object.Instantiate(_prefabButton, _view.GetAttacksContainer);
             _attackButtons.Add(attackButton);
             attackButton.GetLabel.text = attackSlot.Item.MetaData.Name;
@@ -457,7 +453,7 @@ namespace Game
             _mercyButton.Init("Пощада", () =>
             {
                 CloseAllPanel();
-                MercyTurn();
+                MercyTurn().Forget();
             });
 
             if (_isRun)
@@ -466,7 +462,7 @@ namespace Game
                 escapeButton.Init("Сбежать", () =>
                 {
                     Debug.Log("Сбежать");
-                    EndFight();
+                    EndFight().Forget();
                 }); 
             }
         }
@@ -536,7 +532,7 @@ namespace Game
             }
             else
             {
-                
+                Debug.Log("Нет атаки");
             }
 
             await _arena.AwaitSetSize(new Vector2(3, 3));
@@ -620,8 +616,14 @@ namespace Game
             await _nextButton.WaitShow();
 
             Exit().Forget();
+            EndFightAdditional();
         }
-        
+
+        private protected virtual void EndFightAdditional()
+        {
+            
+        }
+
         protected string[] GetStartReactions()
         {
             var messages = new List<string>();
@@ -633,7 +635,7 @@ namespace Game
 
             return messages.ToArray();
         }
-        
+
         private async UniTask Intro()
         {
             await BattleIntroUseCases.WaitIntro(_points.GetPartyPositionsData(_player), 
@@ -654,7 +656,7 @@ namespace Game
             await ShowEnemiesReactions(GetStartReactions());
             EventSystem.current.SetSelectedGameObject(_view.GetAttackButton.gameObject);
         }
-        
+
         private async UniTask ShowEnemyMessage(IEnemy enemy, string message)
         {
             await enemy.MessageBox.AwaitShow(message);
@@ -687,7 +689,7 @@ namespace Game
 
             return messages.ToArray();
         }
-        
+
         private async UniTask MercyTurn()
         {
             await ShowEnemiesReactions(GetMercyReactions());
@@ -738,7 +740,7 @@ namespace Game
 
             return messages.ToArray();
         }
-        
+
         private async UniTask ActionTurn(IEnemy enemy, ActionBattle actionBattle)
         {
             Debug.Log("Добавь текст перед реакцией");
@@ -750,7 +752,7 @@ namespace Game
             _view.ToggleTurnPanel(false);
             
             await ShowEnemiesReactions(GetActionReactions(enemy, actionBattle));
-            EnemyTurn();
+            EnemyTurn().Forget();
         }
 
         private string[] GetDeathFriendReactions(IEnemy enemy)
@@ -764,7 +766,7 @@ namespace Game
 
             return messages.ToArray();
         }
-        
+
         private string[] GeAttackReactions(IEnemy enemy)
         {
             var messages = new List<string>();
@@ -776,7 +778,7 @@ namespace Game
 
             return messages.ToArray();
         }
-        
+
         private string[] GeMissReactions()
         {
             var messages = new List<string>();
@@ -788,7 +790,7 @@ namespace Game
 
             return messages.ToArray();
         }
-        
+
         private async UniTask AttackTurn(IEnemy enemy, int damage)
         {
             _view.ToggleTurnPanel(true);
@@ -802,7 +804,7 @@ namespace Game
             if (damage == 0)
             {
                 await ShowEnemiesReactions(GeMissReactions());
-                EnemyTurn();
+                EnemyTurn().Forget();
                 return;
             }
             
@@ -822,7 +824,7 @@ namespace Game
 
                 if (IsAllDontFight())
                 {
-                    EndFight();
+                    EndFight().Forget();
                     return;
                 }
 
@@ -840,9 +842,9 @@ namespace Game
                 await ShowEnemiesReactions(GeAttackReactions(enemy));
             }
             
-            EnemyTurn();
+            EnemyTurn().Forget();
         }
-        
+
         private protected virtual async UniTask Exit()
         {
             foreach (var enemy in _enemies)
@@ -859,7 +861,7 @@ namespace Game
             _gameStateController.CloseBattle();
             RuntimeManager.StudioSystem.setParameterByName(MUSIC_EVENT_PARAMETER_PATH, _startMusicParameterIndex);
         }
-        
+
         private protected virtual void Death()
         {
             Debug.Log("GameOver");
@@ -870,7 +872,9 @@ namespace Game
             gameOverScreen.SetMessage(_gameOverMessage);
         }
 
+
         private protected abstract Attack GetAttack();
         private protected abstract string GetStateText();
+        public abstract void OnGameOver();
     }
 }

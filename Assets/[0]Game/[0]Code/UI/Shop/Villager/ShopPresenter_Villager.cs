@@ -28,9 +28,9 @@ namespace Game
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
             MainInventory mainInventory, WalletService walletService, 
             DiContainer container, InitData data, ShopBackground background, 
-            ScreenManager screenManager) : base(shopViewPrefab, shopButtonPrefab,
+            ScreenManager screenManager, MainRepositoryStorage mainRepositoryStorage) : base(shopViewPrefab, shopButtonPrefab,
             inscriptionsContainer, gameStateController, mainInventory, walletService, 
-            container, background, screenManager)
+            container, background, screenManager, mainRepositoryStorage)
         {
             _initData = data;
             
@@ -44,7 +44,7 @@ namespace Game
 
         protected override void Load()
         {
-            if (!RepositoryStorage.TryGet(nameof(OpenShop_Villager), out SaveData saveData))
+            if (!_mainRepositoryStorage.TryGet(nameof(OpenShop_Villager), out SaveData saveData))
                 return;
             
             foreach (var product in _initData.Products)
@@ -70,7 +70,7 @@ namespace Game
                     Counts = productData.Counts});
             }
             
-            RepositoryStorage.Set(nameof(OpenShop_Villager), saveData);
+            _mainRepositoryStorage.Set(nameof(OpenShop_Villager), saveData);
         }
     }
 }

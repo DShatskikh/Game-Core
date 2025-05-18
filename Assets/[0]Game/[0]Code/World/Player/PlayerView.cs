@@ -13,6 +13,9 @@ namespace Game
         [SerializeField]
         private HatView _hatView;
 
+        [SerializeField]
+        private SpriteRenderer _sword;
+        
         private Animator _animator;
         private bool _isRun;
         private float _speed;
@@ -60,7 +63,10 @@ namespace Game
                 _animator.SetFloat(StateHash, _isRun ? 2 : 1);
         }
 
-        public void SwordAttack() => 
+        public void SwordAttack(Sprite sprite)
+        {
+            _sword.sprite = sprite;
             _animator.SetTrigger(AttackSwordHash);
+        }
     }
 }
