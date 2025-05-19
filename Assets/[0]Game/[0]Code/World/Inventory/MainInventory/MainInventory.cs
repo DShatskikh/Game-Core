@@ -31,12 +31,15 @@ namespace Game
         public void PutOn(Slot slot) => 
             InventoryUseCases.PutOn(this, slot);
 
-        public void EquipWeapon(ItemConfig weapon) => 
+        public void EquipWeapon(Item weapon) => 
             InventoryUseCases.EquipWeapon(this, weapon);
 
-        public void EquipAdditionalWeapon(ItemConfig additionalWeapon) => 
+        public void EquipAdditionalWeapon(Item additionalWeapon) => 
             InventoryUseCases.EquipAdditionalWeapon(this, additionalWeapon);
 
+        public void EquipArmor(Item armor) => 
+            InventoryUseCases.EquipArmor(this, armor);
+        
         public void NotifyAddItem(Item item) => 
             OnItemAdded?.Invoke(item);
 

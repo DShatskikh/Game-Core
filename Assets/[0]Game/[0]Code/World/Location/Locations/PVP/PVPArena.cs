@@ -44,15 +44,9 @@ namespace Game
 
         [SerializeField]
         private DialogueSystemTrigger _startReplica2;
-
-        [SerializeField]
-        private GameObject _herobrine;
         
         [SerializeField]
         private GameObject _herobrineCutscene;
-        
-        [SerializeField]
-        private StartBattle_Herobrine _startBattleHerobrine;
         
         [SerializeField]
         private GameObject _timer;
@@ -93,6 +87,9 @@ namespace Game
         [SerializeField]
         private Enemy _frost;
 
+        [SerializeField]
+        private Enemy _herobrine;
+        
         private MainRepositoryStorage _mainRepositoryStorage;
         private GameStateController _gameStateController;
         private MainInventory _mainInventory;
@@ -114,6 +111,12 @@ namespace Game
             {
                 currentState = data.State;
             }
+
+            _mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent);
+            _mainInventory.WeaponSlot.Item.TryGetComponent(out ArmorComponent armorComponent);
+            
+            Debug.Log(attackComponent);
+            Debug.Log(armorComponent);
             
             switch (currentState)
             {
@@ -124,7 +127,7 @@ namespace Game
                     _banana.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.DIMAS:
-                    if (_mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent) && attackComponent.Attack < 5)
+                    if (attackComponent is { Attack: < 5 })
                     {
                         Debug.Log(attackComponent.Attack);
                         _barrier.SetActive(true);
@@ -136,19 +139,61 @@ namespace Game
                     _dimas.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.JULIANA:
+                    if (armorComponent is { Armor: < 2 })
+                    {
+                        _barrier.SetActive(true);
+                        _barrierItemIcon.sprite = _barrierArmor;
+                        _barrierLabel.text = "Купите КОЖ.БРОН чтобы продолжить";
+                        break;
+                    }
+                    
                     _juliana.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.TROLL:
+                    if (attackComponent is { Attack: < 7 })
+                    {
+                        Debug.Log(attackComponent.Attack);
+                        _barrier.SetActive(true);
+                        _barrierItemIcon.sprite = _barrierSword;
+                        _barrierLabel.text = "Купите ЖЕЛ.МЕЧ чтобы продолжить";
+                        break;
+                    }
+                    
                     _troll.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.FROST:
+                    if (armorComponent is { Armor: < 5 })
+                    {
+                        _barrier.SetActive(true);
+                        _barrierItemIcon.sprite = _barrierArmor;
+                        _barrierLabel.text = "Купите ЖЕЛ.БРОН чтобы продолжить";
+                        break;
+                    }
+                    
                     _frost.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.HACKER:
+                    if (attackComponent is { Attack: < 7 })
+                    {
+                        Debug.Log(attackComponent.Attack);
+                        _barrier.SetActive(true);
+                        _barrierItemIcon.sprite = _barrierSword;
+                        _barrierLabel.text = "Купите ЖЕЛ.МЕЧ чтобы продолжить";
+                        break;
+                    }
+                    
                     _hacker.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.HEROBRINE:
-                    _startBattleHerobrine.gameObject.SetActive(true);
+                    if (armorComponent is { Armor: < 7 })
+                    {
+                        _barrier.SetActive(true);
+                        _barrierItemIcon.sprite = _barrierArmor;
+                        _barrierLabel.text = "Купите АЛМ.БРОН чтобы продолжить";
+                        break;
+                    }
+                    
+                    _herobrine.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.END:
                     break;
@@ -160,7 +205,7 @@ namespace Game
         private IEnumerator AwaitStartCutscene()
         {
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA_SAVE_KEY, new Data() { State = State.BANANA });
-            _herobrine.SetActive(false);
+            _herobrine.GameObject.SetActive(false);
             _herobrineCutscene.SetActive(true);
             _startReplica.OnUse();
             
@@ -178,7 +223,7 @@ namespace Game
             _gameStateController.OpenCutscene();
             
             yield return new WaitForSeconds(1);
-            _herobrine.SetActive(true);
+            _herobrine.GameObject.SetActive(true);
             _herobrineCutscene.SetActive(false);
             _gameStateController.CloseCutscene();
         }
@@ -199,23 +244,27 @@ namespace Game
             _timer.SetActive(false);
         }
 
+        private IEnumerator AwaitWinEnemyReplica(Enemy enemy, bool isKilled)
+        {
+            if (isKilled)
+                enemy.KillReplica.OnUse();
+            else
+                enemy.MercyReplica.OnUse();
+
+            yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
+            yield return AwaitTimer();
+        }
+
+        private void SpawnNextEnemy(Enemy nextEnemy)
+        {
+            nextEnemy.GameObject.SetActive(false);
+            nextEnemy.StartBattle.gameObject.SetActive(true);
+        }
+        
         public IEnumerator AwaitStartCutsceneWinBanana(bool isKilled)
         {
-            Debug.Log("KillBanana");
-            // Речь Херобрина
-            if (isKilled)
-            {
-                _banana.KillReplica.OnUse();
-            }
-            else
-            {
-                _banana.MercyReplica.OnUse();
-            }
+            yield return AwaitWinEnemyReplica(_banana, isKilled);
             
-            yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
-            // Обратный отчет
-            yield return AwaitTimer();
-
             if (_mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent) && attackComponent.Attack < 5)
             {
                 _timer.SetActive(true);
@@ -223,9 +272,92 @@ namespace Game
                 yield break;
             }
             
-            // Спавн следующего противника
-            _dimas.GameObject.SetActive(false);
-            _dimas.StartBattle.gameObject.SetActive(true);
+            SpawnNextEnemy(_dimas);
+        }
+        
+        public IEnumerator AwaitStartCutsceneWinDimas(bool isKilled)
+        {
+            yield return AwaitWinEnemyReplica(_dimas, isKilled);
+
+            if (!_mainInventory.ArmorSlot.HasItem || (_mainInventory.ArmorSlot.Item.TryGetComponent(out ArmorComponent armorComponent) && armorComponent.Armor < 2))
+            {
+                _timer.SetActive(true);
+                _timerLabel.text = "Купите КОЖ.БРОН чтобы продолжить";
+                yield break;
+            }
+
+            SpawnNextEnemy(_juliana);
+        }
+        
+        public IEnumerator AwaitStartCutsceneWinJuliana(bool isKilled)
+        {
+            yield return AwaitWinEnemyReplica(_juliana, isKilled);
+
+            if (_mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent) && attackComponent.Attack < 7)
+            {
+                _timer.SetActive(true);
+                _timerLabel.text = "Купите ЖЕЛ.МЕЧ чтобы продолжить";
+                yield break;
+            }
+
+            SpawnNextEnemy(_troll);
+        }
+        
+        public IEnumerator AwaitStartCutsceneWinTroll(bool isKilled)
+        {
+            yield return AwaitWinEnemyReplica(_troll, isKilled);
+
+            if (!_mainInventory.ArmorSlot.HasItem || (_mainInventory.ArmorSlot.Item.TryGetComponent(out ArmorComponent armorComponent) && armorComponent.Armor < 5))
+            {
+                _timer.SetActive(true);
+                _timerLabel.text = "Купите ЖЕЛ.БРОН чтобы продолжить";
+                yield break;
+            }
+
+            SpawnNextEnemy(_frost);
+        }
+        
+        public IEnumerator AwaitStartCutsceneWinFrost(bool isKilled)
+        {
+            yield return AwaitWinEnemyReplica(_frost, isKilled);
+
+            if (_mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent) && attackComponent.Attack < 10)
+            {
+                _timer.SetActive(true);
+                _timerLabel.text = "Купите АЛМ.МЕЧ чтобы продолжить";
+                yield break;
+            }
+
+            SpawnNextEnemy(_hacker);
+        }
+        
+        public IEnumerator AwaitStartCutsceneWinHacker(bool isKilled)
+        {
+            yield return AwaitWinEnemyReplica(_hacker, isKilled);
+
+            if (!_mainInventory.ArmorSlot.HasItem || (_mainInventory.ArmorSlot.Item.TryGetComponent(out ArmorComponent armorComponent) && armorComponent.Armor < 10))
+            {
+                _timer.SetActive(true);
+                _timerLabel.text = "Купите АЛМ.БРОН чтобы продолжить";
+                yield break;
+            }
+
+            SpawnNextEnemy(_herobrine);
+        }
+        
+        public IEnumerator AwaitStartCutsceneWinHerobrine(bool isKilled)
+        {
+            Debug.Log("Вы победили Херобрина");
+
+            if (isKilled)
+                _herobrine.KillReplica.OnUse();
+            else
+                _herobrine.MercyReplica.OnUse();
+
+            yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
+
+            Debug.Log("Вы можете закончить игру");
+            //SpawnNextEnemy(_herobrine);
         }
     }
 }

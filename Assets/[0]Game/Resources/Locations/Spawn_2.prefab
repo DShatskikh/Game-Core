@@ -1490,9 +1490,6 @@ MonoBehaviour:
     - Config: {fileID: 11400000, guid: b91a02c717d2cd44c8c476c6a4009d3c, type: 2}
       Price: 5
       Counts: 1
-    - Config: {fileID: 11400000, guid: f213cf91f22ab6d4c92b7cc7da6fb226, type: 2}
-      Price: 10
-      Counts: 1
     - Config: {fileID: 11400000, guid: 77bee802ba24f0643b9b9cac9262e40e, type: 2}
       Price: 50
       Counts: 1
@@ -1500,6 +1497,9 @@ MonoBehaviour:
       Price: 100
       Counts: 1
     Armors:
+    - Config: {fileID: 11400000, guid: f88866fb00129b64aada604d27201c8d, type: 2}
+      Price: 10
+      Counts: 1
     - Config: {fileID: 11400000, guid: 3e16643ce1af06f46a1fe9d878d65f70, type: 2}
       Price: 50
       Counts: 1

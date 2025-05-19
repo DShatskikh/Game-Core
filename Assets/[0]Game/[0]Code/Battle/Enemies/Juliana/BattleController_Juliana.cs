@@ -15,6 +15,7 @@ namespace Game
         public struct InitData
         {
             public Enemy_Juliana Enemy_Juliana;
+            public PVPArena PvpArena;
         }
 
         public class Factory : PlaceholderFactory<BattleController_Juliana> { }
@@ -61,6 +62,21 @@ namespace Game
         public override void OnGameOver()
         {
             Exit().Forget();
+        }
+        
+        private protected override void EndFightAdditional()
+        {
+            if (_initData.Enemy_Juliana.Health > 0)
+            {
+                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinJuliana(false));
+            }
+            else
+            {
+                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinJuliana(true));
+            }
+            
+            _mainRepositoryStorage.Set(SaveConstants.PVPARENA_SAVE_KEY, 
+                new PVPArena.Data() { State = PVPArena.State.TROLL });
         }
     }
 }

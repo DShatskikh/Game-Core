@@ -64,7 +64,7 @@ namespace Game
             
             if (sword != null)
             {
-                _mainInventory.EquipWeapon(sword.Config);
+                _mainInventory.EquipWeapon(sword.Config.Prototype.Clone());
                 
                 var index = _initData.Swords.IndexOf(sword);
 
@@ -80,7 +80,7 @@ namespace Game
             
             if (armor != null)
             {
-                Debug.Log("Добавь надевание брони");
+                _mainInventory.EquipWeapon(armor.Config.Prototype.Clone());
                 
                 var index = _initData.Armors.IndexOf(armor);
 
@@ -92,7 +92,7 @@ namespace Game
                 }
             }
             
-            if (sword != null && armor != null)
+            if (sword == null && armor == null)
                 _mainInventory.Add(product.Config.Prototype);
             
             if (product.Counts > 0)

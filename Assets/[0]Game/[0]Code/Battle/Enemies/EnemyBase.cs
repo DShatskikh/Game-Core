@@ -135,6 +135,9 @@ namespace Game
         
         public void OnOpenBattle()
         {
+            if (this == null)
+                return;
+            
             var startBattle = GetComponentInParent<StarterBattleBase>(true);
             
             if (!startBattle || !startBattle.gameObject.activeSelf)

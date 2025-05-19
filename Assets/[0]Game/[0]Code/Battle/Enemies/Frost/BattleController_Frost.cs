@@ -14,7 +14,9 @@ namespace Game
         [Serializable]
         public struct InitData
         {
-            public Enemy_Frost Enemy_Hacker;
+            [FormerlySerializedAs("Enemy_Hacker")]
+            public Enemy_Frost Enemy_Frost;
+            public PVPArena PvpArena;
         }
 
         public class Factory : PlaceholderFactory<BattleController_Frost> { }
@@ -36,7 +38,7 @@ namespace Game
 
         private protected override IEnemy[] GetAllEnemies()
         {
-            return new IEnemy[]{_initData.Enemy_Hacker};
+            return new IEnemy[]{_initData.Enemy_Frost};
         }
 
         private protected override Attack GetAttack()
@@ -44,7 +46,7 @@ namespace Game
             if (_enemies[0].Attacks.Length <= _attackIndex)
                 _attackIndex = 0;
             
-            if (_initData.Enemy_Hacker.CanMercy)
+            if (_initData.Enemy_Frost.CanMercy)
                 return null;
             
             return _enemies[0].Attacks[_attackIndex];
@@ -52,7 +54,7 @@ namespace Game
 
         private protected override string GetStateText()
         {
-            if (_initData.Enemy_Hacker.CanMercy)
+            if (_initData.Enemy_Frost.CanMercy)
                 return "Банан щадит вас";
             
             return "Сильнейший телохранитель Херобрина (по его словам)";
@@ -61,6 +63,21 @@ namespace Game
         public override void OnGameOver()
         {
             Exit().Forget();
+        }
+        
+        private protected override void EndFightAdditional()
+        {
+            if (_initData.Enemy_Frost.Health > 0)
+            {
+                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinFrost(false));
+            }
+            else
+            {
+                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinFrost(true));
+            }
+            
+            _mainRepositoryStorage.Set(SaveConstants.PVPARENA_SAVE_KEY, 
+                new PVPArena.Data() { State = PVPArena.State.HACKER });
         }
     }
 }

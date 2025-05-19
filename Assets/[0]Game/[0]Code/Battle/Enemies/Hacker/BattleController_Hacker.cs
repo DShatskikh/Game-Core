@@ -15,6 +15,7 @@ namespace Game
         public struct InitData
         {
             public Enemy_Hacker Enemy_Hacker;
+            public PVPArena PvpArena;
         }
 
         public class Factory : PlaceholderFactory<BattleController_Hacker> { }
@@ -61,6 +62,21 @@ namespace Game
         public override void OnGameOver()
         {
             Exit().Forget();
+        }
+        
+        private protected override void EndFightAdditional()
+        {
+            if (_initData.Enemy_Hacker.Health > 0)
+            {
+                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinHacker(false));
+            }
+            else
+            {
+                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinHacker(true));
+            }
+            
+            _mainRepositoryStorage.Set(SaveConstants.PVPARENA_SAVE_KEY, 
+                new PVPArena.Data() { State = PVPArena.State.HEROBRINE });
         }
     }
 }

@@ -31,8 +31,8 @@ namespace Game
             mainRepositoryStorage.Load();
             
             walletService.SetMoney(1250);
-            inventory.EquipWeapon(_weapon);
-            inventory.EquipAdditionalWeapon(_additionalWeapon);
+            inventory.EquipWeapon(_weapon.Prototype.Clone());
+            inventory.EquipAdditionalWeapon(_additionalWeapon.Prototype.Clone());
 
             foreach (var item in _items) 
                 inventory.Add(item.Prototype.Clone());

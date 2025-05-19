@@ -9,7 +9,7 @@ namespace Game
     {
         private GameState _gameState;
         
-        private readonly List<IGameListener> _listeners = new ();
+        private List<IGameListener> _listeners = new ();
         private readonly List<IGameTickableListener> _tickables = new ();
         private readonly List<IGameFixedTickableListener> _fixedTickables = new ();
         
@@ -40,6 +40,19 @@ namespace Game
             _listeners.Remove(listener);
         }
 
+        public void DestroyRemovedListeners()
+        {
+            var listeners = new List<IGameListener>();
+            
+            foreach (var listener in _listeners)
+            {
+                if (listener != null)
+                    listeners.Add(listener);
+            }
+
+            _listeners = listeners;
+        }
+        
         public void Tick()
         {
             if (_gameState == GameState.PLAYING)

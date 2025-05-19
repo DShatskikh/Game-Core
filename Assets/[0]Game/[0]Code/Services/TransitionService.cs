@@ -34,6 +34,7 @@ namespace Game
                 //SoundPlayer.Play(audioClip);
             
             _locationsManager.SwitchLocation(id, pointIndex);
+            _gameStateController.DestroyRemovedListeners();
             yield return transitionScreen.AwaitHide();
             _gameStateController.EndTransition();
             _screenManager.Close(ScreensEnum.TRANSITION);

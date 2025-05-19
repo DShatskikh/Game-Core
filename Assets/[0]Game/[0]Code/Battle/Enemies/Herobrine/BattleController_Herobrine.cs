@@ -15,6 +15,7 @@ namespace Game
         public struct InitData
         {
             public Enemy_Herobrine Enemy_Herobrine;
+            public PVPArena PvpArena;
         }
 
         public class Factory : PlaceholderFactory<BattleController_Herobrine> { }
@@ -60,6 +61,21 @@ namespace Game
         public override void OnGameOver()
         {
             Exit().Forget();
+        }
+        
+        private protected override void EndFightAdditional()
+        {
+            if (_initData.Enemy_Herobrine.Health > 0)
+            {
+                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinHerobrine(false));
+            }
+            else
+            {
+                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinHerobrine(true));
+            }
+            
+            _mainRepositoryStorage.Set(SaveConstants.PVPARENA_SAVE_KEY, 
+                new PVPArena.Data() { State = PVPArena.State.END });
         }
     }
 }

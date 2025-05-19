@@ -15,6 +15,7 @@ namespace Game
         public struct InitData
         {
             public Enemy_Troll Enemy_Troll;
+            public PVPArena PvpArena;
         }
 
         public class Factory : PlaceholderFactory<BattleController_Troll>
@@ -64,6 +65,21 @@ namespace Game
         public override void OnGameOver()
         {
             Exit().Forget();
+        }
+        
+        private protected override void EndFightAdditional()
+        {
+            if (_initData.Enemy_Troll.Health > 0)
+            {
+                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinTroll(false));
+            }
+            else
+            {
+                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinTroll(true));
+            }
+            
+            _mainRepositoryStorage.Set(SaveConstants.PVPARENA_SAVE_KEY, 
+                new PVPArena.Data() { State = PVPArena.State.FROST });
         }
     }
 }
