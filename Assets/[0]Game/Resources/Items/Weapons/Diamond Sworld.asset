@@ -16,13 +16,13 @@ MonoBehaviour:
     ID: Diamond Sworld
     MetaData:
       Name:
-        mTerm: Diamond Sworld
+        mTerm: Item/Diamond Sworld
         mRTL_IgnoreArabicFix: 0
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0
         m_DontLocalizeParameters: 0
       Description:
-        mTerm: Diamond Sworld Description
+        mTerm: Item/Diamond Sworld Description
         mRTL_IgnoreArabicFix: 0
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0

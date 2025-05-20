@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Cysharp.Threading.Tasks;
 using FMODUnity;
 using I2.Loc;
@@ -52,6 +53,7 @@ namespace Game
         private readonly bool _isRun = true;
         private float _startMusicParameterIndex;
         private protected readonly MainRepositoryStorage _mainRepositoryStorage;
+        private readonly HealthService _healthService;
 
         public BattleControllerBase(BattleView view, ShopButton prefabButton, MainInventory inventory, 
             GameStateController gameStateController, BattlePoints points, Player player,
@@ -59,7 +61,8 @@ namespace Game
             CinemachineCamera virtualCamera, TurnProgressStorage turnProgressStorage, 
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, 
             AttackIndicator attackIndicator, INextButton nextButton, 
-            SerializableDictionary<string, LocalizedString> localizedPairs, MainRepositoryStorage mainRepositoryStorage)
+            SerializableDictionary<string, LocalizedString> localizedPairs, MainRepositoryStorage mainRepositoryStorage,
+            HealthService healthService)
         {
             _view = view;
             _prefabButton = prefabButton;
@@ -79,6 +82,7 @@ namespace Game
             _nextButton = nextButton;
             _localizedPairs = localizedPairs;
             _mainRepositoryStorage = mainRepositoryStorage;
+            _healthService = healthService;
         }
 
         public virtual void Turn()
@@ -90,8 +94,7 @@ namespace Game
             
             _view.SetStateText(GetStateText());
         }
-
-
+        
         private protected abstract IEnemy[] GetAllEnemies();
 
         private protected virtual void Init()
@@ -103,7 +106,7 @@ namespace Game
             _gameStateController.StartBattle();
             CloseAllPanel();
             
-            _heart.GetHealth.Subscribe(value =>
+            _healthService.GetHealth.Subscribe(value =>
             {
                 if (_numberTurn == -1)
                     return;
@@ -119,7 +122,6 @@ namespace Game
             InitItemButton();
             InitActionButton();
             InitMercyButton();
-            CreateItemButtons(_inventory);
             CreateAttackEnemyButtons();
             CreateActionEnemyButtons();
             InitMercy();
@@ -315,6 +317,13 @@ namespace Game
                 _view.ToggleTurnPanel(true);
                 _view.ToggleItemsContainer(true);
 
+                var itemsButtons = _itemButtons.ToList();
+
+                foreach (var itemButton in itemsButtons) 
+                    RemoveItemButton(itemButton);
+
+                CreateItemButtons(_inventory);
+                
                 EventSystem.current.SetSelectedGameObject(_itemButtons[0].gameObject);
             });
             
@@ -540,6 +549,9 @@ namespace Game
             _arena.gameObject.SetActive(false);
             _heart.gameObject.SetActive(false);
             _timeBasedTurnBooster.ToggleActivate(false);
+            
+            foreach (var enemy in _enemies) 
+                enemy.EndEnemyTurn(_numberTurn);
 
             _numberTurn++;
             Turn();
@@ -564,7 +576,14 @@ namespace Game
         {
             if (slot.Item.TryGetComponent(out EatComponent eatComponent))
             {
+                if (slot.Item.TryGetComponent(out AddMaxHPComponent addMaxHpComponent))
+                {
+                    Debug.Log($"Увеличи макс хп: {addMaxHpComponent.AddHealth}");
+                    _healthService.AddMaxHealth(addMaxHpComponent.AddHealth);
+                }
+                
                 Debug.Log($"Сьели {slot.Item.ID}");
+                _healthService.Add(eatComponent.Health);
                 slot.RemoveItem();
                 RemoveItemButton(button);
             }
@@ -845,6 +864,37 @@ namespace Game
             EnemyTurn().Forget();
         }
 
+        private protected void SaveDefeat()
+        {
+            var newDefeatedEnemiesSaveData = new DefeatedEnemiesSaveData();
+                
+            if (_mainRepositoryStorage.TryGet(SaveConstants.KILLED_ENEMIES, out DefeatedEnemiesSaveData defeatedEnemiesSaveData))
+            {
+                newDefeatedEnemiesSaveData = defeatedEnemiesSaveData;
+            }
+                
+            newDefeatedEnemiesSaveData.KilledEnemies ??= new HashSet<string>();
+            newDefeatedEnemiesSaveData.KilledEnemies.Add(_enemies[0].GetID);
+
+            if (_enemies[0].Health <= 0)
+            {
+                newDefeatedEnemiesSaveData.DefeatedEnemies ??= new HashSet<string>();
+                newDefeatedEnemiesSaveData.DefeatedEnemies.Add(_enemies[0].GetID);
+            }
+            
+            _mainRepositoryStorage.Set(SaveConstants.KILLED_ENEMIES, newDefeatedEnemiesSaveData);
+        }
+        
+        private protected virtual void Death()
+        {
+            Debug.Log("GameOver");
+            Object.Destroy(_view.gameObject);
+            _gameStateController.GameOver();
+
+            var gameOverScreen = (GameOverPresenter)_screenManager.Open(ScreensEnum.GAME_OVER);
+            gameOverScreen.SetMessage(_gameOverMessage);
+        }
+
         private protected virtual async UniTask Exit()
         {
             foreach (var enemy in _enemies)
@@ -860,16 +910,6 @@ namespace Game
             Object.Destroy(_view.gameObject);
             _gameStateController.CloseBattle();
             RuntimeManager.StudioSystem.setParameterByName(MUSIC_EVENT_PARAMETER_PATH, _startMusicParameterIndex);
-        }
-
-        private protected virtual void Death()
-        {
-            Debug.Log("GameOver");
-            Object.Destroy(_view.gameObject);
-            _gameStateController.GameOver();
-
-            var gameOverScreen = (GameOverPresenter)_screenManager.Open(ScreensEnum.GAME_OVER);
-            gameOverScreen.SetMessage(_gameOverMessage);
         }
 
 

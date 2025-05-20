@@ -44,5 +44,29 @@ namespace Game
         {
             mainInventory.ArmorSlot.Item = armor.Clone();
         }
+
+        public static bool IsGetItem(MainInventory mainInventory, string id)
+        {
+            foreach (var slot in mainInventory.MainSlots)
+            {
+                if (slot.HasItem && slot.Item.ID == id)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public static bool TryRemoveItem(MainInventory mainInventory, string id)
+        {
+            foreach (var slot in mainInventory.MainSlots)
+            {
+                if (slot.HasItem && slot.Item.ID == id)
+                {
+                    return SlotUseCases.TryRemoveOneItem(slot);
+                }
+            }
+
+            return false;
+        }
     }
 }

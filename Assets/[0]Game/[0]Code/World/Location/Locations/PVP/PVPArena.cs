@@ -37,6 +37,7 @@ namespace Game
             public GameObject GameObject;
             public DialogueSystemTrigger KillReplica;
             public DialogueSystemTrigger MercyReplica;
+            public GameObject ExplosionEffect;
         }
         
         [SerializeField]
@@ -224,6 +225,7 @@ namespace Game
             
             yield return new WaitForSeconds(1);
             _herobrine.GameObject.SetActive(true);
+            _herobrine.ExplosionEffect.SetActive(true);
             _herobrineCutscene.SetActive(false);
             _gameStateController.CloseCutscene();
         }
@@ -258,6 +260,7 @@ namespace Game
         private void SpawnNextEnemy(Enemy nextEnemy)
         {
             nextEnemy.GameObject.SetActive(false);
+            nextEnemy.ExplosionEffect.SetActive(true);
             nextEnemy.StartBattle.gameObject.SetActive(true);
         }
         

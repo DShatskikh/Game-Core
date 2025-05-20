@@ -16,21 +16,22 @@ MonoBehaviour:
     ID: Gold Apple
     MetaData:
       Name:
-        mTerm: Gold Apple
+        mTerm: Item/Gold Apple
         mRTL_IgnoreArabicFix: 0
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0
         m_DontLocalizeParameters: 0
       Description:
-        mTerm: Gold Apple Description
+        mTerm: Item/Gold Apple Description
         mRTL_IgnoreArabicFix: 0
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0
         m_DontLocalizeParameters: 0
-      Icon: {fileID: 0}
+      Icon: {fileID: -1049571235971735760, guid: 0106d46a6116d80498aaf96d5e17d98d, type: 3}
     Flags: 2
     Components:
     - rid: 2880720768947192177
+    - rid: 5757848192639303940
   references:
     version: 2
     RefIds:
@@ -38,3 +39,7 @@ MonoBehaviour:
       type: {class: EatComponent, ns: Game, asm: Game}
       data:
         Health: 20
+    - rid: 5757848192639303940
+      type: {class: AddMaxHPComponent, ns: Game, asm: Game}
+      data:
+        AddHealth: 4

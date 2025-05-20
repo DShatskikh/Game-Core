@@ -16,13 +16,13 @@ MonoBehaviour:
     ID: Diamond Armor
     MetaData:
       Name:
-        mTerm: Diamond Armor
+        mTerm: Item/Diamond Armor
         mRTL_IgnoreArabicFix: 0
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0
         m_DontLocalizeParameters: 0
       Description:
-        mTerm: Diamond Armor Description
+        mTerm: Item/Diamond Armor Description
         mRTL_IgnoreArabicFix: 0
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0

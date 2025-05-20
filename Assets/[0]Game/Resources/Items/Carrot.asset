@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c84788fb944d9cb09c240de243be19, type: 3}
+  m_Name: Carrot
+  m_EditorClassIdentifier: 
+  Prototype:
+    ID: Carrot
+    MetaData:
+      Name:
+        mTerm: Item/Carrot
+        mRTL_IgnoreArabicFix: 0
+        mRTL_MaxLineLength: 0
+        mRTL_ConvertNumbers: 0
+        m_DontLocalizeParameters: 0
+      Description:
+        mTerm: Item/Carrot Description
+        mRTL_IgnoreArabicFix: 0
+        mRTL_MaxLineLength: 0
+        mRTL_ConvertNumbers: 0
+        m_DontLocalizeParameters: 0
+      Icon: {fileID: -5859083586626064994, guid: dcd7a69776292f14eb3ca351eeccf7cc, type: 3}
+    Flags: 2
+    Components:
+    - rid: 2880720768947192177
+  references:
+    version: 2
+    RefIds:
+    - rid: 2880720768947192177
+      type: {class: EatComponent, ns: Game, asm: Game}
+      data:
+        Health: 5

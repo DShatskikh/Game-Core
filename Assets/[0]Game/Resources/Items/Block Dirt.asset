@@ -16,13 +16,13 @@ MonoBehaviour:
     ID: Block Dirt
     MetaData:
       Name:
-        mTerm: Block Dirt
+        mTerm: Item/Block Dirt
         mRTL_IgnoreArabicFix: 0
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0
         m_DontLocalizeParameters: 0
       Description:
-        mTerm: Block Dirt Description
+        mTerm: Item/Block Dirt Description
         mRTL_IgnoreArabicFix: 0
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0

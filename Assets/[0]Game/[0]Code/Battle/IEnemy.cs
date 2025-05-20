@@ -15,6 +15,7 @@ namespace Game
         bool IsMercy { get; set; }
         int GetOP { get; }
         int GetMoney { get; }
+        string GetID { get; }
         void Damage(int damage);
         void Death(int damage);
         void Spared();
@@ -23,5 +24,6 @@ namespace Game
         string GetDeathFriendReaction(IEnemy enemy);
         string GetStartReaction(int index);
         string GetActionReaction(ActionBattle actionBattle);
+        void EndEnemyTurn(int turn);
     }
 }

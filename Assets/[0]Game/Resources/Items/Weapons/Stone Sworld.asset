@@ -16,13 +16,13 @@ MonoBehaviour:
     ID: Wood Sworld
     MetaData:
       Name:
-        mTerm: Item/Wood Sword
+        mTerm: Item/Stone Sworld
         mRTL_IgnoreArabicFix: 0
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0
         m_DontLocalizeParameters: 0
       Description:
-        mTerm: Item/Wood Sword Description
+        mTerm: Item/Stone Sworld Description
         mRTL_IgnoreArabicFix: 0
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0

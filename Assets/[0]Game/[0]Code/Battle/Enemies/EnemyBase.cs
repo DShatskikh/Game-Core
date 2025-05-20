@@ -12,6 +12,9 @@ namespace Game
         private protected  static readonly int DeathHash = Animator.StringToHash("Death");
         
         [SerializeField]
+        private string _id;
+        
+        [SerializeField]
         private LocalizedString _name;
 
         [SerializeField]
@@ -56,7 +59,8 @@ namespace Game
         public bool IsMercy { get; set; }
         public int GetOP => _op;
         public int GetMoney => _money;
-        
+        public string GetID => _id;
+
         [Inject]
         private void Construct(GameStateController gameStateController)
         {
@@ -150,6 +154,11 @@ namespace Game
             _spriteRenderer.transform.localScale = _spriteRenderer.transform.localScale.SetX(1);
         }
 
+        public void AddMoney(int value)
+        {
+            _money += value;
+        }
+        
         public void OnCloseBattle() { }
         
         public abstract string GetReaction(BattleActionType actionType, Item item = null);
@@ -162,5 +171,6 @@ namespace Game
         
         public abstract string GetStartReaction(int index);
         public abstract string GetActionReaction(ActionBattle actionBattle);
+        public virtual void EndEnemyTurn(int turn) { }
     }
 }

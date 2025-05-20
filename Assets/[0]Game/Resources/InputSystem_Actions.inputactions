@@ -612,7 +612,7 @@
                     "name": "",
                     "id": "c9f8d59d-846b-4f3f-95f4-2372f8b0c529",
                     "path": "<Keyboard>/c",
-                    "interactions": "",
+                    "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "",
                     "action": "Menu",
@@ -640,7 +640,7 @@
                     "id": "7607c7b6-cd76-4816-beef-bd0341cfe950",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(behavior=1)",
                     "initialStateCheck": false
                 },
                 {

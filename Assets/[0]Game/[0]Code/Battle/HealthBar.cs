@@ -15,12 +15,12 @@ namespace Game
         private MMProgressBar _bar;
 
         [Inject]
-        private void Construct(Heart heart)
+        private void Construct(HealthService healthService)
         {
-            heart.GetHealth.Subscribe(value =>
+            healthService.GetHealth.Subscribe(value =>
             {
-                _label.text = $"{value}/{heart.GetMaxHealth}";
-                _bar.SetBar(value, 0, heart.GetMaxHealth);
+                _label.text = $"{value}/{healthService.GetMaxHealth.Value}";
+                _bar.SetBar(value, 0, healthService.GetMaxHealth.Value);
             });
         }
     }

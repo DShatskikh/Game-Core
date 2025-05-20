@@ -16,13 +16,13 @@ MonoBehaviour:
     ID: Fireworks
     MetaData:
       Name:
-        mTerm: Fireworks
+        mTerm: Item/Fireworks
         mRTL_IgnoreArabicFix: 0
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0
         m_DontLocalizeParameters: 0
       Description:
-        mTerm: Fireworks Description
+        mTerm: Item/Fireworks Description
         mRTL_IgnoreArabicFix: 0
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0
@@ -39,3 +39,4 @@ MonoBehaviour:
       data:
         Attack: 30
         Effect: {fileID: 6856480182940632667, guid: aa6a82c156649d646a6c009b34712a95, type: 3}
+        WeaponSprite: {fileID: 0}

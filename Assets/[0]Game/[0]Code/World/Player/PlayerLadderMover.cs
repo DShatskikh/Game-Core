@@ -8,6 +8,7 @@ namespace Game
         private readonly Vector2 _startPosition;
         private readonly Vector2 _targetPosition;
         private float _progress;
+        private float _distance;
         private readonly bool _isRight;
         public bool IsMove { get; }
         public bool IsRun => _isRight;
@@ -19,6 +20,8 @@ namespace Game
             _targetPosition = targetPosition;
             _isRight = isRight;
 
+            _distance = Vector2.Distance(startPosition, targetPosition);
+            
             _progress = _isRight ? 1 : 0;
 
             if (_isRight)
@@ -32,11 +35,11 @@ namespace Game
             if (directionValue.x == 0)
                 return;
             
-            var speed = isRunValue ? 2 : 1;
+            var speed = isRunValue ? 7 : 3;
 
             if (directionValue.x < 0)
             {
-                _progress += Time.deltaTime * speed;
+                _progress += Time.deltaTime * speed / _distance;
 
                 if (_progress > 1)
                     _progress = 1;
@@ -45,7 +48,7 @@ namespace Game
             }
             else if (directionValue.x > 0)
             {
-                _progress -= Time.deltaTime * speed;
+                _progress -= Time.deltaTime * speed / _distance;
                 
                 if (_progress < 0)
                     _progress = 0;

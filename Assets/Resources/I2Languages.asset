@@ -194,118 +194,6 @@ MonoBehaviour:
       - Inhabitant?
       Flags: 0000
       Languages_Touch: []
-    - Term: Block Dirt
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0411\u041B. \u0417\u0415\u041C\u041B."
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Block Dirt Description
-      TermType: 0
-      Description: 
-      Languages:
-      - "+1 \u0417\u0414"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Diamond Armor
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0410\u041B\u041C. \u0411\u0420\u041E\u041D\u042F"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Diamond Armor Description
-      TermType: 0
-      Description: 
-      Languages:
-      - "5 \u0417\u0410\u0429."
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Diamond Sworld
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0410\u041B\u041C. \u041C\u0415\u0427"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Diamond Sworld Description
-      TermType: 0
-      Description: 
-      Languages:
-      - "5 \u0410\u0422\u041A."
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Fireworks
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0424\u0415\u0419\u0415\u0420\u0412\u0415\u0420\u041A"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Fireworks Description
-      TermType: 0
-      Description: 
-      Languages:
-      - "20 \u0410\u0422\u041A."
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Gold Apple
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0417\u041E\u041B. \u042F\u0411\u041B."
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Gold Apple Description
-      TermType: 0
-      Description: 
-      Languages:
-      - "+20 \u0417\u0414."
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Iron Armor
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0416\u0415\u041B. \u0411\u0420\u041E\u041D\u042F"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Iron Sworld
-      TermType: 0
-      Description: 
-      Languages:
-      - "\u0416\u0415\u041B. \u041C\u0415\u0427"
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Iron Sworld Description
-      TermType: 0
-      Description: 
-      Languages:
-      - "3 \u0410\u0422\u041A."
-      - 
-      Flags: 0000
-      Languages_Touch: []
-    - Term: Iron Armor Description
-      TermType: 0
-      Description: 
-      Languages:
-      - "2 \u0417\u0410\u0429."
-      - 
-      Flags: 0000
-      Languages_Touch: []
     - Term: Zombie
       TermType: 0
       Description: 
@@ -502,7 +390,7 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - "\u0417\u043E\u043B\u043E\u0442\u043E\u0439 3423432"
+      - "5 \u0423\u0420."
       - 
       Flags: 0000
       Languages_Touch: []
@@ -510,7 +398,167 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - "\u0414\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u044B\u0439 4"
+      - "3 \u0423\u0420."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Carrot
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041C\u043E\u0440\u043A\u043E\u0432\u043A\u0430"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Carrot Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "5 \u041E\u0417."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Gold Apple
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0417\u043E\u043B\u043E\u0442\u043E\u0435 \u044F\u0431\u043B\u043E\u043A\u043E"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Gold Apple Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "20 \u041E\u0417"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Block Dirt
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0411\u041B.\u0417\u0415\u041C."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Block Dirt Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "1 \u041E\u0417."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Diamond Armor
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0410\u041B\u041C.\u0411\u0420\u041E\u041D\u042F"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Diamond Armor Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "10 \u0417\u0410\u0429"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Iron Armor
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0416\u0415\u041B.\u0411\u0420\u041E\u041D\u042F"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Iron Armor Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "5 \u0417\u0410\u0429"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Leather Armor
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041A\u041E\u0416.\u0411\u0420\u041E\u041D\u042F"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Leather Armor Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "2 \u0417\u0410\u0429."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Diamond Sworld
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0410\u041B\u041C.\u041C\u0415\u0427"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Diamond Sworld Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "15 \u0423\u0420."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Fireworks
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0424\u0415\u0419\u0420\u0412\u0415\u0420\u041A"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Fireworks Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "30 \u0423\u0420."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Iron Sworld
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0416\u0415\u041B.\u041C\u0415\u0427"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Iron Sworld Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "10 \u0423\u0420."
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Stone Sworld
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u041A\u0410\u041C.\u041C\u0415\u0427"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Stone Sworld Description
+      TermType: 0
+      Description: 
+      Languages:
+      - "5 \u0423\u0420."
       - 
       Flags: 0000
       Languages_Touch: []

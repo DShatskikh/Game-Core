@@ -42,34 +42,29 @@ namespace Game
 
         [SerializeField]
         private HeartBlueMover _blueMover;
-
-        private ReactiveProperty<int> _health = new();
-        private int _maxHealth;
+        
         private bool _isInvulnerability;
         private Arena _arena;
         private Animator _animator;
         private int _damage = 1;
         private IHeartMover _mover;
         private HeartModeService _heartModeService;
+        private HealthService _healthService;
 
-        public IReactiveProperty<int> GetHealth => _health;
         public event Action OnDeath;
-        public int GetMaxHealth => _maxHealth;
 
         [Inject]
-        private void Construct(Arena arena, PlayerInput playerInput, HeartModeService heartModeService)
+        private void Construct(Arena arena, PlayerInput playerInput, HeartModeService heartModeService, 
+            HealthService healthService)
         {
             _arena = arena;
             _heartModeService = heartModeService;
+            _healthService = healthService;
 
             heartModeService.Upgrade += SetMode;
             _redMover.Init(playerInput, transform);
             _blueMover.Init(playerInput, _arena);
-            
             _animator = GetComponent<Animator>();
-            _maxHealth = 20;
-            _health.Value = _maxHealth;
-            
             SetMode(heartModeService.GetMode);
         }
 
@@ -81,7 +76,7 @@ namespace Game
 
         private void Update()
         {
-            if (_health.Value <= 0)
+            if (_healthService.GetHealth.Value <= 0)
                 return;
 
             _mover.Move();
@@ -167,10 +162,10 @@ namespace Game
         private IEnumerator TakeDamage(int damage)
         {
             RuntimeManager.PlayOneShot(DAMAGE_SOUND_PATH);
-            _health.Value -= damage;
+            _healthService.GetHealth.Value -= damage;
             _damageSource.Play();
 
-            if (_health.Value <= 0)
+            if (_healthService.GetHealth.Value <= 0)
             {
                 Death();   
                 yield break;

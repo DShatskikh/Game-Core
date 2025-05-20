@@ -28,10 +28,10 @@ namespace Game
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, 
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs,
-            MainRepositoryStorage mainRepositoryStorage) : base(view, prefabButton, inventory, 
+            MainRepositoryStorage mainRepositoryStorage, HealthService healthService) : base(view, prefabButton, inventory, 
             gameStateController, points, player, arena, heart, container, virtualCamera, 
             turnProgressStorage, timeBasedTurnBooster, enemyBattleButton, screenManager, attackIndicator, nextButton,
-            localizedPairs, mainRepositoryStorage)
+            localizedPairs, mainRepositoryStorage, healthService)
         {
             _initData = initData;
             Init();
@@ -47,8 +47,13 @@ namespace Game
         private protected override string GetStateText()
         {
             if (_initData.Enemy_ZombiePigman.CanMercy && !_initData.Enemy_ZombiePigman.IsMercy)
-                return "Свинозомби нечем драться он щадит вас";
-            
+            {
+                if (_initData.Enemy_ZombiePigman.IsBuySword)
+                    return "Свинозомби нечем драться он щадит вас";
+                
+                return "Свинозомби расхотел с вами драться он щадит вас";
+            }
+
             return "Свинозомби хочет вас побить";
         }
 

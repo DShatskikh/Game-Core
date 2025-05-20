@@ -28,11 +28,11 @@ namespace Game
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager,
             AttackIndicator attackIndicator, INextButton nextButton,
             SerializableDictionary<string, LocalizedString> localizedPairs, InitData initData,
-            MainRepositoryStorage mainRepositoryStorage) : base(view,
+            MainRepositoryStorage mainRepositoryStorage, HealthService healthService) : base(view,
             prefabButton, inventory,
             gameStateController, points, player, arena, heart, container, virtualCamera, turnProgressStorage,
             timeBasedTurnBooster, enemyBattleButton, screenManager, attackIndicator, nextButton, localizedPairs,
-            mainRepositoryStorage)
+            mainRepositoryStorage, healthService)
         {
             _initData = initData;
             Init();
@@ -77,6 +77,8 @@ namespace Game
             {
                 _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinTroll(true));
             }
+            
+            SaveDefeat();
             
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA_SAVE_KEY, 
                 new PVPArena.Data() { State = PVPArena.State.FROST });

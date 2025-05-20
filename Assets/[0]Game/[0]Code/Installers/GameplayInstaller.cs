@@ -22,6 +22,7 @@ namespace Game
             Container.Bind<LocationsManager>().AsSingle().WithArguments(Resources.LoadAll<Location>("Locations")).NonLazy();
             Container.BindFactory<Location, Location, Location.Factory>();
             Container.Bind<TransitionService>().AsSingle().NonLazy();
+            Container.Bind<HealthService>().AsSingle().NonLazy();
 
             Container.BindInterfacesAndSelfTo<MainScreenHandler>().AsCached().NonLazy();
         }

@@ -1507,8 +1507,11 @@ MonoBehaviour:
       Price: 100
       Counts: 1
     Products:
-    - Config: {fileID: 11400000, guid: 6da854b1c7d4f024f9fe3c8c2e134362, type: 2}
+    - Config: {fileID: 11400000, guid: 65fb66dbc9889144e9efde5231d9f82a, type: 2}
       Price: 5
+      Counts: -1
+    - Config: {fileID: 11400000, guid: 6da854b1c7d4f024f9fe3c8c2e134362, type: 2}
+      Price: 1000
       Counts: -1
   _localizedStrings:
     m_keys:
@@ -6153,7 +6156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4730512280775900288, guid: 782f09e12053c0c40b94aa9971efd37a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.46
+      value: 20.29
       objectReference: {fileID: 0}
     - target: {fileID: 4730512280775900288, guid: 782f09e12053c0c40b94aa9971efd37a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -55615,7 +55618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4730512280775900288, guid: 782f09e12053c0c40b94aa9971efd37a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.421
+      value: -20.29
       objectReference: {fileID: 0}
     - target: {fileID: 4730512280775900288, guid: 782f09e12053c0c40b94aa9971efd37a, type: 3}
       propertyPath: m_LocalPosition.y

@@ -2,6 +2,7 @@
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using Zenject;
 
 namespace Game
 {
@@ -12,6 +13,15 @@ namespace Game
 
         [SerializeField]
         private GameObject _warning;
+
+        [SerializeField]
+        private ItemConfig _goldSword;
+        
+        [Inject]
+        private MainInventory _mainInventory;
+        
+        [Inject]
+        private WalletService _walletService;
         
         private bool _isSelectedInfo;
         private bool _isBuyerSword;
@@ -32,7 +42,10 @@ namespace Game
                     if (i == 0 && _isSelectedInfo)
                         continue;
                     
-                    if (i == 3 && _isBuyerSword)
+                    if (i == 2 && !_mainInventory.IsGetItem("Carrot"))
+                        continue;
+                    
+                    if (i == 3 && (_isBuyerSword || _walletService.Money.Value < 15))
                         continue;
                     
                     var action = _actions[i];
@@ -59,6 +72,14 @@ namespace Game
 
         public void SetWarning(bool value) => 
             _warning.SetActive(value);
+
+        public override void EndEnemyTurn(int turn)
+        {
+            if (turn > 4)
+            {
+                Mercy = 100;
+            }
+        }
 
         public override string GetReaction(BattleActionType actionType, Item item = null)
         {
@@ -108,6 +129,7 @@ namespace Game
             
             if (actionBattle.Name == _actions[2].Name)
             {
+                _mainInventory.TryRemoveItem("Carrot");
                 _isSelectedInfo = true;
             }
 
@@ -115,6 +137,8 @@ namespace Game
             {
                 _isBuyerSword = true;
                 _sword.gameObject.SetActive(false);
+                _walletService.TrySellMoney(15);
+                _mainInventory.Add(_goldSword.Prototype.Clone());
             }
             
             return action.Reaction;

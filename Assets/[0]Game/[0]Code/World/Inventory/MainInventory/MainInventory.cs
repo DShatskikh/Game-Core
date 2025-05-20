@@ -57,5 +57,11 @@ namespace Game
             OnItemAdded?.Invoke(item);
             OnSlotChange?.Invoke(item, slot);
         }
+
+        public bool IsGetItem(string id) => 
+            InventoryUseCases.IsGetItem(this, id);
+
+        public bool TryRemoveItem(string id) => 
+            InventoryUseCases.TryRemoveItem(this, id);
     }
 }
