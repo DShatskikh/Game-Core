@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using PixelCrushers.DialogueSystem;
+﻿using PixelCrushers.DialogueSystem;
 using UnityEngine;
 using Zenject;
 
@@ -16,7 +15,6 @@ namespace Game
         [Inject]
         private void Construct(ScreenManager screenManager)
         {
-            // Получаем ScreenManager из DI контейнера
             _screenManager = screenManager;
         }
         
@@ -26,10 +24,7 @@ namespace Game
             _dialogueSystemTrigger.OnUse();
         }
 
-        public void OnShowCutscene()
-        {
-            
-        }
+        public void OnShowCutscene() { }
 
         public void OnHideCutscene()
         {

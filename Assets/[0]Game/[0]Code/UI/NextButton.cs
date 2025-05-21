@@ -42,11 +42,18 @@ namespace Game
                 await UniTask.WaitForEndOfFrame();
             }
         }
+
+        public void Hide()
+        {
+            onClick.RemoveAllListeners();
+            gameObject.SetActive(false);
+        }
     }
 
     public interface INextButton
     {
         void Show(Action action = null);
         UniTask WaitShow(float time = float.PositiveInfinity, Action action = null);
+        void Hide();
     }
 }

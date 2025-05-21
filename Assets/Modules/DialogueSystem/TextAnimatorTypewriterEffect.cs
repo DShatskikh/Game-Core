@@ -26,7 +26,10 @@ namespace Game
         private GameObject _hint;
 
         [SerializeField]
-        private GameObject _namePanel;
+        private GameObject _nicknamePanel;
+
+        [SerializeField]
+        private HeartContinueIcon _heartContinueIcon;
 
         private bool _isPlaying;
         //private PlayerInput _playerInput;
@@ -37,28 +40,36 @@ namespace Game
 
         public override void Start()
         {
-            print("Start");
+            _heartContinueIcon.gameObject.SetActive(false);
+
             //_textAnimatorPlayer.textAnimator.effectIntensityMultiplier = GetSpeed();
         }
 
         public override void Stop()
         {
-            print("Stop");
+            _heartContinueIcon.gameObject.SetActive(true);
+            _isPlaying = false;
             //_textAnimatorPlayer.textAnimator.SetText(string.Empty, false);
         }
 
         public override void StartTyping(string text, int fromIndex = 0)
         {
             print("StartTyping - " + text);
+            var actorName = DialogueManager.currentConversationState.subtitle.speakerInfo.nameInDatabase;
+            var useDisplayName = DialogueManager.masterDatabase.GetActor(actorName).LookupValue("Display Name");
+            _nicknamePanel.SetActive(useDisplayName != string.Empty);
+
+            _heartContinueIcon.gameObject.SetActive(false);
             _textAnimatorPlayer.ShowText(text);
             _textAnimatorPlayer.StartShowingText();
+            _isPlaying = true;
             //_textAnimatorPlayer.textAnimator.SetText(text, false);
             //_textAnimatorPlayer.textAnimator.text(text, true);
         }
 
         public override void StopTyping()
         {
-            print("StopTyping");
+            _textAnimatorPlayer.SkipTypewriter();
         }
 
         private void OnWrite()
@@ -84,7 +95,7 @@ namespace Game
             base.OnEnable();
             // gameObject.SetActive(true);
             _textAnimatorPlayer.onCharacterVisible.AddListener((c) => OnWrite());
-            // _textAnimatorPlayer.onTextShowed.AddListener(Stop);
+            _textAnimatorPlayer.onTextShowed.AddListener(Stop);
             // _textAnimatorPlayer.onTypewriterStart.AddListener(OnTypewriterStart);
             // _button.SetActive(false);
             
@@ -92,7 +103,6 @@ namespace Game
                 return;
             
             var text = DialogueManager.currentConversationState.subtitle.formattedText.text;
-            Debug.Log(text);
             _textAnimatorPlayer.ShowText(text);
             _textAnimatorPlayer.StartShowingText(false);
 
@@ -104,7 +114,7 @@ namespace Game
         {
             base.OnDisable();
             _textAnimatorPlayer.onCharacterVisible.RemoveListener((c) => OnWrite());
-            // _textAnimatorPlayer.onTextShowed.RemoveListener(Stop);
+            _textAnimatorPlayer.onTextShowed.RemoveListener(Stop);
             // _textAnimatorPlayer.onTypewriterStart.RemoveListener(OnTypewriterStart);
             // gameObject.SetActive(false);
 
@@ -127,25 +137,24 @@ namespace Game
 
         // public override void StartTyping(string text, int fromIndex = 0)
         // {
-        //     var actorName = DialogueManager.currentConversationState.subtitle.speakerInfo.nameInDatabase;
-        //     var clipName = DialogueManager.masterDatabase.GetActor(actorName).LookupValue("AudioClip");
-        //     var clipPath = "AudioClips/" + (clipName != "" ? clipName : "snd_txtlan_ch1");
-        //     var clip = Resources.Load<AudioClip>(clipPath);
+        //     
+        //     // var clipName = DialogueManager.masterDatabase.GetActor(actorName).LookupValue("AudioClip");
+        //     // var clipPath = "AudioClips/" + (clipName != "" ? clipName : "snd_txtlan_ch1");
+        //     // var clip = Resources.Load<AudioClip>(clipPath);
+        //     //
+        //     // foreach (var source in _audioSources) 
+        //     //     source.clip = clip;
         //
-        //     foreach (var source in _audioSources) 
-        //         source.clip = clip;
-        //
-        //     var useDisplayName = DialogueManager.masterDatabase.GetActor(actorName).LookupValue("Display Name");
-        //     _namePanel.SetActive(useDisplayName != string.Empty);
+        //     
         //         
-        //     _textAnimatorPlayer.StartShowingText();
+        //     //_textAnimatorPlayer.StartShowingText();
         // }
         //
         // public override void StopTyping()
         // {
         //     _button.SetActive(true);
         // }
-        //
+        
         
         //
         // private void OnTypewriterStart()

@@ -218,6 +218,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _animatorTypewriter: {fileID: 0}
 --- !u!114 &6694644260094898798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,6 +532,7 @@ MonoBehaviour:
   _iconMmfPlayer: {fileID: 3521617280204121710}
   _hint: {fileID: 5652599393764655620}
   _namePanel: {fileID: 3752124822995570025}
+  _heartContinueIcon: {fileID: 1833713007884830134}
 --- !u!114 &4521648997356359878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1684,10 +1686,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 250154290879696849}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _animatorTypewriter: {fileID: 5596942383818797018}
 --- !u!114 &8158316928937438725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1745,7 +1748,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 250154290879696849}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []

@@ -371,7 +371,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 65fb66dbc9889144e9efde5231d9f82a, type: 2}
   _weapon: {fileID: 11400000, guid: 0e7aa05bcbf4e494f929bba4dd608c26, type: 2}
   _additionalWeapon: {fileID: 11400000, guid: b15d05e011346954f93169cfc67ea029, type: 2}
-  _locationID: MobArena
+  _locationID: Spawn
 --- !u!114 &16250077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,6 +838,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _animatorTypewriter: {fileID: 0}
 --- !u!1 &393864010
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,7 +1295,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.0612183, y: -0.000024795532}
+  m_AnchoredPosition: {x: 1.0612183, y: -3.1}
   m_SizeDelta: {x: -12.690903, y: 0.8980007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &688974280
@@ -2082,6 +2083,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _animatorTypewriter: {fileID: 1936600632}
 --- !u!1 &779407704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2189,11 +2191,19 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: displaySettings.inputSettings.alwaysForceResponseMenu
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.subtitleSettings.requireContinueOnLastLine
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.subtitleSettings.showPCSubtitlesDuringLine
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: displaySettings.subtitleSettings.skipPCSubtitleAfterResponseMenu
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6193717574850487428, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
@@ -2386,7 +2396,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098961800}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -3011,7 +3021,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.11, y: 8.89}
+  m_AnchoredPosition: {x: -9.11, y: 6.1}
   m_SizeDelta: {x: 120, y: 174.077}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1364968869
@@ -3692,7 +3702,8 @@ MonoBehaviour:
   _button: {fileID: 719323767}
   _iconMmfPlayer: {fileID: 702392298}
   _hint: {fileID: 1533666472}
-  _namePanel: {fileID: 1098961800}
+  _nicknamePanel: {fileID: 1098961800}
+  _heartContinueIcon: {fileID: 1606229233}
 --- !u!114 &1936600633
 MonoBehaviour:
   m_ObjectHideFlags: 0

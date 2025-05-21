@@ -181,6 +181,9 @@ namespace Game
 
         public void OpenCutscene()
         {
+            if (_gameState == GameState.CUTSCENE)
+                return;
+            
             _gameState = GameState.CUTSCENE;
             
             foreach (var listener in _listeners)
@@ -256,13 +259,9 @@ namespace Game
         
         public void GameOver()
         {
-            Debug.Log("GameOver");
-            
             if (_gameState != GameState.BATTLE)
                 return;
 
-            Debug.Log("GAME_OVER");
-            
             _gameState = GameState.GAME_OVER;
             
             foreach (var listener in _listeners)

@@ -20,12 +20,18 @@ namespace Game
             _view = view;
             _screenManager = screenManager;
             _gameStateController = gameStateController;
-
-            _gameStateController.OpenCutscene();
             
             _view.GetSaveButton.onClick.AddListener(OnClickSaveButton);
             _view.GetReturnButton.onClick.AddListener(OnClickReturnButton);
             EventSystem.current.SetSelectedGameObject(_view.GetSaveButton.gameObject);
+
+            WaitOpenCutscene().Forget();
+        }
+
+        private async UniTask WaitOpenCutscene()
+        {
+            await UniTask.DelayFrame(1);
+            _gameStateController.OpenCutscene();
         }
 
         private void OnClickSaveButton()
