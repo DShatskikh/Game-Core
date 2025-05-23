@@ -19,7 +19,7 @@ namespace Game
         
         private void Start()
         {
-            if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA_SAVE_KEY, out PVPArena.Data data) && data.State == PVPArena.State.END)
+            if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA, out PVPArena.Data data) && data.State == PVPArena.State.END)
                 return;
 
             _event.Invoke();

@@ -11,11 +11,13 @@ namespace Game
 
         private bool _isOpened;
         private ScreenManager _screenManager;
+        private DiContainer _diContainer;
 
         [Inject]
-        private void Construct(ScreenManager screenManager)
+        private void Construct(ScreenManager screenManager, DiContainer diContainer)
         {
             _screenManager = screenManager;
+            _diContainer = diContainer;
         }
         
         public void Use()
@@ -32,7 +34,7 @@ namespace Game
                 return;
 
             _isOpened = false;
-            _screenManager.Open(ScreensEnum.SAVE);
+            _screenManager.Open(ScreensEnum.SAVE, _diContainer);
         }
     }
 }

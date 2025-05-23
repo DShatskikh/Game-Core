@@ -47,6 +47,7 @@ namespace Game
             Container.Bind<LuaCommandRegister>().AsSingle().NonLazy();
             Container.Bind<MainRepositoryStorage>().AsSingle().NonLazy();
             Container.Bind<SettingsRepositoryStorage>().AsSingle().NonLazy();
+            Container.Bind<SessionTimeSystem>().AsSingle().NonLazy();
         }
     }
 }

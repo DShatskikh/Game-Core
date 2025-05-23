@@ -54,6 +54,7 @@ namespace Game
         private float _startMusicParameterIndex;
         private protected readonly MainRepositoryStorage _mainRepositoryStorage;
         private readonly HealthService _healthService;
+        private readonly LevelService _levelService;
 
         public BattleControllerBase(BattleView view, ShopButton prefabButton, MainInventory inventory, 
             GameStateController gameStateController, BattlePoints points, Player player,
@@ -62,7 +63,7 @@ namespace Game
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, 
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs, MainRepositoryStorage mainRepositoryStorage,
-            HealthService healthService)
+            HealthService healthService, LevelService levelService)
         {
             _view = view;
             _prefabButton = prefabButton;
@@ -83,6 +84,7 @@ namespace Game
             _localizedPairs = localizedPairs;
             _mainRepositoryStorage = mainRepositoryStorage;
             _healthService = healthService;
+            _levelService = levelService;
         }
 
         public virtual void Turn()
@@ -614,12 +616,12 @@ namespace Game
             _view.ToggleStateLabel(true);
             
             var endText = _localizedPairs["End"].ToString();
-            var op = 0;
+            var exp = 0;
 
             foreach (var enemy in _enemies)
             {
                 if (enemy.Health < 0) 
-                    op += enemy.GetOP;
+                    exp += enemy.GetOP;
             }
             
             var money = 0;
@@ -629,9 +631,14 @@ namespace Game
                 money += enemy.GetMoney;
             }
 
-            string formattedText = string.Format(endText, op, money);
-            _view.SetStateText(formattedText);
+            string formattedText = string.Format(endText, exp, money);
             
+            _levelService.AddExp(exp, out bool isLevelUp);
+            
+            if (isLevelUp)
+                formattedText += "\nВы получили новый уровень!";
+            
+            _view.SetStateText(formattedText);
             await _nextButton.WaitShow();
 
             Exit().Forget();

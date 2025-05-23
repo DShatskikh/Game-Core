@@ -1,4 +1,5 @@
 ﻿using PixelCrushers.DialogueSystem;
+using Zenject;
 
 namespace Game
 {
@@ -11,7 +12,7 @@ namespace Game
         {
             _screenManager = screenManager;
             _mainRepositoryStorage = mainRepositoryStorage;
-
+            
             Register();
         }
         
@@ -32,7 +33,10 @@ namespace Game
 
         private void OpenSaveScreen()
         {
-            _screenManager.Open(ScreensEnum.SAVE);
+            if (GameplayInstaller.GetContainer != null)
+                _screenManager.Open(ScreensEnum.SAVE, GameplayInstaller.GetContainer);
+            else
+                _screenManager.Open(ScreensEnum.SAVE);
         }
         
         private bool IsDefeatedEnemy(string enemyID)
@@ -57,7 +61,7 @@ namespace Game
         
         private bool IsPassedPVPArena()
         {
-            if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA_SAVE_KEY, out PVPArena.Data data))
+            if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA, out PVPArena.Data data))
             {
                 return data.State == PVPArena.State.END;
             }

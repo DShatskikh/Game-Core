@@ -46,6 +46,10 @@ namespace Game
 
             foreach (var localizedString in _localizedStrings)
             {
+                var buyLocalizedString = localizedString.Value;
+                string text = buyLocalizedString;
+                Debug.Log($"Переведенная строка {text}");
+                
                 inscriptionsContainer.Add(localizedString.Key, localizedString.Value);
             }
             

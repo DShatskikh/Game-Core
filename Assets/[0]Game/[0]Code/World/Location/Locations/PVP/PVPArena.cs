@@ -108,7 +108,7 @@ namespace Game
         {
             var currentState = State.START;
             
-            if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA_SAVE_KEY, out Data data))
+            if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA, out Data data))
             {
                 currentState = data.State;
             }
@@ -205,7 +205,7 @@ namespace Game
 
         private IEnumerator AwaitStartCutscene()
         {
-            _mainRepositoryStorage.Set(SaveConstants.PVPARENA_SAVE_KEY, new Data() { State = State.BANANA });
+            _mainRepositoryStorage.Set(SaveConstants.PVPARENA, new Data() { State = State.BANANA });
             _herobrine.GameObject.SetActive(false);
             _herobrineCutscene.SetActive(true);
             _startReplica.OnUse();

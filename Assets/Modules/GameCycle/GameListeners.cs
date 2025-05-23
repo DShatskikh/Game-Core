@@ -2,7 +2,6 @@
 {
     public interface IGameListener { }
     
-    // Пример интерфейса вызывается при старте игры
     public interface IGameStartListener : IGameListener
     {
         void OnStartGame();
@@ -26,9 +25,12 @@
         void OnHideADS();
     }
     
+    // Пример интерфейса
     public interface IGameCutsceneListener : IGameListener
     {
+        // Вызывается вначале катсцены
         void OnShowCutscene();
+        // Вызывается в конце катсцены
         void OnHideCutscene();
     }
     

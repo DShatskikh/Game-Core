@@ -11,7 +11,8 @@ namespace Game
         private ScreenManager _screenManager;
 
         [Inject]
-        private void Construct(GameStateController gameStateController, LocationsManager locationsManager, 
+        private void Construct(GameStateController gameStateController, 
+            LocationsManager locationsManager, 
             ScreenManager screenManager)
         {
             _gameStateController = gameStateController;
