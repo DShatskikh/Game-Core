@@ -68,17 +68,9 @@ namespace Game
         
         private protected override void EndFightAdditional()
         {
-            if (_initData.Enemy_Troll.Health > 0)
-            {
-                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinTroll(false));
-            }
-            else
-            {
-                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinTroll(true));
-            }
-            
             SaveDefeat();
-            
+            _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinTroll());
+
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
                 new PVPArena.Data() { State = PVPArena.State.FROST });
         }

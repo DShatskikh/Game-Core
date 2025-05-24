@@ -47,14 +47,30 @@ namespace Game
         private protected Sequence _deathSequence;
         private protected Sequence _shakeSequence;
         private protected bool _isStartDeathAnimation;
-        
+        private int _mercy;
+
         public LocalizedString Name => _name;
         public Attack[] Attacks => _attacks;
         public BattleMessageBox MessageBox => _messageBox;
         public abstract ActionBattle[] Actions { get; }
         public int Health => _health;
         public int MaxHealth => _maxHealth;
-        public int Mercy { get; set; }
+
+        public int Mercy
+        {
+            get => _mercy;
+            set
+            {
+                if (value > 100)
+                {
+                    _mercy = 100;
+                    return;
+                }
+
+                _mercy = value;
+            }
+        }
+
         public bool CanMercy => Mercy == 100 || Health <= 6;
         public bool IsMercy { get; set; }
         public int GetOP => _op;
@@ -128,7 +144,7 @@ namespace Game
             _deathSequence.Kill();
             _deathSequence = DOTween.Sequence();
             _deathSequence
-                .AppendInterval(0.5f)
+                //.AppendInterval(0.5f)
                 .OnComplete(() => _deathAnimation.StartAnimation());
         }
 

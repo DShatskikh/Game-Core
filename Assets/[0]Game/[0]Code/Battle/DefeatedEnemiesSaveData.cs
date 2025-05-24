@@ -6,7 +6,7 @@ namespace Game
     [Serializable]
     public struct DefeatedEnemiesSaveData
     {
-        public HashSet<string> DefeatedEnemies;
-        public HashSet<string> KilledEnemies;
+        public List<string> DefeatedEnemies;
+        public List<string> KilledEnemies;
     }
 }

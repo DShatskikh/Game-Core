@@ -219,7 +219,7 @@ TextureImporter:
         x: 15
         y: 47
         width: 11
-        height: 16
+        height: 17
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,9 +260,9 @@ TextureImporter:
       name: Banana_4
       rect:
         serializedVersion: 2
-        x: 31
+        x: 32
         y: 47
-        width: 14
+        width: 11
         height: 17
       alignment: 7
       pivot: {x: 0.5, y: 0}

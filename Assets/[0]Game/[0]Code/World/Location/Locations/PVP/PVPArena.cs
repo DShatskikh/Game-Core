@@ -3,7 +3,7 @@ using System.Collections;
 using PixelCrushers.DialogueSystem;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Serialization;
 using Zenject;
 using DialogueSystemTrigger = PixelCrushers.DialogueSystem.Wrappers.DialogueSystemTrigger;
 
@@ -35,8 +35,8 @@ namespace Game
         {
             public StarterBattleBase StartBattle;
             public GameObject GameObject;
-            public DialogueSystemTrigger KillReplica;
-            public DialogueSystemTrigger MercyReplica;
+            [FormerlySerializedAs("MercyReplica")]
+            public DialogueSystemTrigger EndBattleReplica;
             public GameObject ExplosionEffect;
         }
         
@@ -223,7 +223,6 @@ namespace Game
             yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
             _gameStateController.OpenCutscene();
             
-            yield return new WaitForSeconds(1);
             _herobrine.GameObject.SetActive(true);
             _herobrine.ExplosionEffect.SetActive(true);
             _herobrineCutscene.SetActive(false);
@@ -246,12 +245,9 @@ namespace Game
             _timer.SetActive(false);
         }
 
-        private IEnumerator AwaitWinEnemyReplica(Enemy enemy, bool isKilled)
+        private IEnumerator AwaitWinEnemyReplica(Enemy enemy)
         {
-            if (isKilled)
-                enemy.KillReplica.OnUse();
-            else
-                enemy.MercyReplica.OnUse();
+            enemy.EndBattleReplica.OnUse();
 
             yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
             yield return AwaitTimer();
@@ -264,9 +260,9 @@ namespace Game
             nextEnemy.StartBattle.gameObject.SetActive(true);
         }
         
-        public IEnumerator AwaitStartCutsceneWinBanana(bool isKilled)
+        public IEnumerator AwaitStartCutsceneWinBanana()
         {
-            yield return AwaitWinEnemyReplica(_banana, isKilled);
+            yield return AwaitWinEnemyReplica(_banana);
             
             if (_mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent) && attackComponent.Attack < 5)
             {
@@ -278,9 +274,9 @@ namespace Game
             SpawnNextEnemy(_dimas);
         }
         
-        public IEnumerator AwaitStartCutsceneWinDimas(bool isKilled)
+        public IEnumerator AwaitStartCutsceneWinDimas()
         {
-            yield return AwaitWinEnemyReplica(_dimas, isKilled);
+            yield return AwaitWinEnemyReplica(_dimas);
 
             if (!_mainInventory.ArmorSlot.HasItem || (_mainInventory.ArmorSlot.Item.TryGetComponent(out ArmorComponent armorComponent) && armorComponent.Armor < 2))
             {
@@ -292,9 +288,9 @@ namespace Game
             SpawnNextEnemy(_juliana);
         }
         
-        public IEnumerator AwaitStartCutsceneWinJuliana(bool isKilled)
+        public IEnumerator AwaitStartCutsceneWinJuliana()
         {
-            yield return AwaitWinEnemyReplica(_juliana, isKilled);
+            yield return AwaitWinEnemyReplica(_juliana);
 
             if (_mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent) && attackComponent.Attack < 7)
             {
@@ -306,9 +302,9 @@ namespace Game
             SpawnNextEnemy(_troll);
         }
         
-        public IEnumerator AwaitStartCutsceneWinTroll(bool isKilled)
+        public IEnumerator AwaitStartCutsceneWinTroll()
         {
-            yield return AwaitWinEnemyReplica(_troll, isKilled);
+            yield return AwaitWinEnemyReplica(_troll);
 
             if (!_mainInventory.ArmorSlot.HasItem || (_mainInventory.ArmorSlot.Item.TryGetComponent(out ArmorComponent armorComponent) && armorComponent.Armor < 5))
             {
@@ -320,9 +316,9 @@ namespace Game
             SpawnNextEnemy(_frost);
         }
         
-        public IEnumerator AwaitStartCutsceneWinFrost(bool isKilled)
+        public IEnumerator AwaitStartCutsceneWinFrost()
         {
-            yield return AwaitWinEnemyReplica(_frost, isKilled);
+            yield return AwaitWinEnemyReplica(_frost);
 
             if (_mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent) && attackComponent.Attack < 10)
             {
@@ -334,9 +330,9 @@ namespace Game
             SpawnNextEnemy(_hacker);
         }
         
-        public IEnumerator AwaitStartCutsceneWinHacker(bool isKilled)
+        public IEnumerator AwaitStartCutsceneWinHacker()
         {
-            yield return AwaitWinEnemyReplica(_hacker, isKilled);
+            yield return AwaitWinEnemyReplica(_hacker);
 
             if (!_mainInventory.ArmorSlot.HasItem || (_mainInventory.ArmorSlot.Item.TryGetComponent(out ArmorComponent armorComponent) && armorComponent.Armor < 10))
             {
@@ -348,14 +344,10 @@ namespace Game
             SpawnNextEnemy(_herobrine);
         }
         
-        public IEnumerator AwaitStartCutsceneWinHerobrine(bool isKilled)
+        public IEnumerator AwaitStartCutsceneWinHerobrine()
         {
             Debug.Log("Вы победили Херобрина");
-
-            if (isKilled)
-                _herobrine.KillReplica.OnUse();
-            else
-                _herobrine.MercyReplica.OnUse();
+            _herobrine.EndBattleReplica.OnUse();
 
             yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
 

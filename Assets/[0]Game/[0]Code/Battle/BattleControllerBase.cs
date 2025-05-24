@@ -798,9 +798,7 @@ namespace Game
             var messages = new List<string>();
 
             foreach (var enemy1 in _enemies)
-            {
                 messages.Add(enemy1.GetReaction(enemy1 == enemy ? BattleActionType.Attack : BattleActionType.NoAction));
-            }
 
             return messages.ToArray();
         }
@@ -809,10 +807,8 @@ namespace Game
         {
             var messages = new List<string>();
 
-            foreach (var enemy1 in _enemies)
-            {
-                messages.Add("...");
-            }
+            foreach (var enemy1 in _enemies) 
+                messages.Add(enemy1.GetReaction(BattleActionType.AttackMiss));
 
             return messages.ToArray();
         }
@@ -880,13 +876,18 @@ namespace Game
                 newDefeatedEnemiesSaveData = defeatedEnemiesSaveData;
             }
                 
-            newDefeatedEnemiesSaveData.KilledEnemies ??= new HashSet<string>();
-            newDefeatedEnemiesSaveData.KilledEnemies.Add(_enemies[0].GetID);
+            newDefeatedEnemiesSaveData.DefeatedEnemies ??= new List<string>();
+            newDefeatedEnemiesSaveData.DefeatedEnemies.Add(_enemies[0].GetID);
 
+            Debug.Log($"DefeatedEnemies: {_enemies[0].GetID}");
+            
+            newDefeatedEnemiesSaveData.KilledEnemies ??= new List<string>();
+            
             if (_enemies[0].Health <= 0)
             {
-                newDefeatedEnemiesSaveData.DefeatedEnemies ??= new HashSet<string>();
-                newDefeatedEnemiesSaveData.DefeatedEnemies.Add(_enemies[0].GetID);
+                newDefeatedEnemiesSaveData.KilledEnemies.Add(_enemies[0].GetID);
+                
+                Debug.Log($"KilledEnemies: {_enemies[0].GetID}");
             }
             
             _mainRepositoryStorage.Set(SaveConstants.KILLED_ENEMIES, newDefeatedEnemiesSaveData);

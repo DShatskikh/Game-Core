@@ -80,6 +80,8 @@ namespace Game
         
         private int GetNextToNextLv(int nextLv)
         {
+            nextLv++;
+            
             return nextLv switch
             {
                 1 => 100,

@@ -67,17 +67,9 @@ namespace Game
         
         private protected override void EndFightAdditional()
         {
-            if (_initData.Enemy_Hacker.Health > 0)
-            {
-                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinHacker(false));
-            }
-            else
-            {
-                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinHacker(true));
-            }
-            
             SaveDefeat();
-            
+            _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinHacker());
+
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
                 new PVPArena.Data() { State = PVPArena.State.HEROBRINE });
         }

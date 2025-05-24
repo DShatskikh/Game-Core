@@ -68,17 +68,10 @@ namespace Game
         
         private protected override void EndFightAdditional()
         {
-            if (_initData.Enemy_Frost.Health > 0)
-            {
-                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinFrost(false));
-            }
-            else
-            {
-                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinFrost(true));
-            }
-            
             SaveDefeat();
+            _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinFrost());
             
+
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
                 new PVPArena.Data() { State = PVPArena.State.HACKER });
         }

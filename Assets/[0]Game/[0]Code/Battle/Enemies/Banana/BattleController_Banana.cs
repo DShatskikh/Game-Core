@@ -56,7 +56,7 @@ namespace Game
             if (_initData.Enemy_Banana.CanMercy)
                 return "Банан щадит вас";
             
-            return "Сильнейший телохранитель Херобрина (по его словам)";
+            return "Перед вами стоит будущий блогер миллионик (по его словам)";
         }
 
         public override void OnGameOver()
@@ -66,16 +66,8 @@ namespace Game
 
         private protected override void EndFightAdditional()
         {
-            if (_initData.Enemy_Banana.Health > 0)
-            {
-                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinBanana(false));
-            }
-            else
-            {
-                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinBanana(true));
-            }
-            
             SaveDefeat();
+            _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinBanana());
 
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
                 new PVPArena.Data() { State = PVPArena.State.DIMAS });

@@ -1,4 +1,6 @@
-﻿using PixelCrushers.DialogueSystem;
+﻿using System.Linq;
+using PixelCrushers.DialogueSystem;
+using UnityEngine;
 using Zenject;
 
 namespace Game
@@ -43,7 +45,7 @@ namespace Game
         {
             if (_mainRepositoryStorage.TryGet(SaveConstants.KILLED_ENEMIES, out DefeatedEnemiesSaveData defeatedEnemiesSaveData))
             {
-                return defeatedEnemiesSaveData.DefeatedEnemies.TryGetValue(enemyID, out var hash);
+                return defeatedEnemiesSaveData.DefeatedEnemies.Any(x => x == enemyID);
             }
 
             return false;
@@ -52,9 +54,7 @@ namespace Game
         private bool IsKilledEnemy(string enemyID)
         {
             if (_mainRepositoryStorage.TryGet(SaveConstants.KILLED_ENEMIES, out DefeatedEnemiesSaveData defeatedEnemiesSaveData))
-            {
-                return defeatedEnemiesSaveData.KilledEnemies.TryGetValue(enemyID, out var hash);
-            }
+                return defeatedEnemiesSaveData.KilledEnemies.Any(x => x == enemyID);
 
             return false;
         }

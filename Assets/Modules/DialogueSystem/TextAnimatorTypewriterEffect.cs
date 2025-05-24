@@ -54,7 +54,6 @@ namespace Game
 
         public override void StartTyping(string text, int fromIndex = 0)
         {
-            print("StartTyping - " + text);
             var actorName = DialogueManager.currentConversationState.subtitle.speakerInfo.nameInDatabase;
             var useDisplayName = DialogueManager.masterDatabase.GetActor(actorName).LookupValue("Display Name");
             _nicknamePanel.SetActive(useDisplayName != string.Empty);

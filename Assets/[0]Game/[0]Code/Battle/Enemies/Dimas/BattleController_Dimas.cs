@@ -66,17 +66,9 @@ namespace Game
         
         private protected override void EndFightAdditional()
         {
-            if (_initData.Enemy_Dimas.Health > 0)
-            {
-                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinDimas(false));
-            }
-            else
-            {
-                _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinDimas(true));
-            }
-            
             SaveDefeat();
-            
+            _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinDimas());
+
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
                 new PVPArena.Data() { State = PVPArena.State.JULIANA });
         }
