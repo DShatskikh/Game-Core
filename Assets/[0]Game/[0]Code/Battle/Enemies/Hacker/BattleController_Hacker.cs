@@ -71,7 +71,7 @@ namespace Game
             _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinHacker());
 
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
-                new PVPArena.Data() { State = PVPArena.State.HEROBRINE });
+                new PVPArena.SaveData() { State = PVPArena.State.HEROBRINE });
         }
     }
 }

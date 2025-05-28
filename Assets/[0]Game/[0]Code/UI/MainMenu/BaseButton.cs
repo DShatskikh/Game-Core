@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    // Базовый класс кнопки
     public abstract class BaseButton : MonoBehaviour
     {
         private Button _button;

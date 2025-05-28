@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Game
 {
+    // Обработчик открытия консоли
     public sealed class ConsoleToggleHandler
     {
         private readonly PlayerInput _input;

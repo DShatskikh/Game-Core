@@ -1,5 +1,6 @@
 ﻿namespace Game
 {
+    // Интерфейс для репозитория
     public interface IGameRepository
     {
         public void Set<T>(string key, T data);

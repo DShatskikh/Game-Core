@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Класс который находит и хранит ближайший обьект для взаимодействия
     [Serializable]
     public sealed class UseAreaChecker
     {

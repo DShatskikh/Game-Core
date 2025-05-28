@@ -5,6 +5,7 @@ using Zenject;
 
 namespace Game
 {
+    // Атака 1 Свинозомби
     public sealed class Attack_ZombiePigman_1 : Attack
     {
         [SerializeField]

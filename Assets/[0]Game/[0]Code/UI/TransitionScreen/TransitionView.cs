@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    // Визуальная часть перехода
     public sealed class TransitionView : ScreenBase
     {
         [SerializeField]

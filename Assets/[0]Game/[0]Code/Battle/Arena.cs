@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 
 namespace Game
 {
+    // Арена боя
     public class Arena : MonoBehaviour
     {
         private SpriteRenderer _spriteRenderer;
@@ -17,6 +17,7 @@ namespace Game
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
+        // Анимация изминения размера арены
         public async UniTask AwaitSetSize(Vector2 size)
         {
             var startSize = _spriteRenderer.size;

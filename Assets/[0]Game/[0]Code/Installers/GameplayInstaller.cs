@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Game
 {
+    // Инсталлер для основной игры
     public class GameplayInstaller : MonoInstaller
     {
         public static DiContainer GetContainer;
@@ -28,6 +29,7 @@ namespace Game
             Container.Bind<TransitionService>().AsSingle().NonLazy();
             Container.Bind<LevelService>().AsSingle().NonLazy();
             Container.Bind<HealthService>().AsSingle().NonLazy();
+            Container.Bind<TutorialState>().AsSingle().NonLazy();
 
             Container.BindInterfacesAndSelfTo<MainScreenHandler>().AsCached().NonLazy();
         }

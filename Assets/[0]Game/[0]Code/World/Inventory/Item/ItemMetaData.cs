@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Метаданные предмета
     [Serializable]
     public sealed class ItemMetaData
     {

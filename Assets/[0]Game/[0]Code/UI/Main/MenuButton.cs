@@ -1,9 +1,9 @@
-﻿using System;
-using UnityEngine.InputSystem;
+﻿using UnityEngine.InputSystem;
 using Zenject;
 
 namespace Game
 {
+    // Кнопка меню
     public sealed class MenuButton : BaseButton
     {
         private ScreenManager _screenManager;

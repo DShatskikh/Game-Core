@@ -100,7 +100,7 @@ MonoBehaviour:
     \u0438\u0434\u0435\u043C"
   StudioPath: 
   Min: 0
-  Max: 3
+  Max: 4
   Default: 0
   ID:
     data1: 3051080024
@@ -112,6 +112,7 @@ MonoBehaviour:
   - "\u0422\u0440\u0430\u0432\u0430"
   - "\u0417\u0435\u043C\u043B\u044F"
   - "\u0414\u0435\u0440\u0435\u0432\u043E"
+  - "\u0416\u0443\u0442\u043A\u0438\u0439 \u043A\u0430\u043C\u0435\u043D\u044C"
   Exists: 1
 --- !u!114 &-7292153766943799294
 MonoBehaviour:
@@ -354,10 +355,10 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638828585072172710
+  lastModified: 638840771473045659
   FileSizes:
   - Name: Desktop
-    Value: 16303296
+    Value: 16308896
   Exists: 1
 --- !u!114 &-2320241791731008783
 MonoBehaviour:
@@ -544,7 +545,7 @@ MonoBehaviour:
   - {fileID: -2374295709359499160}
   StringsBanks:
   - {fileID: 4812863242613628976}
-  cacheTime: 638828585072193218
+  cacheTime: 638840771473055703
   cacheVersion: 131624
 --- !u!114 &415007838709113536
 MonoBehaviour:
@@ -700,7 +701,7 @@ MonoBehaviour:
   Path: FMOD/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638828585072193218
+  lastModified: 638840771473055703
   FileSizes:
   - Name: Desktop
     Value: 2022

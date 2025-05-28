@@ -5,6 +5,7 @@ using Zenject;
 
 namespace Game
 {
+    // Регистрируем классы в машине состояний
     public sealed class RegisterGameListener : MonoBehaviour
     {
         [Inject]

@@ -3,6 +3,7 @@ using Zenject;
 
 namespace Game
 {
+    // При открытии и закритии окна диалога переходим в соотвеисивующие стейты
     public sealed class TransitionDialogueState : MonoBehaviour
     {
         private GameStateController _gameStateController;

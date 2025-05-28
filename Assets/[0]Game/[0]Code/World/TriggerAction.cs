@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 namespace Game
 {
+    // Выполняет событие если мы коснулись игрока
     public sealed class TriggerAction : MonoBehaviour
     {
         [SerializeField]

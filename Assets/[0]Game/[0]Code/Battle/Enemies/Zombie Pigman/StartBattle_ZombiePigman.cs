@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Game
 {
+    // Класс запускающий битву с персонажем "Свинозомби"
     public sealed class StartBattle_ZombiePigman : StarterBattle<BattleController_ZombiePigman, BattleController_ZombiePigman.Factory>
     {
         [SerializeField]

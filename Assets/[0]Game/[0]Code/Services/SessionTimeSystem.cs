@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Сервис для хранения времени игры
     public sealed class SessionTimeSystem
     {
         private DateTime _startGameTime;

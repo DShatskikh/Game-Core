@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Базовый класс атаки
     public abstract class Attack : MonoBehaviour
     {
         public abstract void Hide();

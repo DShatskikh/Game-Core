@@ -3,6 +3,7 @@ using System.Linq;
 
 namespace Game
 {
+    // Класс персонажа "Банан"
     public sealed class Enemy_Banana : EnemyBase
     {
         private bool _isSubscribe;

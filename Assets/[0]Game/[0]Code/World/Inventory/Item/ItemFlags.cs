@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Флаг предмета
     [Flags]
     public enum ItemFlags
     {

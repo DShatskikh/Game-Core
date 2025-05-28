@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Позволяет вызывать корутину из не MonoBehaviour классов
     public sealed class CoroutineRunner : MonoBehaviour
     {
         private static CoroutineRunner _coroutineRunner;

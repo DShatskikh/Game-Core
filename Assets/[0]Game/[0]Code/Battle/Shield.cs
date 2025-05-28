@@ -5,6 +5,7 @@ using Zenject;
 
 namespace Game
 {
+    // Щит игрока во время битвы
     public class Shield : MonoBehaviour
     {
         private const string SOUND_PATH = "event:/Звуки/Битва/Щит";
@@ -48,18 +49,14 @@ namespace Game
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out IShell attack))
-            {
+            if (other.TryGetComponent(out IShell attack)) 
                 _shell = attack;
-            }
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.TryGetComponent(out IShell attack))
-            {
+            if (other.GetComponent<IShell>() != null) 
                 _shell = null;
-            }
         }
 
         private IEnumerator Use()
@@ -72,9 +69,7 @@ namespace Game
             _isUseCoroutine = false;
         }
 
-        public void SetProgress(int progress)
-        {
+        public void SetProgress(int progress) => 
             _addProgress = progress;
-        }
     }
 }

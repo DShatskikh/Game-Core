@@ -7,6 +7,7 @@ using Object = UnityEngine.Object;
 
 namespace Game
 {
+    // Логика окна сохранения
     [Serializable]
     public sealed class SavePresenter : IScreenPresenter
     {

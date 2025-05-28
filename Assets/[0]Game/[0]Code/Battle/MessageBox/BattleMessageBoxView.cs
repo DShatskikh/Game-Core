@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Визуальная часть окна сообщений противника во время битвы
     public class BattleMessageBoxView : MonoBehaviour
     {
         [SerializeField]

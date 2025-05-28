@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1369977987577391508}
   - component: {fileID: 4182004353670019691}
   - component: {fileID: 7437565611200378111}
-  - component: {fileID: 616106961880648028}
   - component: {fileID: 2716321088085500518}
   m_Layer: 0
   m_Name: Banana
@@ -147,8 +146,6 @@ MonoBehaviour:
   m_BlackboardVariableOverridesList:
   - rid: 5757848069177081949
   - rid: 5757848069177082212
-  - rid: 5757848069177082454
-  - rid: 5757848069177082455
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -170,22 +167,6 @@ MonoBehaviour:
           m_Value1: 7592265647947329406
         Name: Enemy Mover
         m_Value: {fileID: 2716321088085500518}
-    - rid: 5757848069177082454
-      type: {class: 'BlackboardVariable`1[[Game.StartBattleBase, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1389406815531509814
-          m_Value1: 13127078313107947110
-        Name: Start Battle
-        m_Value: {fileID: 0}
-    - rid: 5757848069177082455
-      type: {class: 'BlackboardVariable`1[[TriggerEnter, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 18443221930936366547
-          m_Value1: 8575791051337278615
-        Name: TriggerEnter
-        m_Value: {fileID: 11400000, guid: 8f6dd49a8022317489911b01d09c47a4, type: 2}
 --- !u!114 &7437565611200378111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,23 +199,6 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!114 &616106961880648028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211097699992606972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad89cc9949649588dfd630e873291e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mask: {fileID: 6078235917040915967}
-  _particle: {fileID: 798122900418514464}
-  _pointDown: {fileID: 8027659526842374116}
-  _spriteRenderer: {fileID: 5128615141283731130}
-  _duration: 1
 --- !u!114 &2716321088085500518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -940,11 +904,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2af6d3ceef8fb6b4aa0772e4c90c3332, type: 3}
---- !u!198 &798122900418514464 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2968915964112846887, guid: 2af6d3ceef8fb6b4aa0772e4c90c3332, type: 3}
-  m_PrefabInstance: {fileID: 2459024609083788807}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8320651902209716506 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5861664749401505565, guid: 2af6d3ceef8fb6b4aa0772e4c90c3332, type: 3}

@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Zenject;
 
 namespace Game
 {
+    // Атака 2 Свинозомби
     public sealed class Attack_ZombiePigman_2 : Attack
     {
         [SerializeField]

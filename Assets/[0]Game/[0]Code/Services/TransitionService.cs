@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Game
 {
+    // Эффект перехода во время смены локации
     public sealed class TransitionService
     {
         private GameStateController _gameStateController;
@@ -20,22 +21,20 @@ namespace Game
             _screenManager = screenManager;
         }
 
-        public void Transition(string id, int pointIndex, AudioClip audioClip = null) => 
-            CoroutineRunner.Instance.StartCoroutine(AwaitTransition(id, pointIndex, audioClip));
+        public void Transition(string id, int pointIndex) => 
+            CoroutineRunner.Instance.StartCoroutine(AwaitTransition(id, pointIndex));
 
-        public IEnumerator AwaitTransition(string id, int pointIndex, AudioClip audioClip = null)
+        private IEnumerator AwaitTransition(string id, int pointIndex)
         {
             var transitionScreen = (TransitionPresenter)_screenManager.Open(ScreensEnum.TRANSITION);
             
             _gameStateController.StartTransition();
             transitionScreen.Show();
+            
             yield return transitionScreen.AwaitShow();
-            
-           // if (audioClip)
-                //SoundPlayer.Play(audioClip);
-            
             _locationsManager.SwitchLocation(id, pointIndex);
             _gameStateController.DestroyRemovedListeners();
+            
             yield return transitionScreen.AwaitHide();
             _gameStateController.EndTransition();
             _screenManager.Close(ScreensEnum.TRANSITION);

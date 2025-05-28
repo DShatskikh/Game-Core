@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Компонент предмета который хранит броню
     [Serializable]
     public sealed class ArmorComponent : IItemComponent
     {

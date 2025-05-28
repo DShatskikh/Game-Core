@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Game
 {
+    // Инсталлер для всего приложения
     public class GlobalInstaller : MonoInstaller
     {
         [Header("Services")]

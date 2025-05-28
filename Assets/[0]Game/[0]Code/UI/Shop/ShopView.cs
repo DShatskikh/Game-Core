@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    // Визуальная часть окна магазина
     public class ShopView : MonoBehaviour
     {
         [Header("Components")]

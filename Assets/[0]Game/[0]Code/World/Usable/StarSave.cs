@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Game
 {
+    // Звезда сохранений
     public sealed class StarSave : MonoBehaviour, IUseObject, IGameCutsceneListener
     {
         [SerializeField]

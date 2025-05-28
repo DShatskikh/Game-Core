@@ -3,6 +3,7 @@ using Unity.Cinemachine;
 
 namespace Game
 {
+    // Класс меняющий размер камеры в зависимости от скорости персонажа
     public sealed class CameraSpeedSize
     {
         private const float DefaultSize = 8;

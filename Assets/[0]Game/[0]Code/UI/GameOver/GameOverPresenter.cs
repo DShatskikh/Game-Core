@@ -5,6 +5,7 @@ using Zenject;
 
 namespace Game
 {
+    // Логика окна прогрыша
     public sealed class GameOverPresenter : IScreenPresenter
     {
         private GameOverView _view;

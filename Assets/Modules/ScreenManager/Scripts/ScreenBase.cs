@@ -3,7 +3,5 @@
 namespace Game
 {
     // Визуальная часть окна
-    public abstract class ScreenBase : MonoBehaviour
-    {
-    }
+    public abstract class ScreenBase : MonoBehaviour { }
 }

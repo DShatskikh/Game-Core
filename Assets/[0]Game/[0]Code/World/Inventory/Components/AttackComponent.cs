@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Компонент предмета который хранит атаку
     [Serializable]
     public sealed class AttackComponent : IItemComponent
     {

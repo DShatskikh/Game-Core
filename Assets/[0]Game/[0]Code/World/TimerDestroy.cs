@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Уничтожается обьект со скриптом через время
     public sealed class TimerDestroy : MonoBehaviour
     {
         [SerializeField]

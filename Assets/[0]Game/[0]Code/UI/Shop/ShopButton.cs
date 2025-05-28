@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    // Кнопка магазина
     public class ShopButton : Button
     {
         [SerializeField]

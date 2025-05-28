@@ -6,6 +6,7 @@ using Zenject;
 
 namespace Game
 {
+    // Индикатор прогресса хода
     public sealed class ProgressBar : MonoBehaviour
     {
         [SerializeField]

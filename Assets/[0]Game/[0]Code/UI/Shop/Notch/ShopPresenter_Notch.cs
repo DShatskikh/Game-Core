@@ -7,10 +7,12 @@ using Zenject;
 
 namespace Game
 {
+    // Логика открытия магазина Нотча
     public sealed class ShopPresenter_Notch : ShopPresenterBase
     {
         private readonly InitData _initData;
 
+        // Структура для работы магазина
         [Serializable]
         public struct InitData
         {
@@ -19,6 +21,7 @@ namespace Game
             public Product[] Products;
         }
 
+        // Структура для сохранения данных магазина
         [Serializable]
         public struct SaveData
         {
@@ -26,6 +29,7 @@ namespace Game
             public List<SpeakData> SpeaksData;
         }
 
+        // Фабрика для создания магазина
         public sealed class Factory : PlaceholderFactory<ShopPresenter_Notch> { }
 
         public ShopPresenter_Notch(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
@@ -51,7 +55,7 @@ namespace Game
                 new("Notch_Speak_2_Name",new[] {"Notch_Speak_2"})
             };
             
-            Init(shopButtonPrefab, speakData, products);
+            Init(speakData, products);
         }
 
         protected override void BuySuccess(Product product, ShopButton productButton)
@@ -79,7 +83,7 @@ namespace Game
             
             if (armor != null)
             {
-                _mainInventory.EquipWeapon(armor.Config.Prototype.Clone());
+                _mainInventory.EquipArmor(armor.Config.Prototype.Clone());
                 
                 var index = _initData.Armors.IndexOf(armor);
 

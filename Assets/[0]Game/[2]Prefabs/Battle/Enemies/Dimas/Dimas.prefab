@@ -517,7 +517,6 @@ GameObject:
   - component: {fileID: 2620638941594798860}
   - component: {fileID: 1651811644865006694}
   - component: {fileID: 3425178718418279219}
-  - component: {fileID: 6258531628638525594}
   - component: {fileID: 470264882388070795}
   m_Layer: 0
   m_Name: Dimas
@@ -644,23 +643,6 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!114 &6258531628638525594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5526278516526889526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad89cc9949649588dfd630e873291e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mask: {fileID: 6140312879802590496}
-  _particle: {fileID: 5260112218273426631}
-  _pointDown: {fileID: 4496635010869538519}
-  _spriteRenderer: {fileID: 5173235024361786803}
-  _duration: 1
 --- !u!114 &470264882388070795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -673,6 +655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a7b39fdc0942fa81e3b69bb90e7ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _id: 
   _name:
     mTerm: Exit
     mRTL_IgnoreArabicFix: 0
@@ -1061,10 +1044,5 @@ PrefabInstance:
 --- !u!4 &3500643193275192317 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5861664749401505565, guid: 2af6d3ceef8fb6b4aa0772e4c90c3332, type: 3}
-  m_PrefabInstance: {fileID: 7047035449651490016}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &5260112218273426631 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2968915964112846887, guid: 2af6d3ceef8fb6b4aa0772e4c90c3332, type: 3}
   m_PrefabInstance: {fileID: 7047035449651490016}
   m_PrefabAsset: {fileID: 0}

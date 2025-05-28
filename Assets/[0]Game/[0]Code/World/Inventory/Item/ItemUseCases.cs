@@ -1,5 +1,6 @@
 ﻿namespace Game
 {
+    // Расспространенные сценарии использования предмета
     public static class ItemUseCases
     {
         public static bool CanFlag(Item item, ItemFlags flag) => 

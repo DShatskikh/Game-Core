@@ -1,10 +1,10 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
 namespace Game
 {
+    // Иконка сердца
     public sealed class HeartIcon : MonoBehaviour
     {
         private Image _icon;
@@ -26,9 +26,7 @@ namespace Game
                 _heartModeService.Upgrade -= Upgrade;
         }
 
-        private void Upgrade(Heart.Mode mode)
-        {
+        private void Upgrade(Heart.Mode mode) => 
             _icon.sprite = _heartModeService.GetIcon();
-        }
     }
 }

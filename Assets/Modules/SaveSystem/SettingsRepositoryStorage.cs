@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Репозиторий для настроек
     public sealed class SettingsRepositoryStorage : IGameRepository
     {
         private const string SAVE_KEY = "SETTINGS_KEY";

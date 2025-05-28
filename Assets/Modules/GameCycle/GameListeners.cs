@@ -1,5 +1,6 @@
 ﻿namespace Game
 {
+    // Интерфейсы состояний игры
     public interface IGameListener { }
     
     public interface IGameStartListener : IGameListener

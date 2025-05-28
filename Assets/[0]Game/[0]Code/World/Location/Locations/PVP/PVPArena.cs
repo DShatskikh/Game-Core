@@ -3,12 +3,12 @@ using System.Collections;
 using PixelCrushers.DialogueSystem;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 using DialogueSystemTrigger = PixelCrushers.DialogueSystem.Wrappers.DialogueSystemTrigger;
 
 namespace Game
 {
+    // ПВП арена
     public sealed class PVPArena : MonoBehaviour
     {
         public enum State : byte
@@ -24,8 +24,9 @@ namespace Game
             END = 8
         }
         
+        // Структура для сохранений
         [Serializable]
-        public struct Data
+        public struct SaveData
         {
             public State State;
         }
@@ -35,7 +36,6 @@ namespace Game
         {
             public StarterBattleBase StartBattle;
             public GameObject GameObject;
-            [FormerlySerializedAs("MercyReplica")]
             public DialogueSystemTrigger EndBattleReplica;
             public GameObject ExplosionEffect;
         }
@@ -69,6 +69,9 @@ namespace Game
         
         [SerializeField]
         private Sprite _barrierArmor;
+
+        [SerializeField]
+        private Transform _arrowBanana;
         
         [SerializeField]
         private Enemy _banana;
@@ -94,21 +97,23 @@ namespace Game
         private MainRepositoryStorage _mainRepositoryStorage;
         private GameStateController _gameStateController;
         private MainInventory _mainInventory;
+        private TutorialState _tutorialState;
 
         [Inject]
         private void Construct(MainRepositoryStorage mainRepositoryStorage, GameStateController gameStateController, 
-            MainInventory mainInventory)
+            MainInventory mainInventory, TutorialState tutorialState)
         {
             _mainRepositoryStorage = mainRepositoryStorage;
             _gameStateController = gameStateController;
             _mainInventory = mainInventory;
+            _tutorialState = tutorialState;
         }
         
         private void Start()
         {
             var currentState = State.START;
             
-            if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA, out Data data))
+            if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA, out SaveData data))
             {
                 currentState = data.State;
             }
@@ -205,16 +210,18 @@ namespace Game
 
         private IEnumerator AwaitStartCutscene()
         {
-            _mainRepositoryStorage.Set(SaveConstants.PVPARENA, new Data() { State = State.BANANA });
+            _mainRepositoryStorage.Set(SaveConstants.PVPARENA, new SaveData() { State = State.BANANA });
             _herobrine.GameObject.SetActive(false);
             _herobrineCutscene.SetActive(true);
             _startReplica.OnUse();
-            
+            _gameStateController.OpenCutscene();
+
             yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
             _gameStateController.OpenCutscene();
             
             yield return new WaitForSeconds(1);
             _banana.GameObject.SetActive(false);
+            _arrowBanana.gameObject.SetActive(false);
             _banana.StartBattle.gameObject.SetActive(true);
             
             yield return new WaitForSeconds(1);
@@ -226,6 +233,7 @@ namespace Game
             _herobrine.GameObject.SetActive(true);
             _herobrine.ExplosionEffect.SetActive(true);
             _herobrineCutscene.SetActive(false);
+            _arrowBanana.gameObject.SetActive(true);
             _gameStateController.CloseCutscene();
         }
 
@@ -262,7 +270,15 @@ namespace Game
         
         public IEnumerator AwaitStartCutsceneWinBanana()
         {
+            var isCurrentStep = _tutorialState.CurrentStep == TutorialStep.BATTLE_BANANA;
+            
+            if (isCurrentStep) 
+                _tutorialState.FinishStep(false);
+
             yield return AwaitWinEnemyReplica(_banana);
+            
+            if (isCurrentStep) 
+                _tutorialState.NextStep();
             
             if (_mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent) && attackComponent.Attack < 5)
             {
@@ -276,7 +292,17 @@ namespace Game
         
         public IEnumerator AwaitStartCutsceneWinDimas()
         {
+            var isCurrentStep = _tutorialState.CurrentStep == TutorialStep.BATTLE_DIMAS;
+            Debug.Log(isCurrentStep);   
+            Debug.Log(_tutorialState.CurrentStep);   
+            
+            if (isCurrentStep) 
+                _tutorialState.FinishStep(false);
+
             yield return AwaitWinEnemyReplica(_dimas);
+            
+            if (isCurrentStep) 
+                _tutorialState.NextStep();
 
             if (!_mainInventory.ArmorSlot.HasItem || (_mainInventory.ArmorSlot.Item.TryGetComponent(out ArmorComponent armorComponent) && armorComponent.Armor < 2))
             {
@@ -287,7 +313,20 @@ namespace Game
 
             SpawnNextEnemy(_juliana);
         }
-        
+
+        private void OnDestroy()
+        {
+            bool isDimasDefeat = false;
+
+            if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA, out PVPArena.SaveData saveData))
+            {
+                isDimasDefeat = saveData.State == State.JULIANA;
+            }
+
+            if (_tutorialState.CurrentStep == TutorialStep.BATTLE_DIMAS && isDimasDefeat)
+                _tutorialState.NextStep();
+        }
+
         public IEnumerator AwaitStartCutsceneWinJuliana()
         {
             yield return AwaitWinEnemyReplica(_juliana);

@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Класс продукта в магазине
     [Serializable]
     public class Product
     {

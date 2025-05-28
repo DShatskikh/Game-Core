@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    // Заставка
     public sealed class Intro : MonoBehaviour
     {
         [SerializeField]

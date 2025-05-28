@@ -2,21 +2,18 @@
 
 namespace Game
 {
+    // Кошелек
     public class WalletService
     {
         public IReactiveProperty<int> Money => _money;
         
         private IntReactiveProperty _money = new();
 
-        public void SetMoney(int money)
-        {
+        public void SetMoney(int money) => 
             _money.Value = money;
-        }
 
-        public void AddMoney(int money)
-        {
+        public void AddMoney(int money) => 
             _money.Value += money;
-        }
 
         public bool TrySellMoney(int money)
         {

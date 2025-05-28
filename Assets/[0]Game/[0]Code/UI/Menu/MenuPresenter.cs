@@ -6,6 +6,7 @@ using Object = UnityEngine.Object;
 
 namespace Game
 {
+    // Логика меню
     [Serializable]
     public sealed class MenuPresenter : IScreenPresenter
     {

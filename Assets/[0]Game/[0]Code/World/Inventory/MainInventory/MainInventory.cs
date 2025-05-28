@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Инвентарь игрока
     [Serializable]
     public sealed class MainInventory
     {

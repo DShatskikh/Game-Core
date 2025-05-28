@@ -7,6 +7,7 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 using Random = UnityEngine.Random;
 
+// Нода поведения которая ведет NPC в случайную точку
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "EnemyMoveRandomPoint", story: "[Enemy] to move random point", category: "Action/Enemy", id: "3c3b00c80ffb42580887ae9353b62400")]
 public partial class EnemyMoveRandomPointAction : Action

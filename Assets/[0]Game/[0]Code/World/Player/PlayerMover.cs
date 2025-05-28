@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Движение игрока
     public sealed class PlayerMover : IPlayerMover
     {
         private const float SPEED = 3;

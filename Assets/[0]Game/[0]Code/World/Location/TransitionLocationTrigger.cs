@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Game
 {
+    // Триггер для перехода на другую локацию
     public sealed class TransitionLocationTrigger : MonoBehaviour
     {
         [LocationID] 
@@ -13,9 +14,6 @@ namespace Game
         [SerializeField]
         private int _pointIndex;
         
-        [SerializeField]
-        private AudioClip _audioClip;
-
         private TransitionService _transitionService;
 
         [Inject]
@@ -26,10 +24,8 @@ namespace Game
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.GetComponent<Player>())
-            {
-                _transitionService.Transition(_id, _pointIndex, _audioClip);
-            }
+            if (other.GetComponent<Player>()) 
+                _transitionService.Transition(_id, _pointIndex);
         }
     }
 }

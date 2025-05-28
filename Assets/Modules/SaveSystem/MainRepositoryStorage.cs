@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Репозиторий для игрового процесса
     public sealed class MainRepositoryStorage : IGameRepository
     {
         private const string SAVE_KEY = "MAIN_SAVE_KEY";

@@ -72,7 +72,7 @@ namespace Game
             _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinTroll());
 
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
-                new PVPArena.Data() { State = PVPArena.State.FROST });
+                new PVPArena.SaveData() { State = PVPArena.State.FROST });
         }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Базовый класс снаряда
     public class Shell : MonoBehaviour, IShell
     {
         [SerializeField]

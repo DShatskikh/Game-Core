@@ -2482,11 +2482,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1353746438852918800, guid: 782f09e12053c0c40b94aa9971efd37a, type: 3}
       propertyPath: _id
-      value: Spawn_2
+      value: Nether
       objectReference: {fileID: 0}
     - target: {fileID: 1353746438852918800, guid: 782f09e12053c0c40b94aa9971efd37a, type: 3}
       propertyPath: _pointIndex
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4730512280775900288, guid: 782f09e12053c0c40b94aa9971efd37a, type: 3}
       propertyPath: m_LocalPosition.x

@@ -9,12 +9,14 @@ using Zenject;
 
 namespace Game
 {
-    public class Heart : MonoBehaviour
+    // Обьект которым мы играем во время битвы
+    public sealed class Heart : MonoBehaviour
     {
-        public enum Mode
+        // Режим души
+        public enum Mode : byte
         {
-            Red,
-            Blue
+            Red = 0, // Двигаемся во всех направлениях и наш цвет красный
+            Blue = 1 // Двигаемся как в платформере и наш цвет синий
         }
         
         private const string DAMAGE_SOUND_PATH = "event:/Звуки/Битва/Получили урон";
@@ -60,11 +62,11 @@ namespace Game
             _arena = arena;
             _heartModeService = heartModeService;
             _healthService = healthService;
-
+            _animator = GetComponent<Animator>();
+            
             heartModeService.Upgrade += SetMode;
             _redMover.Init(playerInput, transform);
             _blueMover.Init(playerInput, _arena);
-            _animator = GetComponent<Animator>();
             SetMode(heartModeService.GetMode);
         }
 
@@ -101,10 +103,13 @@ namespace Game
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out IShell shell))
-            {
+            if (other.TryGetComponent(out IShell shell)) 
                 shell.Crash(this);
-            }
+        }
+
+        private void OnDestroy()
+        {
+            _mover?.Disable();
         }
 
         public void SetMode(Mode mode)
@@ -135,21 +140,13 @@ namespace Game
             sequence
                 .Insert(0, _switchEffectView.transform.DOScale(Vector3.one * 2, 0.5f))
                 .Insert(0, _switchEffectView.DOColor(_switchEffectView.color.SetA(0), 0.5f))
-                .OnStepComplete(() =>
-                {
-                    _mover.Enable();
-                })
-                .OnComplete(() =>
-                {
-                    _switchEffectView.gameObject.SetActive(false);
-                });
+                .OnStepComplete(() => _mover.Enable())
+                .OnComplete(() => _switchEffectView.gameObject.SetActive(false));
         }
-        
-        public void SetDamage(int damage)
-        {
+
+        public void SetDamage(int damage) => 
             _damage = damage;
-        }
-        
+
         public void Crash(IShell shell)
         {
             if (!_isInvulnerability && shell.IsAlive)
@@ -158,7 +155,10 @@ namespace Game
                 StartCoroutine(TakeDamage(_damage));
             }
         }
-        
+
+        public void SetProgress(int progress) => 
+            _shield.SetProgress(progress);
+
         private IEnumerator TakeDamage(int damage)
         {
             RuntimeManager.PlayOneShot(DAMAGE_SOUND_PATH);
@@ -183,16 +183,6 @@ namespace Game
         {
             _animator.CrossFade(DEATH_HASH, 0);
             OnDeath?.Invoke();
-        }
-
-        public void SetProgress(int progress)
-        {
-            _shield.SetProgress(progress);
-        }
-
-        private void OnDestroy()
-        {
-            _mover?.Disable();
         }
     }
 }

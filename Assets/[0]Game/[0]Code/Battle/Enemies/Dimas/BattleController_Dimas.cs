@@ -70,7 +70,7 @@ namespace Game
             _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinDimas());
 
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
-                new PVPArena.Data() { State = PVPArena.State.JULIANA });
+                new PVPArena.SaveData() { State = PVPArena.State.JULIANA });
         }
     }
 }

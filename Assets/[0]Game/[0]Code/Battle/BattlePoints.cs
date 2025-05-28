@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Точки команды игрока и команды противника
     public class BattlePoints : MonoBehaviour
     {
         [SerializeField]
@@ -11,23 +12,12 @@ namespace Game
         [SerializeField]
         private Transform[] _enemyPoints;
         
-        public Transform[] GetPartyPoints => _partyPoints;
-        public Transform[] GetEnemyPoints => _enemyPoints;
-        
         public OverWorldPositionsData[] GetPartyPositionsData(Player player)
         {
             var squadOverWorldPositionsData = new List<OverWorldPositionsData>
             {
                 new(player.transform, _partyPoints[0])
             };
-
-            /*foreach (var companion in GameData.CompanionsManager.GetAllCompanions)
-            {
-                squadOverWorldPositionsData.Add(new OverWorldPositionsData(companion.transform, 
-                    SquadPoints[index], companion.GetSpriteRenderer.sprite));
-                
-                index++;
-            }*/
 
             return squadOverWorldPositionsData.ToArray();
         }

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    // Визуальная часть окна битвы
     public class BattleView : MonoBehaviour
     {
         [SerializeField]

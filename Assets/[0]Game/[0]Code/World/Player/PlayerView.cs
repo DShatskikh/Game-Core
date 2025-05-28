@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Визуальная часть игрока
     public class PlayerView : MonoBehaviour
     {
         private static readonly int StateHash = Animator.StringToHash("State");

@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace StepSound
 {
+    // Класс который воспроизводит звуки шагов
     [Serializable]
     public sealed class StepsSoundPlayer
     {

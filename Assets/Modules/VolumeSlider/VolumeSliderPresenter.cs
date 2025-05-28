@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Логика слайдера
     public sealed class VolumeSliderPresenter : IDisposable
     {
         [SerializeField]

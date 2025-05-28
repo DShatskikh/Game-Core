@@ -5,6 +5,7 @@ using Zenject;
 
 namespace Game
 {
+    // Текст который можно пропустить тапом
     public class TextAnimationWriter : MonoBehaviour
     {
         [SerializeField]

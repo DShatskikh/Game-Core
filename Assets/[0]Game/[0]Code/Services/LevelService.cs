@@ -2,10 +2,11 @@
 
 namespace Game
 {
+    // Сервис для уровня игрока
     public sealed class LevelService
     {
-        public const int MAX_LEVEL = 7;
-        public const int ADD_HEALTH = 4;
+        private const int MAX_LEVEL = 7;
+        private const int ADD_HEALTH = 4;
 
         private readonly MainRepositoryStorage _mainRepositoryStorage;
         private readonly HealthService _healthService;
@@ -20,6 +21,7 @@ namespace Game
         public int GetExp => _exp;
         public int GetExpToNextLv => _expToNextLv;
         
+        // Структура для сохранения уровня
         [Serializable]
         public struct SaveData
         {
@@ -97,7 +99,7 @@ namespace Game
 
         private void Save()
         {
-            _mainRepositoryStorage.Set(SaveConstants.HEALTH, new SaveData()
+            _mainRepositoryStorage.Set(SaveConstants.LV, new SaveData()
             {
                 Lv = _lv,
                 Exp = _exp,

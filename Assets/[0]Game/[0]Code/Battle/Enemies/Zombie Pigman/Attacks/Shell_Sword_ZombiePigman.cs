@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Снаряд меч
     public sealed class Shell_Sword_ZombiePigman : Shell
     {
         [SerializeField]

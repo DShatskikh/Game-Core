@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CameraAreaUtility
 {
+    // Алгоритм который ищет границы камеры
     public sealed class CameraAreaChecker
     {
         private readonly Transform _point;

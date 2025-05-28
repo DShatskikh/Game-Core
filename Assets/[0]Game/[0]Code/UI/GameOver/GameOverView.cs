@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    // Визуальная часть окна прогрыша
     public sealed class GameOverView : ScreenBase
     {
         [SerializeField]

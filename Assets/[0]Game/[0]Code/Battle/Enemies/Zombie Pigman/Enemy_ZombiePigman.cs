@@ -6,6 +6,7 @@ using Zenject;
 
 namespace Game
 {
+    // Класс персонажа "Свинозомби"
     public class Enemy_ZombiePigman : EnemyBase
     {
         [SerializeField]

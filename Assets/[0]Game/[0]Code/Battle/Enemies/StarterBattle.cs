@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Game
 {
+    // Базовый класс для начала битвы
     public abstract class StarterBattle<T,TFactory> : StarterBattleBase where T : BattleControllerBase where TFactory : PlaceholderFactory<T>
     {
         [SerializeField]
@@ -30,6 +31,7 @@ namespace Game
 
         public override void StartBattle()
         {
+            OnStartBattle();
             gameObject.SetActive(true);
 
             var installer = Instantiate(_installerPrefab, transform.position.SetZ(0), Quaternion.identity);
@@ -47,5 +49,7 @@ namespace Game
 
             installer.InstallBindings();
         }
+
+        private protected virtual void OnStartBattle() { }
     }
 }

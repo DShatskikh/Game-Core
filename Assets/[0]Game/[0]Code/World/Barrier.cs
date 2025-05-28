@@ -1,9 +1,9 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 namespace Game
 {
+    // Закрывает проход для игрока, показывает выбранную надпись
     public sealed class Barrier : MonoBehaviour
     {
         [SerializeField]

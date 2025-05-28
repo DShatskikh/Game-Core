@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Менеджер уровней
     public sealed class LocationsManager
     {
         private readonly Location[] _locations;
@@ -18,6 +19,7 @@ namespace Game
             _factory = factory;
         }
         
+        // Переходим на уровень по id
         public void SwitchLocation(string id, int pointIndex)
         {
             if (!_location)

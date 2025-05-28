@@ -6,6 +6,7 @@ using Zenject;
 
 namespace Game
 {
+    // Логика мини-игры для нанесения атаки
     public sealed class AttackIndicator : MonoBehaviour
     {
         private const float SPEED = 1000f;
@@ -86,6 +87,7 @@ namespace Game
         }
     }
 
+    // Структура которая хранит точку на индикаторе и модификатор урона
     [Serializable]
     public struct AttackPointPair
     {

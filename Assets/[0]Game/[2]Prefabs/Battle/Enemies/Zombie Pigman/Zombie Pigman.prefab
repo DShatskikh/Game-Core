@@ -102,9 +102,9 @@ GameObject:
   - component: {fileID: 6724814214292441901}
   - component: {fileID: 5368005972275650080}
   - component: {fileID: 6426515508156893616}
-  - component: {fileID: 765474218279143059}
   - component: {fileID: 5401203936898325863}
   - component: {fileID: 5834018802870007877}
+  - component: {fileID: 716441775384103379}
   m_Layer: 0
   m_Name: Zombie Pigman
   m_TagString: Untagged
@@ -341,23 +341,6 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
---- !u!114 &765474218279143059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1804999715851264589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ad89cc9949649588dfd630e873291e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mask: {fileID: 2159074348479179967}
-  _particle: {fileID: 3942778759618364921}
-  _pointDown: {fileID: 8815018722539870152}
-  _spriteRenderer: {fileID: 5345114338678861518}
-  _duration: 1
 --- !u!114 &5401203936898325863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +369,23 @@ MonoBehaviour:
   _dialogueSystemTrigger: {fileID: 7366560764855502616}
   _startBattle: {fileID: 0}
   _otherPigmans: []
+--- !u!114 &716441775384103379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804999715851264589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad89cc9949649588dfd630e873291e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mask: {fileID: 2159074348479179967}
+  _particle: {fileID: 3942778759618364921}
+  _pointDown: {fileID: 8815018722539870152}
+  _spriteRenderer: {fileID: 5345114338678861518}
+  _duration: 2
 --- !u!1 &3829481699640575691
 GameObject:
   m_ObjectHideFlags: 0

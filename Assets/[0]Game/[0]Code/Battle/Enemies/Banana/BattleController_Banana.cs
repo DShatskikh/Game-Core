@@ -6,10 +6,12 @@ using Zenject;
 
 namespace Game
 {
+    // Класс битвы с персонажем "Банан"
     public sealed class BattleController_Banana : BattleControllerBase
     {
         private readonly InitData _initData;
 
+        // Структура с данными битвы для персонажа "Банан"
         [Serializable]
         public struct InitData
         {
@@ -70,7 +72,7 @@ namespace Game
             _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinBanana());
 
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
-                new PVPArena.Data() { State = PVPArena.State.DIMAS });
+                new PVPArena.SaveData() { State = PVPArena.State.DIMAS });
         }
     }
 }

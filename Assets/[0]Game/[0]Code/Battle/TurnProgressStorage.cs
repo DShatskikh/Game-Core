@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Хранилище прогресса битвы
     public sealed class TurnProgressStorage
     {
         private readonly ReactiveProperty<int> _progress = new();
@@ -13,10 +14,8 @@ namespace Game
         {
             _progress.Value += value;
 
-            if (_progress.Value > 100)
-            {
+            if (_progress.Value > 100) 
                 _progress.Value = 100;
-            }
         }
 
         public void Reset() => 

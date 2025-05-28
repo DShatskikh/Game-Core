@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    // Кнопка выбора противника
     public sealed class EnemyBattleButton : Button
     {
         [SerializeField]

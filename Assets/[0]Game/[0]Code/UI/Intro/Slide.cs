@@ -3,6 +3,7 @@ using UnityEngine.Events;
 
 namespace Game
 {
+    // Слайд для заставки
     public sealed class Slide : MonoBehaviour
     {
         [SerializeField]
@@ -13,9 +14,7 @@ namespace Game
         
         public float GetDelay => _delay;
 
-        public void Skip()
-        {
+        public void Skip() => 
             SkipAction.Invoke();
-        }
     }
 }

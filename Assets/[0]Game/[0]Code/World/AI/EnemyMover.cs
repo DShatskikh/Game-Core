@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 namespace Game
 {
+    // Класс движения для NPC
     public sealed class EnemyMover : MonoBehaviour
     {
         [SerializeField]

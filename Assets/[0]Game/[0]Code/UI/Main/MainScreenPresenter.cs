@@ -4,6 +4,7 @@ using Object = UnityEngine.Object;
 
 namespace Game
 {
+    // Логика основного окна игры
     [Serializable]
     public sealed class MainScreenPresenter : IScreenPresenter, IGameCutsceneListener, IGameBattleListener
     {

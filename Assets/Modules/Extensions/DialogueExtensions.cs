@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Game
 {
     [Serializable]
-    public class DialogueExtensions// : IGameDialogueListener
+    public class DialogueExtensions
     {
         private static DialogueExtensions _instance;
         private Action _action;

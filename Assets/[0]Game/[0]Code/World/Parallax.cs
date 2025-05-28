@@ -2,8 +2,10 @@
 
 namespace Game
 {
+    // Параллакс еффект
     public sealed class Parallax : MonoBehaviour
     {
+        // Плоскости по которым будет двигаться обьект
         private enum ParallaxDirectionType : byte
         {
             All,

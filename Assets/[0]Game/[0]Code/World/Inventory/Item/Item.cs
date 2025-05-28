@@ -4,10 +4,10 @@ using UnityEngine.Serialization;
 
 namespace Game
 {
+    // Класс предмета
     [Serializable]
     public sealed class Item
     {
-        [FormerlySerializedAs("Id")]
         public string ID;
         public ItemMetaData MetaData;
         public ItemFlags Flags;

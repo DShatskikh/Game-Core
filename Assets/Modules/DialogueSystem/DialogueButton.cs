@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Game
 {
+    // Кнопка в окне диалога
     public sealed class DialogueButton : Button
     {
         [SerializeField]

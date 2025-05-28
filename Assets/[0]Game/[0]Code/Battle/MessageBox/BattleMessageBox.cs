@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Game
 {
+    // Логика окна сообщения противника во время битвы
     public class BattleMessageBox : MonoBehaviour
     {
         [SerializeField]

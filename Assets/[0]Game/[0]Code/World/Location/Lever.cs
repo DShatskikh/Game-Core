@@ -7,8 +7,10 @@ using Zenject;
 
 namespace Game
 {
+    // Рычаг
     public sealed class Lever : MonoBehaviour, IUseObject
     {
+        // Структура данных для сохранения
         [Serializable]
         public struct Data
         {
@@ -26,6 +28,7 @@ namespace Game
         [SerializeField]
         private bool _isWrite;
 
+        // Используем ли ключ сохранения
         [ShowIf("_isWrite"), SerializeField]
         private string _saveKey;
 

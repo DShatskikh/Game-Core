@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Класс который вызывает событие в шине событий TriggerEnter
     public sealed class TriggerPlayer : MonoBehaviour
     {
         [SerializeField]

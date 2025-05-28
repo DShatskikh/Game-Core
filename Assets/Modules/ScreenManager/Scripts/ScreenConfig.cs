@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
-    // Конфиг хранящий компоненты окон
+    // Конфиг хранящий ScreenData
     [CreateAssetMenu(fileName = "ScreenConfig", menuName = "Data/ScreenConfig", order = 200)]
     public sealed class ScreenConfig : ScriptableObject
     {
@@ -26,6 +26,7 @@ namespace Game
         }
     }
     
+    // Структура хранящая компоненты окон
     [Serializable]
     public sealed class ScreenData
     {

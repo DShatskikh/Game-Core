@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Game
 {
+    // Меню игры
     public sealed class MainMenu : ScreenBase
     {
         [SerializeField]

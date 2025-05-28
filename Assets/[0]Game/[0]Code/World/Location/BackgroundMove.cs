@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    // Эффект движения фона в комнате админа
     public class BackgroundMove : MonoBehaviour
     {
         [SerializeField]

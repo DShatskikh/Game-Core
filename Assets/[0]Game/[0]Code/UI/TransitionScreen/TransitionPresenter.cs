@@ -5,6 +5,7 @@ using Object = UnityEngine.Object;
 
 namespace Game
 {
+    // Логика окна перехода
     public sealed class TransitionPresenter : IScreenPresenter
     {
         private TransitionView _view;

@@ -3,15 +3,19 @@ using UniRx;
 
 namespace Game
 {
+    // Сервис здоровья
     public sealed class HealthService
     {
+        private const int START_MAX_HEALTH = 20;
+        
         private readonly MainRepositoryStorage _mainRepositoryStorage;
-        private IntReactiveProperty _health = new();
-        private IntReactiveProperty _maxHealth = new();
+        private readonly IntReactiveProperty _health = new();
+        private readonly IntReactiveProperty _maxHealth = new();
         
         public IReactiveProperty<int> GetHealth => _health;
         public IReactiveProperty<int> GetMaxHealth => _maxHealth;
 
+        // Структура для сохранения здоровья
         [Serializable]
         public struct SaveData
         {
@@ -23,8 +27,8 @@ namespace Game
         {
             _mainRepositoryStorage = mainRepositoryStorage;
 
-            _maxHealth.Value = 20;
-            _health.Value = 20;
+            _maxHealth.Value = START_MAX_HEALTH;
+            _health.Value = START_MAX_HEALTH;
             
             if (_mainRepositoryStorage.TryGet(SaveConstants.HEALTH, out SaveData saveData))
             {
@@ -42,18 +46,6 @@ namespace Game
             }
 
             _health.Value += value;
-            Save();
-        }
-
-        public void Sell(int value)
-        {
-            if (_health.Value - value <= 0)
-            {
-                _health.Value = 0;
-                return;
-            }
-
-            _health.Value -= value;
             Save();
         }
         

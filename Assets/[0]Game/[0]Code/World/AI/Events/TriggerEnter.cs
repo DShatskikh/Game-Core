@@ -3,6 +3,7 @@ using Unity.Behavior;
 using UnityEngine;
 using Unity.Properties;
 
+// Событие которые вызывается при столкновении с игроком
 #if UNITY_EDITOR
 [CreateAssetMenu(menuName = "Behavior/Event Channels/TriggerEnter")]
 #endif

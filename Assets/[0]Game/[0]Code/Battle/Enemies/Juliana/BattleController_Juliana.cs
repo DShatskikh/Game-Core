@@ -71,7 +71,7 @@ namespace Game
             _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinJuliana());
 
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
-                new PVPArena.Data() { State = PVPArena.State.TROLL });
+                new PVPArena.SaveData() { State = PVPArena.State.TROLL });
         }
     }
 }

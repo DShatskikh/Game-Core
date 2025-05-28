@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Game
 {
+    // Логика движения в синем режиме сердца
     [Serializable]
     public sealed class HeartBlueMover : IHeartMover
     {
@@ -147,8 +148,8 @@ namespace Game
 
         private void CheckGrounded()
         {
-            float rayLength = 0.1f;
-            RaycastHit2D hit = Physics2D.Raycast(_collider.bounds.center, Vector2.down, _collider.bounds.extents.y + rayLength,
+            var rayLength = 0.1f;
+            var hit = Physics2D.Raycast(_collider.bounds.center, Vector2.down, _collider.bounds.extents.y + rayLength,
                 _floorLayer);
             
             _isGrounded = hit.collider != null || _collider.transform.position.y <= _arena.transform.position.y - _arena.SizeField.y / 2 + 0.01f;

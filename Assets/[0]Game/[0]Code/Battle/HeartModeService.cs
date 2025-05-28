@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Сервис управляющий состоянием сердца
     public sealed class HeartModeService
     {
         private Heart.Mode _mode = Heart.Mode.Blue;
@@ -22,6 +23,7 @@ namespace Game
             Upgrade?.Invoke(mode);
         }
 
+        // Метод получения иконки сердца в зависимости от текущего состояния
         public Sprite GetIcon()
         {
             switch (_mode)

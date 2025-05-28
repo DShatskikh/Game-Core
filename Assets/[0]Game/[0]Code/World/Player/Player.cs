@@ -1,5 +1,4 @@
-﻿using System;
-using CameraAreaUtility;
+﻿using CameraAreaUtility;
 using StepSound;
 using UniRx;
 using Unity.Cinemachine;
@@ -9,6 +8,7 @@ using Zenject;
 
 namespace Game
 {
+    // Игрок
     public sealed class Player : MonoBehaviour, IGameStartListener, IGameTickableListener, IGameFixedTickableListener,
         IGameTransitionListener, IGameShopListener, IGameADSListener, IGameCutsceneListener, IGameEnderChestListener,
         IGameBattleListener

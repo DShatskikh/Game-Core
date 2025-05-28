@@ -73,7 +73,7 @@ namespace Game
             
 
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
-                new PVPArena.Data() { State = PVPArena.State.HACKER });
+                new PVPArena.SaveData() { State = PVPArena.State.HACKER });
         }
     }
 }

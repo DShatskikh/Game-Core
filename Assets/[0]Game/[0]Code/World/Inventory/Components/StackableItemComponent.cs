@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Компонент предмета который позволяющий стакаться
     [Serializable]
     public sealed class StackableItemComponent : IItemComponent
     {

@@ -6,6 +6,7 @@ using Zenject;
 
 namespace Game
 {
+    // Регистрация команд для игровой консоли
     public sealed class ConsoleCommandRegistry
     {
         private static ConsoleCommandRegistry _instance;
@@ -48,12 +49,6 @@ namespace Game
         public static void SwitchLocation(string id, int point)
         {
             _container.Resolve<LocationsManager>().SwitchLocation(id, point);
-        }
-        
-        [Command()]
-        public static void PlayerState()
-        {
-            //Debug.Log(_instance._player.IsPause);
         }
         
         [Command()]

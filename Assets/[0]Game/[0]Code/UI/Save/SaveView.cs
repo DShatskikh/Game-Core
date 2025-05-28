@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Визуальная часть окна сохранения
     public sealed class SaveView : ScreenBase
     {
         private const string SOUND_HASH = "event:/Звуки/Сохранились";

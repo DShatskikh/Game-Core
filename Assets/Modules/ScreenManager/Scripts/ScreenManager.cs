@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Game
 {
+    // Менеджер окон
     public sealed class ScreenManager
     {
         private readonly ScreenConfig _config;

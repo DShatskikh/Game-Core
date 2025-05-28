@@ -7,6 +7,7 @@ using I2.Loc;
 
 namespace Game
 {
+    // Класс битвы с 3 персонажами "Свинозомби"
     public sealed class BattleController_ZombiePigman_3 : BattleControllerBase
     {
         private readonly InitData _initData;
@@ -56,12 +57,6 @@ namespace Game
 
             if (_initData.Enemy_ZombiePigman.Health <= 0 || _initData.Enemy_ZombiePigman_1.Health <= 0 || _initData.Enemy_ZombiePigman_2.Health <= 0)
                 return "Атмосфера накалилась";
-            
-            // if (_numberTurn == 0)
-            //     return "";
-            
-            // if (_numberTurn == 1)
-            //     return "Свинозомби просит добавки";
             
             return "Свинозомби хотят вас побить";
         }

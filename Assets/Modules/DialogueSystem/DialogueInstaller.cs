@@ -3,6 +3,7 @@ using Zenject;
 
 namespace Game
 {
+    // Инсталлер для диалогового окна
     public class DialogueInstaller : MonoInstaller
     {
         public override void InstallBindings()

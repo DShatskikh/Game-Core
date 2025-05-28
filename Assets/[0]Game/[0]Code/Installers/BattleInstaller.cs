@@ -5,6 +5,7 @@ using Zenject;
 
 namespace Game
 {
+    // Инсталлер для начала боя
     public class BattleInstaller : MonoInstaller
     {
         [SerializeField]

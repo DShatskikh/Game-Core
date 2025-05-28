@@ -21,14 +21,27 @@ namespace Game
         private string _locationID;
         
         private GameStateController _gameStateController;
-        
+        private TutorialState _tutorialState;
+
         [Inject]
         private void Construct(GameStateController gameStateController, WalletService walletService, 
-            MainInventory inventory, LocationsManager locationsManager, MainRepositoryStorage mainRepositoryStorage)
+            MainInventory inventory, LocationsManager locationsManager, MainRepositoryStorage mainRepositoryStorage,
+            TutorialState tutorialState)
         {
             _gameStateController = gameStateController;
+            _tutorialState = tutorialState;
             
             mainRepositoryStorage.Load();
+            mainRepositoryStorage.Set(SaveConstants.TUTORIAL, new TutorialState.Data()
+            {
+                CurrentStep = TutorialStep.BUY_SWORD,
+                IsCompleted = false
+            });
+            
+            mainRepositoryStorage.Set(SaveConstants.PVPARENA, new PVPArena.SaveData()
+            {
+                State = PVPArena.State.DIMAS
+            });
             
             walletService.SetMoney(1250);
             inventory.EquipWeapon(_weapon.Prototype.Clone());
@@ -38,6 +51,8 @@ namespace Game
                 inventory.Add(item.Prototype.Clone());
 
             locationsManager.SwitchLocation(_locationID, 0);
+            
+            _tutorialState.Start();
         }
         
         //ToDo: Код для теста потом перепишу

@@ -7,6 +7,7 @@ using Zenject;
 
 namespace Game
 {
+    // Кнопка Действовать
     public class ButtonPressUse : MonoBehaviour
     {
         private Player _player;

@@ -1,5 +1,6 @@
 ﻿namespace Game
 {
+    // Enum состояний игры
     public enum GameState : byte
     {
         OFF = 0,

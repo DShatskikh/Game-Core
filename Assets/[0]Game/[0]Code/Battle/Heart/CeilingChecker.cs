@@ -3,6 +3,7 @@ using Zenject;
 
 namespace Game
 {
+    // Получаем низ арены
     public sealed class CeilingChecker : MonoBehaviour
     {
         private Arena _arena;

@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Расспространенные сценарии использования инвентаря
     public static class InventoryUseCases
     {
         public static bool TryAddItem(MainInventory inventory, Item item)
@@ -35,14 +36,14 @@ namespace Game
             mainInventory.WeaponSlot.Item = weapon.Clone();
         }
 
-        public static void EquipAdditionalWeapon(MainInventory mainInventory, Item additionalWeapon)
-        {
-            mainInventory.WeaponAdditionalSlot.Item = additionalWeapon.Clone();
-        }
-        
         public static void EquipArmor(MainInventory mainInventory, Item armor)
         {
             mainInventory.ArmorSlot.Item = armor.Clone();
+        }
+
+        public static void EquipAdditionalWeapon(MainInventory mainInventory, Item additionalWeapon)
+        {
+            mainInventory.WeaponAdditionalSlot.Item = additionalWeapon.Clone();
         }
 
         public static bool IsGetItem(MainInventory mainInventory, string id)

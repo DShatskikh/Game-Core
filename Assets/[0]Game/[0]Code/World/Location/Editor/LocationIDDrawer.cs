@@ -6,6 +6,7 @@ using UnityEditor;
 
 namespace Game.Editor
 {
+    // Атрибут для выбора локации через инспектор при помощи списка
     public class LocationIDAttribute : PropertyAttribute
     {
         public string[] options;

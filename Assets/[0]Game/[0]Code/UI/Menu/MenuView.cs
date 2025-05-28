@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    // Визуальная часть меню
     public class MenuView : ScreenBase
     {
         [SerializeField]

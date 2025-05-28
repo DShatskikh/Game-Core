@@ -6,11 +6,13 @@ using Zenject;
 
 namespace Game
 {
+    // Базовый класс противника
     public abstract class EnemyBase : MonoBehaviour, IEnemy, IGameBattleListener
     {
+        private const string IDLE_HASH = "Idle";
         private static readonly int DamageHash = Animator.StringToHash("Damage");
         private protected  static readonly int DeathHash = Animator.StringToHash("Death");
-        
+
         [SerializeField]
         private string _id;
         
@@ -77,6 +79,7 @@ namespace Game
         public int GetMoney => _money;
         public string GetID => _id;
 
+        // Получаем ссылки нужные для работы класса
         [Inject]
         private void Construct(GameStateController gameStateController)
         {
@@ -97,6 +100,7 @@ namespace Game
             _gameStateController.RemoveListener(this);
         }
         
+        // Событие получения урона
         public void Damage(int damage)
         {
             if (CanMercy)
@@ -135,6 +139,7 @@ namespace Game
                 });
         }
 
+        // Событие смерти
         public virtual void Death(int damage)
         {
             _isStartDeathAnimation = true;
@@ -144,15 +149,16 @@ namespace Game
             _deathSequence.Kill();
             _deathSequence = DOTween.Sequence();
             _deathSequence
-                //.AppendInterval(0.5f)
                 .OnComplete(() => _deathAnimation.StartAnimation());
         }
 
+        // Событие пощады
         public virtual void Spared()
         {
             gameObject.SetActive(false);
         }
         
+        // Событие начала битвы
         public void OnOpenBattle()
         {
             if (this == null)
@@ -166,27 +172,18 @@ namespace Game
             if (GetComponent<BehaviorGraphAgent>())
                 Destroy(GetComponent<BehaviorGraphAgent>());
             
-            _animator.CrossFade("Idle", 0);
+            _animator.CrossFade(IDLE_HASH, 0);
             _spriteRenderer.transform.localScale = _spriteRenderer.transform.localScale.SetX(1);
         }
 
-        public void AddMoney(int value)
-        {
-            _money += value;
-        }
-        
         public void OnCloseBattle() { }
         
+        // Реакция противника на действие
         public abstract string GetReaction(BattleActionType actionType, Item item = null);
         public abstract string GetDeathReaction();
-        
-        public virtual string GetDeathFriendReaction(IEnemy enemy)
-        {
-            return "...";
-        }
-        
         public abstract string GetStartReaction(int index);
         public abstract string GetActionReaction(ActionBattle actionBattle);
+        public virtual string GetDeathFriendReaction(IEnemy enemy) => "...";
         public virtual void EndEnemyTurn(int turn) { }
     }
 }

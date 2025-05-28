@@ -3,6 +3,7 @@ using Zenject;
 
 namespace Game
 {
+    // Добавляет прогресс битвы со временем
     public sealed class TimeBasedTurnBooster : MonoBehaviour
     {
         private const float START_TIMER = 0.5f;
@@ -31,9 +32,7 @@ namespace Game
             }
         }
 
-        public void ToggleActivate(bool value)
-        {
+        public void ToggleActivate(bool value) => 
             _isActive = value;
-        }
     }
 }

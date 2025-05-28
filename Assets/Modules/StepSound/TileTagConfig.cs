@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace StepSound
 {
+    // Конфиг хранящий тип тайла
     [CreateAssetMenu(fileName = "TileTagConfig", menuName = "Data/TileTagConfig", order = 81)]
     public class TileTagConfig : ScriptableObject
     {

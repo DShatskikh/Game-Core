@@ -5,6 +5,7 @@ using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
+// Нода поведения которая поворачивает NPC в направлении
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "FlipTo", story: "Flip [Entity] to [bool]", category: "Action/Enemy", id: "615a6814aa7361cf86e95e81739eac46")]
 public partial class FlipToAction : Action

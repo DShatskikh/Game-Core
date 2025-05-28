@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Game
 {
+    // Логика движения в красном режиме сердца
     [Serializable]
     public sealed class HeartRedMover : IHeartMover
     {
@@ -27,10 +28,7 @@ namespace Game
             _rigidbody.linearVelocity = Vector2.zero;
         }
 
-        void IHeartMover.Disable()
-        {
-            
-        }
+        void IHeartMover.Disable() { }
 
         void IHeartMover.Move()
         {
@@ -38,9 +36,6 @@ namespace Game
             _transform.position = (Vector2)_transform.position + direction * _speed * Time.deltaTime;
         }
 
-        void IHeartMover.FixedUpdate()
-        {
-            
-        }
+        void IHeartMover.FixedUpdate() { }
     }
 }

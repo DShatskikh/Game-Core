@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Слот инвентаря
     [Serializable]
     public class Slot
     {

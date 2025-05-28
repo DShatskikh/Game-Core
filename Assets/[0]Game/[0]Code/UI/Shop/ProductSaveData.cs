@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Структура для хранения сохраненных данных о предмете
     [Serializable]
     public struct ProductSaveData
     {

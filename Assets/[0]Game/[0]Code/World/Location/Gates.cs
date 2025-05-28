@@ -8,6 +8,7 @@ using Zenject;
 
 namespace Game
 {
+    // Ворота для головоломки
     public sealed class Gates : MonoBehaviour
     {
         private const string SAVE_HASH = "Gates";

@@ -12,10 +12,18 @@ namespace Game
         [SerializeField]
         private SerializableDictionary<string, LocalizedString> _localizedStrings;
 
+        [SerializeField]
+        private Transform _arrow;
+        
         protected override void Binding(DiContainer subContainer)
         {
             subContainer.BindFactory<BattleController_Dimas, BattleController_Dimas.Factory>()
                 .WithArguments(_initData, _localizedStrings);
+        }
+        
+        private protected override void OnStartBattle()
+        {
+            _arrow.gameObject.SetActive(false);
         }
     }
 }

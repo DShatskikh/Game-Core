@@ -39,7 +39,7 @@ namespace Game
                 new("Villager_Speak_1_Name", new[] {"Villager_Speak_1"}),
             };
             
-            Init(shopButtonPrefab, speakData, data.Products);
+            Init(speakData, data.Products);
         }
 
         protected override void Load()

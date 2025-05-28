@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Сервис отвечающий за громкость звука
     public sealed class VolumeService
     {
         private const string BUS_HASH = "bus:/";
@@ -14,8 +15,9 @@ namespace Game
 
         public float GetValue => _value;
         
+        // Сохраняемые данные
         [Serializable]
-        public struct Data
+        public struct SaveData
         {
             public float Volume;
         }
@@ -28,7 +30,7 @@ namespace Game
             _musicBus = FMODUnity.RuntimeManager.GetBus(BUS_HASH);
             var volume = GetLinearVolume(80f);
 
-            if (_settingsRepositoryStorage.TryGet(SAVE_KEY, out Data data))
+            if (_settingsRepositoryStorage.TryGet(SAVE_KEY, out SaveData data))
             {
                 volume = data.Volume;
             }
@@ -41,7 +43,7 @@ namespace Game
             _value = value;
             _musicBus.setVolume(GetLinearVolume(Mathf.Lerp(-80, 0, value / 100f)));
             
-            _settingsRepositoryStorage.Set(SAVE_KEY, new Data() { Volume = _value });
+            _settingsRepositoryStorage.Set(SAVE_KEY, new SaveData() { Volume = _value });
             _settingsRepositoryStorage.Save();
         }
 

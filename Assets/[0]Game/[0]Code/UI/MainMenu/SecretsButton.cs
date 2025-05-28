@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Кнопка которая открывает окно с секретами
     public sealed class SecretsButton : BaseButton
     {
         [SerializeField]

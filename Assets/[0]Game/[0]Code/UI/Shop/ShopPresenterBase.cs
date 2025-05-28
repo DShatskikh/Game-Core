@@ -9,20 +9,21 @@ using Object = UnityEngine.Object;
 
 namespace Game
 {
+    // Базовый класс магазина
     public abstract class ShopPresenterBase : IDisposable
     {
         private const string MUSIC_EVENT_PARAMETER_PATH = "Игровая ситуация";
         private const int MUSIC_EVENT_INDEX_HASH = 6;
         
-        protected readonly ShopView _shopView;
-        private readonly GameStateController _gameStateController;
+        protected private readonly ShopView _shopView;
+        protected private readonly GameStateController _gameStateController;
         protected readonly MainInventory _mainInventory;
-        private readonly WalletService _walletService;
+        private protected readonly WalletService _walletService;
         protected readonly Dictionary<string, string> _inscriptionsContainer;
         private readonly ShopButton _shopButtonPrefab;
         private readonly ScreenManager _screenManager;
 
-        private List<ShopButton> _productButtons = new();
+        private protected List<ShopButton> _productButtons = new();
         private List<ShopButton> _speakButtons = new();
         private List<ShopButton> _actButtons = new();
         private protected Product[] _products;
@@ -62,14 +63,14 @@ namespace Game
         protected virtual void InitProducts(Product[] products) => 
             _products = products;
 
-        protected void Init(ShopButton shopButtonPrefab, SpeakData[] speakData, Product[] products)
+        protected void Init(SpeakData[] speakData, Product[] products)
         {
             InitProducts(products);
             InitSpeaks(speakData);
             Load();
-            InitSpeakButtons();
-            InitProductButtons();
-            InitActButtons();
+            CreateSpeakButtons();
+            CreateProductButtons();
+            CreateActButtons();
             InitItemCountText();
             InitMoneyText();
 
@@ -105,7 +106,7 @@ namespace Game
             _shopView.ToggleBuy(false);
         }
         
-        protected void OpenStartPanel()
+        private protected virtual void OpenStartPanel()
         {
             CloseAllPanel();
             _shopView.ToggleSelectPanel(true);
@@ -148,7 +149,12 @@ namespace Game
                 new[] { _inscriptionsContainer["SellNotCan"] }, OpenStartPanel);
         }
 
-        private void OnBuyClicked()
+        private protected virtual void OnBuyClicked()
+        {
+            OpenBuyPanel();
+        }
+
+        private protected void OpenBuyPanel()
         {
             CloseAllPanel();
             _shopView.ToggleSelectPanel(true);
@@ -159,7 +165,7 @@ namespace Game
             EventSystem.current.SetSelectedGameObject(_productButtons[0].gameObject);
         }
         
-        protected virtual void InitProductButtons()
+        protected virtual void CreateProductButtons()
         {
             foreach (var product in _products)
             {
@@ -176,7 +182,24 @@ namespace Game
             ((ShopButton)_shopView.GetProductExitButton).OnSelectAction += () => { _shopView.ToggleProductInfo(false); };
         }
 
-        protected void ReplaceProduct(Product current, Product next)
+        private protected void AddItemToInventory(Product product)
+        {
+            if (product.Config.Prototype.TryGetComponent(out AttackComponent attackComponent))
+            {
+                _mainInventory.EquipWeapon(product.Config.Prototype.Clone());
+                return;
+            }
+            
+            if (product.Config.Prototype.TryGetComponent(out ArmorComponent armorComponent))
+            {
+                _mainInventory.EquipArmor(product.Config.Prototype.Clone());
+                return;
+            }
+            
+            _mainInventory.Add(product.Config.Prototype);
+        }
+        
+        private protected void ReplaceProduct(Product current, Product next)
         {
             var index = Array.IndexOf(_products, current);
             _products[index] = next;
@@ -210,39 +233,43 @@ namespace Game
                 EventSystem.current.SetSelectedGameObject(_shopView.GetBuyYesButton.gameObject);
 
                 _shopView.GetBuyYesButton.onClick.RemoveAllListeners();
-                _shopView.GetBuyYesButton.onClick.AddListener(() =>
-                {
-                    EventSystem.current.SetSelectedGameObject(_shopView.GetProductExitButton.gameObject);
-                    _shopView.ToggleBuy(false);
-                    _shopView.ToggleStats(true);
-
-                    if (_walletService.TrySellMoney(product.Price))
-                    {
-                        BuySuccess(product, productButton);
-                    }
-                    else
-                    {
-                        _shopView.SetStatsText(_inscriptionsContainer["BuyFail"]);
-                        PlayFailSound();
-                    }
-                });
+                _shopView.GetBuyYesButton.onClick.AddListener(() => OnBuyYesButton(product, productButton));
 
                 _shopView.GetBuyNoButton.onClick.RemoveAllListeners();
-                _shopView.GetBuyNoButton.onClick.AddListener(() =>
-                {
-                    _shopView.ToggleProductInfo(true);
-                    _shopView.ToggleBuy(false);
-                    EventSystem.current.SetSelectedGameObject(_shopView.GetProductExitButton.gameObject);
-                });
+                _shopView.GetBuyNoButton.onClick.AddListener(OnBuyNoButton);
             });
 
             if (product.Counts == 0)
                 ProductButtonInactive(productButton);
         }
 
+        private protected virtual void OnBuyNoButton()
+        {
+            _shopView.ToggleProductInfo(true);
+            _shopView.ToggleBuy(false);
+            EventSystem.current.SetSelectedGameObject(_shopView.GetProductExitButton.gameObject);
+        }
+
+        private protected virtual void OnBuyYesButton(Product product, ShopButton productButton)
+        {
+            EventSystem.current.SetSelectedGameObject(_shopView.GetProductExitButton.gameObject);
+            _shopView.ToggleBuy(false);
+            _shopView.ToggleStats(true);
+
+            if (_walletService.TrySellMoney(product.Price))
+            {
+                BuySuccess(product, productButton);
+            }
+            else
+            {
+                _shopView.SetStatsText(_inscriptionsContainer["BuyFail"]);
+                PlayFailSound();
+            }
+        }
+        
         protected virtual void BuySuccess(Product product, ShopButton productButton)
         {
-            _mainInventory.Add(product.Config.Prototype.Clone());
+            AddItemToInventory(product);
             _shopView.SetStatsText(_inscriptionsContainer["BuySuccess"]);
 
             if (product.Counts > 0)
@@ -252,19 +279,21 @@ namespace Game
                 ProductButtonInactive(productButton);
         }
 
-        protected virtual void InitSpeakButtons()
+        private protected virtual void CreateSpeakButtons()
         {
             foreach (var pair in _speakData)
             {
                 CreateSpeakButton(pair);
             }
 
-            _shopView.GetSpeakExitButton.onClick.AddListener(() =>
-            {
-                OpenStartPanel();
-            });
+            _shopView.GetSpeakExitButton.onClick.AddListener(SpeakExitButtonClicked);
         }
 
+        private protected virtual void SpeakExitButtonClicked()
+        {
+            OpenStartPanel();
+        }
+        
         protected void CreateSpeakButton(SpeakData pair)
         {
             var speakButton = Object.Instantiate(_shopButtonPrefab, _shopView.GetSpeakContainer);
@@ -289,7 +318,7 @@ namespace Game
             });
         }
 
-        private void InitActButtons()
+        private void CreateActButtons()
         {
             for (int i = 0; i < 3; i++)
             {
@@ -311,10 +340,16 @@ namespace Game
             {
                 _gameStateController.CloseCutscene();
                 _screenManager.Close(ScreensEnum.TRANSITION);
+                OnClose();
             });
         }
+
+        private protected virtual void OnClose()
+        {
+            
+        }
         
-        private void Close()
+        private protected void Close()
         {
             RuntimeManager.StudioSystem.setParameterByName(MUSIC_EVENT_PARAMETER_PATH, _startMusicParameterIndex);
             Dispose();

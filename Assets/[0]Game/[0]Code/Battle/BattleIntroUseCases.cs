@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 
 namespace Game
 {
+    // Распространенные сценарии для битвы
     public static class BattleIntroUseCases
     {
+        // Стандартная анимация начала боя
         public static async UniTask WaitIntro(OverWorldPositionsData[] partyPositionsData, OverWorldPositionsData[] enemyPositionsData)
         {
             var moveAnimation = DOTween.Sequence();

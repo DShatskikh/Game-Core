@@ -8,6 +8,7 @@ using Zenject;
 
 namespace Game
 {
+    // Катсцена перед битвой с персонажем "Свинозомби"
     public sealed class ZombiePigmanCutscene : MonoBehaviour, IGameCutsceneListener
     {
         [SerializeField]

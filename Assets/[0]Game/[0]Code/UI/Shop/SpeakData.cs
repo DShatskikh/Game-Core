@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Реплика торговца
     [Serializable]
     public struct SpeakData
     {

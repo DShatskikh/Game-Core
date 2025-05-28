@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    // Вьюшка слайдера
     public sealed class VolumeSliderView : MonoBehaviour
     {
         [SerializeField]

@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Движение игрока по лестнице
     public sealed class PlayerLadderMover : IPlayerMover
     {
         private readonly Transform _transform;

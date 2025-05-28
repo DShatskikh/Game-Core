@@ -5,6 +5,7 @@ using Zenject;
 
 namespace Game
 {
+    // Контроллер состояний игры
     public sealed class GameStateController : ITickable, IFixedTickable
     {
         private GameState _gameState;

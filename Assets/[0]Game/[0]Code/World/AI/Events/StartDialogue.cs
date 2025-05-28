@@ -3,6 +3,7 @@ using Unity.Behavior;
 using UnityEngine;
 using Unity.Properties;
 
+// Нода которая начинает диалог
 #if UNITY_EDITOR
 [CreateAssetMenu(menuName = "Behavior/Event Channels/StartDialogue")]
 #endif

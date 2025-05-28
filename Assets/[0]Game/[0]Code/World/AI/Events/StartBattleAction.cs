@@ -5,6 +5,7 @@ using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
+// Нода которая начинает бой
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "StartBattle", story: "Start [Battle]", category: "Action/Enemy", id: "1b1c33ecb0b64bfc0a0a5aa69ddad0e3")]
 public partial class StartBattleAction : Action

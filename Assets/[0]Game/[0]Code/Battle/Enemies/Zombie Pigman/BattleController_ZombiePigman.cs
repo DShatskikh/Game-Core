@@ -1,14 +1,12 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
-using FMODUnity;
 using I2.Loc;
 using Unity.Cinemachine;
-using UnityEngine;
-using UnityEngine.EventSystems;
 using Zenject;
 
 namespace Game
 {
+    // Класс битвы с персонажем "Свинозомби"
     public sealed class BattleController_ZombiePigman : BattleControllerBase
     {
         private readonly InitData _initData;
@@ -78,7 +76,6 @@ namespace Game
 
         public override void OnGameOver()
         {
-            Debug.Log("OnGameOver");
             Exit().Forget();
         }
     }

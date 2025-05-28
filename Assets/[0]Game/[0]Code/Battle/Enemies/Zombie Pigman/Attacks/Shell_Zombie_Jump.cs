@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Прыгающий по платформам Снинозомби
     public sealed class Shell_Zombie_Jump : Shell
     {
         private Coroutine _coroutine;

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace Game
 {
+    // Невидимая кнопка которая закрывает весь экран, нужна для тапа по экрану
     public class NextButton : Button, INextButton
     {
         public void Show(Action action = null)

@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Лестница
     public sealed class Ladder : MonoBehaviour
     {
         [SerializeField]
@@ -26,10 +27,8 @@ namespace Game
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.TryGetComponent(out Player player))
-            {
+            if (other.TryGetComponent(out Player player)) 
                 player.SetMover(_previousMover);
-            }
         }
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Выключает обьект со скриптом через время
     public sealed class TimerDisable : MonoBehaviour
     {
         [SerializeField]

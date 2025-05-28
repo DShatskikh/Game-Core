@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Интерфейс для движения персонажа
     public interface IPlayerMover
     {
         bool IsMove { get; }

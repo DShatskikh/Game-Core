@@ -2,7 +2,9 @@
 
 namespace Game
 {
-    public sealed class MainScreenHandler : IGameStartListener, IGameCutsceneListener, IGameBattleListener, IGameShopListener, IGameTransitionListener, IGameADSListener
+    // Обработчик который показывает и скрывает основное окно в зависимости от состояния игры
+    public sealed class MainScreenHandler : IGameStartListener, IGameCutsceneListener, IGameBattleListener, 
+        IGameShopListener, IGameTransitionListener, IGameADSListener
     {
         private readonly ScreenManager _screenManager;
         private readonly DiContainer _container;
@@ -13,61 +15,39 @@ namespace Game
             _container = container;
         }
 
-        public void OnStartGame()
-        {
+        public void OnStartGame() => 
             ToggleScreen(true);
-        }
 
-        public void OnShowCutscene()
-        {
+        public void OnShowCutscene() => 
             ToggleScreen(false);
-        }
 
-        public void OnHideCutscene()
-        {
+        public void OnHideCutscene() => 
             ToggleScreen(true);
-        }
 
-        public void OnOpenBattle()
-        {
+        public void OnOpenBattle() => 
             ToggleScreen(false);
-        }
 
-        public void OnCloseBattle()
-        {
+        public void OnCloseBattle() => 
             ToggleScreen(true);
-        }
 
-        public void OnOpenShop()
-        {
+        public void OnOpenShop() => 
             ToggleScreen(false);
-        }
 
-        public void OnCloseShop()
-        {
+        public void OnCloseShop() => 
             ToggleScreen(true);
-        }
 
-        public void OnStartTransition()
-        {
+        public void OnStartTransition() => 
             ToggleScreen(false);
-        }
 
-        public void OnEndTransition()
-        {
+        public void OnEndTransition() => 
             ToggleScreen(true);
-        }
 
-        public void OnShowADS()
-        {
+        public void OnShowADS() => 
             ToggleScreen(false);
-        }
 
-        public void OnHideADS()
-        {
+        public void OnHideADS() => 
             ToggleScreen(true);
-        }
-        
+
         private void ToggleScreen(bool value)
         {
             if (value)

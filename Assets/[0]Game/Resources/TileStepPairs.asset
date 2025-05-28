@@ -20,6 +20,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2f6c62996ba2331478cb28b3c7e4be15, type: 2}
   - {fileID: 11400000, guid: 682f276dec5d353428ac38b5e8e3be70, type: 2}
   - {fileID: 11400000, guid: 84fbdcf76226c46438e971072c5e22d1, type: 2}
+  - {fileID: 11400000, guid: 682f276dec5d353428ac38b5e8e3be70, type: 2}
+  - {fileID: 11400000, guid: a7492dca574454246ad420a6291f5301, type: 2}
   Grass:
   - {fileID: 11400000, guid: 0d6b4ef52f97fe347a0b2a2402a6ff91, type: 2}
   Dirt:

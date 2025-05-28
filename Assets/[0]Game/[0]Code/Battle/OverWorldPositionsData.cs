@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Структура хранящая точки для битвы
     public struct OverWorldPositionsData
     {
         public Transform Transform;

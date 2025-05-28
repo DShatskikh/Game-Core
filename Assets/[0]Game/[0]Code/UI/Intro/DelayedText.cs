@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Текст который появляет со временем
     public sealed class DelayedText : MonoBehaviour
     {
         [SerializeField]

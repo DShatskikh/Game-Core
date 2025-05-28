@@ -1,5 +1,6 @@
 ﻿namespace Game
 {
+    // Enum для окон
     public enum ScreensEnum : byte
     {
         MAIN = 0,

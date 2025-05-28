@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Расспространенные сценарии использования слота
     public static class SlotUseCases
     {
         public static bool TryRemoveOneItem(Slot slot)

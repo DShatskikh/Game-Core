@@ -2,6 +2,7 @@
 
 namespace Game
 {
+    // Расширение для работы с векторами
     public static class VectorExtensions
     {
         public static void SetX(this Transform transform, float x) => 

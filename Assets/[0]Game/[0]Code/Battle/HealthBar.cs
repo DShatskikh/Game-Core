@@ -6,6 +6,7 @@ using Zenject;
 
 namespace Game
 {
+    // Индикатор здоровья игрока
     public sealed class HealthBar : MonoBehaviour
     {
         [SerializeField]

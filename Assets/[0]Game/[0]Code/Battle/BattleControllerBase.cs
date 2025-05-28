@@ -13,12 +13,13 @@ using Object = UnityEngine.Object;
 
 namespace Game
 {
+    // Базовый класс контроллера битвы
     public abstract class BattleControllerBase : IGameGameOvertListener
     {
         private const string MUSIC_EVENT_PARAMETER_PATH = "Игровая ситуация";
         private const int MUSIC_EVENT_INDEX_HASH = 2;
-        
-        protected readonly BattleView _view;
+
+        private readonly BattleView _view;
         private readonly ShopButton _prefabButton;
         private readonly BattlePoints _points;
         private readonly Player _player;
@@ -158,7 +159,6 @@ namespace Game
                     CreateActionButtons();
 
                     EventSystem.current.SetSelectedGameObject(_actionButtons[0].gameObject);
-                    //SoundPlayer.Play(AssetProvider.Instance.SelectSound);
                 });
             }
         }

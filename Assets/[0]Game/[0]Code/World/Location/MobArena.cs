@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Моб арена
     public sealed class MobArena : MonoBehaviour, IGameBattleListener
     {
         [SerializeField]

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Значек сердце который показывает что реплика напечаталась
     public class HeartContinueIcon : MonoBehaviour
     {
         [SerializeField]

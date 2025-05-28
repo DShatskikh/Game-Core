@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Game
 {
+    // Класс NPC
     public sealed class Entity : MonoBehaviour, IGameCutsceneListener
     {
         [SerializeField]

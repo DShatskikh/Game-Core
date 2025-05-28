@@ -1,10 +1,9 @@
 ﻿using System.Linq;
 using PixelCrushers.DialogueSystem;
-using UnityEngine;
-using Zenject;
 
 namespace Game
 {
+    // Регистрация LUA команд
     public sealed class LuaCommandRegister
     {
         private readonly ScreenManager _screenManager;
@@ -24,7 +23,8 @@ namespace Game
                 SymbolExtensions.GetMethodInfo(() => OpenSaveScreen()));
             
             Lua.RegisterFunction(nameof(IsDefeatedEnemy), this,
-                SymbolExtensions.GetMethodInfo(() => IsDefeatedEnemy(string.Empty)));
+                SymbolExtensions.GetMethodInfo(() => 
+                    IsDefeatedEnemy(string.Empty)));
             
             Lua.RegisterFunction(nameof(IsKilledEnemy), this,
                 SymbolExtensions.GetMethodInfo(() => IsKilledEnemy(string.Empty)));
@@ -43,10 +43,9 @@ namespace Game
         
         private bool IsDefeatedEnemy(string enemyID)
         {
-            if (_mainRepositoryStorage.TryGet(SaveConstants.KILLED_ENEMIES, out DefeatedEnemiesSaveData defeatedEnemiesSaveData))
-            {
+            if (_mainRepositoryStorage.TryGet(SaveConstants.KILLED_ENEMIES, 
+                    out DefeatedEnemiesSaveData defeatedEnemiesSaveData))
                 return defeatedEnemiesSaveData.DefeatedEnemies.Any(x => x == enemyID);
-            }
 
             return false;
         }
@@ -61,7 +60,7 @@ namespace Game
         
         private bool IsPassedPVPArena()
         {
-            if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA, out PVPArena.Data data))
+            if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA, out PVPArena.SaveData data))
             {
                 return data.State == PVPArena.State.END;
             }
