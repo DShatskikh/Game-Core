@@ -10,7 +10,7 @@ namespace Game
     public abstract class EnemyBase : MonoBehaviour, IEnemy, IGameBattleListener
     {
         private const string IDLE_HASH = "Idle";
-        private static readonly int DamageHash = Animator.StringToHash("Damage");
+        private protected static readonly int DamageHash = Animator.StringToHash("Damage");
         private protected  static readonly int DeathHash = Animator.StringToHash("Death");
 
         [SerializeField]
@@ -35,16 +35,16 @@ namespace Game
         private protected ActionBattle[] _actions;
 
         [SerializeField]
-        private TextMesh _damageLabelPrefab;
+        private protected TextMesh _damageLabelPrefab;
 
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
 
-        private int _health;
+        private protected int _health;
         private BattleMessageBox _messageBox;
         private protected Animator _animator;
         private protected DeathAnimation _deathAnimation;
-        private Sequence _damageSequence;
+        private protected Sequence _damageSequence;
         private GameStateController _gameStateController;
         private protected Sequence _deathSequence;
         private protected Sequence _shakeSequence;
@@ -56,6 +56,7 @@ namespace Game
         public BattleMessageBox MessageBox => _messageBox;
         public abstract ActionBattle[] Actions { get; }
         public int Health => _health;
+        public virtual bool IsDeath => _health <= 0;
         public int MaxHealth => _maxHealth;
 
         public int Mercy
@@ -101,7 +102,7 @@ namespace Game
         }
         
         // Событие получения урона
-        public void Damage(int damage)
+        public virtual void Damage(int damage)
         {
             if (CanMercy)
             {
@@ -122,7 +123,7 @@ namespace Game
                 .Append(damageLabel.transform.DOMoveY(transform.position.AddY(1).y, 0.5f)).OnStepComplete(
                     () =>
                     {
-                        if (Health <= 0 && !_isStartDeathAnimation)
+                        if (IsDeath && !_isStartDeathAnimation)
                         {
                             _shakeSequence.Kill();
                             _shakeSequence = DOTween.Sequence();
@@ -140,6 +141,7 @@ namespace Game
         }
 
         // Событие смерти
+
         public virtual void Death(int damage)
         {
             _isStartDeathAnimation = true;
@@ -153,12 +155,14 @@ namespace Game
         }
 
         // Событие пощады
+
         public virtual void Spared()
         {
             gameObject.SetActive(false);
         }
-        
+
         // Событие начала битвы
+
         public void OnOpenBattle()
         {
             if (this == null)
@@ -176,8 +180,9 @@ namespace Game
             _spriteRenderer.transform.localScale = _spriteRenderer.transform.localScale.SetX(1);
         }
 
+
         public void OnCloseBattle() { }
-        
+
         // Реакция противника на действие
         public abstract string GetReaction(BattleActionType actionType, Item item = null);
         public abstract string GetDeathReaction();
@@ -185,5 +190,6 @@ namespace Game
         public abstract string GetActionReaction(ActionBattle actionBattle);
         public virtual string GetDeathFriendReaction(IEnemy enemy) => "...";
         public virtual void EndEnemyTurn(int turn) { }
+        private protected virtual void OnDamage() { }
     }
 }

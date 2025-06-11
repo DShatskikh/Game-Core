@@ -24,8 +24,13 @@ namespace Game
         
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.GetComponent<Player>()) 
-                _transitionService.Transition(_id, _pointIndex);
+            if (other.GetComponent<Player>())
+                Transition();
+        }
+
+        public void Transition()
+        {
+            _transitionService.Transition(_id, _pointIndex);
         }
     }
 }

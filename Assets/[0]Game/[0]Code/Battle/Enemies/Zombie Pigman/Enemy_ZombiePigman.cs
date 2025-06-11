@@ -23,7 +23,7 @@ namespace Game
         
         [Inject]
         private WalletService _walletService;
-        
+
         private bool _isSelectedInfo;
         private bool _isBuyerSword;
 

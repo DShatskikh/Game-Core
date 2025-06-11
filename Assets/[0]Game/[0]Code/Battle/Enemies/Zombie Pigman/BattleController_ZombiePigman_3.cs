@@ -32,10 +32,11 @@ namespace Game
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, 
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs,
-            MainRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService) : base(view, prefabButton, inventory, 
-            gameStateController, points, player, arena, heart, container, virtualCamera, 
-            turnProgressStorage, timeBasedTurnBooster, enemyBattleButton, screenManager, attackIndicator, nextButton,
-            localizedPairs, mainRepositoryStorage, healthService, levelService)
+            MainRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService, 
+            WalletService walletService) : base(view, prefabButton, inventory, gameStateController, points, player,
+            arena, heart, container, virtualCamera, turnProgressStorage, timeBasedTurnBooster, enemyBattleButton,
+            screenManager, attackIndicator, nextButton, localizedPairs, mainRepositoryStorage, healthService, 
+            levelService, walletService)
         {
             _initData = initData;
             Init();
@@ -55,7 +56,7 @@ namespace Game
                 || (_initData.Enemy_ZombiePigman_2.CanMercy && !_initData.Enemy_ZombiePigman_2.IsMercy))
                 return "Свинозомби щадит вас";
 
-            if (_initData.Enemy_ZombiePigman.Health <= 0 || _initData.Enemy_ZombiePigman_1.Health <= 0 || _initData.Enemy_ZombiePigman_2.Health <= 0)
+            if (_initData.Enemy_ZombiePigman.IsDeath || _initData.Enemy_ZombiePigman_1.IsDeath || _initData.Enemy_ZombiePigman_2.IsDeath)
                 return "Атмосфера накалилась";
             
             return "Свинозомби хотят вас побить";
@@ -67,7 +68,7 @@ namespace Game
 
             foreach (var enemy in _enemies)
             {
-                if (enemy.Health > 0)
+                if (!enemy.IsDeath)
                     aliveCount++;
             }
 

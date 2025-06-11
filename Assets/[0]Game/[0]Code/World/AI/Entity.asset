@@ -18,10 +18,10 @@ MonoBehaviour:
   m_Variables:
   - rid: 5757847956154745126
   - rid: 5757847957449474202
-  - rid: 5757847957449474148
-  - rid: 5757847957449474153
+  - rid: 5757848397830422630
+  - rid: 5757848397830422678
   - rid: 5757847957449474204
-  m_VersionTimestamp: 638837315445394091
+  m_VersionTimestamp: 638841721261890774
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: 925783984983585933}
@@ -35,26 +35,6 @@ MonoBehaviour:
           m_Value0: 1
           m_Value1: 0
         Name: Self
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {fileID: 0}
-    - rid: 5757847957449474148
-      type: {class: 'TypedVariableModel`1[[StartDialogue, Game]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 5455038819946169072
-          m_Value1: 3977542649376043527
-        Name: Start Dialogue
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {fileID: 0}
-    - rid: 5757847957449474153
-      type: {class: 'TypedVariableModel`1[[ExitDialogue, Game]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 8942322834103249400
-          m_Value1: 14245586241407378033
-        Name: Exit Dialogue
         IsExposed: 1
         m_IsShared: 0
         m_Value: {fileID: 0}
@@ -78,6 +58,26 @@ MonoBehaviour:
         IsExposed: 1
         m_IsShared: 0
         m_Value: 0
+    - rid: 5757848397830422630
+      type: {class: 'TypedVariableModel`1[[StartDialogue, Game]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 10436646915353856864
+          m_Value1: 6389714837902318643
+        Name: StartDialogueEvent
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 5757848397830422678
+      type: {class: 'TypedVariableModel`1[[ExitDialogue, Game]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 6782061315550901822
+          m_Value1: 12543991654980508839
+        Name: ExitDialogueEvent
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   - rid: 5757847956154745201
   - rid: 5757847957449474183
   - rid: 5757847957449474223
-  m_VersionTimestamp: 638837315483048704
+  m_VersionTimestamp: 638841721285708477
   m_DebugInfo: {fileID: 6041482491846240190}
   m_RuntimeGraph: {fileID: 2260484261976550916}
   AssetID:
@@ -198,7 +198,7 @@ MonoBehaviour:
           m_Value0: 3356300611230043817
           m_Value1: 5497005381991559097
         m_FieldValues:
-        - rid: 5757847957449474158
+        - rid: 5757848397830422653
         TriggerBehavior: 0
     - rid: 5757847956154745139
       type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
@@ -228,7 +228,7 @@ MonoBehaviour:
           m_Value0: 15586893896841764598
           m_Value1: 11910781537861691316
         m_FieldValues:
-        - rid: 5757847957449474163
+        - rid: 5757848397830422679
     - rid: 5757847956154745202
       type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
@@ -249,44 +249,6 @@ MonoBehaviour:
           rid: 5757847956154745201
         m_Connections:
         - rid: 5757847957449474224
-    - rid: 5757847957449474158
-      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
-      data:
-        FieldName: ChannelVariable
-        Type:
-          m_SerializableType: Unity.Behavior.EventChannelBase, Unity.Behavior, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        LocalValue:
-          rid: 5757847957449474160
-        LinkedVariable:
-          rid: 5757847957449474254
-    - rid: 5757847957449474160
-      type: {class: 'BlackboardVariable`1[[Unity.Behavior.EventChannelBase, Unity.Behavior]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 0
-          m_Value1: 0
-        Name: 
-        m_Value: {fileID: 0}
-    - rid: 5757847957449474163
-      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
-      data:
-        FieldName: ChannelVariable
-        Type:
-          m_SerializableType: Unity.Behavior.EventChannelBase, Unity.Behavior, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        LocalValue:
-          rid: 5757847957449474164
-        LinkedVariable:
-          rid: 5757847957449474255
-    - rid: 5757847957449474164
-      type: {class: 'BlackboardVariable`1[[Unity.Behavior.EventChannelBase, Unity.Behavior]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 0
-          m_Value1: 0
-        Name: 
-        m_Value: {fileID: 0}
     - rid: 5757847957449474183
       type: {class: ActionNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
       data:
@@ -482,23 +444,61 @@ MonoBehaviour:
         IsExposed: 1
         m_IsShared: 0
         m_Value: 0
-    - rid: 5757847957449474254
+    - rid: 5757848397830422653
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: ChannelVariable
+        Type:
+          m_SerializableType: Unity.Behavior.EventChannelBase, Unity.Behavior, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 5757848397830422654
+        LinkedVariable:
+          rid: 5757848397830422655
+    - rid: 5757848397830422654
+      type: {class: 'BlackboardVariable`1[[Unity.Behavior.EventChannelBase, Unity.Behavior]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+    - rid: 5757848397830422655
       type: {class: 'TypedVariableModel`1[[StartDialogue, Game]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
         ID:
-          m_Value0: 5455038819946169072
-          m_Value1: 3977542649376043527
-        Name: Start Dialogue
+          m_Value0: 10436646915353856864
+          m_Value1: 6389714837902318643
+        Name: StartDialogueEvent
         IsExposed: 1
         m_IsShared: 0
         m_Value: {fileID: 0}
-    - rid: 5757847957449474255
+    - rid: 5757848397830422679
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: ChannelVariable
+        Type:
+          m_SerializableType: Unity.Behavior.EventChannelBase, Unity.Behavior, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 5757848397830422680
+        LinkedVariable:
+          rid: 5757848397830422681
+    - rid: 5757848397830422680
+      type: {class: 'BlackboardVariable`1[[Unity.Behavior.EventChannelBase, Unity.Behavior]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+    - rid: 5757848397830422681
       type: {class: 'TypedVariableModel`1[[ExitDialogue, Game]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
         ID:
-          m_Value0: 8942322834103249400
-          m_Value1: 14245586241407378033
-        Name: Exit Dialogue
+          m_Value0: 6782061315550901822
+          m_Value1: 12543991654980508839
+        Name: ExitDialogueEvent
         IsExposed: 1
         m_IsShared: 0
         m_Value: {fileID: 0}
@@ -514,17 +514,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: Entity Blackboard
   m_EditorClassIdentifier: 
-  VersionTimestamp: 638837315445394091
+  VersionTimestamp: 638841721261890774
   AssetID:
     m_Value0: 1462462124861004837
     m_Value1: 13154717141599646761
   m_Blackboard:
     m_Variables:
     - rid: 5757847956154745129
-    - rid: 5757847957449474166
-    - rid: 5757847957449474167
     - rid: 5757847957449474206
     - rid: 5757847957449474207
+    - rid: 5757848397830422635
+    - rid: 5757848397830422682
   m_SharedBlackboardVariableGuids: []
   references:
     version: 2
@@ -536,22 +536,6 @@ MonoBehaviour:
           m_Value0: 1
           m_Value1: 0
         Name: Self
-        m_Value: {fileID: 0}
-    - rid: 5757847957449474166
-      type: {class: 'BlackboardVariable`1[[StartDialogue, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 5455038819946169072
-          m_Value1: 3977542649376043527
-        Name: Start Dialogue
-        m_Value: {fileID: 0}
-    - rid: 5757847957449474167
-      type: {class: 'BlackboardVariable`1[[ExitDialogue, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 8942322834103249400
-          m_Value1: 14245586241407378033
-        Name: Exit Dialogue
         m_Value: {fileID: 0}
     - rid: 5757847957449474206
       type: {class: 'BlackboardVariable`1[[Game.Entity, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
@@ -569,6 +553,22 @@ MonoBehaviour:
           m_Value1: 5851288102330765219
         Name: StartFlip
         m_Value: 0
+    - rid: 5757848397830422635
+      type: {class: 'BlackboardVariable`1[[StartDialogue, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 10436646915353856864
+          m_Value1: 6389714837902318643
+        Name: StartDialogueEvent
+        m_Value: {fileID: 0}
+    - rid: 5757848397830422682
+      type: {class: 'BlackboardVariable`1[[ExitDialogue, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6782061315550901822
+          m_Value1: 12543991654980508839
+        Name: ExitDialogueEvent
+        m_Value: {fileID: 0}
 --- !u!114 &2260484261976550916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,16 +582,16 @@ MonoBehaviour:
   m_Name: Entity
   m_EditorClassIdentifier: 
   Graphs:
-  - rid: 5757848285989044307
+  - rid: 5757848397830422683
   RootGraph:
-    rid: 5757848285989044307
+    rid: 5757848397830422683
   m_DebugInfo: {fileID: 6041482491846240190}
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 5757848285989044307
+    - rid: 5757848397830422683
       type: {class: BehaviorGraphModule, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         AuthoringAssetID:
@@ -599,107 +599,107 @@ MonoBehaviour:
           m_Value1: 13154717141599646761
         m_DebugInfo: {fileID: 0}
         Root:
-          rid: 5757848285989044308
+          rid: 5757848397830422684
         BlackboardReference:
-          rid: 5757848285989044309
+          rid: 5757848397830422685
         BlackboardGroupReferences: []
         m_ActiveNodes: []
         m_NodesToTick: []
         m_NodesToEnd:
-          rid: 5757848285989044310
+          rid: 5757848397830422686
         m_EndedNodes:
-          rid: 5757848285989044311
-        m_VersionTimestamp: 638837315483048704
-    - rid: 5757848285989044308
+          rid: 5757848397830422687
+        m_VersionTimestamp: 638841721285708477
+    - rid: 5757848397830422684
       type: {class: StartOnEvent, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 12195085343335128823
           m_Value1: 2918437928207956341
         Graph:
-          rid: 5757848285989044307
+          rid: 5757848397830422683
         m_Parent:
           rid: -2
         m_Child:
-          rid: 5757848285989044312
+          rid: 5757848397830422688
         ChannelVariable:
-          rid: 5757848285989044313
+          rid: 5757848397830422689
         MessageVariables:
         - rid: -2
         - rid: -2
         - rid: -2
         - rid: -2
         Mode: 0
-    - rid: 5757848285989044309
+    - rid: 5757848397830422685
       type: {class: BlackboardReference, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         m_Blackboard:
-          rid: 5757848285989044314
+          rid: 5757848397830422690
         m_Source: {fileID: 925783984983585933}
-    - rid: 5757848285989044310
+    - rid: 5757848397830422686
       type: {class: 'Stack`1[[Unity.Behavior.Node, Unity.Behavior]]', ns: System.Collections.Generic, asm: mscorlib}
       data: 
-    - rid: 5757848285989044311
+    - rid: 5757848397830422687
       type: {class: 'HashSet`1[[Unity.Behavior.Node, Unity.Behavior]]', ns: System.Collections.Generic, asm: System.Core}
       data: 
-    - rid: 5757848285989044312
+    - rid: 5757848397830422688
       type: {class: SequenceComposite, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 16607461055842197356
           m_Value1: 6350572901411341081
         Graph:
-          rid: 5757848285989044307
+          rid: 5757848397830422683
         m_Parent:
-          rid: 5757848285989044308
+          rid: 5757848397830422684
         m_Children:
-        - rid: 5757848285989044315
-        - rid: 5757848285989044316
-    - rid: 5757848285989044313
+        - rid: 5757848397830422691
+        - rid: 5757848397830422692
+    - rid: 5757848397830422689
       type: {class: 'BlackboardVariable`1[[StartDialogue, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 5455038819946169072
-          m_Value1: 3977542649376043527
-        Name: Start Dialogue
+          m_Value0: 10436646915353856864
+          m_Value1: 6389714837902318643
+        Name: StartDialogueEvent
         m_Value: {fileID: 0}
-    - rid: 5757848285989044314
+    - rid: 5757848397830422690
       type: {class: Blackboard, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         m_Variables:
-        - rid: 5757848285989044317
-        - rid: 5757848285989044313
-        - rid: 5757848285989044318
-        - rid: 5757848285989044319
-        - rid: 5757848285989044320
-    - rid: 5757848285989044315
+        - rid: 5757848397830422693
+        - rid: 5757848397830422694
+        - rid: 5757848397830422695
+        - rid: 5757848397830422689
+        - rid: 5757848397830422696
+    - rid: 5757848397830422691
       type: {class: FlipToPlayerAction, ns: , asm: Game}
       data:
         ID:
           m_Value0: 16607461055842197356
           m_Value1: 6350572901411341081
         Graph:
-          rid: 5757848285989044307
+          rid: 5757848397830422683
         m_Parent:
-          rid: 5757848285989044312
+          rid: 5757848397830422688
         Entity:
-          rid: 5757848285989044319
+          rid: 5757848397830422694
         StartFlip:
-          rid: 5757848285989044320
-    - rid: 5757848285989044316
+          rid: 5757848397830422695
+    - rid: 5757848397830422692
       type: {class: SequenceComposite, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 12484857467551737279
           m_Value1: 15440931645341299823
         Graph:
-          rid: 5757848285989044307
+          rid: 5757848397830422683
         m_Parent:
-          rid: 5757848285989044312
+          rid: 5757848397830422688
         m_Children:
-        - rid: 5757848285989044321
-        - rid: 5757848285989044322
-    - rid: 5757848285989044317
+        - rid: 5757848397830422697
+        - rid: 5757848397830422698
+    - rid: 5757848397830422693
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -707,15 +707,7 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 0}
-    - rid: 5757848285989044318
-      type: {class: 'BlackboardVariable`1[[ExitDialogue, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 8942322834103249400
-          m_Value1: 14245586241407378033
-        Name: Exit Dialogue
-        m_Value: {fileID: 0}
-    - rid: 5757848285989044319
+    - rid: 5757848397830422694
       type: {class: 'BlackboardVariable`1[[Game.Entity, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -723,7 +715,7 @@ MonoBehaviour:
           m_Value1: 8726392119191863748
         Name: Entity
         m_Value: {fileID: 0}
-    - rid: 5757848285989044320
+    - rid: 5757848397830422695
       type: {class: 'BlackboardVariable`1[[System.Boolean, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -731,37 +723,45 @@ MonoBehaviour:
           m_Value1: 5851288102330765219
         Name: StartFlip
         m_Value: 0
-    - rid: 5757848285989044321
+    - rid: 5757848397830422696
+      type: {class: 'BlackboardVariable`1[[ExitDialogue, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6782061315550901822
+          m_Value1: 12543991654980508839
+        Name: ExitDialogueEvent
+        m_Value: {fileID: 0}
+    - rid: 5757848397830422697
       type: {class: WaitForEventAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 12484857467551737279
           m_Value1: 15440931645341299823
         Graph:
-          rid: 5757848285989044307
+          rid: 5757848397830422683
         m_Parent:
-          rid: 5757848285989044316
+          rid: 5757848397830422692
         ChannelVariable:
-          rid: 5757848285989044318
+          rid: 5757848397830422696
         MessageVariables:
         - rid: -2
         - rid: -2
         - rid: -2
         - rid: -2
-    - rid: 5757848285989044322
+    - rid: 5757848397830422698
       type: {class: FlipToAction, ns: , asm: Game}
       data:
         ID:
           m_Value0: 15778494884800093844
           m_Value1: 10034390377583998739
         Graph:
-          rid: 5757848285989044307
+          rid: 5757848397830422683
         m_Parent:
-          rid: 5757848285989044316
+          rid: 5757848397830422692
         Entity:
-          rid: 5757848285989044319
+          rid: 5757848397830422694
         Bool:
-          rid: 5757848285989044320
+          rid: 5757848397830422695
 --- !u!114 &6041482491846240190
 MonoBehaviour:
   m_ObjectHideFlags: 0

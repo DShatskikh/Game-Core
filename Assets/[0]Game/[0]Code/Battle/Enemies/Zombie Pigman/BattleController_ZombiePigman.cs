@@ -9,6 +9,9 @@ namespace Game
     // Класс битвы с персонажем "Свинозомби"
     public sealed class BattleController_ZombiePigman : BattleControllerBase
     {
+        [Inject]
+        private TutorialState _tutorialState;
+        
         private readonly InitData _initData;
 
         [Serializable]
@@ -26,10 +29,11 @@ namespace Game
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, 
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs,
-            MainRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService) : base(view, prefabButton, inventory, 
-            gameStateController, points, player, arena, heart, container, virtualCamera, 
-            turnProgressStorage, timeBasedTurnBooster, enemyBattleButton, screenManager, attackIndicator, nextButton,
-            localizedPairs, mainRepositoryStorage, healthService, levelService)
+            MainRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService,
+            WalletService walletService) : base(view, prefabButton, inventory, gameStateController, points, player,
+            arena, heart, container, virtualCamera, turnProgressStorage, timeBasedTurnBooster, enemyBattleButton,
+            screenManager, attackIndicator, nextButton, localizedPairs, mainRepositoryStorage, healthService,
+            levelService, walletService)
         {
             _initData = initData;
             Init();
@@ -77,6 +81,14 @@ namespace Game
         public override void OnGameOver()
         {
             Exit().Forget();
+        }
+
+        private protected override void EndFightAdditional()
+        {
+            if (_tutorialState.CurrentStep == TutorialStep.MOVE_MOB_ARENA)
+            {
+                _tutorialState.FinishStep();
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 namespace Game
 {
     // Кнопка выбора противника
-    public sealed class EnemyBattleButton : Button
+    public class EnemyBattleButton : Button
     {
         [SerializeField]
         private TMP_Text _label;

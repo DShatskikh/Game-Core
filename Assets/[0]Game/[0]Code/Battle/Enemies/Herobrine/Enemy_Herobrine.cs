@@ -13,9 +13,6 @@ namespace Game
 
                 for (var i = 0; i < _actions.Length; i++)
                 {
-                    if (i == 2)
-                        continue;
-
                     var action = _actions[i];
                     actions.Add(action);
                 }
@@ -29,10 +26,10 @@ namespace Game
             switch (actionType)
             {
                 case BattleActionType.Attack:
-                    return "Ай. Это не круто";
+                    return "Ну все, тебе хана!";
 
                 case BattleActionType.Mercy:
-                    return "Я не хочу обижать своих фанатов";
+                    return "Ты победил";
 
                 case BattleActionType.NoAction:
                     return "Херобрин будет гордиться мной";
@@ -44,12 +41,12 @@ namespace Game
 
         public override string GetDeathReaction()
         {
-            return "Я надеялся что превзойду херобрина...";
+            return "Черт, я проиграл какому-то Нубу";
         }
 
         public override string GetStartReaction(int index)
         {
-            return "Йоу! зацени мой реп";
+            return "Получай!";
         }
 
         public override string GetActionReaction(ActionBattle actionBattle)

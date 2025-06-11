@@ -2,11 +2,11 @@
 using Cysharp.Threading.Tasks;
 using I2.Loc;
 using Unity.Cinemachine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Game
 {
+    // Контроллер битвы Хакера
     public sealed class BattleController_Hacker : BattleControllerBase
     {
         private readonly InitData _initData;
@@ -16,6 +16,8 @@ namespace Game
         {
             public Enemy_Hacker Enemy_Hacker;
             public PVPArena PvpArena;
+            public EnemyBattleButton_Hacker EnemyBattleButton;
+            public HackerBanCutscene HackerBanCutscene;
         }
 
         public class Factory : PlaceholderFactory<BattleController_Hacker> { }
@@ -26,13 +28,14 @@ namespace Game
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager,
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs, InitData initData, 
-            MainRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService) 
-            : base(view, prefabButton, inventory, 
+            MainRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService, 
+            WalletService walletService) : base(view, prefabButton, inventory, 
             gameStateController, points, player, arena, heart, container, virtualCamera, turnProgressStorage,
             timeBasedTurnBooster, enemyBattleButton, screenManager, attackIndicator, nextButton, localizedPairs,
-            mainRepositoryStorage, healthService, levelService)
+            mainRepositoryStorage, healthService, levelService, walletService)
         {
             _initData = initData;
+            SetEnemyPrefabButton(initData.EnemyBattleButton);
             Init();
         }
 
@@ -54,10 +57,7 @@ namespace Game
 
         private protected override string GetStateText()
         {
-            if (_initData.Enemy_Hacker.CanMercy)
-                return "Банан щадит вас";
-            
-            return "Сильнейший телохранитель Херобрина (по его словам)";
+            return "Весь сервер глючит из-за этой битвы";
         }
 
         public override void OnGameOver()
@@ -72,6 +72,33 @@ namespace Game
 
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
                 new PVPArena.SaveData() { State = PVPArena.State.HEROBRINE });
+        }
+
+        private protected override void UpgradeEnemy(EnemyBattleButton enemyButton, IEnemy enemy)
+        {
+            base.UpgradeEnemy(enemyButton, enemy);
+
+            var health = enemy.Health;
+            var button = (EnemyBattleButton_Hacker)enemyButton;
+            button.GetHealthLabel.text = $"{health}/{enemy.MaxHealth}";
+
+            if (health < 0)
+            {
+                button.GetHealthMinusSlider.maxValue = 100;
+                button.GetHealthMinusSlider.value = -health;
+            }
+        }
+
+        public override void Turn()
+        {
+            if (_numberTurn >= 1)
+            {
+                CloseAllPanel();
+                _initData.HackerBanCutscene.StartCutscene(this);
+                return;
+            }
+            
+            base.Turn();
         }
     }
 }

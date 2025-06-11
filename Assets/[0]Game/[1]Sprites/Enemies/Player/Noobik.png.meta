@@ -122,6 +122,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -486,7 +499,7 @@ TextureImporter:
         width: 8
         height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -495,6 +508,28 @@ TextureImporter:
       bones: []
       spriteID: b283417295524314da06611d61aed961
       internalID: -1487880927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Noobik_17
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 48
+        width: 13
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8ba88aa8d7aeb849a5339fef0008e84
+      internalID: 1830718262
       vertices: []
       indices: 
       edges: []
@@ -522,6 +557,7 @@ TextureImporter:
       Noobik_14: 1292027144
       Noobik_15: -1441109750
       Noobik_16: -1487880927
+      Noobik_17: 1830718262
       Noobik_2: 1485313043
       Noobik_3: 1176774483
       Noobik_4: -1361163240

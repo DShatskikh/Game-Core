@@ -41,6 +41,7 @@ namespace Game
             container, shopBackgroundPrefab, screenManager, mainRepositoryStorage)
         {
             _initData = data;
+            Load();
             
             var products = new[]
             {
@@ -150,7 +151,6 @@ namespace Game
             }
 
             _speakData = saveData.SpeaksData;
-            
             _products = currentProducts.ToArray();
         }
 

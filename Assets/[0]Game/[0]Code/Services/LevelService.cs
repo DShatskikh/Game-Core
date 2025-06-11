@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Game
 {
@@ -55,6 +56,7 @@ namespace Game
         
         public void AddExp(int value, out bool isLevelUp)
         {
+            isLevelUp = false;
             _exp += value;
 
             while (_exp >= _expToNextLv && _lv < MAX_LEVEL)
@@ -71,8 +73,9 @@ namespace Game
                 _expToNextLv = 0;
             }
             
+            Debug.Log($"Вы получили {value} exp, сейчас у вас {_exp} exp, новый уровень {isLevelUp}, уровень {_lv}");
+            
             Save();
-            isLevelUp = false;
         }
 
         public void SaveGame()
@@ -86,12 +89,12 @@ namespace Game
             
             return nextLv switch
             {
-                1 => 100,
-                2 => 125,
-                3 => 200,
-                4 => 250,
-                5 => 400,
-                6 => 750,
+                1 => 5,
+                2 => 15,
+                3 => 35,
+                4 => 50,
+                5 => 100,
+                6 => 500,
                 7 => 1000,
                 _ => 0
             };

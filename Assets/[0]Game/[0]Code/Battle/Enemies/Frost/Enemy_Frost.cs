@@ -5,6 +5,8 @@ namespace Game
 {
     public sealed class Enemy_Frost : EnemyBase
     {
+        private int _potatoCount = 3;
+        
         public override ActionBattle[] Actions
         {
             get
@@ -23,19 +25,24 @@ namespace Game
                 return actions.ToArray();
             }
         }
-        
+
+        private protected override void OnDamage()
+        {
+            // Ест картошку, здается на 5 ходе потому что видит что мы достойны чтобы попасть в спарту
+        }
+
         public override string GetReaction(BattleActionType actionType, Item item = null)
         {
             switch (actionType)
             {
                 case BattleActionType.Attack:
-                    return "Ай. Это не круто";
+                    return "Нужно поесть картошки";
 
                 case BattleActionType.Mercy:
-                    return "Я не хочу обижать своих фанатов";
+                    return "Да прибудет с тобой Спарта";
 
                 case BattleActionType.NoAction:
-                    return "Херобрин будет гордиться мной";
+                    return "Это СПАААРТА!";
                 
                 default:
                     return "(...)";
@@ -44,12 +51,12 @@ namespace Game
 
         public override string GetDeathReaction()
         {
-            return "Я надеялся что превзойду херобрина...";
+            return "Черт, я програл. Я иду к тебе Леонид";
         }
 
         public override string GetStartReaction(int index)
         {
-            return "Йоу! зацени мой реп";
+            return "Это Спарта!";
         }
 
         public override string GetActionReaction(ActionBattle actionBattle)

@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using DG.Tweening;
 using FMODUnity;
-using PixelCrushers.DialogueSystem.Wrappers;
+using PixelCrushers.DialogueSystem;
 using Unity.Behavior;
 using UnityEngine;
 using Zenject;
+using DialogueSystemTrigger = PixelCrushers.DialogueSystem.Wrappers.DialogueSystemTrigger;
 
 namespace Game
 {
     // Катсцена перед битвой с персонажем "Свинозомби"
-    public sealed class ZombiePigmanCutscene : MonoBehaviour, IGameCutsceneListener
+    public sealed class ZombiePigmanCutscene : MonoBehaviour
     {
         [SerializeField]
         private DialogueSystemTrigger _dialogueSystemTrigger;
@@ -19,18 +20,22 @@ namespace Game
 
         [SerializeField]
         private Enemy_ZombiePigman[] _otherPigmans;
+
+        [SerializeField]
+        private GameObject _tutorialArrow;
         
         private Enemy_ZombiePigman _enemyZombiePigman;
         private Player _player;
-        private bool _isOpenDialogue;
         private MainInventory _mainInventory;
+        private EnemyMover _mover;
 
         [Inject]
         private void Construct(Player player, MainInventory mainInventory)
         {
             _player = player;
-            _enemyZombiePigman = GetComponent<Enemy_ZombiePigman>();
             _mainInventory = mainInventory;
+            _enemyZombiePigman = GetComponent<Enemy_ZombiePigman>();
+            _mover = GetComponent<EnemyMover>();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -38,28 +43,20 @@ namespace Game
             if (other.GetComponent<Player>())
             {
                 Destroy(GetComponent<BehaviorGraphAgent>());
-                GetComponent<EnemyMover>().StopMove();
                 _dialogueSystemTrigger.OnUse();
-                _isOpenDialogue = true;
+                
+                if (_tutorialArrow)
+                    _tutorialArrow.SetActive(false);
+                
+                _mover.StopMove();
+                
+                StartCoroutine(AwaitCutscene());
             }
-        }
-
-        public void OnShowCutscene()
-        {
-            
-        }
-
-        public void OnHideCutscene()
-        {
-            if (!_isOpenDialogue)
-                return;
-
-            _isOpenDialogue = false;
-            StartCoroutine(AwaitCutscene());
         }
 
         private IEnumerator AwaitCutscene()
         {
+            yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
             _player.PlaySwordAttack();
             yield return new WaitForSeconds(0.5f);
             _enemyZombiePigman.Damage(1);

@@ -26,11 +26,11 @@ namespace Game
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager,
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs, InitData initData, 
-            MainRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService) 
-            : base(view, prefabButton, inventory, 
-            gameStateController, points, player, arena, heart, container, virtualCamera, turnProgressStorage,
-            timeBasedTurnBooster, enemyBattleButton, screenManager, attackIndicator, nextButton, localizedPairs,
-            mainRepositoryStorage, healthService, levelService)
+            MainRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService, 
+            WalletService walletService) : base(view, prefabButton, inventory, gameStateController, points, player, 
+            arena, heart, container, virtualCamera, turnProgressStorage, timeBasedTurnBooster, enemyBattleButton, 
+            screenManager, attackIndicator, nextButton, localizedPairs, mainRepositoryStorage, healthService, 
+            levelService, walletService)
         {
             _initData = initData;
             Init();

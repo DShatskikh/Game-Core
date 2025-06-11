@@ -41,7 +41,6 @@ namespace Game
 
         private void OnStepStarted(TutorialStep currentStep)
         {
-            Debug.Log(currentStep);
             _arrowBuySword.SetActive(false);
             
             if (currentStep == TutorialStep.BUY_SWORD)
@@ -52,7 +51,7 @@ namespace Game
                 _shopNotchTutorial.gameObject.SetActive(true);
             }
 
-            if (currentStep == TutorialStep.MOVE_TO_SHOP)
+            if (currentStep == TutorialStep.MOVE_TO_SHOP_BUY_SWORD)
             {
                 _arrowBuySword.SetActive(true);
                 _openShopNotch.enabled = false;
@@ -78,7 +77,7 @@ namespace Game
             _openShopNotch.enabled = true;
             _notMoney.gameObject.SetActive(false);
 
-            if (currentStep == TutorialStep.MOVE_TO_SHOP)
+            if (currentStep == TutorialStep.MOVE_TO_SHOP_BUY_SWORD)
             {
                 
             }

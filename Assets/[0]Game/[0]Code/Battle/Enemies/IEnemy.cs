@@ -10,6 +10,7 @@ namespace Game
         BattleMessageBox MessageBox { get; }
         ActionBattle[] Actions { get; }
         int Health { get; }
+        bool IsDeath { get; }
         int MaxHealth { get; }
         int Mercy { get; set; }
         bool CanMercy { get; }

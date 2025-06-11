@@ -81,6 +81,7 @@ namespace Game
             if (_healthService.GetHealth.Value <= 0)
                 return;
 
+            Debug.Log(_mover);
             _mover.Move();
             var position = (Vector2)transform.position;
             
@@ -183,6 +184,11 @@ namespace Game
         {
             _animator.CrossFade(DEATH_HASH, 0);
             OnDeath?.Invoke();
+        }
+
+        public void AddHealth(int health)
+        {
+            _healthService.Add(health);
         }
     }
 }

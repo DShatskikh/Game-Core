@@ -10,6 +10,9 @@ namespace Game.Test
 
         [SerializeField]
         private Transform _container;
+
+        [SerializeField]
+        private Arena _arena;
         
         private DiContainer _diContainer;
 
@@ -21,6 +24,7 @@ namespace Game.Test
         
         private void Start()
         {
+            _arena.SetSize(_attack.GetSizeArena);
             var attack = Instantiate(_attack, _container);
 
             foreach (var monoBehaviour in attack.GetComponentsInChildren<MonoBehaviour>())

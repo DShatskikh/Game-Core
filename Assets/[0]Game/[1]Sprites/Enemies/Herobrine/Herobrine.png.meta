@@ -380,6 +380,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Herobrine_0
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 12
+        width: 11
+        height: 16
+      alignment: 9
+      pivot: {x: 0.54545456, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a178b2718e5ee479090a5af30753c9
+      internalID: 1837009430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Herobrine_1
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 18
+        width: 7
+        height: 2
+      alignment: 9
+      pivot: {x: 0.14285715, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56dba4d005cae7d45822d59422d9ceef
+      internalID: -814148614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -394,6 +438,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      Herobrine_0: 1837009430
+      Herobrine_1: -814148614
       Zombie_0: 6019453725058403666
       Zombie_1: -34918049
       Zombie_10: 347931891

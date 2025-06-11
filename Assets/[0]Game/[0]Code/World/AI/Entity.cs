@@ -17,15 +17,15 @@ namespace Game
         private BehaviorGraphAgent _behaviourAgent;
         public bool GetFlip => _spriteRenderer.flipX;
 
-        private void Awake()
+        private void Start()
         {
             _behaviourAgent = GetComponent<BehaviorGraphAgent>();
-
-            if (_behaviourAgent.BlackboardReference.GetVariableValue("StartDialogue", 
+            
+            if (_behaviourAgent.BlackboardReference.GetVariableValue("StartDialogueEvent", 
                     out StartDialogue startDialogue))
                 _startDialogue = startDialogue;
             
-            if (_behaviourAgent.BlackboardReference.GetVariableValue("ExitDialogue", 
+            if (_behaviourAgent.BlackboardReference.GetVariableValue("ExitDialogueEvent", 
                     out ExitDialogue exitDialogue))
                 _exitDialogue = exitDialogue;
             

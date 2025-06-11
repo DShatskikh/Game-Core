@@ -31,6 +31,7 @@ namespace Game
         
         private readonly float _startMusicParameterIndex;
         private protected readonly MainRepositoryStorage _mainRepositoryStorage;
+        private readonly DiContainer _diContainer;
 
         public ShopPresenterBase(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
@@ -46,6 +47,7 @@ namespace Game
             _shopButtonPrefab = shopButtonPrefab;
             _screenManager = screenManager;
             _mainRepositoryStorage = mainRepositoryStorage;
+            _diContainer = container;
 
             _gameStateController.OpenCutscene();
             
@@ -67,7 +69,6 @@ namespace Game
         {
             InitProducts(products);
             InitSpeaks(speakData);
-            Load();
             CreateSpeakButtons();
             CreateProductButtons();
             CreateActButtons();
@@ -83,15 +84,15 @@ namespace Game
         protected abstract void Load();
         protected abstract void Save();
         
-        protected void InitMoneyText()
+        private void InitMoneyText()
         {
             _walletService.Money.SubscribeAndCall(money => _shopView.SetMoneyText($"{money}М"));
         }
 
-        protected void InitItemCountText()
+        private void InitItemCountText()
         {
-            _shopView.SetItemCountText($"{_mainInventory.MainSlots.Length}/{_mainInventory.MainSlots.Length}");
-            _mainInventory.OnSlotChange += (item, slot) => _shopView.SetItemCountText($"{_mainInventory.MainSlots.Length}/{_mainInventory.MainSlots.Length}");
+            _shopView.SetItemCountText($"{_mainInventory.GetItemsCount}/{_mainInventory.MainSlots.Length}");
+            _mainInventory.OnSlotChange += (item, slot) => _shopView.SetItemCountText($"{_mainInventory.GetItemsCount}/{_mainInventory.MainSlots.Length}");
         }
         
         private void CloseAllPanel()
@@ -170,6 +171,7 @@ namespace Game
             foreach (var product in _products)
             {
                 var productButton = Object.Instantiate(_shopButtonPrefab, _shopView.GetProductContainer);
+                _diContainer.Inject(productButton);
                 InitProductButton(productButton, product);
                 _productButtons.Add(productButton);
             }
@@ -297,6 +299,7 @@ namespace Game
         protected void CreateSpeakButton(SpeakData pair)
         {
             var speakButton = Object.Instantiate(_shopButtonPrefab, _shopView.GetSpeakContainer);
+            _diContainer.Inject(speakButton);
             InitSpeakButton(speakButton, pair);
             _speakButtons.Add(speakButton);
         }
@@ -323,6 +326,7 @@ namespace Game
             for (int i = 0; i < 3; i++)
             {
                 var actButton = Object.Instantiate(_shopButtonPrefab, _shopView.GetActContainer);
+                _diContainer.Inject(actButton);
                 _actButtons.Add(actButton);
             }
 

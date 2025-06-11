@@ -41,7 +41,7 @@ namespace Game
                     return "Я не хочу обижать своих подписчиков";
 
                 case BattleActionType.NoAction:
-                    return "Я стану самым популярным блогером";
+                    return "Я стану самым популярным тикитокером";
                 
                 default:
                     return "(...)";

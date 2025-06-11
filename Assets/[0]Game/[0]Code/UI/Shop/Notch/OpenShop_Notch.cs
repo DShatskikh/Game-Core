@@ -9,7 +9,6 @@ namespace Game
         [SerializeField]
         private ShopPresenter_Notch.InitData _initData;
 
-
         private protected override void Binding()
         {
             var inscriptionsContainer = new Dictionary<string, string>();

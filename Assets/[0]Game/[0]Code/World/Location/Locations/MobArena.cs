@@ -20,7 +20,7 @@ namespace Game
         
         private void Start()
         {
-            _battles[0].gameObject.SetActive(true);
+            _battles[_battleIndex].gameObject.SetActive(true);
         }
 
         public void OnOpenBattle()
@@ -49,7 +49,7 @@ namespace Game
 
             while (timer > 0)
             {
-                _timerLabel.text = timer.ToString();
+                _timerLabel.text = $"Следующий противник появится через {timer}";
                 timer--;
                 yield return new WaitForSeconds(1);
             }

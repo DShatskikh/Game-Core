@@ -96,17 +96,17 @@ namespace Game
         
         private MainRepositoryStorage _mainRepositoryStorage;
         private GameStateController _gameStateController;
-        private MainInventory _mainInventory;
         private TutorialState _tutorialState;
+        private ScreenManager _screenManager;
 
         [Inject]
         private void Construct(MainRepositoryStorage mainRepositoryStorage, GameStateController gameStateController, 
-            MainInventory mainInventory, TutorialState tutorialState)
+            TutorialState tutorialState, ScreenManager screenManager)
         {
             _mainRepositoryStorage = mainRepositoryStorage;
             _gameStateController = gameStateController;
-            _mainInventory = mainInventory;
             _tutorialState = tutorialState;
+            _screenManager = screenManager;
         }
         
         private void Start()
@@ -117,12 +117,6 @@ namespace Game
             {
                 currentState = data.State;
             }
-
-            _mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent);
-            _mainInventory.WeaponSlot.Item.TryGetComponent(out ArmorComponent armorComponent);
-            
-            Debug.Log(attackComponent);
-            Debug.Log(armorComponent);
             
             switch (currentState)
             {
@@ -133,72 +127,21 @@ namespace Game
                     _banana.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.DIMAS:
-                    if (attackComponent is { Attack: < 5 })
-                    {
-                        Debug.Log(attackComponent.Attack);
-                        _barrier.SetActive(true);
-                        _barrierItemIcon.sprite = _barrierSword;
-                        _barrierLabel.text = "Купите КАМ.МЕЧ чтобы продолжить";
-                        break;
-                    }
-
                     _dimas.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.JULIANA:
-                    if (armorComponent is { Armor: < 2 })
-                    {
-                        _barrier.SetActive(true);
-                        _barrierItemIcon.sprite = _barrierArmor;
-                        _barrierLabel.text = "Купите КОЖ.БРОН чтобы продолжить";
-                        break;
-                    }
-                    
                     _juliana.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.TROLL:
-                    if (attackComponent is { Attack: < 7 })
-                    {
-                        Debug.Log(attackComponent.Attack);
-                        _barrier.SetActive(true);
-                        _barrierItemIcon.sprite = _barrierSword;
-                        _barrierLabel.text = "Купите ЖЕЛ.МЕЧ чтобы продолжить";
-                        break;
-                    }
-                    
                     _troll.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.FROST:
-                    if (armorComponent is { Armor: < 5 })
-                    {
-                        _barrier.SetActive(true);
-                        _barrierItemIcon.sprite = _barrierArmor;
-                        _barrierLabel.text = "Купите ЖЕЛ.БРОН чтобы продолжить";
-                        break;
-                    }
-                    
                     _frost.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.HACKER:
-                    if (attackComponent is { Attack: < 7 })
-                    {
-                        Debug.Log(attackComponent.Attack);
-                        _barrier.SetActive(true);
-                        _barrierItemIcon.sprite = _barrierSword;
-                        _barrierLabel.text = "Купите ЖЕЛ.МЕЧ чтобы продолжить";
-                        break;
-                    }
-                    
                     _hacker.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.HEROBRINE:
-                    if (armorComponent is { Armor: < 7 })
-                    {
-                        _barrier.SetActive(true);
-                        _barrierItemIcon.sprite = _barrierArmor;
-                        _barrierLabel.text = "Купите АЛМ.БРОН чтобы продолжить";
-                        break;
-                    }
-                    
                     _herobrine.StartBattle.gameObject.SetActive(true);
                     break;
                 case State.END:
@@ -237,28 +180,10 @@ namespace Game
             _gameStateController.CloseCutscene();
         }
 
-        private IEnumerator AwaitTimer()
-        {
-            _timer.SetActive(true);
-
-            var timer = 5;
-
-            while (timer > 0)
-            {
-                _timerLabel.text = timer.ToString();
-                timer--;
-                yield return new WaitForSeconds(1);
-            }
-            
-            _timer.SetActive(false);
-        }
-
         private IEnumerator AwaitWinEnemyReplica(Enemy enemy)
         {
             enemy.EndBattleReplica.OnUse();
-
             yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
-            yield return AwaitTimer();
         }
 
         private void SpawnNextEnemy(Enemy nextEnemy)
@@ -268,48 +193,23 @@ namespace Game
             nextEnemy.StartBattle.gameObject.SetActive(true);
         }
         
-        public IEnumerator AwaitStartCutsceneWinBanana()
-        {
-            var isCurrentStep = _tutorialState.CurrentStep == TutorialStep.BATTLE_BANANA;
-            
-            if (isCurrentStep) 
-                _tutorialState.FinishStep(false);
-
-            yield return AwaitWinEnemyReplica(_banana);
-            
-            if (isCurrentStep) 
-                _tutorialState.NextStep();
-            
-            if (_mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent) && attackComponent.Attack < 5)
-            {
-                _timer.SetActive(true);
-                _timerLabel.text = "Купите КАМ.МЕЧ чтобы продолжить";
-                yield break;
-            }
-            
-            SpawnNextEnemy(_dimas);
-        }
-        
         public IEnumerator AwaitStartCutsceneWinDimas()
         {
             var isCurrentStep = _tutorialState.CurrentStep == TutorialStep.BATTLE_DIMAS;
-            Debug.Log(isCurrentStep);   
-            Debug.Log(_tutorialState.CurrentStep);   
             
             if (isCurrentStep) 
                 _tutorialState.FinishStep(false);
 
+            if (_tutorialState.CurrentStep == TutorialStep.MOVE_TO_SHOP_BUY_ARMOR)
+            {
+                _tutorialState.NextStep();
+                _tutorialState.FinishStep(false);
+            }
+            
             yield return AwaitWinEnemyReplica(_dimas);
             
             if (isCurrentStep) 
                 _tutorialState.NextStep();
-
-            if (!_mainInventory.ArmorSlot.HasItem || (_mainInventory.ArmorSlot.Item.TryGetComponent(out ArmorComponent armorComponent) && armorComponent.Armor < 2))
-            {
-                _timer.SetActive(true);
-                _timerLabel.text = "Купите КОЖ.БРОН чтобы продолжить";
-                yield break;
-            }
 
             SpawnNextEnemy(_juliana);
         }
@@ -330,56 +230,24 @@ namespace Game
         public IEnumerator AwaitStartCutsceneWinJuliana()
         {
             yield return AwaitWinEnemyReplica(_juliana);
-
-            if (_mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent) && attackComponent.Attack < 7)
-            {
-                _timer.SetActive(true);
-                _timerLabel.text = "Купите ЖЕЛ.МЕЧ чтобы продолжить";
-                yield break;
-            }
-
             SpawnNextEnemy(_troll);
         }
         
         public IEnumerator AwaitStartCutsceneWinTroll()
         {
             yield return AwaitWinEnemyReplica(_troll);
-
-            if (!_mainInventory.ArmorSlot.HasItem || (_mainInventory.ArmorSlot.Item.TryGetComponent(out ArmorComponent armorComponent) && armorComponent.Armor < 5))
-            {
-                _timer.SetActive(true);
-                _timerLabel.text = "Купите ЖЕЛ.БРОН чтобы продолжить";
-                yield break;
-            }
-
             SpawnNextEnemy(_frost);
         }
         
         public IEnumerator AwaitStartCutsceneWinFrost()
         {
             yield return AwaitWinEnemyReplica(_frost);
-
-            if (_mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent) && attackComponent.Attack < 10)
-            {
-                _timer.SetActive(true);
-                _timerLabel.text = "Купите АЛМ.МЕЧ чтобы продолжить";
-                yield break;
-            }
-
             SpawnNextEnemy(_hacker);
         }
         
         public IEnumerator AwaitStartCutsceneWinHacker()
         {
             yield return AwaitWinEnemyReplica(_hacker);
-
-            if (!_mainInventory.ArmorSlot.HasItem || (_mainInventory.ArmorSlot.Item.TryGetComponent(out ArmorComponent armorComponent) && armorComponent.Armor < 10))
-            {
-                _timer.SetActive(true);
-                _timerLabel.text = "Купите АЛМ.БРОН чтобы продолжить";
-                yield break;
-            }
-
             SpawnNextEnemy(_herobrine);
         }
         
@@ -391,7 +259,6 @@ namespace Game
             yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
 
             Debug.Log("Вы можете закончить игру");
-            //SpawnNextEnemy(_herobrine);
         }
     }
 }

@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 095906cb37564d34d9abe93c8c3f7f92, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27f82af127980c7459962c073d5ba8fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 1628354147682680278}
   - component: {fileID: 948812493894853731}
   m_Layer: 7
-  m_Name: Shell_Sworld_Herobrine
+  m_Name: Shell_Sworld_Herobrine 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

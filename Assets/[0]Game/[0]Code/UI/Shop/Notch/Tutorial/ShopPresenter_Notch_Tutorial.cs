@@ -43,6 +43,7 @@ namespace Game
             Init(speakData, products);
             OpenBuyPanel();
             _shopView.GetProductExitButton.gameObject.SetActive(false);
+            _productButtons[0].GetLabel.SetText(123.ToString());
         }
 
         private protected override void OnBuyYesButton(Product product, ShopButton productButton)

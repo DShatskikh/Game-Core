@@ -34,20 +34,20 @@ namespace Game
         private readonly GameStateController _gameStateController;
         private readonly CinemachineCamera _virtualCamera;
         private readonly TurnProgressStorage _turnProgressStorage;
-        private readonly EnemyBattleButton _enemyPrefabButton;
         private readonly TimeBasedTurnBooster _timeBasedTurnBooster;
         private readonly ScreenManager _screenManager;
         private readonly AttackIndicator _attackIndicator;
         private readonly INextButton _nextButton;
         private readonly SerializableDictionary<string, LocalizedString> _localizedPairs;
         private readonly int _damage = 5;
-        
+
         private readonly string _gameOverMessage = "Ты умер от Зомбиии!";
-        
+
         private List<ShopButton> _actionButtons = new();
         private protected int _numberTurn = -1;
         private protected IEnemy[] _enemies;
         private IEnemy _selectedEnemy;
+        private EnemyBattleButton _enemyPrefabButton;
         private ShopButton _mercyButton;
         private protected int _attackIndex;
         private Item _attackItem;
@@ -56,6 +56,7 @@ namespace Game
         private protected readonly MainRepositoryStorage _mainRepositoryStorage;
         private readonly HealthService _healthService;
         private readonly LevelService _levelService;
+        private readonly WalletService _walletService;
 
         public BattleControllerBase(BattleView view, ShopButton prefabButton, MainInventory inventory, 
             GameStateController gameStateController, BattlePoints points, Player player,
@@ -64,7 +65,7 @@ namespace Game
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, 
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs, MainRepositoryStorage mainRepositoryStorage,
-            HealthService healthService, LevelService levelService)
+            HealthService healthService, LevelService levelService, WalletService walletService)
         {
             _view = view;
             _prefabButton = prefabButton;
@@ -86,6 +87,7 @@ namespace Game
             _mainRepositoryStorage = mainRepositoryStorage;
             _healthService = healthService;
             _levelService = levelService;
+            _walletService = walletService;
         }
 
         public virtual void Turn()
@@ -210,12 +212,10 @@ namespace Game
                     _view.SetStateText($"Использовать {_attackItem.MetaData.Name} на {enemy.Name}?");
 
                     EventSystem.current.SetSelectedGameObject(_view.GetTurnButton.gameObject);
-                    //SoundPlayer.Play(AssetProvider.Instance.SelectSound);
 
                     _view.GetTurnButton.onClick.RemoveAllListeners();
                     _view.GetTurnButton.onClick.AddListener(() =>
                     {
-                        //SoundPlayer.Play(AssetProvider.Instance.SelectSound);
                         CloseAllPanel();
                         _attackItem.TryGetComponent(out AttackComponent attackComponent);
                         AttackTurn(enemy, attackComponent.Attack).Forget();
@@ -424,7 +424,7 @@ namespace Game
             {
                 var enemy = _enemies[i];
                 
-                if (enemy.Health > 0 && !enemy.IsMercy)
+                if (!enemy.IsDeath && !enemy.IsMercy)
                     return enemyBattleButtons[i].gameObject;
             }
 
@@ -435,29 +435,33 @@ namespace Game
         {
             for (var i = 0; i < buttons.Count; i++)
             {
-                var enemyButton = buttons[i];
-                enemyButton.GetHealthSlider.maxValue = _enemies[i].MaxHealth;
-                enemyButton.GetHealthSlider.value = _enemies[i].Health;
-
-                enemyButton.GetMercySlider.value = _enemies[i].Mercy;
-                enemyButton.GetMercyLabel.text = $"{_enemies[i].Mercy}%";
-
-                if (_enemies[i].Health <= 0)
-                {
-                    enemyButton.GetLabel.color = Color.gray;
-                    enemyButton.GetLabel.text = _enemies[i].Name + " (Умер)";
-                    enemyButton.interactable = false;
-                }
-
-                if (_enemies[i].IsMercy)
-                {
-                    enemyButton.GetLabel.color = Color.gray;
-                    enemyButton.GetLabel.text = _enemies[i].Name + " (Пощажен)";
-                    enemyButton.interactable = false;
-                }
+                UpgradeEnemy(buttons[i], _enemies[i]);
             }
         }
 
+        private protected virtual void UpgradeEnemy(EnemyBattleButton enemyButton, IEnemy enemy)
+        {
+            enemyButton.GetHealthSlider.maxValue = enemy.MaxHealth;
+            enemyButton.GetHealthSlider.value = enemy.Health;
+
+            enemyButton.GetMercySlider.value = enemy.Mercy;
+            enemyButton.GetMercyLabel.text = $"{enemy.Mercy}%";
+
+            if (enemy.IsDeath)
+            {
+                enemyButton.GetLabel.color = Color.gray;
+                enemyButton.GetLabel.text = enemy.Name + " (Умер)";
+                enemyButton.interactable = false;
+            }
+
+            if (enemy.IsMercy)
+            {
+                enemyButton.GetLabel.color = Color.gray;
+                enemyButton.GetLabel.text = enemy.Name + " (Пощажен)";
+                enemyButton.interactable = false;
+            }
+        }
+        
         private void InitMercy()
         {
             _mercyButton = Object.Instantiate(_prefabButton, _view.GetMercyContainer);
@@ -493,7 +497,6 @@ namespace Game
                 _view.GetTurnButton.onClick.RemoveAllListeners();
                 UseItem(slot, itemButton);
 
-                //SoundPlayer.Play(AssetProvider.Instance.SelectSound);
                 EventSystem.current.SetSelectedGameObject(_view.GetItemsButton.gameObject);
             }, () =>
             {
@@ -609,7 +612,7 @@ namespace Game
             Object.Destroy(button.gameObject);
         }
 
-        private async UniTask EndFight()
+        public async UniTask EndFight()
         {
             CloseAllPanel();
             _view.ToggleTurnPanel(true);
@@ -620,7 +623,7 @@ namespace Game
 
             foreach (var enemy in _enemies)
             {
-                if (enemy.Health < 0) 
+                if (enemy.IsDeath) 
                     exp += enemy.GetOP;
             }
             
@@ -634,10 +637,11 @@ namespace Game
             string formattedText = string.Format(endText, exp, money);
             
             _levelService.AddExp(exp, out bool isLevelUp);
-            
+
             if (isLevelUp)
                 formattedText += "\nВы получили новый уровень!";
-            
+
+            _walletService.AddMoney(money);
             _view.SetStateText(formattedText);
             await _nextButton.WaitShow();
 
@@ -645,11 +649,11 @@ namespace Game
             EndFightAdditional();
         }
 
-        private protected virtual void EndFightAdditional()
-        {
-            
-        }
+        private protected virtual void EndFightAdditional() { }
 
+        private protected virtual void SetEnemyPrefabButton(EnemyBattleButton prefab) => 
+            _enemyPrefabButton = prefab;
+        
         protected string[] GetStartReactions()
         {
             var messages = new List<string>();
@@ -664,6 +668,8 @@ namespace Game
 
         private async UniTask Intro()
         {
+            _player.Flip(false);
+            
             await BattleIntroUseCases.WaitIntro(_points.GetPartyPositionsData(_player), 
                 _points.GetEnemiesPositionsData(_enemies));
             
@@ -694,7 +700,7 @@ namespace Game
 
             foreach (var enemy in _enemies)
             {
-                if (enemy.Health > 0) 
+                if (!enemy.IsDeath) 
                     messageBoxes.Add(enemy.MessageBox);
             }
             
@@ -745,7 +751,7 @@ namespace Game
                 
             foreach (var enemy1 in _enemies)
             {
-                if (!enemy1.IsMercy && enemy1.Health > 0)
+                if (!enemy1.IsMercy && !enemy1.IsDeath)
                 {
                     isAllDontFight = false;
                     break;
@@ -836,7 +842,7 @@ namespace Game
             
             Object.Instantiate(attackComponent.Effect, ((MonoBehaviour)enemy).transform.position.AddY(0.5f), Quaternion.identity);
             
-            if (enemy.Health <= 0)
+            if (enemy.IsDeath)
             {
                 await ShowEnemyMessage(enemy, enemy.GetDeathReaction());
                 
@@ -849,13 +855,11 @@ namespace Game
                     EndFight().Forget();
                     return;
                 }
-
-                //Object.Destroy(attackEffect.gameObject);
             }
 
             await UniTask.WaitForSeconds(1f);
 
-            if (enemy.Health <= 0)
+            if (enemy.IsDeath)
             {
                 await ShowEnemiesReactions(GetDeathFriendReactions(enemy));
             }
@@ -883,7 +887,7 @@ namespace Game
             
             newDefeatedEnemiesSaveData.KilledEnemies ??= new List<string>();
             
-            if (_enemies[0].Health <= 0)
+            if (_enemies[0].IsDeath)
             {
                 newDefeatedEnemiesSaveData.KilledEnemies.Add(_enemies[0].GetID);
                 

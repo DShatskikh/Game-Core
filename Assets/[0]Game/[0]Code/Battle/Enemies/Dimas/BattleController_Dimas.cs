@@ -25,11 +25,11 @@ namespace Game
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager,
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs, InitData initData, 
-            MainRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService) 
-            : base(view, prefabButton, inventory, 
-            gameStateController, points, player, arena, heart, container, virtualCamera, turnProgressStorage,
-            timeBasedTurnBooster, enemyBattleButton, screenManager, attackIndicator, nextButton, localizedPairs,
-            mainRepositoryStorage, healthService, levelService)
+            MainRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService,
+            WalletService walletService) : base(view, prefabButton, inventory, gameStateController, points, player, 
+            arena, heart, container, virtualCamera, turnProgressStorage, timeBasedTurnBooster, enemyBattleButton, 
+            screenManager, attackIndicator, nextButton, localizedPairs, mainRepositoryStorage, healthService, 
+            levelService, walletService)
         {
             _initData = initData;
             Init();
@@ -54,9 +54,9 @@ namespace Game
         private protected override string GetStateText()
         {
             if (_initData.Enemy_Dimas.CanMercy)
-                return "Банан щадит вас";
+                return "Димас проиграл в генста репбатле и щадит вас";
             
-            return "Сильнейший телохранитель Херобрина (по его словам)";
+            return "В воздухе ветает сила репа";
         }
 
         public override void OnGameOver()

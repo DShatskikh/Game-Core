@@ -25,5 +25,10 @@ namespace Game
                 .To(x => _spriteRenderer.size = Vector2.Lerp(startSize, size, x), 0f, 1f, 1f)
                 .AsyncWaitForCompletion();
         }
+
+        public void SetSize(Vector2 size)
+        {
+            _spriteRenderer.size = size;
+        }
     }
 }

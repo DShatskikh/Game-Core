@@ -40,8 +40,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8191275579268036638}
-  - component: {fileID: 5979517370697958188}
   - component: {fileID: 9050282208112877323}
+  - component: {fileID: 5979517370697958188}
   m_Layer: 0
   m_Name: Ladder
   m_TagString: Untagged
@@ -66,20 +66,6 @@ Transform:
   - {fileID: 1145598950173514839}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5979517370697958188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7601328798231771423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7ade0e07b084d93932aa6c1d53c29ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _point1: {fileID: 8708845436503205064}
-  _point2: {fileID: 1145598950173514839}
 --- !u!61 &9050282208112877323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -126,6 +112,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.9463491, y: 4.249071}
   m_EdgeRadius: 0
+--- !u!114 &5979517370697958188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7601328798231771423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ade0e07b084d93932aa6c1d53c29ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _point1: {fileID: 8708845436503205064}
+  _point2: {fileID: 1145598950173514839}
 --- !u!1 &8005236938647788850
 GameObject:
   m_ObjectHideFlags: 0

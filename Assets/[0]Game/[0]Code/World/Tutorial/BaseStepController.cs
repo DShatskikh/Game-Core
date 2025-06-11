@@ -5,13 +5,15 @@ namespace Game
 {
     public abstract class BaseStepController : MonoBehaviour
     {
-        [Inject]
-        private protected TutorialState _tutorialState;
+        private protected TutorialState  _tutorialState;
 
         private protected abstract TutorialStep _step { get; }
 
-        private void Start()
+        [Inject]
+        private void Construct(TutorialState tutorialState)
         {
+            _tutorialState = tutorialState;
+            
             _tutorialState.OnStepStarted += OnStart;
             _tutorialState.OnStepFinished += OnFinish;
         }

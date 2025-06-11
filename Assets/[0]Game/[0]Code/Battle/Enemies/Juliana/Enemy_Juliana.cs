@@ -5,6 +5,8 @@ namespace Game
 {
     public sealed class Enemy_Juliana : EnemyBase
     {
+        private int _speak;
+        
         public override ActionBattle[] Actions
         {
             get
@@ -13,11 +15,18 @@ namespace Game
 
                 for (var i = 0; i < _actions.Length; i++)
                 {
-                    if (i == 2)
-                        continue;
-
                     var action = _actions[i];
-                    actions.Add(action);
+                    
+                    switch (i)
+                    {
+                        case 1 when _speak != 0:
+                        case 3 when _speak != 1:
+                        case 4 when _speak < 2:
+                            continue;
+                        default:
+                            actions.Add(action);
+                            break;
+                    }
                 }
 
                 return actions.ToArray();
@@ -29,13 +38,13 @@ namespace Game
             switch (actionType)
             {
                 case BattleActionType.Attack:
-                    return "Ай. Это не круто";
+                    return "Девочек бить нельзя!";
 
                 case BattleActionType.Mercy:
-                    return "Я не хочу обижать своих фанатов";
+                    return "Я больше не в команде Херобрина";
 
                 case BattleActionType.NoAction:
-                    return "Херобрин будет гордиться мной";
+                    return "Я просто хочу домой";
                 
                 default:
                     return "(...)";
@@ -44,20 +53,22 @@ namespace Game
 
         public override string GetDeathReaction()
         {
-            return "Я надеялся что превзойду херобрина...";
+            return "Я думала ты хороший";
         }
 
         public override string GetStartReaction(int index)
         {
-            return "Йоу! зацени мой реп";
+            return "Сори, но я в команде Херобрина, поэтому я сражаюсь против тебя";
         }
 
         public override string GetActionReaction(ActionBattle actionBattle)
         {
             var action = Actions.First(x => x.Name == actionBattle.Name);
             
-            if (actionBattle.Name == _actions[1].Name && Mercy >= 75)
-                return _actions[2].Reaction;
+            if (actionBattle.Name == _actions[1].Name || actionBattle.Name == _actions[3].Name || actionBattle.Name == _actions[4].Name)
+            {
+                _speak++;
+            }
 
             return action.Reaction;
         }

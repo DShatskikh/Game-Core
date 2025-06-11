@@ -99,6 +99,11 @@ namespace Game
             }
         }
 
+        public void Flip(bool value)
+        {
+            _view.SetFlipX(value);
+        }
+        
         public void TryUse(InputAction.CallbackContext obj)
         {
             _useAreaChecker.Use();
@@ -106,6 +111,7 @@ namespace Game
         
         public void SetMover(IPlayerMover mover)
         {
+            _mover.Stop();
             _mover = mover;
         }
 

@@ -1,4 +1,6 @@
-﻿using I2.Loc;
+﻿using System.Collections;
+using Cysharp.Threading.Tasks;
+using I2.Loc;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
@@ -26,14 +28,19 @@ namespace Game
         public void Open()
         {
             gameObject.SetActive(true);
+            AwaitOpen().Forget();
+        }
 
+        private async UniTask AwaitOpen()
+        {
+            await UniTask.DelayFrame(1);
             Binding();
 
             var factory = _diContainer.TryResolve<TFactory>();
             factory.Create();
             _diContainer.Unbind<TFactory>();
         }
-
+        
         private protected abstract void Binding();
     }
 }

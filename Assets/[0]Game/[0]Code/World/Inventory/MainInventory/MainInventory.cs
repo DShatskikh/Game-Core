@@ -9,6 +9,22 @@ namespace Game
         public const int SIZE = 16;
         
         public Slot[] MainSlots = new Slot[SIZE];
+        public int GetItemsCount
+        {
+            get
+            {
+                var count = 0;
+                
+                foreach (var slot in MainSlots)
+                {
+                    if (slot.HasItem)
+                        count++;
+                }
+
+                return count;
+            }
+        }
+
         public Slot ArmorSlot = new();
         public Slot WeaponSlot = new();
         public Slot WeaponAdditionalSlot = new();

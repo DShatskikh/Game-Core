@@ -17,6 +17,7 @@ namespace Game
         {
             public Enemy_Banana Enemy_Banana;
             public PVPArena PvpArena;
+            public WinBananaCutscene WinBananaCutscene;
         }
 
         public class Factory : PlaceholderFactory<BattleController_Banana> { }
@@ -27,11 +28,11 @@ namespace Game
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager,
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs, InitData initData, 
-            MainRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService) 
-            : base(view, prefabButton, inventory, gameStateController, points, player, arena, heart, container,
-                virtualCamera, turnProgressStorage,
+            MainRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService, 
+            WalletService walletService) : base(view, prefabButton, inventory, gameStateController, points, player,
+            arena, heart, container, virtualCamera, turnProgressStorage,
             timeBasedTurnBooster, enemyBattleButton, screenManager, attackIndicator, nextButton, localizedPairs,
-            mainRepositoryStorage, healthService, levelService)
+            mainRepositoryStorage, healthService, levelService, walletService)
         {
             _initData = initData;
             Init();
@@ -45,7 +46,7 @@ namespace Game
         private protected override Attack GetAttack()
         {
             if (_enemies[0].Attacks.Length <= _attackIndex)
-                _attackIndex = 0;
+                _attackIndex = 1;
             
             if (_initData.Enemy_Banana.CanMercy)
                 return null;
@@ -58,7 +59,7 @@ namespace Game
             if (_initData.Enemy_Banana.CanMercy)
                 return "Банан щадит вас";
             
-            return "Перед вами стоит будущий блогер миллионик (по его словам)";
+            return "Перед вами стоит Тикитокер";
         }
 
         public override void OnGameOver()
@@ -69,7 +70,7 @@ namespace Game
         private protected override void EndFightAdditional()
         {
             SaveDefeat();
-            _initData.PvpArena.StartCoroutine(_initData.PvpArena.AwaitStartCutsceneWinBanana());
+            _initData.WinBananaCutscene.StartCutscene(true);
 
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, 
                 new PVPArena.SaveData() { State = PVPArena.State.DIMAS });

@@ -26,3 +26,6 @@ MonoBehaviour:
   - functionName: OpenSaveScreen
     parameters: 
     returnValue: 0
+  - functionName: OpenOutro
+    parameters: 
+    returnValue: 0

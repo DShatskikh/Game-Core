@@ -4,6 +4,7 @@ using Zenject;
 
 namespace Game
 {
+    // Инсталлер Хакер
     public sealed class StartBattle_Hacker : StarterBattle<BattleController_Hacker, BattleController_Hacker.Factory>
     {
         [SerializeField]

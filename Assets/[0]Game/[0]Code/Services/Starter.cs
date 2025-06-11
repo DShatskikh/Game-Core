@@ -15,6 +15,9 @@ namespace Game
         
         [SerializeField]
         private ItemConfig _additionalWeapon;
+
+        [SerializeField]
+        private ItemConfig _armor;
         
         [LocationID]
         [SerializeField]
@@ -34,17 +37,18 @@ namespace Game
             mainRepositoryStorage.Load();
             mainRepositoryStorage.Set(SaveConstants.TUTORIAL, new TutorialState.Data()
             {
-                CurrentStep = TutorialStep.BUY_SWORD,
+                CurrentStep = TutorialStep.BATTLE_BANANA,
                 IsCompleted = false
             });
             
             mainRepositoryStorage.Set(SaveConstants.PVPARENA, new PVPArena.SaveData()
             {
-                State = PVPArena.State.DIMAS
+                State = PVPArena.State.BANANA
             });
             
-            walletService.SetMoney(1250);
+            walletService.SetMoney(50);
             inventory.EquipWeapon(_weapon.Prototype.Clone());
+            //inventory.EquipArmor(_armor.Prototype.Clone());
             inventory.EquipAdditionalWeapon(_additionalWeapon.Prototype.Clone());
 
             foreach (var item in _items) 

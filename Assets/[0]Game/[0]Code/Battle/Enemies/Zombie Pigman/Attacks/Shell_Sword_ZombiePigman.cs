@@ -10,7 +10,6 @@ namespace Game
         [SerializeField]
         private float _speed;
 
-        private IEnumerator _coroutine;
         private Sequence _sequence;
         private SpriteRenderer _spriteRenderer;
         private float _direction;
@@ -27,9 +26,6 @@ namespace Game
 
         public override void Hide()
         {
-            if (_coroutine != null)
-                StopCoroutine(_coroutine);
-
             IsAlive = false;
             
             _sequence?.Kill();

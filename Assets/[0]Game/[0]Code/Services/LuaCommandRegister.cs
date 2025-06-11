@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System.Collections;
+using System.Linq;
 using PixelCrushers.DialogueSystem;
+using QFSW.QC.Actions;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -31,6 +34,9 @@ namespace Game
             
             Lua.RegisterFunction(nameof(IsPassedPVPArena), this,
                 SymbolExtensions.GetMethodInfo(() => IsPassedPVPArena()));
+            
+            Lua.RegisterFunction(nameof(OpenOutro), this,
+                SymbolExtensions.GetMethodInfo(() => OpenOutro()));
         }
 
         private void OpenSaveScreen()
@@ -40,7 +46,7 @@ namespace Game
             else
                 _screenManager.Open(ScreensEnum.SAVE);
         }
-        
+
         private bool IsDefeatedEnemy(string enemyID)
         {
             if (_mainRepositoryStorage.TryGet(SaveConstants.KILLED_ENEMIES, 
@@ -49,7 +55,7 @@ namespace Game
 
             return false;
         }
-        
+
         private bool IsKilledEnemy(string enemyID)
         {
             if (_mainRepositoryStorage.TryGet(SaveConstants.KILLED_ENEMIES, out DefeatedEnemiesSaveData defeatedEnemiesSaveData))
@@ -57,7 +63,7 @@ namespace Game
 
             return false;
         }
-        
+
         private bool IsPassedPVPArena()
         {
             if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA, out PVPArena.SaveData data))
@@ -66,6 +72,17 @@ namespace Game
             }
 
             return false;
+        }
+
+        private void OpenOutro()
+        {
+            CoroutineRunner.Instance.StartCoroutine(AwaitOpenOutro());
+        }
+
+        private IEnumerator AwaitOpenOutro()
+        {
+            yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
+            SceneManager.LoadScene(3);
         }
     }
 }

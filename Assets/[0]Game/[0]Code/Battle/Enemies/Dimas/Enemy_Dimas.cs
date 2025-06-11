@@ -5,6 +5,8 @@ namespace Game
 {
     public sealed class Enemy_Dimas : EnemyBase
     {
+        private int _rapCount;
+        
         public override ActionBattle[] Actions
         {
             get
@@ -13,9 +15,6 @@ namespace Game
 
                 for (var i = 0; i < _actions.Length; i++)
                 {
-                    if (i == 2)
-                        continue;
-
                     var action = _actions[i];
                     actions.Add(action);
                 }
@@ -32,10 +31,10 @@ namespace Game
                     return "Ай. Это не круто";
 
                 case BattleActionType.Mercy:
-                    return "Я не хочу обижать своих фанатов";
+                    return "Крутой репчик чувак";
 
                 case BattleActionType.NoAction:
-                    return "Херобрин будет гордиться мной";
+                    return "Йоу, ганста, оу щит";
                 
                 default:
                     return "(...)";
@@ -44,7 +43,7 @@ namespace Game
 
         public override string GetDeathReaction()
         {
-            return "Я надеялся что превзойду херобрина...";
+            return "Я так и знал что попаду в клуб 21";
         }
 
         public override string GetStartReaction(int index)
@@ -55,9 +54,20 @@ namespace Game
         public override string GetActionReaction(ActionBattle actionBattle)
         {
             var action = Actions.First(x => x.Name == actionBattle.Name);
-            
-            if (actionBattle.Name == _actions[1].Name && Mercy >= 75)
-                return _actions[2].Reaction;
+
+            if (actionBattle.Name == _actions[1].Name)
+            {
+                if (_rapCount == 1)
+                    return "А ты не плох, но про мать было лишнее";
+                
+                if (_rapCount == 2)
+                    return "Прям качает";
+                
+                if (_rapCount >= 3)
+                    return "Чувак мы должны записать лейбл";
+
+                _rapCount++;
+            }
 
             return action.Reaction;
         }
