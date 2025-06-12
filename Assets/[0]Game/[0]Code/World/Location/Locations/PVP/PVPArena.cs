@@ -200,7 +200,7 @@ namespace Game
             if (isCurrentStep) 
                 _tutorialState.FinishStep(false);
 
-            if (_tutorialState.CurrentStep == TutorialStep.MOVE_TO_SHOP_BUY_ARMOR)
+            if (_tutorialState.CurrentStep == TutorialStep.WAIT_WIN_HEROBRINE)
             {
                 _tutorialState.NextStep();
                 _tutorialState.FinishStep(false);

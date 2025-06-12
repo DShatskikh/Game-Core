@@ -7,5 +7,6 @@ namespace Game
     {
         void Move(Vector2 directionValue, bool isRunValue);
         void Stop();
+        bool IsMove { get; }
     }
 }

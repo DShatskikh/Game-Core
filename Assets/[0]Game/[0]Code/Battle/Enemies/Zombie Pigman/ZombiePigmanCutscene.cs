@@ -40,18 +40,17 @@ namespace Game
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.GetComponent<Player>())
-            {
-                Destroy(GetComponent<BehaviorGraphAgent>());
-                _dialogueSystemTrigger.OnUse();
+            if (!other.GetComponent<Player>())
+                return;
+            
+            Destroy(GetComponent<BehaviorGraphAgent>());
+            _dialogueSystemTrigger.OnUse();
                 
-                if (_tutorialArrow)
-                    _tutorialArrow.SetActive(false);
+            if (_tutorialArrow)
+                _tutorialArrow.SetActive(false);
                 
-                _mover.StopMove();
-                
-                StartCoroutine(AwaitCutscene());
-            }
+            _mover.StopMove();
+            StartCoroutine(AwaitCutscene());
         }
 
         private IEnumerator AwaitCutscene()
@@ -60,9 +59,15 @@ namespace Game
             _player.PlaySwordAttack();
             yield return new WaitForSeconds(0.5f);
             _enemyZombiePigman.Damage(1);
-            _mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent);
-            Instantiate(attackComponent.Effect, _enemyZombiePigman.transform.position.AddY(0.5f), Quaternion.identity);
-            yield return _enemyZombiePigman.transform.DOJump(_enemyZombiePigman.transform.position.AddX(1), 1, 1, 1);
+
+            if (_mainInventory.WeaponSlot.HasItem)
+            {
+                _mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent);
+                Instantiate(attackComponent.Effect, _enemyZombiePigman.transform.position.AddY(0.5f), Quaternion.identity); 
+            }
+            
+            yield return _enemyZombiePigman.transform.DOJump(
+                _enemyZombiePigman.transform.position.AddX(1), 1, 1, 1);
             yield return new WaitForSeconds(1);
 
             if (_otherPigmans.Length != 0)

@@ -136,10 +136,14 @@ namespace Game
 
         private void CreateWeaponSlots(MainInventory inventory)
         {
-            CreateWeaponSlot(inventory.WeaponSlot);
+            if (inventory.WeaponSlot.HasItem)
+                CreateWeaponSlot(inventory.WeaponSlot);
          
             if (inventory.WeaponAdditionalSlot.HasItem)
                 CreateWeaponSlot(inventory.WeaponAdditionalSlot);
+
+            if (!inventory.WeaponSlot.HasItem && inventory.WeaponAdditionalSlot.HasItem)
+                _view.GetAttackButton.gameObject.SetActive(false);
         }
 
         private void CreateActionEnemyButtons()

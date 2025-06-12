@@ -60800,7 +60800,7 @@ PrefabInstance:
     - target: {fileID: 2463821845714730717, guid: 5bd5ca6df00f5c54496a2cbab17795ad, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -8717868533815992802, guid: 30c302d567083614585b727aa93a7b37, type: 3}
+      objectReference: {fileID: 21300000, guid: 27f82af127980c7459962c073d5ba8fb, type: 3}
     - target: {fileID: 2933408791208156414, guid: 5bd5ca6df00f5c54496a2cbab17795ad, type: 3}
       propertyPath: _target
       value: 
@@ -60851,11 +60851,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6841367833850811371, guid: 5bd5ca6df00f5c54496a2cbab17795ad, type: 3}
       propertyPath: _tutorialStep
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7385372241030760590, guid: 5bd5ca6df00f5c54496a2cbab17795ad, type: 3}
       propertyPath: m_Name
-      value: TutorialArrow (BuyArmor)
+      value: TutorialArrow (BuySword)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -61131,7 +61131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6841367833850811371, guid: 5bd5ca6df00f5c54496a2cbab17795ad, type: 3}
       propertyPath: _tutorialStep
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7385372241030760590, guid: 5bd5ca6df00f5c54496a2cbab17795ad, type: 3}
       propertyPath: m_Name

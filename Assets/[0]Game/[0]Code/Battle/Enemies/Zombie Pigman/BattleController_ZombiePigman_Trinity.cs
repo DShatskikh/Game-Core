@@ -8,7 +8,7 @@ using I2.Loc;
 namespace Game
 {
     // Класс битвы с 3 персонажами "Свинозомби"
-    public sealed class BattleController_ZombiePigman_3 : BattleControllerBase
+    public sealed class BattleController_ZombiePigman_Trinity : BattleControllerBase
     {
         private readonly InitData _initData;
 
@@ -23,9 +23,9 @@ namespace Game
             public Attack[] ThreeZombiePigmanAttacks;
         }
 
-        public sealed class Factory : PlaceholderFactory<BattleController_ZombiePigman_3> { }
+        public sealed class Factory : PlaceholderFactory<BattleController_ZombiePigman_Trinity> { }
 
-        public BattleController_ZombiePigman_3(BattleView view, ShopButton prefabButton, MainInventory inventory, 
+        public BattleController_ZombiePigman_Trinity(BattleView view, ShopButton prefabButton, MainInventory inventory, 
             GameStateController gameStateController, InitData initData, BattlePoints points, Player player,
             Arena arena, Heart heart, DiContainer container,
             CinemachineCamera virtualCamera, TurnProgressStorage turnProgressStorage, 

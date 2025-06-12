@@ -244,8 +244,15 @@ namespace Game
 
         public void PlaySwordAttack()
         {
-            _mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent);
-            _view.SwordAttack(attackComponent.WeaponSprite);
+            if (_mainInventory.WeaponSlot.HasItem)
+            {
+                _mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent);   
+                _view.SwordAttack(attackComponent.WeaponSprite);
+            }
+            else
+            {
+                _view.SwordAttack(null);
+            }
         }
     }
 }

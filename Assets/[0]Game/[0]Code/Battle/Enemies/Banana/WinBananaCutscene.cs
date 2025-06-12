@@ -105,12 +105,12 @@ namespace Game
             _tutorialState.FinishStep();
             
             _player.Flip(true);
-            
-            while (true)
+
+            do
             {
                 _player.GetMover.Move(new Vector2(-1, 0), true);
                 yield return null;
-            }
+            } while (_player.GetMover.IsMove);
         }
     }
 }

@@ -66,6 +66,7 @@ namespace Game
 
         public void SwordAttack(Sprite sprite)
         {
+            _sword.gameObject.SetActive(sprite != null);
             _sword.sprite = sprite;
             _animator.SetTrigger(AttackSwordHash);
         }

@@ -13,7 +13,10 @@ namespace Game
         private readonly Vector2 _targetPosition;
         private float _progress;
         private float _distance;
+        private bool _isMove;
 
+        public bool IsMove => _isMove;
+        
         public PlayerLadderMover(Transform transform, Vector2 startPosition, Vector2 targetPosition, bool isRight)
         {
             _transform = transform;
@@ -35,6 +38,7 @@ namespace Game
             if (directionValue.x == 0)
                 return;
 
+            _isMove = true;
             var speed = isRunValue ? RUN_SPEED : WALK_SPEED;
 
             if (directionValue.x < 0)
@@ -57,6 +61,9 @@ namespace Game
             }
         }
 
-        public void Stop() { }
+        public void Stop()
+        {
+            _isMove = false;
+        }
     }
 }
