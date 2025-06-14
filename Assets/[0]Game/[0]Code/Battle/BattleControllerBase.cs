@@ -521,7 +521,7 @@ namespace Game
             itemButton.OnSelectAction += () => select?.Invoke();
         }
 
-        protected async UniTask EnemyTurn()
+        private protected async UniTask EnemyTurn()
         {
             _heart.transform.position = _arena.transform.position;
 
@@ -538,7 +538,7 @@ namespace Game
                 _timeBasedTurnBooster.ToggleActivate(true);
                 _turnProgressStorage.Reset();
                 
-                var attack = Object.Instantiate(attackPrefab, _arena.transform.position, Quaternion.identity, _arena.transform);
+                var attack = Object.Instantiate(attackPrefab, _view.transform.position, Quaternion.identity, _arena.transform);
                 _container.Inject(attack);
                 _attackIndex++;
 
@@ -566,7 +566,7 @@ namespace Game
             Turn();
         }
 
-        protected void CloseAllPanel()
+        private protected void CloseAllPanel()
         {
             _view.ToggleAttacksContainer(false);
             _view.ToggleItemsContainer(false);

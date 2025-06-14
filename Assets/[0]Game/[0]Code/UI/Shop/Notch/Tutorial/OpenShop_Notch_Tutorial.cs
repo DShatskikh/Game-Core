@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using PixelCrushers.DialogueSystem;
 using UnityEngine;
 
 namespace Game
@@ -7,6 +10,15 @@ namespace Game
     {
         [SerializeField]
         private ShopPresenter_Notch_Tutorial.InitData _initData;
+
+        [SerializeField]
+        private DialogueSystemTrigger _enoughMoneyDialogue;
+        
+        public override void Open()
+        {
+            gameObject.SetActive(true);
+            StartCoroutine(AwaitOpened());
+        }
         
         private protected override void Binding()
         {
@@ -17,6 +29,13 @@ namespace Game
             
             _diContainer.BindFactory<ShopPresenter_Notch_Tutorial, ShopPresenter_Notch_Tutorial.Factory>()
                 .WithArguments(_shopViewPrefab, _prefab, _initData, inscriptionsContainer, _background);
+        }
+
+        private IEnumerator AwaitOpened()
+        {
+            _enoughMoneyDialogue.OnUse();
+            yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
+            AwaitOpen().Forget();
         }
     }
 }

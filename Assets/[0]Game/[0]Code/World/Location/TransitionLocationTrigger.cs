@@ -1,4 +1,5 @@
-﻿using Game.Editor;
+﻿using System;
+using Game.Editor;
 using UnityEngine;
 using Zenject;
 
@@ -21,10 +22,10 @@ namespace Game
         {
             _transitionService = transitionService;
         }
-        
-        private void OnTriggerEnter2D(Collider2D other)
+
+        private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.GetComponent<Player>())
+            if (other.gameObject.GetComponent<Player>())
                 Transition();
         }
 

@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Game
 {
@@ -19,14 +18,7 @@ namespace Game
 
         private void Update()
         {
-            if (IsVisible(_targetObject, _cameraToCheck))
-            {
-                _uiArrow.SetActive(false);
-            }
-            else
-            {
-                _uiArrow.SetActive(true);
-            }
+            _uiArrow.SetActive(!IsVisible(_targetObject, _cameraToCheck));
         }
 
         bool IsVisible(GameObject obj, Camera camera)

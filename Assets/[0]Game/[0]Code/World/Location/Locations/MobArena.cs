@@ -30,6 +30,12 @@ namespace Game
 
         public void OnCloseBattle()
         {
+            if (!this)
+                return;
+            
+            if (!gameObject)
+                return;
+            
             if (!gameObject.activeSelf)
                 return;
             

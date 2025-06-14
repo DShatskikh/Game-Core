@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3157173318504387174}
   - component: {fileID: 318802924793591717}
   - component: {fileID: 185018974860917585}
+  - component: {fileID: 2999619356546101562}
   m_Layer: 5
   m_Name: Arrow
   m_TagString: Untagged
@@ -75,6 +76,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2999619356546101562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431150280868483624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0195635024ad4a24b3509190ef334fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
+  _indentY: 140
+  _indentX: 100
 --- !u!1 &2247281223134007535
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +260,6 @@ GameObject:
   - component: {fileID: 4522502476025696749}
   - component: {fileID: 1660245402723696002}
   - component: {fileID: 1942970474840744592}
-  - component: {fileID: 376379888349456523}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -335,21 +350,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 1023
---- !u!114 &376379888349456523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5896144413556930241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49a0b997b1164d36bcaaba919f0f8fc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 5850155329370914488}
-  indicator: {fileID: 3157173318504387174}
-  edgeOffset: 50
-  rotationSpeed: 5
-  canvas: {fileID: 4522502476025696749}
-  mainCamera: {fileID: 0}

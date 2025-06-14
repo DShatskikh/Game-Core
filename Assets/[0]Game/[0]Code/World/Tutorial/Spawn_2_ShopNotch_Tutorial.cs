@@ -3,7 +3,7 @@ using Zenject;
 
 namespace Game
 {
-    public sealed class Spawn_2_Tutorial : MonoBehaviour
+    public sealed class Spawn_2_ShopNotch_Tutorial : MonoBehaviour
     {
         [SerializeField]
         private GameObject _arrowBuySword;

@@ -23,6 +23,16 @@ namespace Game
 
         private void Start()
         {
+            if (_mainRepositoryStorage.TryGet(SaveConstants.PVPARENA, out PVPArena.SaveData pvpData))
+            {
+                if (pvpData.State != PVPArena.State.DIMAS)
+                    return;
+            }
+            else
+            {
+                return;
+            }
+            
             if (_mainRepositoryStorage.TryGet(SAVE_KEY, out SaveData saveData))
                 return;
             

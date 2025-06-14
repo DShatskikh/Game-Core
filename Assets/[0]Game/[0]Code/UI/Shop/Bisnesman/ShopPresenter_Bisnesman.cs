@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Sirenix.Utilities;
 using Zenject;
 
 namespace Game
@@ -35,7 +37,8 @@ namespace Game
             InitData data) : base(shopViewPrefab, shopButtonPrefab, inscriptionsContainer, gameStateController, 
             mainInventory, walletService, container, backgroundPrefab, screenManager, mainRepositoryStorage)
         {
-            var products = data.Products;
+            var products = data.Products.ToList();
+            products.Add(data.SecretKey);
             
             var speakData = new SpeakData[]
             {
@@ -43,7 +46,7 @@ namespace Game
                 new("Notch_Speak_2_Name",new[] {"Notch_Speak_2"})
             };
             
-            Init(speakData, products);
+            Init(speakData, products.ToArray());
         }
 
         protected override void Load()

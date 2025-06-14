@@ -22,6 +22,9 @@ namespace Game
         [LocationID]
         [SerializeField]
         private string _locationID;
+
+        [SerializeField]
+        private int _spawnPointIndex;
         
         private GameStateController _gameStateController;
         private TutorialState _tutorialState;
@@ -37,7 +40,7 @@ namespace Game
             mainRepositoryStorage.Load();
             mainRepositoryStorage.Set(SaveConstants.TUTORIAL, new TutorialState.Data()
             {
-                CurrentStep = TutorialStep.BATTLE_BANANA,
+                CurrentStep = TutorialStep.END,
                 IsCompleted = false
             });
             
@@ -54,7 +57,7 @@ namespace Game
             foreach (var item in _items) 
                 inventory.Add(item.Prototype.Clone());
 
-            locationsManager.SwitchLocation(_locationID, 0);
+            locationsManager.SwitchLocation(_locationID, _spawnPointIndex);
             
             _tutorialState.Start();
         }

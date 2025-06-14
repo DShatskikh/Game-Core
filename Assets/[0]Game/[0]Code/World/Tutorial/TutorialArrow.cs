@@ -20,8 +20,11 @@ namespace Game
             _camera = Camera.main;
         }
 
-        private void LateUpdate()
+        private void FixedUpdate()
         {
+            if (_camera == null)
+                return;
+            
             var _targetPositionScreen = _camera.WorldToScreenPoint(_target.position);
             
             transform.position = transform.position

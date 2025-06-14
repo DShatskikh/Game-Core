@@ -372,7 +372,8 @@ MonoBehaviour:
   _weapon: {fileID: 11400000, guid: 0e7aa05bcbf4e494f929bba4dd608c26, type: 2}
   _additionalWeapon: {fileID: 11400000, guid: b15d05e011346954f93169cfc67ea029, type: 2}
   _armor: {fileID: 11400000, guid: 25cc869e4ab5a3649b6d6d9ffcb019f7, type: 2}
-  _locationID: PVP
+  _locationID: Spawn_2
+  _spawnPointIndex: 2
 --- !u!114 &16250077
 MonoBehaviour:
   m_ObjectHideFlags: 0

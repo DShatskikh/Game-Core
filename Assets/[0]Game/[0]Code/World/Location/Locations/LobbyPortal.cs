@@ -1,4 +1,5 @@
-﻿using PixelCrushers.DialogueSystem;
+﻿using System.Collections;
+using PixelCrushers.DialogueSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,14 +12,16 @@ namespace Game
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out Player player))
-            {
-                _dialogueSystemTrigger.OnUse();
-            }
+            if (!other.GetComponent<Player>())
+                return;
+
+            StartCoroutine(AwaitOpenOutro());
         }
 
-        public void OpenOutro()
+        private IEnumerator AwaitOpenOutro()
         {
+            _dialogueSystemTrigger.OnUse();
+            yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
             SceneManager.LoadScene(3);
         }
     }

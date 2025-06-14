@@ -62,10 +62,10 @@ namespace Game
             //container.Inject(background);
         }
 
-        protected virtual void InitProducts(Product[] products) => 
+        private protected virtual void InitProducts(Product[] products) => 
             _products = products;
 
-        protected void Init(SpeakData[] speakData, Product[] products)
+        private protected void Init(SpeakData[] speakData, Product[] products)
         {
             InitProducts(products);
             InitSpeaks(speakData);
@@ -176,11 +176,7 @@ namespace Game
                 _productButtons.Add(productButton);
             }
 
-            _shopView.GetProductExitButton.onClick.AddListener(() =>
-            {
-                OpenStartPanel();
-            });
-            
+            _shopView.GetProductExitButton.onClick.AddListener(OpenStartPanel);
             ((ShopButton)_shopView.GetProductExitButton).OnSelectAction += () => { _shopView.ToggleProductInfo(false); };
         }
 
@@ -219,7 +215,10 @@ namespace Game
         
         private void InitProductButton(ShopButton productButton, Product product)
         {
-            productButton.GetLabel.text = $"{product.Price}М - {product.Config.Prototype.MetaData.Name}";
+            productButton.GetLabel.text = !product.IsDonation 
+                ? $"{product.Price}М - {product.Config.Prototype.MetaData.Name}" 
+                : $"{product.DonationPrice}ЯН - {product.Config.Prototype.MetaData.Name}";
+            
             productButton.OnSelectAction += () =>
             {
                 _shopView.ToggleProductInfo(true);

@@ -25,13 +25,13 @@ namespace Game
         private protected DiContainer _diContainer;
         
         [Button]
-        public void Open()
+        public virtual void Open()
         {
             gameObject.SetActive(true);
             AwaitOpen().Forget();
         }
 
-        private async UniTask AwaitOpen()
+        private protected async UniTask AwaitOpen()
         {
             await UniTask.DelayFrame(1);
             Binding();
