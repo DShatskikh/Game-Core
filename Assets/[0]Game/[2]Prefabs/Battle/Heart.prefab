@@ -295,7 +295,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shield: {fileID: 2739498094867699598}
-  _damageSource: {fileID: 1304251401554220694}
   _spriteRenderer: {fileID: 1994576084968993982}
   _switchEffectView: {fileID: 875911462885794189}
   _switchEffectSound: {fileID: 5310071276169497081}

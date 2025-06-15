@@ -40,7 +40,7 @@ namespace Game
             mainRepositoryStorage.Load();
             mainRepositoryStorage.Set(SaveConstants.TUTORIAL, new TutorialState.Data()
             {
-                CurrentStep = TutorialStep.END,
+                CurrentStep = TutorialStep.BATTLE_BANANA,
                 IsCompleted = false
             });
             

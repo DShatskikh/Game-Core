@@ -2,6 +2,7 @@
 
 namespace Game
 {
-    // Визуальная часть окна
+    // Реализует графическую составляющую
     public abstract class ScreenBase : MonoBehaviour { }
 }
+

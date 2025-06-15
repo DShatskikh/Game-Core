@@ -534,7 +534,7 @@ namespace Game
                 await _arena.AwaitSetSize(attackPrefab.GetSizeArena);
 
                 _view.ToggleProgressBar(true);
-                _heart.SetProgress(attackPrefab.GetAddProgress);
+                _heart.SetAddedProgress(attackPrefab.GetAddProgress);
                 _timeBasedTurnBooster.ToggleActivate(true);
                 _turnProgressStorage.Reset();
                 

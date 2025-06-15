@@ -4,7 +4,7 @@ using Zenject;
 
 namespace Game
 {
-    // Менеджер окон
+    // Управляет логикой открытия и закрытия окон
     public sealed class ScreenManager
     {
         private readonly ScreenConfig _config;
@@ -12,6 +12,7 @@ namespace Game
         private readonly Dictionary<ScreensEnum, IScreenPresenter> _pair = new();
         private readonly DiContainer _container;
 
+        // Внедрение зависимостей
         public ScreenManager(ScreenConfig config, Transform parent, DiContainer container)
         {
             _config = config;
@@ -19,6 +20,7 @@ namespace Game
             _container = container;
         }
 
+        // Открытие окна
         public IScreenPresenter Open(ScreensEnum screensEnum, DiContainer diContainer = null)
         {
             if (_pair.ContainsKey(screensEnum))
@@ -44,6 +46,7 @@ namespace Game
             return null;
         }
 
+        // Закрытие окна
         public void Close(ScreensEnum screensEnum)
         {
             if (!_pair.ContainsKey(screensEnum))
@@ -54,3 +57,4 @@ namespace Game
         }
     }
 }
+

@@ -799,7 +799,7 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   scriptingDefineSymbols:
-    Android: UNITY_VISUAL_SCRIPTING;DOTWEEN;TextMeshPro
+    Android: UNITY_VISUAL_SCRIPTING;DOTWEEN;TextMeshPro;PLUGIN_YG_2;YandexGamesPlatform_yg;Authorization_yg;Fullscreen_yg;Metrica_yg;RewardedAdv_yg;Storage_yg;TMP_YG2;NJSON_YG2;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;Payments_yg
     EmbeddedLinux: UNITY_VISUAL_SCRIPTING;DOTWEEN;TextMeshPro
     GameCoreScarlett: DOTWEEN
     GameCoreXboxOne: DOTWEEN;TextMeshPro

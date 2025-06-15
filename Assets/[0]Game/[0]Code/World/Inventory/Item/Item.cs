@@ -15,7 +15,8 @@ namespace Game
         [SerializeReference]
         public IItemComponent[] Components;
 
-        public Item(string id, ItemMetaData metaData, ItemFlags flags, IItemComponent[] components)
+        public Item(string id, ItemMetaData metaData, ItemFlags flags,
+            IItemComponent[] components)
         {
             ID = id;
             MetaData = metaData;

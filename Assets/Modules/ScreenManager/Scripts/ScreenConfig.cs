@@ -3,13 +3,14 @@ using UnityEngine;
 
 namespace Game
 {
-    // Конфиг хранящий ScreenData
+    // Хранит конфигурацию окон
     [CreateAssetMenu(fileName = "ScreenConfig", menuName = "Data/ScreenConfig", order = 200)]
     public sealed class ScreenConfig : ScriptableObject
     {
         [SerializeField]
         private ScreenData[] _data;
         
+        // Получить конфигурацию окна по индексу
         public bool TryGet(ScreensEnum screensEnum, out ScreenData result)
         {
             foreach (var data in _data)
@@ -37,3 +38,4 @@ namespace Game
         public IScreenPresenter Presenter;
     }
 }
+

@@ -1,9 +1,10 @@
 ﻿namespace Game
 {
-    // Логика окна
+    // Реализует логику окна
     public interface IScreenPresenter
     {
         public IScreenPresenter Prototype();
         public void Destroy();
     }
 }
+

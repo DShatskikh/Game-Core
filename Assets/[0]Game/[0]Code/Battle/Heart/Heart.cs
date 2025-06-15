@@ -19,17 +19,16 @@ namespace Game
             Blue = 1 // Двигаемся как в платформере и наш цвет синий
         }
         
+        private const string ADD_HEALTH_SOUND_PATH = "event:/Звуки/Битва/Восстановили здоровье";
         private const string DAMAGE_SOUND_PATH = "event:/Звуки/Битва/Получили урон";
         private const string DAMAGE_HASH = "Damage";
         private const string NORMAL_HASH = "Normal";
         private const string DEATH_HASH = "Death";
+        private const float INVULNERABLE_TIME = 3;
         
         [SerializeField]
         private Shield _shield;
-
-        [SerializeField] 
-        private AudioSource _damageSource;
-
+        
         [SerializeField]
         private SpriteRenderer _spriteRenderer;
 
@@ -113,7 +112,53 @@ namespace Game
             _mover?.Disable();
         }
 
-        public void SetMode(Mode mode)
+        public void SetDamage(int damage) => 
+            _damage = damage;
+
+        public void Crash(IShell shell)
+        {
+            if (!_isInvulnerability && shell.IsAlive)
+            {
+                _isInvulnerability = true;
+                StartCoroutine(TakeDamage(_damage));
+            }
+        }
+
+        public void SetAddedProgress(int progress) => 
+            _shield.SetAddedProgress(progress);
+
+        public void AddHealth(int health)
+        {
+            RuntimeManager.PlayOneShot(ADD_HEALTH_SOUND_PATH);
+            _healthService.Add(health);
+        }
+
+        private IEnumerator TakeDamage(int damage)
+        {
+            RuntimeManager.PlayOneShot(DAMAGE_SOUND_PATH);
+            _healthService.GetHealth.Value -= damage;
+
+            if (_healthService.GetHealth.Value <= 0)
+            {
+                Death();   
+                yield break;
+            }
+
+            _animator.CrossFade(DAMAGE_HASH, 0);
+            _shield.gameObject.SetActive(false);
+            yield return new WaitForSeconds(INVULNERABLE_TIME);
+            _animator.CrossFade(NORMAL_HASH, 0);
+            _shield.gameObject.SetActive(true);
+            _isInvulnerability = false;
+        }
+
+        private void Death()
+        {
+            _animator.CrossFade(DEATH_HASH, 0);
+            OnDeath?.Invoke();
+        }
+
+        private void SetMode(Mode mode)
         {
             _mover?.Disable();
             
@@ -143,52 +188,6 @@ namespace Game
                 .Insert(0, _switchEffectView.DOColor(_switchEffectView.color.SetA(0), 0.5f))
                 .OnStepComplete(() => _mover.Enable())
                 .OnComplete(() => _switchEffectView.gameObject.SetActive(false));
-        }
-
-        public void SetDamage(int damage) => 
-            _damage = damage;
-
-        public void Crash(IShell shell)
-        {
-            if (!_isInvulnerability && shell.IsAlive)
-            {
-                _isInvulnerability = true;
-                StartCoroutine(TakeDamage(_damage));
-            }
-        }
-
-        public void SetProgress(int progress) => 
-            _shield.SetProgress(progress);
-
-        private IEnumerator TakeDamage(int damage)
-        {
-            RuntimeManager.PlayOneShot(DAMAGE_SOUND_PATH);
-            _healthService.GetHealth.Value -= damage;
-            _damageSource.Play();
-
-            if (_healthService.GetHealth.Value <= 0)
-            {
-                Death();   
-                yield break;
-            }
-
-            _animator.CrossFade(DAMAGE_HASH, 0);
-            _shield.gameObject.SetActive(false);
-            yield return new WaitForSeconds(3);
-            _animator.CrossFade(NORMAL_HASH, 0);
-            _shield.gameObject.SetActive(true);
-            _isInvulnerability = false;
-        }
-
-        private void Death()
-        {
-            _animator.CrossFade(DEATH_HASH, 0);
-            OnDeath?.Invoke();
-        }
-
-        public void AddHealth(int health)
-        {
-            _healthService.Add(health);
         }
     }
 }

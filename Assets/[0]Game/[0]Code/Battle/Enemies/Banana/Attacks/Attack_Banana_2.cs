@@ -19,14 +19,16 @@ namespace Game
         private Coroutine _coroutine;
         private HeartModeService _heartModeService;
         private readonly List<IShell> _shells = new();
-        
+        private TimeBasedTurnBooster _timeBasedTurnBooster;
+
         public override Vector2 GetSizeArena => new(3f, 2.5f);
-        public override int GetAddProgress => 1;
+        public override int GetAddProgress => 2;
 
         [Inject]
-        private void Construct(HeartModeService heartModeService)
+        private void Construct(HeartModeService heartModeService, TimeBasedTurnBooster timeBasedTurnBooster)
         {
             _heartModeService = heartModeService;
+            _timeBasedTurnBooster = timeBasedTurnBooster;
         }
         
         private void Start()
@@ -45,6 +47,7 @@ namespace Game
 
         private IEnumerator WaitAttack()
         {
+            _timeBasedTurnBooster.SetAddedProgress(2);
             _heartModeService.SetMode(Heart.Mode.Red);
             
             while (true)

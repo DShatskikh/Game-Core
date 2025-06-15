@@ -1,6 +1,6 @@
 ﻿namespace Game
 {
-    // Enum для окон
+    // Индексы окон
     public enum ScreensEnum : byte
     {
         MAIN = 0,
@@ -10,3 +10,4 @@
         MENU = 4,
     }
 }
+

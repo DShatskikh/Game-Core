@@ -6,8 +6,9 @@ namespace Game
     // Класс персонажа "Банан"
     public sealed class Enemy_Banana : EnemyBase
     {
+        private int _praiseCount;
         private bool _isSubscribe;
-        
+
         public override ActionBattle[] Actions
         {
             get
@@ -16,12 +17,18 @@ namespace Game
 
                 for (var i = 0; i < _actions.Length; i++)
                 {
-                    if (i == 1 && _isSubscribe)
+                    if (i == 3 && _isSubscribe)
                         continue;
                     
-                    if (i == 2)
+                    if (i == 1)
                         continue;
 
+                    if (i == 2 && _praiseCount >= 3)
+                        continue;
+                    
+                    if (i == 3 && _praiseCount < 3)
+                        continue;
+                    
                     var action = _actions[i];
                     actions.Add(action);
                 }
@@ -62,11 +69,14 @@ namespace Game
         {
             var action = Actions.First(x => x.Name == actionBattle.Name);
 
-            if (_actions[1].Name == action.Name)
+            if (_actions[2].Name == action.Name)
+                _praiseCount++;
+            
+            if (_actions[3].Name == action.Name)
                 _isSubscribe = true;
             
             if (_actions[0].Name == action.Name && _isSubscribe)
-                return _actions[2].Reaction;
+                return _actions[1].Reaction;
             
             return action.Reaction;
         }

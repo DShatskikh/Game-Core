@@ -9,5 +9,6 @@
         public const string HEALTH = "Health";
         public const string PVPARENA = "PVPArenaState";
         public const string SESSION_TIME = "SessionTime";
+        public const string NotFirstGame = "NotFirstGame";
     }
 }

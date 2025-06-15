@@ -20,7 +20,7 @@ namespace Game
         private bool _isUseCoroutine;
         private Coroutine _coroutine;
         private TurnProgressStorage _turnProgressStorage;
-        private int _addProgress = 5;
+        private int _addedProgress = 5;
 
         [Inject]
         private void Construct(TurnProgressStorage turnProgressStorage)
@@ -63,13 +63,13 @@ namespace Game
         {
             RuntimeManager.PlayOneShot(SOUND_PATH);
             _view.gameObject.SetActive(true);
-            _turnProgressStorage.AddBattleProgress(_addProgress);
+            _turnProgressStorage.AddBattleProgress(_addedProgress);
             yield return new WaitForSeconds(_delayUse);
             _view.gameObject.SetActive(false);
             _isUseCoroutine = false;
         }
 
-        public void SetProgress(int progress) => 
-            _addProgress = progress;
+        public void SetAddedProgress(int progress) => 
+            _addedProgress = progress;
     }
 }
