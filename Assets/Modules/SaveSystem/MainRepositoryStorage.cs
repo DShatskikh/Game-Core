@@ -3,7 +3,7 @@
 namespace Game
 {
     // Репозиторий для игрового процесса
-    public sealed class MainRepositoryStorage : IGameRepository
+    public sealed class MainRepositoryStorage : IGameRepositoryStorage
     {
         private const string SAVE_KEY = "MAIN_SAVE_KEY";
         private SerializableDictionary<string, string> _container = new();

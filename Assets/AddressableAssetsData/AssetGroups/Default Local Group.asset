@@ -14,7 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: 9b7f20a71ccca85418b7a8d1099dd6c8
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 0edc4833bba7bc7478bcd4f3c50ad850
+    m_Address: Assets/_Game/Scenes/Game.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2eb45c41baa52e34ca88cec0d332eae0
+    m_Address: Assets/_Game/Scenes/Intro.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 77cde5c2d49f16140ab8091ad3b421aa
+    m_Address: Assets/_Game/Scenes/Outro.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9b52c99382417ac4789ebc569f06ebae, type: 2}
   m_SchemaSet:
