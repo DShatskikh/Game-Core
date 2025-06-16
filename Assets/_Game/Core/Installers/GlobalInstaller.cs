@@ -60,7 +60,6 @@ namespace Game
             Container.Bind<IAssetLoader>().FromInstance(_assetLoader).AsSingle().NonLazy();
 
 #if YandexGamesPlatform_yg // Собираем под Яндекс игры
-    YG2.StartInit();
     Container.Bind<IAnalyticsService>().To<YandexGamesAnalytics>().AsSingle().NonLazy();
     Container.Bind<IADSService>().To<YandexGamesADS>().AsSingle().NonLazy();
     Container.Bind<IPurchaseService>().To<YandexGamesPurchase>().AsSingle().NonLazy();

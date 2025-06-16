@@ -52,11 +52,11 @@ namespace Game
         {
             if (value)
             {
-                _screenManager.Open(ScreensEnum.MAIN, _container);
+                _screenManager.Open(ScreensEnum.INPUT, _container);
             }
             else
             {
-                _screenManager.Close(ScreensEnum.MAIN);
+                _screenManager.Close(ScreensEnum.INPUT);
             }
         }
     }

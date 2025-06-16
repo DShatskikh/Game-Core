@@ -5,8 +5,6 @@ namespace Game
 {
     public sealed class AppBootstrapper : MonoBehaviour
     {
-        
-        
         private IGameRepositoryStorage _gameRepositoryStorage;
         private IAssetLoader _assetLoader;
 
@@ -26,8 +24,8 @@ namespace Game
             if (_gameRepositoryStorage.TryGet(SaveConstants.NotFirstGame,
                     out MarkerData _))
             {
-                // Загружаем сцену с игрой
-                _assetLoader.LoadScene(AssetPathConstants.GAME_SCENE_PATH);
+                // Загружаем сцену с меню
+                _assetLoader.LoadScene(AssetPathConstants.MENU_SCENE_PATH);
             }
             else // 1 вход в игру
             {

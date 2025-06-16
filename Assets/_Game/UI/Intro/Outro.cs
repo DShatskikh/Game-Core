@@ -3,6 +3,7 @@ using I2.Loc;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Zenject;
 
 namespace Game
 {
@@ -26,6 +27,9 @@ namespace Game
         
         [SerializeField]
         private LocalizedString _playLocalizedString;
+        
+        [Inject]
+        private IAssetLoader _assetLoader;
         
         private Coroutine _coroutine;
         private bool _isClicked;
@@ -63,7 +67,7 @@ namespace Game
 
         private void NextLevel()
         {
-            SceneManager.LoadScene(0);
+            _assetLoader.LoadScene(AssetPathConstants.MENU_SCENE_PATH);
         }
         
         private IEnumerator AwaitShow()

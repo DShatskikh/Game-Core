@@ -16,38 +16,38 @@ MonoBehaviour:
   - Enum: 0
     Screen: {fileID: 8834689059655496130, guid: 15a944f090b612849bb25dabb614fd18, type: 3}
     Presenter:
-      rid: 2880720768947191896
+      rid: 3604937266714902638
   - Enum: 1
     Screen: {fileID: 7225760709380373984, guid: 64652a887d1d46f49a7770450c6644fe, type: 3}
     Presenter:
-      rid: 2880720768947191899
+      rid: 3604937266714902639
   - Enum: 2
     Screen: {fileID: 1624472903560820176, guid: 8721f83c771909540a33c8535577b2e6, type: 3}
     Presenter:
-      rid: 2880720768947191898
+      rid: 3604937266714902640
   - Enum: 3
     Screen: {fileID: 7505934610143203884, guid: 4ff205529019fb7419a73b5d4257dd2e, type: 3}
     Presenter:
-      rid: 5757848009003237482
+      rid: 3604937266714902641
   - Enum: 4
     Screen: {fileID: 5906831710530923958, guid: 138f3750e57c53c44bc7127a3ca9582b, type: 3}
     Presenter:
-      rid: 5757848140662177882
+      rid: 3604937266714902642
   references:
     version: 2
     RefIds:
-    - rid: 2880720768947191896
-      type: {class: MainScreenPresenter, ns: Game, asm: Game}
+    - rid: 3604937266714902638
+      type: {class: InputScreenPresenter, ns: Game, asm: Game}
       data: 
-    - rid: 2880720768947191898
-      type: {class: GameOverPresenter, ns: Game, asm: Game}
-      data: 
-    - rid: 2880720768947191899
+    - rid: 3604937266714902639
       type: {class: TransitionPresenter, ns: Game, asm: Game}
       data: 
-    - rid: 5757848009003237482
+    - rid: 3604937266714902640
+      type: {class: GameOverPresenter, ns: Game, asm: Game}
+      data: 
+    - rid: 3604937266714902641
       type: {class: SavePresenter, ns: Game, asm: Game}
       data: 
-    - rid: 5757848140662177882
+    - rid: 3604937266714902642
       type: {class: MenuPresenter, ns: Game, asm: Game}
       data: 

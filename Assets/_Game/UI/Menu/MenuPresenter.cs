@@ -49,14 +49,14 @@ namespace Game
 
         private void OnContinueClicked()
         {
-            _screenManager.Open(ScreensEnum.MAIN, _container);
+            _screenManager.Open(ScreensEnum.INPUT, _container);
             _screenManager.Close(ScreensEnum.MENU);
         }
 
         private void OnMenuClicked()
         {
             _screenManager.Close(ScreensEnum.MENU);
-            _screenManager.Close(ScreensEnum.MAIN);
+            _screenManager.Close(ScreensEnum.INPUT);
             SceneManager.LoadScene(0);
         }
 

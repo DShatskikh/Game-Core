@@ -344,15 +344,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 4478590859481880652}
-  _assetProvider: {fileID: 11400000, guid: 887aecfb29512184e8e8f7b03e0e70f1, type: 2}
   _nextButton: {fileID: 5796656866587939475}
   _volumeSlider: {fileID: 4137034497621211326}
-  _screenConfig: {fileID: 11400000, guid: b4e701617b646524f9f116115f297df4, type: 2}
+  _screenConfig: {fileID: 11400000, guid: 68995c2434a291a4d9c739f4d870d788, type: 2}
   _ui: {fileID: 5657816157183001501}
   _coroutineRunner: {fileID: 4090953367740282027}
   _heartIcons:
   - {fileID: 4606908045521496030, guid: ba3c3542250d1d14d844cbf1e612976b, type: 3}
   - {fileID: -4195582761621981391, guid: ba3c3542250d1d14d844cbf1e612976b, type: 3}
+  _quantumConsole: {fileID: 4735113768296962263, guid: 2da3dcc22749e7f4280737786d898334, type: 3}
 --- !u!114 &4478590859481880652
 MonoBehaviour:
   m_ObjectHideFlags: 0
