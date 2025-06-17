@@ -30,6 +30,7 @@ MonoBehaviour:
     referenceMode: 2
     serializationDepthLimit: 64
     assemblyNames:
+    - AppMetrica
     - Assembly-CSharp
     - Assembly-CSharp-firstpass
     - CameraAreaUtility
@@ -51,7 +52,7 @@ MonoBehaviour:
     - MoreMountains.Feedbacks.TextMeshPro
     - MoreMountains.Tools
     - NavMeshPlus
-    - PC SDK
+    - PC_SDK
     - PixelCrushers
     - QFSW.QC
     - QFSW.QC.Grammar
@@ -60,6 +61,7 @@ MonoBehaviour:
     - QFSW.QC.Serializers
     - QFSW.QC.Suggestors
     - QFSW.QC.UI
+    - RuStoreSDK
     - SaveSystem
     - ScreenManager
     - SDK

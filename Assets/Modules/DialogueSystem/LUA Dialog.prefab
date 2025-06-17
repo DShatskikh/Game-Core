@@ -531,7 +531,7 @@ MonoBehaviour:
   _button: {fileID: 5904880201186274365}
   _iconMmfPlayer: {fileID: 3521617280204121710}
   _hint: {fileID: 5652599393764655620}
-  _namePanel: {fileID: 3752124822995570025}
+  _nicknamePanel: {fileID: 0}
   _heartContinueIcon: {fileID: 1833713007884830134}
 --- !u!114 &4521648997356359878
 MonoBehaviour:
@@ -2411,10 +2411,10 @@ MonoBehaviour:
   portraitImage: {fileID: 2635379046779270204}
   portraitName:
     m_uiText: {fileID: 0}
-    m_textMeshProUGUI: {fileID: 0}
+    m_textMeshProUGUI: {fileID: 201706396048490985}
   subtitleText:
     m_uiText: {fileID: 0}
-    m_textMeshProUGUI: {fileID: 0}
+    m_textMeshProUGUI: {fileID: 3788204484934542709}
   addSpeakerName: 0
   addSpeakerNameFormat: '{0}: {1}'
   accumulateText: 0

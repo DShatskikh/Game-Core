@@ -25,6 +25,12 @@ namespace Game
 
         [SerializeField]
         private int _spawnPointIndex;
+
+        [SerializeField]
+        private TutorialStep _tutorialStep;
+
+        [SerializeField]
+        private PVPArena.State _pvpState;
         
         private GameStateController _gameStateController;
         private TutorialState _tutorialState;
@@ -40,13 +46,13 @@ namespace Game
             mainRepositoryStorage.Load();
             mainRepositoryStorage.Set(SaveConstants.TUTORIAL, new TutorialState.Data()
             {
-                CurrentStep = TutorialStep.BATTLE_BANANA,
+                CurrentStep = _tutorialStep,
                 IsCompleted = false
             });
             
             mainRepositoryStorage.Set(SaveConstants.PVPARENA, new PVPArena.SaveData()
             {
-                State = PVPArena.State.BANANA
+                State = _pvpState
             });
             
             walletService.SetMoney(50);

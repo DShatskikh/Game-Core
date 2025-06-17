@@ -163,6 +163,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.4
   androidMinAspectRatio: 1
   applicationIdentifier:
+    Android: com.NeDenis.NoobickVsHerobrine
     Standalone: com.DefaultCompany.2D-Project
   buildNumber:
     Standalone: 0
@@ -171,8 +172,8 @@ PlayerSettings:
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 23
-  AndroidTargetSdkVersion: 0
+  AndroidMinSdkVersion: 24
+  AndroidTargetSdkVersion: 34
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -253,13 +254,13 @@ PlayerSettings:
   clonedFromGUID: 10ad67313f4034357812315f3c407484
   templatePackageId: com.unity.template.2d@10.1.0
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  useCustomMainManifest: 0
+  useCustomMainManifest: 1
   useCustomLauncherManifest: 0
-  useCustomMainGradleTemplate: 0
+  useCustomMainGradleTemplate: 1
   useCustomLauncherGradleManifest: 0
   useCustomBaseGradleTemplate: 0
-  useCustomGradlePropertiesTemplate: 0
-  useCustomGradleSettingsTemplate: 0
+  useCustomGradlePropertiesTemplate: 1
+  useCustomGradleSettingsTemplate: 1
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 2
   AndroidSplashScreenScale: 0
@@ -533,6 +534,12 @@ PlayerSettings:
   - serializedVersion: 3
     m_BuildTarget: Android
     m_Formats: 03000000
+  - serializedVersion: 3
+    m_BuildTarget: WebGL
+    m_Formats: 05000000
+  - serializedVersion: 3
+    m_BuildTarget: iOS
+    m_Formats: 03000000
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
   actionOnDotNetUnhandledException: 1
@@ -799,7 +806,7 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   scriptingDefineSymbols:
-    Android: UNITY_VISUAL_SCRIPTING;DOTWEEN;TextMeshPro;PLUGIN_YG_2;YandexGamesPlatform_yg;Authorization_yg;Fullscreen_yg;Metrica_yg;RewardedAdv_yg;Storage_yg;TMP_YG2;NJSON_YG2;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;Payments_yg
+    Android: UNITY_VISUAL_SCRIPTING;DOTWEEN;TextMeshPro;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;RUSTORE;PLUGIN_YG_2;Authorization_yg;Fullscreen_yg;Metrica_yg;Payments_yg;RewardedAdv_yg;Storage_yg;TMP_YG2;NJSON_YG2
     EmbeddedLinux: UNITY_VISUAL_SCRIPTING;DOTWEEN;TextMeshPro
     GameCoreScarlett: DOTWEEN
     GameCoreXboxOne: DOTWEEN;TextMeshPro
@@ -810,14 +817,15 @@ PlayerSettings:
     QNX: UNITY_VISUAL_SCRIPTING;DOTWEEN;TextMeshPro
     ReservedCFE: DOTWEEN;TextMeshPro
     Server: UNITY_VISUAL_SCRIPTING
-    Standalone: PLUGIN_YG_2;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;UNITY_VISUAL_SCRIPTING;DOTWEEN;TMP_PRESENT;Authorization_yg;Fullscreen_yg;Metrica_yg;RewardedAdv_yg;Storage_yg;TMP_YG2;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;YandexGamesPlatform_yg;TextMeshPro;NJSON_YG2;Payments_yg
+    Standalone: ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;UNITY_VISUAL_SCRIPTING;DOTWEEN;TMP_PRESENT;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;TextMeshPro;PLUGIN_YG_2;YandexGamesPlatform_yg;Authorization_yg;Fullscreen_yg;Metrica_yg;Payments_yg;RewardedAdv_yg;Storage_yg;TMP_YG2;NJSON_YG2
     VisionOS: UNITY_VISUAL_SCRIPTING;DOTWEEN;TextMeshPro
-    WebGL: UNITY_VISUAL_SCRIPTING;DOTWEEN;PLUGIN_YG_2;NJSON_YG2;MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;TMP_YG2;Storage_yg;Fullscreen_yg;Metrica_yg;RewardedAdv_yg;Authorization_yg;YandexGamesPlatform_yg;TMP_PRESENT;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;TextMeshPro;Payments_yg
+    WebGL: UNITY_VISUAL_SCRIPTING;DOTWEEN;PLUGIN_YG_2;NJSON_YG2;MOREMOUNTAINS_NICEVIBRATIONS_INSTALLED;ODIN_INSPECTOR;ODIN_INSPECTOR_3;ODIN_INSPECTOR_3_1;TMP_YG2;Storage_yg;Fullscreen_yg;Metrica_yg;RewardedAdv_yg;Authorization_yg;TMP_PRESENT;ODIN_INSPECTOR_3_2;ODIN_INSPECTOR_3_3;TextMeshPro;Payments_yg
     Windows Store Apps: UNITY_VISUAL_SCRIPTING;DOTWEEN
     XboxOne: UNITY_VISUAL_SCRIPTING;DOTWEEN;TextMeshPro
     iPhone: UNITY_VISUAL_SCRIPTING;DOTWEEN;TextMeshPro
     tvOS: UNITY_VISUAL_SCRIPTING;DOTWEEN;TextMeshPro
-  additionalCompilerArguments: {}
+  additionalCompilerArguments:
+    Android: []
   platformArchitecture: {}
   scriptingBackend:
     Android: 1

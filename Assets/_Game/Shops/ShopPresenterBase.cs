@@ -32,12 +32,13 @@ namespace Game
         private readonly float _startMusicParameterIndex;
         private protected readonly IGameRepositoryStorage _mainRepositoryStorage;
         private readonly DiContainer _diContainer;
+        private readonly IPurchaseService _purchaseService;
 
         public ShopPresenterBase(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
             MainInventory mainInventory, WalletService walletService, 
             DiContainer container, ShopBackground backgroundPrefab, 
-            ScreenManager screenManager, IGameRepositoryStorage mainRepositoryStorage)
+            ScreenManager screenManager, IGameRepositoryStorage mainRepositoryStorage, IPurchaseService purchaseService)
         {
             _shopView = Object.Instantiate(shopViewPrefab);
             _inscriptionsContainer = inscriptionsContainer;
@@ -48,6 +49,7 @@ namespace Game
             _screenManager = screenManager;
             _mainRepositoryStorage = mainRepositoryStorage;
             _diContainer = container;
+            _purchaseService = purchaseService;
 
             _gameStateController.OpenCutscene();
             
@@ -180,7 +182,7 @@ namespace Game
             ((ShopButton)_shopView.GetProductExitButton).OnSelectAction += () => { _shopView.ToggleProductInfo(false); };
         }
 
-        private protected void AddItemToInventory(Product product)
+        private void AddItemToInventory(Product product)
         {
             if (product.Config.Prototype.TryGetComponent(out AttackComponent attackComponent))
             {
@@ -215,10 +217,18 @@ namespace Game
         
         private void InitProductButton(ShopButton productButton, Product product)
         {
+#if YandexGamesPlatform_yg
             productButton.GetLabel.text = !product.IsDonation 
                 ? $"{product.Price}М - {product.Config.Prototype.MetaData.Name}" 
                 : $"{product.DonationPrice}ЯН - {product.Config.Prototype.MetaData.Name}";
-            
+#elif RUSTORE
+            productButton.GetLabel.text = !product.IsDonation 
+                ? $"{product.Price}М - {product.Config.Prototype.MetaData.Name}" 
+                : $"{product.DonationPrice}РУБ - {product.Config.Prototype.MetaData.Name}";
+#else
+            productButton.GetLabel.text = $"{product.Price}М - {product.Config.Prototype.MetaData.Name}";
+#endif
+
             productButton.OnSelectAction += () =>
             {
                 _shopView.ToggleProductInfo(true);
@@ -233,6 +243,10 @@ namespace Game
                 _shopView.SetBuyText($"Купить за {product.Price}М");
                 EventSystem.current.SetSelectedGameObject(_shopView.GetBuyYesButton.gameObject);
 
+#if YandexGamesPlatform_yg && RUSTORE
+                _purchaseService.BuyPayments(product.Config.Prototype.ID);
+#endif
+                
                 _shopView.GetBuyYesButton.onClick.RemoveAllListeners();
                 _shopView.GetBuyYesButton.onClick.AddListener(() => OnBuyYesButton(product, productButton));
 

@@ -11,10 +11,10 @@ namespace Game
     public sealed class InputScreenPresenter : IScreenPresenter, IGameCutsceneListener, IGameBattleListener
     {
         private InputScreenView _view;
-        private AssetLoader _assetLoader;
+        private IAssetLoader _assetLoader;
 
         [Inject]
-        public void Construct(InputScreenView view, AssetLoader assetLoader)
+        public void Construct(InputScreenView view, IAssetLoader assetLoader)
         {
             _view = view;
             _assetLoader = assetLoader;

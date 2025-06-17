@@ -10,5 +10,6 @@
         public const string PVPARENA = "PVPArenaState";
         public const string SESSION_TIME = "SessionTime";
         public const string NotFirstGame = "NotFirstGame";
+        public const string MobArena = "MobArena";
     }
 }

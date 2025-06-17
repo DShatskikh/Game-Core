@@ -33,9 +33,10 @@ namespace Game
         public ShopPresenter_Bisnesman(ShopView shopViewPrefab, ShopButton shopButtonPrefab,
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController,
             MainInventory mainInventory, WalletService walletService, DiContainer container, 
-            ShopBackground backgroundPrefab, ScreenManager screenManager, IGameRepositoryStorage mainRepositoryStorage,
-            InitData data) : base(shopViewPrefab, shopButtonPrefab, inscriptionsContainer, gameStateController, 
-            mainInventory, walletService, container, backgroundPrefab, screenManager, mainRepositoryStorage)
+            ShopBackground backgroundPrefab, ScreenManager screenManager, IGameRepositoryStorage mainRepositoryStorage, 
+            IPurchaseService purchaseService, InitData data) : base(shopViewPrefab, shopButtonPrefab, 
+            inscriptionsContainer, gameStateController, mainInventory, walletService, container, backgroundPrefab,
+            screenManager, mainRepositoryStorage, purchaseService)
         {
             var products = data.Products.ToList();
             products.Add(data.SecretKey);

@@ -36,9 +36,9 @@ namespace Game
             Dictionary<string, string> inscriptionsContainer, GameStateController gameStateController, 
             MainInventory mainInventory, WalletService walletService, 
             DiContainer container, InitData data, ShopBackground shopBackgroundPrefab,
-            ScreenManager screenManager, IGameRepositoryStorage mainRepositoryStorage) : base(shopViewPrefab, shopButtonPrefab,
+            ScreenManager screenManager, IPurchaseService purchaseService, IGameRepositoryStorage mainRepositoryStorage) : base(shopViewPrefab, shopButtonPrefab,
             inscriptionsContainer, gameStateController, mainInventory, walletService, 
-            container, shopBackgroundPrefab, screenManager, mainRepositoryStorage)
+            container, shopBackgroundPrefab, screenManager, mainRepositoryStorage, purchaseService)
         {
             _initData = data;
             Load();

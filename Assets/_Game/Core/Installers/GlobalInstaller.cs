@@ -63,9 +63,9 @@ namespace Game
     Container.Bind<IAnalyticsService>().To<YandexGamesAnalytics>().AsSingle().NonLazy();
     Container.Bind<IADSService>().To<YandexGamesADS>().AsSingle().NonLazy();
     Container.Bind<IPurchaseService>().To<YandexGamesPurchase>().AsSingle().NonLazy();
-#elif UNITY_ANDROID // Собираем под Rustore
-    Container.Bind<IAnalyticsService>().To<YandexMetricaAnalytics>().AsSingle().NonLazy();
-    Container.Bind<IADSService>().To<RustoreADS>().AsSingle().NonLazy();
+#elif RUSTORE // Собираем под Rustore
+    Container.Bind<IAnalyticsService>().To<AppMetricaAnalytics>().AsSingle().NonLazy();
+    Container.Bind<IADSService>().To<YandexMobileADS>().AsSingle().NonLazy();
     Container.Bind<IPurchaseService>().To<RustorePurchase>().AsSingle().NonLazy();
 #else // Собираем под ПК
     Container.Bind<IAnalyticsService>().To<EmptyAnalytics>().AsSingle().NonLazy();
