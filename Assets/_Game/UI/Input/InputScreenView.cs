@@ -12,9 +12,6 @@ namespace Game
         [SerializeField]
         private TMP_Text _hintLabel;
 
-        [SerializeField]
-        private VariableJoystick _joystick;
-        
         public void ToggleActivate(bool isActive) => 
             gameObject.SetActive(isActive);
         
@@ -23,8 +20,5 @@ namespace Game
         
         public void SetHintText(string text) => 
             _hintLabel.text = text;
-        
-        public void ShowJoystick() => 
-            _joystick.gameObject.SetActive(true);
     }
 }

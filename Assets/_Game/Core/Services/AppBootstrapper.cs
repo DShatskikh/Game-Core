@@ -20,18 +20,16 @@ namespace Game
 
         private void LoadGame()
         {
-            // не 1 вход в игру
-            if (_gameRepositoryStorage.TryGet(SaveConstants.NotFirstGame,
-                    out MarkerData _))
-            {
+            _assetLoader.LoadScene(_gameRepositoryStorage.TryGet(SaveConstants.NotFirstGame,
+                out MarkerData _)
+            
+                // не 1 вход в игру
                 // Загружаем сцену с меню
-                _assetLoader.LoadScene(AssetPathConstants.MENU_SCENE_PATH);
-            }
-            else // 1 вход в игру
-            {
+                ? AssetPathConstants.MENU_SCENE_PATH
+                
+                // 1 вход в игру
                 // Загружаем катсцену
-                _assetLoader.LoadScene(AssetPathConstants.INTRO_SCENE_PATH);
-            }
+                : AssetPathConstants.INTRO_SCENE_PATH);
         }
     }
 }

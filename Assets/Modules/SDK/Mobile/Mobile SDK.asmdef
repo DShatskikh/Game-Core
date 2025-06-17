@@ -1,0 +1,19 @@
+{
+    "name": "MobileSDK",
+    "rootNamespace": "SDK",
+    "references": [
+        "GUID:e4944e79215003e4092e4143d326a8a0"
+    ],
+    "includePlatforms": [
+        "Android",
+        "iOS"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

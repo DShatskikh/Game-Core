@@ -1,4 +1,6 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
 using Zenject;
 using Object = UnityEngine.Object;
 
@@ -9,15 +11,28 @@ namespace Game
     public sealed class InputScreenPresenter : IScreenPresenter, IGameCutsceneListener, IGameBattleListener
     {
         private InputScreenView _view;
+        private AssetLoader _assetLoader;
 
         [Inject]
-        public void Construct(InputScreenView view)
+        public void Construct(InputScreenView view, AssetLoader assetLoader)
         {
             _view = view;
-
-            if (DeviceTypeDetector.IsMobile()) 
-                _view.ShowJoystick();
+            _assetLoader = assetLoader;
+            
+#if UNITY_WEBGL || UNITY_ANDROID
+            if (DeviceTypeDetector.IsMobile())
+            {
+                AwaitCreateJoystick().Forget();
+            }
+#endif
         }
+
+#if UNITY_WEBGL || UNITY_ANDROID
+        private async UniTask AwaitCreateJoystick()
+        {
+            await _assetLoader.InstantiateAsync(AssetPathConstants.JOYSTICK_PATH, _view.transform);
+        }
+#endif
         
         public IScreenPresenter Prototype() => 
             new InputScreenPresenter();

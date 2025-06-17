@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Nokia3310_0: 1669604897983882244
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

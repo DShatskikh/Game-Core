@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      JoysticBackground_0: 6725913187763228728
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -38,7 +38,8 @@ MonoBehaviour:
     RefIds:
     - rid: 3604937266714902638
       type: {class: InputScreenPresenter, ns: Game, asm: Game}
-      data: 
+      data:
+        _joystickPrefabAddress: Assets/Modules/Joystick/Prefabs/Variable Joystick.prefab
     - rid: 3604937266714902639
       type: {class: TransitionPresenter, ns: Game, asm: Game}
       data: 

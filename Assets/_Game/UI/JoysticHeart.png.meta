@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      JoysticHeart_0: 4496100579096411384
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
