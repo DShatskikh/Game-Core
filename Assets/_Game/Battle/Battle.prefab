@@ -6547,6 +6547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91b86b3cbe2443818d0c20ac2fcc340f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainContainer: {fileID: 2632641837581666508}
   _turnPanel: {fileID: 7964762888754557833}
   _attacksContainer: {fileID: 8491078393311756747}
   _itemsContainer: {fileID: 8069480858242850224}

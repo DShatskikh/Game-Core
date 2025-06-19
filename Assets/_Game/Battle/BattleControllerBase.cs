@@ -40,23 +40,28 @@ namespace Game
         private readonly INextButton _nextButton;
         private readonly SerializableDictionary<string, LocalizedString> _localizedPairs;
         private readonly int _damage = 5;
+        
+        [Inject]
+        private readonly AttackService _attackService;
 
-        private readonly string _gameOverMessage = "Ты умер от Зомбиии!";
+        private protected abstract string _gameOverMessage { get; }
 
         private List<ShopButton> _actionButtons = new();
         private protected int _numberTurn = -1;
         private protected IEnemy[] _enemies;
+        private protected virtual bool _isRun { get; } = false;
         private IEnemy _selectedEnemy;
         private EnemyBattleButton _enemyPrefabButton;
         private ShopButton _mercyButton;
         private protected int _attackIndex;
         private Item _attackItem;
-        private readonly bool _isRun = true;
         private float _startMusicParameterIndex;
         private protected readonly IGameRepositoryStorage _mainRepositoryStorage;
         private readonly HealthService _healthService;
         private readonly LevelService _levelService;
         private readonly WalletService _walletService;
+        private readonly HeartModeService _heartModeService;
+        private readonly IAssetLoader _assetLoader;
 
         public BattleControllerBase(BattleView view, ShopButton prefabButton, MainInventory inventory, 
             GameStateController gameStateController, BattlePoints points, Player player,
@@ -65,7 +70,8 @@ namespace Game
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager, 
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs, IGameRepositoryStorage mainRepositoryStorage,
-            HealthService healthService, LevelService levelService, WalletService walletService)
+            HealthService healthService, LevelService levelService, WalletService walletService, 
+            HeartModeService heartModeService, IAssetLoader assetLoader)
         {
             _view = view;
             _prefabButton = prefabButton;
@@ -88,6 +94,8 @@ namespace Game
             _healthService = healthService;
             _levelService = levelService;
             _walletService = walletService;
+            _heartModeService = heartModeService;
+            _assetLoader = assetLoader;
         }
 
         public virtual void Turn()
@@ -137,10 +145,16 @@ namespace Game
         private void CreateWeaponSlots(MainInventory inventory)
         {
             if (inventory.WeaponSlot.HasItem)
-                CreateWeaponSlot(inventory.WeaponSlot);
+            {
+                CreateWeaponSlot(inventory.WeaponSlot.Item);
+            }
+            else
+            {
+                CreateWeaponSlot(inventory.HandSlot.Item);
+            }
          
             if (inventory.WeaponAdditionalSlot.HasItem)
-                CreateWeaponSlot(inventory.WeaponAdditionalSlot);
+                CreateWeaponSlot(inventory.WeaponAdditionalSlot.Item);
 
             if (!inventory.WeaponSlot.HasItem && inventory.WeaponAdditionalSlot.HasItem)
                 _view.GetAttackButton.gameObject.SetActive(false);
@@ -221,8 +235,7 @@ namespace Game
                     _view.GetTurnButton.onClick.AddListener(() =>
                     {
                         CloseAllPanel();
-                        _attackItem.TryGetComponent(out AttackComponent attackComponent);
-                        AttackTurn(enemy, attackComponent.Attack).Forget();
+                        AttackTurn(enemy, _attackService.GetAttack).Forget();
                     });
                 });
             }
@@ -316,6 +329,11 @@ namespace Game
 
         private void InitItemButton()
         {
+            if (_inventory.GetItemsCount == 0)
+            {
+                _view.GetItemsButton.interactable = false;
+            }
+            
             _view.GetItemsButton.onClick.AddListener(() =>
             {
                 CloseAllPanel();
@@ -396,11 +414,11 @@ namespace Game
             };
         }
 
-        private void CreateWeaponSlot(Slot attackSlot)
+        private void CreateWeaponSlot(Item attackItem)
         {
             var attackButton = Object.Instantiate(_prefabButton, _view.GetAttacksContainer);
             _attackButtons.Add(attackButton);
-            attackButton.GetLabel.text = attackSlot.Item.MetaData.Name;
+            attackButton.GetLabel.text = attackItem.MetaData.Name;
             attackButton.onClick.AddListener(() =>
             {
                 CloseAllPanel();
@@ -412,13 +430,13 @@ namespace Game
 
                 EventSystem.current.SetSelectedGameObject(GetFirstActiveEnemyButton(_attackEnemyButtons).gameObject);
 
-                _attackItem = attackSlot.Item;
+                _attackItem = attackItem;
             });
 
             attackButton.OnSelectAction += () =>
             {
                 _view.ToggleInfo(true);
-                _view.SetInfoText(attackSlot.Item.MetaData.Description);
+                _view.SetInfoText($"+{_attackService.GetAttack}УР");
             };
         }
 
@@ -534,9 +552,24 @@ namespace Game
                 await _arena.AwaitSetSize(attackPrefab.GetSizeArena);
 
                 _view.ToggleProgressBar(true);
-                _heart.SetAddedProgress(attackPrefab.GetAddProgress);
+                _heart.SetAddedProgress(attackPrefab.GetShieldAddedProgress);
+                _heartModeService.SetMode(attackPrefab.GetStartHeartMode);
                 _timeBasedTurnBooster.ToggleActivate(true);
+                _timeBasedTurnBooster.SetAddedProgress(attackPrefab.GetTurnAddedProgress);
                 _turnProgressStorage.Reset();
+                
+#if UNITY_WEBGL || UNITY_ANDROID
+                GameObject joystick = null;
+                GameObject jumpButton = null;
+                
+                if (DeviceTypeDetector.IsMobile())
+                { 
+                    joystick = await _assetLoader.InstantiateAsync(AssetPathConstants.JOYSTICK_PATH, _view.GetMainContainer);
+                    
+                    if (attackPrefab.GetStartHeartMode == Heart.Mode.Blue)
+                        jumpButton = await _assetLoader.InstantiateAsync(AssetPathConstants.JUMP_BUTTON_PATH, _view.GetMainContainer);
+                }
+#endif
                 
                 var attack = Object.Instantiate(attackPrefab, _view.transform.position, Quaternion.identity, _arena.transform);
                 _container.Inject(attack);
@@ -546,6 +579,17 @@ namespace Game
                 attack.Hide();
                 
                 await UniTask.WaitForSeconds(1f);
+                
+#if UNITY_WEBGL || UNITY_ANDROID
+                if (DeviceTypeDetector.IsMobile())
+                {
+                    Object.Destroy(joystick);
+                    
+                    if (jumpButton)
+                        Object.Destroy(jumpButton);
+                }
+#endif
+                
                 Object.Destroy(attack.gameObject);
             }
             else

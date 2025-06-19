@@ -76,7 +76,7 @@ MonoBehaviour:
     - UniTask.TextMeshPro
     - UseArea
     - VolumeSlider
-    - WebGL SDK
+    - YandexGamesSDK
     - YG
     - Zenject
     showAdvancedSettings: 0

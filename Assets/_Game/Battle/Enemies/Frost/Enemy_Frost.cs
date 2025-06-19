@@ -28,6 +28,7 @@ namespace Game
 
         private protected override void OnDamage()
         {
+            _potatoCount--;
             // Ест картошку, здается на 5 ходе потому что видит что мы достойны чтобы попасть в спарту
         }
 

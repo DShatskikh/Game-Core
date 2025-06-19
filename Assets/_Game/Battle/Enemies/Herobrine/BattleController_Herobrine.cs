@@ -9,6 +9,7 @@ namespace Game
 {
     public sealed class BattleController_Herobrine : BattleControllerBase
     {
+        private protected override string _gameOverMessage => "Ха-ха нубяра";
         private readonly InitData _initData;
 
         [Serializable]
@@ -26,11 +27,11 @@ namespace Game
             TimeBasedTurnBooster timeBasedTurnBooster, EnemyBattleButton enemyBattleButton, ScreenManager screenManager,
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs, InitData initData,
-            IGameRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService, WalletService walletService) 
-            : base(view, prefabButton, inventory, 
+            IGameRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService,
+            WalletService walletService, HeartModeService heartModeService, IAssetLoader assetLoader) : base(view, prefabButton, inventory, 
             gameStateController, points, player, arena, heart, container, virtualCamera, turnProgressStorage,
             timeBasedTurnBooster, enemyBattleButton, screenManager, attackIndicator, nextButton, localizedPairs,
-            mainRepositoryStorage, healthService, levelService, walletService)
+            mainRepositoryStorage, healthService, levelService, walletService, heartModeService, assetLoader)
         {
             _initData = initData;
             Init();

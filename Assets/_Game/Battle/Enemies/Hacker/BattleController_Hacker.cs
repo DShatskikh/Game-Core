@@ -9,6 +9,7 @@ namespace Game
     // Контроллер битвы Хакера
     public sealed class BattleController_Hacker : BattleControllerBase
     {
+        private protected override string _gameOverMessage => "#$!@^$##e7";
         private readonly InitData _initData;
 
         [Serializable]
@@ -29,10 +30,10 @@ namespace Game
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs, InitData initData, 
             IGameRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService, 
-            WalletService walletService) : base(view, prefabButton, inventory, 
+            WalletService walletService, HeartModeService heartModeService, IAssetLoader assetLoader) : base(view, prefabButton, inventory, 
             gameStateController, points, player, arena, heart, container, virtualCamera, turnProgressStorage,
             timeBasedTurnBooster, enemyBattleButton, screenManager, attackIndicator, nextButton, localizedPairs,
-            mainRepositoryStorage, healthService, levelService, walletService)
+            mainRepositoryStorage, healthService, levelService, walletService, heartModeService, assetLoader)
         {
             _initData = initData;
             SetEnemyPrefabButton(initData.EnemyBattleButton);

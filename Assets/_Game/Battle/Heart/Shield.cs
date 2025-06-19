@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using DG.Tweening;
 using FMODUnity;
 using UnityEngine;
 using Zenject;
@@ -63,9 +64,14 @@ namespace Game
         {
             RuntimeManager.PlayOneShot(SOUND_PATH);
             _view.gameObject.SetActive(true);
+            yield return _view.DOColor(_view.color.SetA(1), 0.4f);
             _turnProgressStorage.AddBattleProgress(_addedProgress);
             yield return new WaitForSeconds(_delayUse);
+            yield return new WaitForSeconds(_delayUse);
+            yield return _view.DOColor(_view.color.SetA(0), 0.4f);
             _view.gameObject.SetActive(false);
+            yield return new WaitForSeconds(_delayUse);
+
             _isUseCoroutine = false;
         }
 

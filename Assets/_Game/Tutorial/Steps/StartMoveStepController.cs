@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Game
 {
     public sealed class StartMoveStepController : BaseStepController
     {
+        [FormerlySerializedAs("_hint")]
         [SerializeField]
-        private GameObject _hint;
+        private GameObject _hintPC;
+        
+        [SerializeField]
+        private GameObject _hintMobile;
         
         private Player _player;
 
@@ -21,13 +26,31 @@ namespace Game
 
         private protected override void OnStepStarted()
         {
-            _hint.SetActive(true);
+            var isMobile = false;
+
+#if UNITY_WEBGL || UNITY_ANDROID
+            if (DeviceTypeDetector.IsMobile())
+            {
+                isMobile = true;
+            }
+#endif
+            
+            if (isMobile)
+            {
+                _hintMobile.SetActive(true);
+            }
+            else
+            {
+                _hintPC.SetActive(true);
+            }
+            
             StartCoroutine(AwaitProcess());
         }
 
         private protected override void OnStepFinished()
         {
-            _hint.SetActive(false);
+            _hintPC.SetActive(false);
+            _hintMobile.SetActive(false);
         }
 
         private IEnumerator AwaitProcess()

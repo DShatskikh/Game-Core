@@ -20,7 +20,7 @@ namespace Game
 
         private void LoadGame()
         {
-            _assetLoader.LoadScene(_gameRepositoryStorage.TryGet(SaveConstants.NotFirstGame,
+            _assetLoader.LoadScene(_gameRepositoryStorage.TryGet(SaveConstants.NOT_FIRST_GAME,
                 out MarkerData _)
             
                 // не 1 вход в игру

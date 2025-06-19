@@ -15,7 +15,7 @@ MonoBehaviour:
   mSource:
     UserAgreesToHaveItOnTheScene: 0
     UserAgreesToHaveItInsideThePluginsFolder: 0
-    GoogleLiveSyncIsUptoDate: 1
+    GoogleLiveSyncIsUptoDate: 0
     mTerms:
     - Term: Attack
       TermType: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
       Languages:
       - "\u042D\u0442\u043E \u041D\u0443\u0431\u0438\u043A, \u0433\u0435\u0440\u043E\u0439
         \u044D\u0442\u043E\u0439 \u0438\u0433\u0440\u044B, \u043E\u043D \u0442\u043E\u043B\u044C\u043A\u043E
-        \u0437\u0430\u0448\u0435\u043B \u0432 \u0438\u0433\u0440\u0443"
+        \u0437\u0430\u0448\u0435\u043B \u043D\u0430 \u0441\u0435\u0440\u0432\u0435\u0440"
       - 
       Flags: 0000
       Languages_Touch: []
@@ -300,8 +300,8 @@ MonoBehaviour:
       TermType: 0
       Description: 
       Languages:
-      - "\u0412\u0441\u0442\u0440\u0435\u0442\u0438\u043C\u0441\u044F \u043D\u0430
-        \u041F\u0412\u041F \u0430\u0440\u0435\u043D\u0435"
+      - "\u0425\u0430-\u0445\u0430 \u0432\u0441\u0442\u0440\u0435\u0442\u0438\u043C\u0441\u044F
+        \u043D\u0430 \u041F\u0412\u041F \u0430\u0440\u0435\u043D\u0435 \u043D\u0443\u0431"
       - 
       Flags: 0000
       Languages_Touch: []
@@ -617,6 +617,22 @@ MonoBehaviour:
       Languages:
       - "\u041D\u0435\u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E \u0441\u043B\u043E\u043C\u0430\u0442\u044C
         \u0423\u0420\u041E\u041D 9999"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Battle/Wither Skeleton
+      TermType: 0
+      Description: 
+      Languages:
+      - "\u0427\u0435\u0440\u043D\u044B\u0439 \u0441\u043A\u0435\u043B\u0435\u0442"
+      - 
+      Flags: 0000
+      Languages_Touch: []
+    - Term: Item/Hand
+      TermType: 0
+      Description: 
+      Languages:
+      - 
       - 
       Flags: 0000
       Languages_Touch: []

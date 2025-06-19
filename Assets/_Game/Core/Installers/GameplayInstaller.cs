@@ -30,6 +30,8 @@ namespace Game
             Container.Bind<LevelService>().AsSingle().NonLazy();
             Container.Bind<HealthService>().AsSingle().NonLazy();
             Container.Bind<TutorialState>().AsSingle().NonLazy();
+            Container.Bind<AttackService>().AsSingle().NonLazy();
+            Container.Bind<ArmorService>().AsSingle().NonLazy();
 
             Container.BindInterfacesAndSelfTo<MainScreenHandler>().AsCached().NonLazy();
         }

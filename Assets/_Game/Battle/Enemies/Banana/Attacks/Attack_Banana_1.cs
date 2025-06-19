@@ -5,7 +5,7 @@ using Zenject;
 
 namespace Game
 {
-    public class Attack_Banana_1 : Attack
+    public sealed class Attack_Banana_1 : Attack
     {
         const float TIME_BETWEEN_ATTACKS = 1.5f;
         
@@ -16,20 +16,13 @@ namespace Game
         private Transform[] _spawnPoints;
         
         private Coroutine _coroutine;
-        private HeartModeService _heartModeService;
-        private TimeBasedTurnBooster _timeBasedTurnBooster;
         private readonly List<IShell> _shells = new();
 
+        public override Heart.Mode GetStartHeartMode => Heart.Mode.Red;
+        public override int GetTurnAddedProgress => 1;
         public override Vector2 GetSizeArena => new(3f, 3f);
-        public override int GetAddProgress => 2;
+        public override int GetShieldAddedProgress => 2;
 
-        [Inject]
-        private void Construct(HeartModeService heartModeService, TimeBasedTurnBooster timeBasedTurnBooster)
-        {
-            _heartModeService = heartModeService;
-            _timeBasedTurnBooster = timeBasedTurnBooster;
-        }
-        
         private void Start()
         {
             _coroutine = StartCoroutine(WaitAttack());
@@ -46,9 +39,6 @@ namespace Game
 
         private IEnumerator WaitAttack()
         {
-            _timeBasedTurnBooster.SetAddedProgress(1);
-            _heartModeService.SetMode(Heart.Mode.Red);
-            
             while (true)
             {
                 var random = Random.Range(0, _spawnPoints.Length);

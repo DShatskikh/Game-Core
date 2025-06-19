@@ -8,6 +8,9 @@ namespace Game
     public class BattleView : MonoBehaviour
     {
         [SerializeField]
+        private Transform _mainContainer;
+        
+        [SerializeField]
         private GameObject _turnPanel;
         
         [SerializeField]
@@ -64,6 +67,7 @@ namespace Game
         [SerializeField]
         private ProgressBar _progressBar;
         
+        public Transform GetMainContainer => _mainContainer;
         public Transform GetAttacksContainer => _attacksContainer;
         public Transform GetItemsContainer => _itemsContainer;
         public Transform GetActionsContainer => _actionsContainer;

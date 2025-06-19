@@ -1,0 +1,18 @@
+{
+    "name": "PixelCrushers Common.Erditor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:454324f28083dd840988fe4c268e82f8"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

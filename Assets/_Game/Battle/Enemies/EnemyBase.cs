@@ -74,7 +74,7 @@ namespace Game
             }
         }
 
-        public bool CanMercy => Mercy == 100 || Health <= 6;
+        public bool CanMercy => Mercy == 100;
         public bool IsMercy { get; set; }
         public int GetOP => _op;
         public int GetMoney => _money;

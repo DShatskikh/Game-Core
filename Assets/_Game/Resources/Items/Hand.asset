@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c84788fb944d9cb09c240de243be19, type: 3}
+  m_Name: Hand
+  m_EditorClassIdentifier: 
+  Prototype:
+    ID: Hand
+    MetaData:
+      Name:
+        mTerm: Item/Hand
+        mRTL_IgnoreArabicFix: 0
+        mRTL_MaxLineLength: 0
+        mRTL_ConvertNumbers: 0
+        m_DontLocalizeParameters: 0
+      Description:
+        mTerm: Item/Block Dirt Description
+        mRTL_IgnoreArabicFix: 0
+        mRTL_MaxLineLength: 0
+        mRTL_ConvertNumbers: 0
+        m_DontLocalizeParameters: 0
+      Icon: {fileID: 0}
+    Flags: 0
+    Components:
+    - rid: 3604937332713586832
+  references:
+    version: 2
+    RefIds:
+    - rid: 3604937332713586832
+      type: {class: AttackComponent, ns: Game, asm: Game}
+      data:
+        Attack: 1
+        Effect: {fileID: 6856480182940632667, guid: 08b3c44c35adfc147af5e44ced3d43de, type: 3}
+        WeaponSprite: {fileID: 0}

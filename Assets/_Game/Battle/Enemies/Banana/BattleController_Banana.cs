@@ -9,6 +9,7 @@ namespace Game
     // Класс битвы с персонажем "Банан"
     public sealed class BattleController_Banana : BattleControllerBase
     {
+        private protected override string _gameOverMessage => "Сори, это все Херобрин";
         private readonly InitData _initData;
 
         // Структура с данными битвы для персонажа "Банан"
@@ -29,10 +30,10 @@ namespace Game
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs, InitData initData, 
             IGameRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService, 
-            WalletService walletService) : base(view, prefabButton, inventory, gameStateController, points, player,
+            WalletService walletService, HeartModeService heartModeService, IAssetLoader assetLoader) : base(view, prefabButton, inventory, gameStateController, points, player,
             arena, heart, container, virtualCamera, turnProgressStorage,
             timeBasedTurnBooster, enemyBattleButton, screenManager, attackIndicator, nextButton, localizedPairs,
-            mainRepositoryStorage, healthService, levelService, walletService)
+            mainRepositoryStorage, healthService, levelService, walletService, heartModeService, assetLoader)
         {
             _initData = initData;
             Init();

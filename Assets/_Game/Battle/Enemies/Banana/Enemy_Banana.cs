@@ -42,7 +42,7 @@ namespace Game
             switch (actionType)
             {
                 case BattleActionType.Attack:
-                    return "Ай";
+                    return "Да за что?";
 
                 case BattleActionType.Mercy:
                     return "Я не хочу обижать своих подписчиков";
@@ -62,7 +62,7 @@ namespace Game
 
         public override string GetStartReaction(int index)
         {
-            return "Сори, Херобрин попросил одолеть тебя";
+            return "Я не хочу сражаться, но Херобрин попросил одолеть тебя";
         }
 
         public override string GetActionReaction(ActionBattle actionBattle)

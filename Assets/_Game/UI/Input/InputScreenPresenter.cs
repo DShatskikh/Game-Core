@@ -22,15 +22,16 @@ namespace Game
 #if UNITY_WEBGL || UNITY_ANDROID
             if (DeviceTypeDetector.IsMobile())
             {
-                AwaitCreateJoystick().Forget();
+                AwaitCreateMobileInput().Forget();
             }
 #endif
         }
 
 #if UNITY_WEBGL || UNITY_ANDROID
-        private async UniTask AwaitCreateJoystick()
+        private async UniTask AwaitCreateMobileInput()
         {
             await _assetLoader.InstantiateAsync(AssetPathConstants.JOYSTICK_PATH, _view.transform);
+            await _assetLoader.InstantiateAsync(AssetPathConstants.RUN_BUTTON_PATH, _view.transform);
         }
 #endif
         

@@ -8,6 +8,7 @@ namespace Game
 {
     public sealed class BattleController_Blaze : BattleControllerBase
     {
+        private protected override string _gameOverMessage => "Гори-гори ясна";
         private readonly InitData _initData;
 
         [Serializable]
@@ -25,10 +26,10 @@ namespace Game
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs, InitData initData, 
             IGameRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService,
-            WalletService walletService) : base(view, prefabButton, inventory, gameStateController, points, player, 
+            WalletService walletService, HeartModeService heartModeService, IAssetLoader assetLoader) : base(view, prefabButton, inventory, gameStateController, points, player, 
             arena, heart, container, virtualCamera, turnProgressStorage, timeBasedTurnBooster, enemyBattleButton, 
             screenManager, attackIndicator, nextButton, localizedPairs, mainRepositoryStorage, healthService, 
-            levelService, walletService)
+            levelService, walletService, heartModeService, assetLoader)
         {
             _initData = initData;
             Init();

@@ -13,13 +13,14 @@ namespace Game
         private List<IShell> _shells = new();
         private DiContainer _container;
         private Coroutine _coroutine;
-        private HeartModeService _heartModeService;
+        public override Heart.Mode GetStartHeartMode => Heart.Mode.Red;
+        public override int GetTurnAddedProgress => 2;
+        public override int GetShieldAddedProgress => 3;
 
         [Inject]
         private void Construct(DiContainer container, HeartModeService heartModeService)
         {
             _container = container;
-            _heartModeService = heartModeService;
         }
         
         private void Start()
@@ -29,8 +30,6 @@ namespace Game
 
         private IEnumerator WaitAttack()
         {
-            _heartModeService.SetMode(Heart.Mode.Red);
-            
             while (true)
             {
                 var point = new Vector2(Random.Range(-10f, 10f), Random.Range(-10f, 10f)).normalized * 3;
@@ -41,7 +40,7 @@ namespace Game
                 yield return new WaitForSeconds(2);
             }
         }
-        
+
         public override void Hide()
         {
             if (_coroutine != null)

@@ -1,4 +1,5 @@
 ﻿using System;
+using Zenject;
 
 namespace Game
 {
@@ -6,6 +7,19 @@ namespace Game
     [Serializable]
     public sealed class MainInventory
     {
+        [Serializable]
+        public struct Data
+        {
+            public Slot[] MainSlots;
+            public Slot ArmorSlot;
+            public Slot HandSlot;
+            public Slot WeaponSlot;
+            public Slot WeaponAdditionalSlot;
+        }
+
+        [Inject]
+        private IGameRepositoryStorage _gameRepositoryStorage;
+        
         public const int SIZE = 16;
         
         public Slot[] MainSlots = new Slot[SIZE];
@@ -26,6 +40,7 @@ namespace Game
         }
 
         public Slot ArmorSlot = new();
+        public Slot HandSlot = new();
         public Slot WeaponSlot = new();
         public Slot WeaponAdditionalSlot = new();
         
@@ -80,5 +95,29 @@ namespace Game
 
         public bool TryRemoveItem(string id) => 
             InventoryUseCases.TryRemoveItem(this, id);
+
+        public void Save()
+        {
+            _gameRepositoryStorage.Set(SaveConstants.MAIN_INVENTORY, new Data()
+            {
+                ArmorSlot = ArmorSlot,
+                HandSlot = HandSlot,
+                MainSlots = MainSlots,
+                WeaponAdditionalSlot = WeaponAdditionalSlot,
+                WeaponSlot = WeaponSlot
+            });
+        }
+
+        public void Load()
+        {
+            if (_gameRepositoryStorage.TryGet(SaveConstants.MAIN_INVENTORY, out Data data))
+            {
+                ArmorSlot = data.ArmorSlot;
+                HandSlot = data.HandSlot;
+                MainSlots = data.MainSlots;
+                WeaponAdditionalSlot = data.WeaponAdditionalSlot;
+                WeaponSlot = data.WeaponSlot;
+            }
+        }
     }
 }

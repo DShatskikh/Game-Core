@@ -9,7 +9,7 @@ namespace Game
         private MobArena _mobArena;
 
         [SerializeField]
-        private Enemy_WitherSkeleton _witherSkeleton;
+        private StartBattle_WitherSkeleton _startBattleWitherSkeleton;
         
         [Inject]
         private TutorialState _tutorialState;
@@ -21,10 +21,12 @@ namespace Game
 
             _mobArena.HideAllMons();
             
+            Debug.Log(_tutorialState.CurrentStep);
+            
             if (_tutorialState.CurrentStep != TutorialStep.MOVE_MOB_ARENA)
                 return;
             
-            _witherSkeleton.gameObject.SetActive(true);
+            _startBattleWitherSkeleton.gameObject.SetActive(true);
         }
     }
 }

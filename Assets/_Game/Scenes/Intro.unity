@@ -1098,12 +1098,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 514127404391537944, guid: 1200dd41dfaac3242827488bf69b48a3, type: 3}
       propertyPath: m_text
-      value: "\u0412\u0441\u0442\u0440\u0435\u0442\u0438\u043C\u0441\u044F \u043D\u0430
-        \u041F\u0412\u041F \u0430\u0440\u0435\u043D\u0435"
+      value: "\u0425\u0430-\u0445\u0430 \u0432\u0441\u0442\u0440\u0435\u0442\u0438\u043C\u0441\u044F
+        \u043D\u0430 \u041F\u0412\u041F \u0430\u0440\u0435\u043D\u0435 \u043D\u0443\u0431"
       objectReference: {fileID: 0}
     - target: {fileID: 514127404391537944, guid: 1200dd41dfaac3242827488bf69b48a3, type: 3}
       propertyPath: m_fontSize
-      value: 24.25
+      value: 21.75
       objectReference: {fileID: 0}
     - target: {fileID: 4037767892516280316, guid: 1200dd41dfaac3242827488bf69b48a3, type: 3}
       propertyPath: _delay
@@ -1200,6 +1200,14 @@ PrefabInstance:
     - target: {fileID: 5098592153071785203, guid: 1200dd41dfaac3242827488bf69b48a3, type: 3}
       propertyPath: m_Alpha
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215418755146768163, guid: 1200dd41dfaac3242827488bf69b48a3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215418755146768163, guid: 1200dd41dfaac3242827488bf69b48a3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

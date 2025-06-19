@@ -14,7 +14,7 @@ namespace Game
         [Serializable]
         public struct SaveData
         {
-            public TimeSpan GameTime;
+            public long Ticks;
         }
         
         public SessionTimeSystem(IGameRepositoryStorage mainRepositoryStorage)
@@ -41,7 +41,7 @@ namespace Game
             
             _mainRepositoryStorage.Set(SaveConstants.SESSION_TIME, new SaveData()
             {
-                GameTime = time
+                Ticks = time.Ticks
             });
         }
 
@@ -49,7 +49,7 @@ namespace Game
         {
             if (_mainRepositoryStorage.TryGet(SaveConstants.SESSION_TIME, out SaveData saveData))
             {
-                _allGameTime = saveData.GameTime;
+                _allGameTime = TimeSpan.FromTicks(saveData.Ticks);
             }
         }
     }

@@ -51,22 +51,24 @@ namespace Game
         private IHeartMover _mover;
         private HeartModeService _heartModeService;
         private HealthService _healthService;
+        private ArmorService _armorService;
 
         public event Action OnDeath;
 
         [Inject]
         private void Construct(Arena arena, PlayerInput playerInput, HeartModeService heartModeService, 
-            HealthService healthService)
+            HealthService healthService, ArmorService armorService)
         {
             _arena = arena;
             _heartModeService = heartModeService;
             _healthService = healthService;
+            _armorService = armorService;
             _animator = GetComponent<Animator>();
             
-            heartModeService.Upgrade += SetMode;
+            _heartModeService.Upgrade += SetMode;
             _redMover.Init(playerInput, transform);
             _blueMover.Init(playerInput, _arena);
-            SetMode(heartModeService.GetMode);
+            SetMode(_heartModeService.GetMode);
         }
 
         private void OnEnable()
@@ -80,7 +82,6 @@ namespace Game
             if (_healthService.GetHealth.Value <= 0)
                 return;
 
-            Debug.Log(_mover);
             _mover.Move();
             var position = (Vector2)transform.position;
             
@@ -109,6 +110,7 @@ namespace Game
 
         private void OnDestroy()
         {
+            _heartModeService.Upgrade -= SetMode;
             _mover?.Disable();
         }
 
@@ -136,7 +138,7 @@ namespace Game
         private IEnumerator TakeDamage(int damage)
         {
             RuntimeManager.PlayOneShot(DAMAGE_SOUND_PATH);
-            _healthService.GetHealth.Value -= damage;
+            _healthService.GetHealth.Value -= damage * (1 - (int)((float)_armorService.GetArmor / (float)(_armorService.GetArmor + 20f)));
 
             if (_healthService.GetHealth.Value <= 0)
             {

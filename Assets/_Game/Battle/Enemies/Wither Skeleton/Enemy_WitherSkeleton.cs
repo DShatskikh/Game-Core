@@ -5,7 +5,7 @@ namespace Game
 {
     public sealed class Enemy_WitherSkeleton : EnemyBase
     {
-        private int _speak;
+        private int _cockCount;
         
         public override ActionBattle[] Actions
         {
@@ -17,16 +17,16 @@ namespace Game
                 {
                     var action = _actions[i];
                     
-                    switch (i)
-                    {
-                        case 1 when _speak != 0:
-                        case 3 when _speak != 1:
-                        case 4 when _speak < 2:
-                            continue;
-                        default:
-                            actions.Add(action);
-                            break;
-                    }
+                    if (i == 0 && CanMercy)
+                        continue;
+                    
+                    if (i == 1 && !CanMercy)
+                        continue;
+                    
+                    if (i == 2 && _cockCount == 4)
+                        continue;
+                    
+                    actions.Add(action);
                 }
 
                 return actions.ToArray();
@@ -38,13 +38,13 @@ namespace Game
             switch (actionType)
             {
                 case BattleActionType.Attack:
-                    return "Девочек бить нельзя!";
+                    return "Быть скелетом так тяжело!";
 
                 case BattleActionType.Mercy:
-                    return "Я больше не в команде Херобрина";
+                    return "Я ты мой бро";
 
                 case BattleActionType.NoAction:
-                    return "Я просто хочу домой";
+                    return "Ты не мой бро";
                 
                 default:
                     return "(...)";
@@ -53,22 +53,20 @@ namespace Game
 
         public override string GetDeathReaction()
         {
-            return "Я думала ты хороший";
+            return "Я думал ты мой бро";
         }
 
         public override string GetStartReaction(int index)
         {
-            return "Сори, но я в команде Херобрина, поэтому я сражаюсь против тебя";
+            return "Ты не мой бро";
         }
 
         public override string GetActionReaction(ActionBattle actionBattle)
         {
             var action = Actions.First(x => x.Name == actionBattle.Name);
             
-            if (actionBattle.Name == _actions[1].Name || actionBattle.Name == _actions[3].Name || actionBattle.Name == _actions[4].Name)
-            {
-                _speak++;
-            }
+            if (actionBattle.Name == _actions[2].Name) 
+                _cockCount++;
 
             return action.Reaction;
         }

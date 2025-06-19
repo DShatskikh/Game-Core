@@ -15,21 +15,14 @@ namespace Game
         private Transform[] _spawnPoints;
         
         private Coroutine _coroutine;
-        private HeartModeService _heartModeService;
-        private Arena _arena;
         private float _direction = 1;
         private List<Shell> _shells = new();
 
+        public override Heart.Mode GetStartHeartMode => Heart.Mode.Blue;
+        public override int GetTurnAddedProgress => 3;
         public override Vector2 GetSizeArena => new(5, 1.5f);
-        public override int GetAddProgress => 1;
+        public override int GetShieldAddedProgress => 3;
 
-        [Inject]
-        private void Construct(HeartModeService heartModeService, Arena arena)
-        {
-            _heartModeService = heartModeService;
-            _arena = arena;
-        }
-        
         private void Start()
         {
             _direction = Random.Range(0, 2) == 0 ? -1 : 1;
@@ -38,8 +31,6 @@ namespace Game
 
         private IEnumerator WaitAttack()
         {
-            _heartModeService.SetMode(Heart.Mode.Blue);
-            
             while (true)
             {
                 var spawnPoint = _direction == 1 ? _spawnPoints[0] : _spawnPoints[1];

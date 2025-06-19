@@ -16,14 +16,15 @@ namespace Game
         [SerializeField]
         private Transform[] _platformSpawnPoint;
         
-        private HeartModeService _heartModeService;
         private Coroutine _coroutine;
         private Arena _arena;
+        public override Heart.Mode GetStartHeartMode => Heart.Mode.Blue;
+        public override int GetTurnAddedProgress => 2;
+        public override int GetShieldAddedProgress => 2;
 
         [Inject]
-        private void Construct(HeartModeService heartModeService, Arena arena)
+        private void Construct(Arena arena)
         {
-            _heartModeService = heartModeService;
             _arena = arena;
         }
         
@@ -34,7 +35,6 @@ namespace Game
 
         private IEnumerator WaitAttack()
         {
-            _heartModeService.SetMode(Heart.Mode.Blue);
             yield return _arena.AwaitSetSize(new Vector2(5, 3)).ToCoroutine();
             
             while (true)
@@ -48,7 +48,7 @@ namespace Game
                 yield return new WaitForSeconds(1f);
             }
         }
-        
+
         public override void Hide()
         {
             

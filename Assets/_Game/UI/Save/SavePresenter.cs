@@ -17,10 +17,12 @@ namespace Game
         private LevelService _levelService;
         private SessionTimeSystem _sessionTimeSystem;
         private IGameRepositoryStorage _mainRepositoryStorage;
+        private Player _player;
 
         [Inject]
         private void Construct(SaveView view, ScreenManager screenManager, GameStateController gameStateController, 
-            LevelService levelService, SessionTimeSystem sessionTimeSystem, IGameRepositoryStorage mainRepositoryStorage)
+            LevelService levelService, SessionTimeSystem sessionTimeSystem, IGameRepositoryStorage mainRepositoryStorage,
+            Player player)
         {
             _view = view;
             _screenManager = screenManager;
@@ -28,6 +30,7 @@ namespace Game
             _levelService = levelService;
             _sessionTimeSystem = sessionTimeSystem;
             _mainRepositoryStorage = mainRepositoryStorage;
+            _player = player;
             
             _view.GetSaveButton.onClick.AddListener(OnClickSaveButton);
             _view.GetReturnButton.onClick.AddListener(OnClickReturnButton);
@@ -57,6 +60,12 @@ namespace Game
 
         private async UniTask WaitSaveAnimation()
         {
+            if (_mainRepositoryStorage.TryGet(SaveConstants.LOCATION, out LocationsManager.Data data))
+            {
+                data.PlayerPosition = _player.transform.position;
+                _mainRepositoryStorage.Set(SaveConstants.LOCATION, data);
+            }
+            
             _sessionTimeSystem.Save();
             _mainRepositoryStorage.Save();
             _view.GetInfoLabel.text = $"Нубик УР{_levelService.GetLv} {_sessionTimeSystem.GetTextTime()}";

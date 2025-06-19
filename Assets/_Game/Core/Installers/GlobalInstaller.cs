@@ -52,7 +52,9 @@ namespace Game
             Container.Bind<CoroutineRunner>().FromInstance(_coroutineRunner).AsSingle().NonLazy();
             Container.Bind<HeartModeService>().AsSingle().WithArguments(_heartIcons).NonLazy();
             Container.Bind<LuaCommandRegister>().AsSingle().NonLazy();
-            Container.Bind<IGameRepositoryStorage>().To<MainRepositoryStorage>().AsSingle().NonLazy();
+
+            var mainRepositoryStorage = new MainRepositoryStorage();
+            Container.Bind<IGameRepositoryStorage>().FromInstance(mainRepositoryStorage).AsSingle().NonLazy();
             Container.Bind<SettingsRepositoryStorage>().AsSingle().NonLazy();
             Container.Bind<SessionTimeSystem>().AsSingle().NonLazy();
 
@@ -72,6 +74,8 @@ namespace Game
     Container.Bind<IADSService>().To<EmptyADS>().AsSingle().NonLazy();
     Container.Bind<IPurchaseService>().To<EmptyPurchase>().AsSingle().NonLazy();
 #endif
+            
+            mainRepositoryStorage.Load();
         }
     }
 }

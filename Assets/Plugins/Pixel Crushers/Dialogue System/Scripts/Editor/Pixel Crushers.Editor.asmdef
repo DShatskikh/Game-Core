@@ -1,0 +1,19 @@
+{
+    "name": "Pixel Crushers.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:454324f28083dd840988fe4c268e82f8",
+        "GUID:42695619f71d35c4781d10b3289a08fc"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

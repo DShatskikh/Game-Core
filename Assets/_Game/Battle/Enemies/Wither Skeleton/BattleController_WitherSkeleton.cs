@@ -8,12 +8,16 @@ namespace Game
 {
     public sealed class BattleController_WitherSkeleton : BattleControllerBase
     {
+        private protected override string _gameOverMessage => "Все-таки ты не мой бро";
         private readonly InitData _initData;
-
+        private readonly TutorialState _tutorialState;
+        private bool _isCreatedTutorialAttack;
+        
         [Serializable]
         public struct InitData
         {
             public Enemy_WitherSkeleton Enemy_WitherSkeleton;
+            public Attack_WitherSkeleton_Tutorial TutorialAttackPrefab;
         }
 
         public class Factory : PlaceholderFactory<BattleController_WitherSkeleton> { }
@@ -25,12 +29,14 @@ namespace Game
             AttackIndicator attackIndicator, INextButton nextButton, 
             SerializableDictionary<string, LocalizedString> localizedPairs, InitData initData, 
             IGameRepositoryStorage mainRepositoryStorage, HealthService healthService, LevelService levelService, 
-            WalletService walletService) : base(view, prefabButton, inventory, gameStateController, points, player, 
+            WalletService walletService, TutorialState tutorialState, HeartModeService heartModeService, IAssetLoader assetLoader) 
+            : base(view, prefabButton, inventory, gameStateController, points, player, 
             arena, heart, container, virtualCamera, turnProgressStorage, timeBasedTurnBooster, enemyBattleButton, 
             screenManager, attackIndicator, nextButton, localizedPairs, mainRepositoryStorage, healthService, 
-            levelService, walletService)
+            levelService, walletService, heartModeService, assetLoader)
         {
             _initData = initData;
+            _tutorialState = tutorialState;
             Init();
         }
 
@@ -41,6 +47,12 @@ namespace Game
 
         private protected override Attack GetAttack()
         {
+            if (!_tutorialState.IsCompleted && !_isCreatedTutorialAttack)
+            {
+                _isCreatedTutorialAttack = true;
+                return _initData.TutorialAttackPrefab;
+            }
+
             if (_enemies[0].Attacks.Length <= _attackIndex)
                 _attackIndex = 0;
             
@@ -53,11 +65,16 @@ namespace Game
         private protected override string GetStateText()
         {
             if (_initData.Enemy_WitherSkeleton.CanMercy)
-                return "Банан щадит вас";
+                return "Черный скелет щадит вас";
             
-            return "Сильнейший телохранитель Херобрина (по его словам)";
+            return "Перед вами черный скелет";
         }
 
+        private protected override void EndFightAdditional()
+        {
+            _tutorialState.FinishStep();
+        }
+        
         public override void OnGameOver()
         {
             Exit().Forget();

@@ -48,6 +48,8 @@ namespace Game
         public IReadOnlyReactiveProperty<MonoBehaviour> NearestUseObject => 
             _useAreaChecker.NearestUseObject;
 
+        public PlayerView GetView => _view;
+
         [Inject]
         private void Construct(CinemachineConfiner2D confiner, PlayerInput playerInput, MainInventory mainInventory)
         {

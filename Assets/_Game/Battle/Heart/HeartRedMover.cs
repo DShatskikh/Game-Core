@@ -33,7 +33,6 @@ namespace Game
         void IHeartMover.Move()
         {
             var direction = _playerInput.actions["Move"].ReadValue<Vector2>().normalized;
-            Debug.Log(direction);
             _transform.position = (Vector2)_transform.position + direction * _speed * Time.deltaTime;
         }
 

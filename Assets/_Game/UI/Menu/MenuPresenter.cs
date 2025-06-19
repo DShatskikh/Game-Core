@@ -13,15 +13,20 @@ namespace Game
         private MenuView _view;
         private GameStateController _gameStateController;
         private ScreenManager _screenManager;
+        private IAssetLoader _assetLoader;
         private DiContainer _container;
 
         [Inject]
-        private void Construct(MenuView menuView, DiContainer container, GameStateController gameStateController, ScreenManager screenManager)
+        private void Construct(MenuView menuView, DiContainer container, GameStateController gameStateController, 
+            ScreenManager screenManager, LevelService levelService, HealthService healthService,
+            MainInventory mainInventory, WalletService walletService, AttackService attackService, 
+            ArmorService armorService, IAssetLoader assetLoader)
         {
             _view = menuView;
             _container = container;
             _gameStateController = gameStateController;
             _screenManager = screenManager;
+            _assetLoader = assetLoader;
             
             _gameStateController.OpenCutscene();
             
@@ -31,6 +36,20 @@ namespace Game
             _view.GetMenuButton.onClick.AddListener(OnMenuClicked);
             EventSystem.current.SetSelectedGameObject(_view.GetContinueButton.gameObject);
             OnStatsClicked();
+
+            string weaponName = mainInventory.WeaponSlot.HasItem ? mainInventory.WeaponSlot.Item.MetaData.Name : "Отсутствует";
+            string armorName = mainInventory.ArmorSlot.HasItem ? mainInventory.ArmorSlot.Item.MetaData.Name : "Отсутствует";
+            
+            var info = "Нубик\n\n";
+            info += $"УР: {levelService.GetLv}\n";
+            info += $"ЗДОРОВЬЕ: {healthService.GetHealth}/{healthService.GetMaxHealth}\n\n";
+            info += $"АТАКА: {attackService.GetAttack - 1} (+{attackService.GetAttack})     ОПЫТ:  {levelService.GetExp}\n";
+            info += $"ЗАЩИТА: {attackService.GetAttack} (+{armorService.GetArmor})   ДО УР: {levelService.GetExpToNextLv}\n\n";
+            info += $"ОРУЖИЕ: {weaponName}\n";
+            info += $"БРОНЯ: {armorName}\n\n";
+            info += $"МОН: {walletService.Money}\n";
+            
+            _view.SetStatsLabel(info);
         }
 
         public IScreenPresenter Prototype()
@@ -57,7 +76,7 @@ namespace Game
         {
             _screenManager.Close(ScreensEnum.MENU);
             _screenManager.Close(ScreensEnum.INPUT);
-            SceneManager.LoadScene(0);
+            _assetLoader.LoadScene(AssetPathConstants.MENU_SCENE_PATH);
         }
 
         private void OnInventoryClicked()

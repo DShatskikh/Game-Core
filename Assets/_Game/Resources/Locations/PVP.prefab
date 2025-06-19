@@ -3126,7 +3126,6 @@ MonoBehaviour:
       mRTL_MaxLineLength: 0
       mRTL_ConvertNumbers: 0
       m_DontLocalizeParameters: 0
-  _arrow: {fileID: 0}
 --- !u!1 &1758204731941886066
 GameObject:
   m_ObjectHideFlags: 0
@@ -17562,9 +17561,17 @@ PrefabInstance:
       value: Dimas
       objectReference: {fileID: 0}
     - target: {fileID: 470264882388070795, guid: ffd589f33bf4c7a4387a0e0d012e3dcb, type: 3}
+      propertyPath: _maxHealth
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 470264882388070795, guid: ffd589f33bf4c7a4387a0e0d012e3dcb, type: 3}
       propertyPath: _actions.Array.size
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 470264882388070795, guid: ffd589f33bf4c7a4387a0e0d012e3dcb, type: 3}
+      propertyPath: '_attacks.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8826771002209856280, guid: e91505790b92bd947932977dc162adf3, type: 3}
     - target: {fileID: 470264882388070795, guid: ffd589f33bf4c7a4387a0e0d012e3dcb, type: 3}
       propertyPath: _actions.Array.data[0].Info
       value: "\u041E\u043D \u0438\u0437\u043B\u0443\u0447\u0430\u0435\u0442 \u0441\u0438\u043B\u0443
@@ -19725,7 +19732,7 @@ MonoBehaviour:
     mRTL_MaxLineLength: 0
     mRTL_ConvertNumbers: 0
     m_DontLocalizeParameters: 0
-  _maxHealth: 20
+  _maxHealth: 8
   _op: 5
   _money: 15
   _attacks:

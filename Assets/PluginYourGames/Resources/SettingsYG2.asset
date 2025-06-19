@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: SettingsYG2
   m_EditorClassIdentifier: 
   Authorization:
-    scopes: 1
     playerPhotoSize: 1
     authorized: 1
     playerName: Player current
@@ -63,11 +62,10 @@ MonoBehaviour:
   Storage:
     saveLocal: 0
     saveCloud: 1
-    saveCloudInterval: 0
     flush: 0
   Basic:
-    platform: {fileID: 0}
-    autoApplySettings: 0
+    platform: {fileID: 11400000, guid: c2a303d33a9fd394bae4c4b88b9a1c44, type: 2}
+    autoApplySettings: 1
     autoPauseGame: 1
     editEventSystem: 1
     autoGRA: 1

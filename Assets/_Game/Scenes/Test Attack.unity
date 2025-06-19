@@ -1627,67 +1627,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727251457}
   m_CullTransparentMesh: 1
---- !u!1001 &982955325
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2120995553205588925, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2120995553205588925, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2120995553205588925, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2120995553205588925, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2120995553205588925, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2120995553205588925, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2120995553205588925, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2120995553205588925, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2120995553205588925, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2120995553205588925, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435276318671009613, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
-      propertyPath: m_Name
-      value: Attack Banana 1 Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435276318671009613, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
 --- !u!1 &1157294180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,7 +2215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e832cee6ae4846f1bc8ae9404d15c7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attack: {fileID: 5109022563784259035, guid: f753ab1079b37bc4fa2c9790f147066d, type: 3}
+  _attack: {fileID: 1344649036916751669, guid: 62cc79fcbfdb1f5428ac7113ac394e5b, type: 3}
   _container: {fileID: 9050274617510201846}
   _arena: {fileID: 3403263030505125498}
 --- !u!114 &1467522436
@@ -14829,4 +14768,3 @@ SceneRoots:
   - {fileID: 1467522434}
   - {fileID: 1401155808}
   - {fileID: 6723344715299427853}
-  - {fileID: 982955325}

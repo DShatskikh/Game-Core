@@ -35,7 +35,7 @@ namespace Game
         
         private void Start()
         {
-            if (_gameRepository.TryGet(SaveConstants.MobArena, out Data data))
+            if (_gameRepository.TryGet(SaveConstants.MOB_ARENA, out Data data))
             {
                 _battleIndex = data.BattleIndex;
             }
@@ -59,9 +59,12 @@ namespace Game
         {
             if (!this)
                 return;
+         
+            if (!enabled)
+                return;
             
             _battleIndex++;
-            _gameRepository.Set(SaveConstants.MobArena, new Data()
+            _gameRepository.Set(SaveConstants.MOB_ARENA, new Data()
             {
                 BattleIndex = _battleIndex
             });

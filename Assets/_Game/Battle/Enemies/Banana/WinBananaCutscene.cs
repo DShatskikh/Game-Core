@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using PixelCrushers.DialogueSystem;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -40,20 +39,23 @@ namespace Game
         private MainInventory _inventory;
         private IGameRepositoryStorage _mainRepositoryStorage;
         private TutorialState _tutorialState;
+        private GameStateController _gameStateController;
 
         [Inject]
         private void Construct(Player player, MainInventory inventory, IGameRepositoryStorage mainRepositoryStorage, 
-            TutorialState tutorialState)
+            TutorialState tutorialState, GameStateController gameStateController)
         {
             _player = player;
             _inventory = inventory;
             _mainRepositoryStorage = mainRepositoryStorage;
             _tutorialState = tutorialState;
+            _gameStateController = gameStateController;
         }
 
         private void OnDisable()
         {
             _player.GetMover.Stop();
+            _player.GetView.OnSpeedChange(0);
         }
 
         public void StartCutscene(bool isDeath)
@@ -77,15 +79,14 @@ namespace Game
             _dialogue1.OnUse();
             yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
 
+            _gameStateController.OpenCutscene();
+            
             _herobrine.SetActive(false);
             _player.gameObject.SetActive(false);
          
             _herobrineCutscene.SetActive(true);
             _playerCutscene.SetActive(true);
             
-            //if (!isDeath)
-            //    _enemyBanana.gameObject.SetActive(false);
-
             _playableDirector.Play();
             yield return new WaitWhile(() => _playableDirector.state == PlayState.Playing);
             
@@ -95,17 +96,18 @@ namespace Game
             
             _herobrine.SetActive(true);
             _player.gameObject.SetActive(true);
-            //_enemyBanana.gameObject.SetActive(true);
             
             _dialogue2.OnUse();
             yield return new WaitUntil(() => !DialogueManager.instance.isConversationActive);
-
+            _gameStateController.OpenCutscene();
+            
             _inventory.WeaponSlot.RemoveItem();
             _mainRepositoryStorage.Set(SaveConstants.PVPARENA, new PVPArena.SaveData() { State = PVPArena.State.DIMAS });
             _tutorialState.FinishStep();
             
             _player.Flip(true);
-
+            _player.GetView.OnSpeedChange(1);
+            
             do
             {
                 _player.GetMover.Move(new Vector2(-1, 0), true);

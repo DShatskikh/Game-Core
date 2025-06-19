@@ -17,23 +17,16 @@ namespace Game
         [SerializeField]
         private Transform[] _platformSpawnPoint;
         
-        private HeartModeService _heartModeService;
         private Coroutine _coroutine;
-        private Arena _arena;
         private List<Platform> _platformsUp = new();
         private List<Platform> _platformsDown = new();
         private List<Shell> _shells = new();
 
+        public override Heart.Mode GetStartHeartMode => Heart.Mode.Blue;
+        public override int GetTurnAddedProgress => 3;
         public override Vector2 GetSizeArena => new(5, 3);
-        public override int GetAddProgress => 2;
+        public override int GetShieldAddedProgress => 2;
 
-        [Inject]
-        private void Construct(HeartModeService heartModeService, Arena arena)
-        {
-            _heartModeService = heartModeService;
-            _arena = arena;
-        }
-        
         private void Start()
         {
             _coroutine = StartCoroutine(WaitAttack());
@@ -41,8 +34,6 @@ namespace Game
 
         private IEnumerator WaitAttack()
         {
-            _heartModeService.SetMode(Heart.Mode.Blue);
-            
             while (true)
             {
                 var platformRight = Instantiate(_platformPrefab, _platformSpawnPoint[0].position, Quaternion.identity,

@@ -13,7 +13,7 @@ namespace Game
 
         [SerializeField]
         private DialogueSystemTrigger _enoughMoneyDialogue;
-        
+
         public override void Open()
         {
             gameObject.SetActive(true);

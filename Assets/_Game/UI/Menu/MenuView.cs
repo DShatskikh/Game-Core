@@ -32,6 +32,9 @@ namespace Game
         private TMP_Text _label;
 
         [SerializeField]
+        private TMP_Text _statsLabel;
+        
+        [SerializeField]
         private Image _itemIcon;
         
         public ShopButton GetContinueButton => _continueButton;
@@ -42,6 +45,9 @@ namespace Game
 
         public void SetLabel(string value) => 
             _label.text = value;
+        
+        public void SetStatsLabel(string value) => 
+            _statsLabel.text = value;
 
         public void ToggleStats(bool value) => 
             _statsContainer.SetActive(value);
