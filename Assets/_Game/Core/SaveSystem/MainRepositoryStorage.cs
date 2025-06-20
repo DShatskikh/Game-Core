@@ -29,19 +29,16 @@ namespace Game
 
         public void Load()
         {
+#if YandexGamesPlatform_yg
+            var data = JsonUtility.FromJson<SerializableDictionary<string, string>>(YG2.saves.Data) ?? new SerializableDictionary<string, string>();
+#else 
             if (PlayerPrefs.HasKey(SAVE_KEY))
             {
-#if YandexGamesPlatform_yg
-                var data = JsonUtility.FromJson<SerializableDictionary<string, string>>(YG2.saves.Data) ?? new SerializableDictionary<string, string>();
-#else 
                 var data = JsonUtility.FromJson<SerializableDictionary<string, string>>(PlayerPrefs.GetString(SAVE_KEY));
+            }
 #endif
-
-                _container = data;
-            }
-            else
-            {
-            }
+            
+            _container = data;
         }
 
         public void Save()
@@ -49,6 +46,7 @@ namespace Game
             var data = JsonUtility.ToJson(_container);
 
 #if YandexGamesPlatform_yg
+            YG2.saves.Data = data;
             YG2.SaveProgress();
 #else 
             PlayerPrefs.SetString(SAVE_KEY, data);

@@ -7,6 +7,6 @@
         false,
         false
     ],
-    "Data": "",
-    "idSave": 7
+    "Data": "{\"m_keys\":[\"NotFirstGame\",\"Location\",\"Started the game\",\"TutorialState\",\"SessionTime\"],\"m_values\":[\"{}\",\"{\\\"LocationId\\\":\\\"Spawn\\\",\\\"PointIndex\\\":0,\\\"PlayerPosition\\\":{\\\"x\\\":3.233675003051758,\\\"y\\\":-1.4924968481063843}}\",\"{}\",\"{\\\"CurrentStep\\\":2,\\\"IsCompleted\\\":false}\",\"{\\\"Ticks\\\":111800209}\"]}",
+    "idSave": 13
 }
