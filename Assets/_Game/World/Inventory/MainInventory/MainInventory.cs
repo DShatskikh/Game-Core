@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using UnityEngine;
 using Zenject;
 
 namespace Game
@@ -10,18 +12,17 @@ namespace Game
         [Serializable]
         public struct Data
         {
-            public Slot[] MainSlots;
-            public Slot ArmorSlot;
-            public Slot HandSlot;
-            public Slot WeaponSlot;
-            public Slot WeaponAdditionalSlot;
+            public Item[] MainItems;
+            public Item ArmorItem;
+            public Item HandItem;
+            public Item WeaponItem;
+            public Item WeaponAdditionalItem;
         }
 
-        [Inject]
-        private IGameRepositoryStorage _gameRepositoryStorage;
-        
         public const int SIZE = 16;
         
+        private IGameRepositoryStorage _gameRepositoryStorage;
+
         public Slot[] MainSlots = new Slot[SIZE];
         public int GetItemsCount
         {
@@ -49,29 +50,41 @@ namespace Game
         public event Action<Item> OnItemConsumed;
         public event Action<Item, Slot> OnSlotChange;
 
-        public MainInventory()
+        public MainInventory(IGameRepositoryStorage gameRepositoryStorage)
         {
-            for (int x = 0; x < SIZE; x++)
-            {
-                MainSlots[x] = new Slot(); 
-            }
+            _gameRepositoryStorage = gameRepositoryStorage;
         }
 
-        public void Add(Item item) => 
+        public void Add(Item item)
+        {
             InventoryUseCases.TryAddItem(this, item);
+            Save();
+        }
 
-        public void PutOn(Slot slot) => 
+        public void PutOn(Slot slot)
+        {
             InventoryUseCases.PutOn(this, slot);
+            Save();
+        }
 
-        public void EquipWeapon(Item weapon) => 
+        public void EquipWeapon(Item weapon)
+        {
             InventoryUseCases.EquipWeapon(this, weapon);
+            Save();
+        }
 
-        public void EquipAdditionalWeapon(Item additionalWeapon) => 
+        public void EquipAdditionalWeapon(Item additionalWeapon)
+        {
             InventoryUseCases.EquipAdditionalWeapon(this, additionalWeapon);
+            Save();
+        }
 
-        public void EquipArmor(Item armor) => 
+        public void EquipArmor(Item armor)
+        {
             InventoryUseCases.EquipArmor(this, armor);
-        
+            Save();
+        }
+
         public void NotifyAddItem(Item item) => 
             OnItemAdded?.Invoke(item);
 
@@ -98,25 +111,45 @@ namespace Game
 
         public void Save()
         {
+            for (int i = 0; i < MainSlots.Length; i++) 
+                MainSlots[i] ??= new Slot();
+
             _gameRepositoryStorage.Set(SaveConstants.MAIN_INVENTORY, new Data()
             {
-                ArmorSlot = ArmorSlot,
-                HandSlot = HandSlot,
-                MainSlots = MainSlots,
-                WeaponAdditionalSlot = WeaponAdditionalSlot,
-                WeaponSlot = WeaponSlot
+                ArmorItem = ArmorSlot.Item,
+                HandItem = HandSlot.Item,
+                MainItems = MainSlots.Select(x => x.Item).ToArray(),
+                WeaponAdditionalItem = WeaponAdditionalSlot.Item,
+                WeaponItem = WeaponSlot.Item
             });
         }
 
         public void Load()
         {
+            Debug.Log("Загрузили предметы");
+            
+            for (int x = 0; x < SIZE; x++)
+            {
+                MainSlots[x] = new Slot();
+            }
+            
             if (_gameRepositoryStorage.TryGet(SaveConstants.MAIN_INVENTORY, out Data data))
             {
-                ArmorSlot = data.ArmorSlot;
-                HandSlot = data.HandSlot;
-                MainSlots = data.MainSlots;
-                WeaponAdditionalSlot = data.WeaponAdditionalSlot;
-                WeaponSlot = data.WeaponSlot;
+                ArmorSlot.Item = (data.ArmorItem == null || data.ArmorItem.ID == string.Empty) ? null : data.ArmorItem;
+                HandSlot.Item = (data.HandItem == null || data.HandItem.ID == string.Empty) ? null : data.HandItem;
+                    
+                MainSlots = new Slot[data.MainItems.Length];
+
+                for (int i = 0; i < data.MainItems.Length; i++)
+                {
+                    if (MainSlots[i] == null)
+                        MainSlots[i] = new Slot();
+                    
+                    MainSlots[i].Item = (data.MainItems[i] == null || data.MainItems[i].ID == string.Empty) ? null : data.MainItems[i];
+                }
+
+                WeaponAdditionalSlot.Item = (data.WeaponAdditionalItem == null || data.WeaponAdditionalItem.ID == string.Empty) ? null : data.WeaponAdditionalItem;
+                WeaponSlot.Item = (data.WeaponItem == null || data.WeaponItem.ID == string.Empty) ? null : data.WeaponItem;
             }
         }
     }

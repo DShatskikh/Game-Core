@@ -26,6 +26,8 @@ namespace Game
 
         private protected override void OnStepStarted()
         {
+            Debug.Log("StartMoveStepController");
+            
             var isMobile = false;
 
 #if UNITY_WEBGL || UNITY_ANDROID

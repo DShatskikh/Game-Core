@@ -17,7 +17,7 @@ namespace Game
             _heartModeService = heartModeService;
             _icon.sprite = heartModeService.GetIcon();
             
-            heartModeService.Upgrade += Upgrade;
+            _heartModeService.Upgrade += Upgrade;
         }
 
         private void OnDestroy()

@@ -52,5 +52,20 @@ namespace Game
             PlayerPrefs.SetString(SAVE_KEY, data);
 #endif
         }
+
+        public void Reset()
+        {
+            var emptyData = new SerializableDictionary<string, string>();
+            var emptyString = JsonUtility.ToJson(emptyData);
+            
+#if YandexGamesPlatform_yg
+            YG2.saves.Data = emptyString;
+            YG2.SaveProgress();
+#else 
+            PlayerPrefs.SetString(SAVE_KEY, emptyString);
+#endif
+
+            _container = emptyData;
+        }
     }
 }

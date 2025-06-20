@@ -13,6 +13,9 @@
                 if (_mainInventory.WeaponSlot.HasItem &&
                     _mainInventory.WeaponSlot.Item.TryGetComponent(out AttackComponent attackComponent))
                     attack += attackComponent.Attack;
+
+                if (attack > 1)
+                    attack--;
                 
                 return attack;
             }

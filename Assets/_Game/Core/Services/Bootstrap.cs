@@ -111,7 +111,9 @@ namespace Game
                     inventory.Add(item.Prototype.Clone());
 
                 locationsManager.SwitchLocation(_defaultLocationID, 0);
+                inventory.Load();
                 mainRepositoryStorage.Set(SaveConstants.STARTED_GAME, new MarkerData());
+                mainRepositoryStorage.Save();
             }
             // если есть сохранение загружаем игру
             else
@@ -119,6 +121,7 @@ namespace Game
                 mainRepositoryStorage.TryGet(SaveConstants.LOCATION, out LocationsManager.Data locationData);
                 locationsManager.SwitchLocation(locationData.LocationId, locationData.PointIndex);
                 player.transform.position = locationData.PlayerPosition;
+                inventory.Load();
                 
                 Debug.Log(locationData);
             }

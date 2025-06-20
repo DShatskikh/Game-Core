@@ -29,6 +29,7 @@ namespace Game
             if (step != _step)
                 return;
 
+            Debug.Log(step);
             OnStepStarted();
         }
 

@@ -33,15 +33,20 @@ namespace Game
                 var data = JsonUtility.FromJson<SerializableDictionary<string, string>>(PlayerPrefs.GetString(SAVE_KEY));
                 _container = data;
             }
-            else
-            {
-            }
         }
 
         public void Save()
         {
             var data = JsonUtility.ToJson(_container);
             PlayerPrefs.SetString(SAVE_KEY, data);
+        }
+
+        public void Reset()
+        {
+            var emptyData = new SerializableDictionary<string, string>();
+            var emptyString = JsonUtility.ToJson(emptyData);
+            PlayerPrefs.SetString(SAVE_KEY, emptyString);
+            _container = emptyData;
         }
     }
 }

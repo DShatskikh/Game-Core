@@ -32,6 +32,8 @@ namespace Game
             {
                 IsCompleted = data.IsCompleted;
                 CurrentStep = data.CurrentStep; 
+                
+                Debug.Log(CurrentStep);
             }
             
             if (CurrentStep == TutorialStep.START)
