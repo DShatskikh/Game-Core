@@ -17,15 +17,35 @@ MonoBehaviour:
     m_Value1: 5008520748535945961
   m_Variables:
   - rid: 5757847956154745126
-  - rid: 5757848192639303778
-  - rid: 5757848192639303889
-  m_VersionTimestamp: 638833763701755202
+  - rid: 3604937340089794845
+  - rid: 3604937340089794838
+  m_VersionTimestamp: 638860309017794947
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: 925783984983585933}
   references:
     version: 2
     RefIds:
+    - rid: 3604937340089794838
+      type: {class: 'TypedVariableModel`1[[Game.StarterBattleBase, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 12109505944792123902
+          m_Value1: 13833341345503920517
+        Name: Starter Battle
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 3604937340089794845
+      type: {class: 'TypedVariableModel`1[[TriggerEnter, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 11955608352694609042
+          m_Value1: 3930432712859557634
+        Name: TriggerEnter
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
     - rid: 5757847956154745126
       type: {class: 'TypedVariableModel`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
@@ -33,26 +53,6 @@ MonoBehaviour:
           m_Value0: 1
           m_Value1: 0
         Name: Self
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {fileID: 0}
-    - rid: 5757848192639303778
-      type: {class: 'TypedVariableModel`1[[TriggerEnter, Game]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 1520006299412169282
-          m_Value1: 12843637051862502473
-        Name: TriggerEnter
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {fileID: 0}
-    - rid: 5757848192639303889
-      type: {class: 'TypedVariableModel`1[[Game.StarterBattleBase, Game]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 9995360089479749959
-          m_Value1: 853157810595848023
-        Name: Battle
         IsExposed: 1
         m_IsShared: 0
         m_Value: {fileID: 0}
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Nodes:
   - rid: 5757848192639303779
   - rid: 5757848192639303871
-  m_VersionTimestamp: 638833763718624944
+  m_VersionTimestamp: 638860309041758578
   m_DebugInfo: {fileID: 6041482491846240190}
   m_RuntimeGraph: {fileID: 2260484261976550916}
   AssetID:
@@ -104,8 +104,8 @@ MonoBehaviour:
     Variables:
     - Name: Battle
       Type:
-        m_SerializableType: Game.StarterBattleBase, Game, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
+        m_SerializableType: Game.StarterBattleBase, Assembly-CSharp, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
       Tooltip: 
     NamedChildren: []
   - Name: On Start
@@ -181,6 +181,64 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 3604937340089794656
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Battle
+        Type:
+          m_SerializableType: Game.StarterBattleBase, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 3604937340089794658
+        LinkedVariable:
+          rid: 3604937340089794849
+    - rid: 3604937340089794658
+      type: {class: 'BlackboardVariable`1[[Game.StarterBattleBase, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+    - rid: 3604937340089794846
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: ChannelVariable
+        Type:
+          m_SerializableType: Unity.Behavior.EventChannelBase, Unity.Behavior, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 3604937340089794847
+        LinkedVariable:
+          rid: 3604937340089794848
+    - rid: 3604937340089794847
+      type: {class: 'BlackboardVariable`1[[Unity.Behavior.EventChannelBase, Unity.Behavior]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+    - rid: 3604937340089794848
+      type: {class: 'TypedVariableModel`1[[TriggerEnter, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 11955608352694609042
+          m_Value1: 3930432712859557634
+        Name: TriggerEnter
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
+    - rid: 3604937340089794849
+      type: {class: 'TypedVariableModel`1[[Game.StarterBattleBase, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 12109505944792123902
+          m_Value1: 13833341345503920517
+        Name: Starter Battle
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
     - rid: 5757848192639303779
       type: {class: StartOnEventModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
       data:
@@ -198,7 +256,7 @@ MonoBehaviour:
           m_Value0: 3356300611230043817
           m_Value1: 5497005381991559097
         m_FieldValues:
-        - rid: 5757848192639303833
+        - rid: 3604937340089794846
         TriggerBehavior: 0
     - rid: 5757848192639303780
       type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
@@ -210,35 +268,6 @@ MonoBehaviour:
           rid: 5757848192639303779
         m_Connections:
         - rid: 5757848192639303872
-    - rid: 5757848192639303833
-      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
-      data:
-        FieldName: ChannelVariable
-        Type:
-          m_SerializableType: Unity.Behavior.EventChannelBase, Unity.Behavior, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        LocalValue:
-          rid: 5757848192639303834
-        LinkedVariable:
-          rid: 5757848192639303835
-    - rid: 5757848192639303834
-      type: {class: 'BlackboardVariable`1[[Unity.Behavior.EventChannelBase, Unity.Behavior]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 0
-          m_Value1: 0
-        Name: 
-        m_Value: {fileID: 0}
-    - rid: 5757848192639303835
-      type: {class: 'TypedVariableModel`1[[TriggerEnter, Game]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 1520006299412169282
-          m_Value1: 12843637051862502473
-        Name: TriggerEnter
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {fileID: 0}
     - rid: 5757848192639303871
       type: {class: ActionNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
       data:
@@ -251,13 +280,13 @@ MonoBehaviour:
         - rid: 5757848192639303872
         - rid: 5757848192639303873
         NodeType:
-          m_SerializableType: StartBattleAction, Game, Version=0.0.0.0, Culture=neutral,
-            PublicKeyToken=null
+          m_SerializableType: StartBattleAction, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
         NodeTypeID:
           m_Value0: 18179825191804410907
           m_Value1: 16415861012401097226
         m_FieldValues:
-        - rid: 5757848192639303874
+        - rid: 3604937340089794656
     - rid: 5757848192639303872
       type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
@@ -277,35 +306,6 @@ MonoBehaviour:
         m_NodeModel:
           rid: 5757848192639303871
         m_Connections: []
-    - rid: 5757848192639303874
-      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
-      data:
-        FieldName: Battle
-        Type:
-          m_SerializableType: Game.StarterBattleBase, Game, Version=0.0.0.0, Culture=neutral,
-            PublicKeyToken=null
-        LocalValue:
-          rid: 5757848192639303875
-        LinkedVariable:
-          rid: 5757848192639303890
-    - rid: 5757848192639303875
-      type: {class: 'BlackboardVariable`1[[Game.StarterBattleBase, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 0
-          m_Value1: 0
-        Name: 
-        m_Value: {fileID: 0}
-    - rid: 5757848192639303890
-      type: {class: 'TypedVariableModel`1[[Game.StarterBattleBase, Game]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 9995360089479749959
-          m_Value1: 853157810595848023
-        Name: Battle
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {fileID: 0}
 --- !u!114 &925783984983585933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,19 +318,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: Banana Blackboard
   m_EditorClassIdentifier: 
-  VersionTimestamp: 638833763701755202
+  VersionTimestamp: 638860309017794947
   AssetID:
     m_Value0: 3784362739560456627
     m_Value1: 5008520748535945961
   m_Blackboard:
     m_Variables:
     - rid: 5757847956154745129
-    - rid: 5757848192639303876
-    - rid: 5757848192639303891
+    - rid: 3604937340089794850
+    - rid: 3604937340089794851
   m_SharedBlackboardVariableGuids: []
   references:
     version: 2
     RefIds:
+    - rid: 3604937340089794850
+      type: {class: 'BlackboardVariable`1[[TriggerEnter, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11955608352694609042
+          m_Value1: 3930432712859557634
+        Name: TriggerEnter
+        m_Value: {fileID: 0}
+    - rid: 3604937340089794851
+      type: {class: 'BlackboardVariable`1[[Game.StarterBattleBase, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 12109505944792123902
+          m_Value1: 13833341345503920517
+        Name: Starter Battle
+        m_Value: {fileID: 0}
     - rid: 5757847956154745129
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -338,22 +354,6 @@ MonoBehaviour:
           m_Value0: 1
           m_Value1: 0
         Name: Self
-        m_Value: {fileID: 0}
-    - rid: 5757848192639303876
-      type: {class: 'BlackboardVariable`1[[TriggerEnter, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1520006299412169282
-          m_Value1: 12843637051862502473
-        Name: TriggerEnter
-        m_Value: {fileID: 0}
-    - rid: 5757848192639303891
-      type: {class: 'BlackboardVariable`1[[Game.StarterBattleBase, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 9995360089479749959
-          m_Value1: 853157810595848023
-        Name: Battle
         m_Value: {fileID: 0}
 --- !u!114 &2260484261976550916
 MonoBehaviour:
@@ -368,16 +368,16 @@ MonoBehaviour:
   m_Name: Banana
   m_EditorClassIdentifier: 
   Graphs:
-  - rid: 5757848192639303892
+  - rid: 3604937340089794852
   RootGraph:
-    rid: 5757848192639303892
+    rid: 3604937340089794852
   m_DebugInfo: {fileID: 6041482491846240190}
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 5757848192639303892
+    - rid: 3604937340089794852
       type: {class: BehaviorGraphModule, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         AuthoringAssetID:
@@ -385,85 +385,85 @@ MonoBehaviour:
           m_Value1: 5008520748535945961
         m_DebugInfo: {fileID: 0}
         Root:
-          rid: 5757848192639303893
+          rid: 3604937340089794853
         BlackboardReference:
-          rid: 5757848192639303894
+          rid: 3604937340089794854
         BlackboardGroupReferences: []
         m_ActiveNodes: []
         m_NodesToTick: []
         m_NodesToEnd:
-          rid: 5757848192639303895
+          rid: 3604937340089794855
         m_EndedNodes:
-          rid: 5757848192639303896
-        m_VersionTimestamp: 638833763718624944
-    - rid: 5757848192639303893
+          rid: 3604937340089794856
+        m_VersionTimestamp: 638860309041758578
+    - rid: 3604937340089794853
       type: {class: StartOnEvent, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 9368123090080323600
           m_Value1: 10663582929662603954
         Graph:
-          rid: 5757848192639303892
+          rid: 3604937340089794852
         m_Parent:
           rid: -2
         m_Child:
-          rid: 5757848192639303897
+          rid: 3604937340089794857
         ChannelVariable:
-          rid: 5757848192639303898
+          rid: 3604937340089794858
         MessageVariables:
         - rid: -2
         - rid: -2
         - rid: -2
         - rid: -2
         Mode: 0
-    - rid: 5757848192639303894
+    - rid: 3604937340089794854
       type: {class: BlackboardReference, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         m_Blackboard:
-          rid: 5757848192639303899
+          rid: 3604937340089794859
         m_Source: {fileID: 925783984983585933}
-    - rid: 5757848192639303895
+    - rid: 3604937340089794855
       type: {class: 'Stack`1[[Unity.Behavior.Node, Unity.Behavior]]', ns: System.Collections.Generic, asm: mscorlib}
       data: 
-    - rid: 5757848192639303896
+    - rid: 3604937340089794856
       type: {class: 'HashSet`1[[Unity.Behavior.Node, Unity.Behavior]]', ns: System.Collections.Generic, asm: System.Core}
       data: 
-    - rid: 5757848192639303897
-      type: {class: StartBattleAction, ns: , asm: Game}
+    - rid: 3604937340089794857
+      type: {class: StartBattleAction, ns: , asm: Assembly-CSharp}
       data:
         ID:
           m_Value0: 1022695813072375062
           m_Value1: 14610154705527385332
         Graph:
-          rid: 5757848192639303892
+          rid: 3604937340089794852
         m_Parent:
-          rid: 5757848192639303893
+          rid: 3604937340089794853
         Battle:
-          rid: 5757848192639303900
-    - rid: 5757848192639303898
-      type: {class: 'BlackboardVariable`1[[TriggerEnter, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
+          rid: 3604937340089794860
+    - rid: 3604937340089794858
+      type: {class: 'BlackboardVariable`1[[TriggerEnter, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 1520006299412169282
-          m_Value1: 12843637051862502473
+          m_Value0: 11955608352694609042
+          m_Value1: 3930432712859557634
         Name: TriggerEnter
         m_Value: {fileID: 0}
-    - rid: 5757848192639303899
+    - rid: 3604937340089794859
       type: {class: Blackboard, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         m_Variables:
-        - rid: 5757848192639303901
-        - rid: 5757848192639303898
-        - rid: 5757848192639303900
-    - rid: 5757848192639303900
-      type: {class: 'BlackboardVariable`1[[Game.StarterBattleBase, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
+        - rid: 3604937340089794861
+        - rid: 3604937340089794858
+        - rid: 3604937340089794860
+    - rid: 3604937340089794860
+      type: {class: 'BlackboardVariable`1[[Game.StarterBattleBase, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 9995360089479749959
-          m_Value1: 853157810595848023
-        Name: Battle
+          m_Value0: 12109505944792123902
+          m_Value1: 13833341345503920517
+        Name: Starter Battle
         m_Value: {fileID: 0}
-    - rid: 5757848192639303901
+    - rid: 3604937340089794861
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:

@@ -383,7 +383,7 @@ MonoBehaviour:
   _spawnPointIndex: 0
   _tutorialStep: 0
   _pvpState: 0
-  _money: 0
+  _money: 5
 --- !u!114 &16250077
 MonoBehaviour:
   m_ObjectHideFlags: 0

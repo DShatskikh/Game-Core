@@ -1,9 +1,7 @@
 {
-    "name": "SaveSystem",
+    "name": "SDK Base",
     "rootNamespace": "",
-    "references": [
-        "GUID:4a4a00043450ff8459c396987c6e4655"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

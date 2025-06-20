@@ -30,12 +30,12 @@ MonoBehaviour:
       Icon: {fileID: 21300000, guid: 27f82af127980c7459962c073d5ba8fb, type: 3}
     Flags: 0
     Components:
-    - rid: 2880720768947192149
+    - rid: 3604937349854920824
   references:
     version: 2
     RefIds:
-    - rid: 2880720768947192149
-      type: {class: AttackComponent, ns: Game, asm: Game}
+    - rid: 3604937349854920824
+      type: {class: AttackComponent, ns: Game, asm: Assembly-CSharp}
       data:
         Attack: 7
         Effect: {fileID: 6856480182940632667, guid: aa6a82c156649d646a6c009b34712a95, type: 3}

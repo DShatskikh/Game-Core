@@ -9,7 +9,7 @@ namespace Game
     {
         private const string BUS_HASH = "bus:/";
         private const string SAVE_KEY = "Volume";
-        private readonly Bus _musicBus;
+        private Bus _musicBus;
         private float _value;
         private readonly SettingsRepositoryStorage _settingsRepositoryStorage;
 
@@ -24,6 +24,8 @@ namespace Game
         
         public VolumeService(SettingsRepositoryStorage settingsRepositoryStorage)
         {
+            Debug.Log("VolumeService");
+            
             _settingsRepositoryStorage = settingsRepositoryStorage;
             _settingsRepositoryStorage.Load();
             

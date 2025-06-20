@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using Zenject;
+﻿using FMODUnity;
+using UnityEngine;
 
 namespace Game
 {
@@ -8,18 +8,26 @@ namespace Game
         private IGameRepositoryStorage _gameRepositoryStorage;
         private IAssetLoader _assetLoader;
 
-        [Inject]
-        private void Construct(IGameRepositoryStorage gameRepositoryStorage,
-            IAssetLoader assetLoader)
+        private void Awake()
         {
-            _gameRepositoryStorage = gameRepositoryStorage;
-            _assetLoader = assetLoader;
-
             LoadGame();
         }
 
         private void LoadGame()
         {
+#if UNITY_WEBGL
+            if (!RuntimeManager.HasBankLoaded("Master"))
+            {
+                RuntimeManager.LoadBank("Master", true);
+                RuntimeManager.LoadBank("Master.strings", true);
+                RuntimeManager.WaitForAllSampleLoading();
+            }
+#endif
+
+            _assetLoader = new AssetLoader();
+            _gameRepositoryStorage = new MainRepositoryStorage();
+            _gameRepositoryStorage.Load();
+            
             _assetLoader.LoadScene(_gameRepositoryStorage.TryGet(SaveConstants.NOT_FIRST_GAME,
                 out MarkerData _)
             

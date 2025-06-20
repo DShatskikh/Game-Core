@@ -30,11 +30,11 @@ MonoBehaviour:
       Icon: {fileID: 0}
     Flags: 4
     Components:
-    - rid: 2880720768947192147
+    - rid: 3604937349854920833
   references:
     version: 2
     RefIds:
-    - rid: 2880720768947192147
-      type: {class: ArmorComponent, ns: Game, asm: Game}
+    - rid: 3604937349854920833
+      type: {class: ArmorComponent, ns: Game, asm: Assembly-CSharp}
       data:
-        Armor: 5
+        Armor: 10

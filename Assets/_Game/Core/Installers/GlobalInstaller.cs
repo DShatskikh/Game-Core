@@ -3,10 +3,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-#if YandexGamesPlatform_yg
-using YG;
-#endif
-
 namespace Game
 {
     // Инсталлер для всего приложения
@@ -74,8 +70,10 @@ namespace Game
     Container.Bind<IADSService>().To<EmptyADS>().AsSingle().NonLazy();
     Container.Bind<IPurchaseService>().To<EmptyPurchase>().AsSingle().NonLazy();
 #endif
-            
+
+#if UNITY_EDITOR
             mainRepositoryStorage.Load();
+#endif
         }
     }
 }

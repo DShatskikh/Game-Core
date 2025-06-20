@@ -43,7 +43,6 @@ namespace Game
         private MainInventory _mainInventory;
 
         public IPlayerMover GetMover => _mover;
-        public IReadOnlyReactiveProperty<float> GetCurrentSpeed => _currentSpeed;
         
         public IReadOnlyReactiveProperty<MonoBehaviour> NearestUseObject => 
             _useAreaChecker.NearestUseObject;

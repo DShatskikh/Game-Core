@@ -30,16 +30,17 @@ MonoBehaviour:
       Icon: {fileID: -1049571235971735760, guid: 0106d46a6116d80498aaf96d5e17d98d, type: 3}
     Flags: 2
     Components:
-    - rid: 2880720768947192177
-    - rid: 5757848192639303940
+    - rid: 3604937349854920841
+    - rid: 3604937349854920842
   references:
     version: 2
     RefIds:
-    - rid: 2880720768947192177
-      type: {class: EatComponent, ns: Game, asm: Game}
+    - rid: 3604937349854920841
+      type: {class: AddMaxHPComponent, ns: Game, asm: Assembly-CSharp}
       data:
-        Health: 20
-    - rid: 5757848192639303940
-      type: {class: AddMaxHPComponent, ns: Game, asm: Game}
+        AddHealth: 5
+    - rid: 3604937349854920842
+      type: {class: StackableItemComponent, ns: Game, asm: Assembly-CSharp}
       data:
-        AddHealth: 4
+        Count: 1
+        MaxCount: 4

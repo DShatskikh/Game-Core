@@ -41,7 +41,6 @@ MonoBehaviour:
     - FMODUnity
     - FMODUnityResonance
     - FullScreen.Editor
-    - Game
     - GameCycle
     - I2
     - Joystick
@@ -62,9 +61,8 @@ MonoBehaviour:
     - QFSW.QC.Suggestors
     - QFSW.QC.UI
     - RuStoreSDK
-    - SaveSystem
     - ScreenManager
-    - SDK
+    - SDK Base
     - SerializableGUID
     - Sirenix.OdinInspector.Modules.Unity.Addressables
     - StepSound
@@ -75,9 +73,6 @@ MonoBehaviour:
     - UniTask.Linq
     - UniTask.TextMeshPro
     - UseArea
-    - VolumeSlider
-    - YandexGamesSDK
-    - YG
     - Zenject
     showAdvancedSettings: 0
   addMgrToSceneAutomatically: 0

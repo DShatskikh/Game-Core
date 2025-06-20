@@ -2,7 +2,7 @@
     "name": "PC_SDK",
     "rootNamespace": "",
     "references": [
-        "GUID:e4944e79215003e4092e4143d326a8a0"
+        "GUID:73c6904ebdd3e1f4aaa25ff8207b14d9"
     ],
     "includePlatforms": [],
     "excludePlatforms": [

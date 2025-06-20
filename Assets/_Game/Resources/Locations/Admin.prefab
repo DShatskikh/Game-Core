@@ -156,7 +156,7 @@ SpriteRenderer:
   m_Size: {x: 0.75, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &5946403881915982177
@@ -243,7 +243,7 @@ SpriteRenderer:
   m_Size: {x: 0.75, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6846854143959084317
@@ -448,7 +448,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 986463550564492629, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
       propertyPath: m_Name
-      value: Admin Variant
+      value: Admin
       objectReference: {fileID: 0}
     - target: {fileID: 2475165797563835484, guid: f253c6a80784be44faca1e405a9bc5b0, type: 3}
       propertyPath: m_Size.x

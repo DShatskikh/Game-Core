@@ -30,13 +30,13 @@ MonoBehaviour:
       Icon: {fileID: 21300000, guid: b9c05878820b0ff4fbe79e96d1b3becd, type: 3}
     Flags: 0
     Components:
-    - rid: 2880720768947192150
+    - rid: 3604937349854920819
   references:
     version: 2
     RefIds:
-    - rid: 2880720768947192150
-      type: {class: AttackComponent, ns: Game, asm: Game}
+    - rid: 3604937349854920819
+      type: {class: AttackComponent, ns: Game, asm: Assembly-CSharp}
       data:
-        Attack: 5
-        Effect: {fileID: 6856480182940632667, guid: 64b97c0b265a0eb4dada1d7a844e474a, type: 3}
-        WeaponSprite: {fileID: 21300000, guid: b9c05878820b0ff4fbe79e96d1b3becd, type: 3}
+        Attack: 4
+        Effect: {fileID: 6856480182940632667, guid: aa6a82c156649d646a6c009b34712a95, type: 3}
+        WeaponSprite: {fileID: 21300000, guid: 27f82af127980c7459962c073d5ba8fb, type: 3}

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using YG;
 
 namespace Game
 {
@@ -30,7 +31,12 @@ namespace Game
         {
             if (PlayerPrefs.HasKey(SAVE_KEY))
             {
+#if YandexGamesPlatform_yg
+                var data = JsonUtility.FromJson<SerializableDictionary<string, string>>(YG2.saves.Data) ?? new SerializableDictionary<string, string>();
+#else 
                 var data = JsonUtility.FromJson<SerializableDictionary<string, string>>(PlayerPrefs.GetString(SAVE_KEY));
+#endif
+
                 _container = data;
             }
             else
@@ -41,7 +47,12 @@ namespace Game
         public void Save()
         {
             var data = JsonUtility.ToJson(_container);
+
+#if YandexGamesPlatform_yg
+            YG2.SaveProgress();
+#else 
             PlayerPrefs.SetString(SAVE_KEY, data);
+#endif
         }
     }
 }

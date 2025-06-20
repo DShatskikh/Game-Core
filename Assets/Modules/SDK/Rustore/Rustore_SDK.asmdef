@@ -2,10 +2,10 @@
     "name": "Rustore_SDK",
     "rootNamespace": "",
     "references": [
-        "GUID:e4944e79215003e4092e4143d326a8a0",
         "GUID:75f64a22d75439b49a2701b614348e73",
         "GUID:6777186adbd04474097e8b6e297d3c01",
-        "GUID:a233deefe8df840f48e0648f292d73f8"
+        "GUID:a233deefe8df840f48e0648f292d73f8",
+        "GUID:73c6904ebdd3e1f4aaa25ff8207b14d9"
     ],
     "includePlatforms": [
         "Android",

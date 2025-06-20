@@ -27,16 +27,16 @@ MonoBehaviour:
         mRTL_MaxLineLength: 0
         mRTL_ConvertNumbers: 0
         m_DontLocalizeParameters: 0
-      Icon: {fileID: 0}
+      Icon: {fileID: -1412347945, guid: 4c6a2b077e6dcd143bb474c162cb5f96, type: 3}
     Flags: 0
     Components:
-    - rid: 3604937332713586832
+    - rid: 3604937349854920843
   references:
     version: 2
     RefIds:
-    - rid: 3604937332713586832
-      type: {class: AttackComponent, ns: Game, asm: Game}
+    - rid: 3604937349854920843
+      type: {class: AttackComponent, ns: Game, asm: Assembly-CSharp}
       data:
         Attack: 1
         Effect: {fileID: 6856480182940632667, guid: 08b3c44c35adfc147af5e44ced3d43de, type: 3}
-        WeaponSprite: {fileID: 0}
+        WeaponSprite: {fileID: -1412347945, guid: 4c6a2b077e6dcd143bb474c162cb5f96, type: 3}

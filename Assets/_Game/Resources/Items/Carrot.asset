@@ -30,11 +30,12 @@ MonoBehaviour:
       Icon: {fileID: -5859083586626064994, guid: dcd7a69776292f14eb3ca351eeccf7cc, type: 3}
     Flags: 2
     Components:
-    - rid: 2880720768947192177
+    - rid: 3604937349854920838
   references:
     version: 2
     RefIds:
-    - rid: 2880720768947192177
-      type: {class: EatComponent, ns: Game, asm: Game}
+    - rid: 3604937349854920838
+      type: {class: StackableItemComponent, ns: Game, asm: Assembly-CSharp}
       data:
-        Health: 5
+        Count: 1
+        MaxCount: 8

@@ -75,6 +75,7 @@ namespace Game
 #endif
 
             inventory.HandSlot.Item = _handItem.Prototype.Clone();
+            mainRepositoryStorage.Set(SaveConstants.NOT_FIRST_GAME, new MarkerData());
             
             // если выставленно для тестирования загружаем тестовые данные
             if (_isTestMode)

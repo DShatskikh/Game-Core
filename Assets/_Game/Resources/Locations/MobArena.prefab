@@ -958,29 +958,29 @@ MonoBehaviour:
   m_Graph: {fileID: 2260484261976550916, guid: b3a1b978dcc18434e99aa8a215d78145, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 5757848069177081949
-  - rid: 3604937332713586810
-  - rid: 3604937332713586811
+  - rid: 3604937349854920846
+  - rid: 3604937349854920847
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
-    - rid: 3604937332713586810
-      type: {class: 'BlackboardVariable`1[[TriggerEnter, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
+    - rid: 3604937349854920846
+      type: {class: 'BlackboardVariable`1[[Game.StarterBattleBase, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 1520006299412169282
-          m_Value1: 12843637051862502473
+          m_Value0: 12109505944792123902
+          m_Value1: 13833341345503920517
+        Name: Starter Battle
+        m_Value: {fileID: 1871281037656329396}
+    - rid: 3604937349854920847
+      type: {class: 'BlackboardVariable`1[[TriggerEnter, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11955608352694609042
+          m_Value1: 3930432712859557634
         Name: TriggerEnter
         m_Value: {fileID: 11400000, guid: 8f6dd49a8022317489911b01d09c47a4, type: 2}
-    - rid: 3604937332713586811
-      type: {class: 'BlackboardVariable`1[[Game.StarterBattleBase, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 9995360089479749959
-          m_Value1: 853157810595848023
-        Name: Battle
-        m_Value: {fileID: 1871281037656329396}
     - rid: 5757848069177081949
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -2445,29 +2445,29 @@ MonoBehaviour:
   m_Graph: {fileID: 2260484261976550916, guid: b3a1b978dcc18434e99aa8a215d78145, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 5757848069177081949
-  - rid: 3604937332713586808
-  - rid: 3604937332713586809
+  - rid: 3604937349854920844
+  - rid: 3604937349854920845
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
     version: 2
     RefIds:
-    - rid: 3604937332713586808
-      type: {class: 'BlackboardVariable`1[[Game.StarterBattleBase, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
+    - rid: 3604937349854920844
+      type: {class: 'BlackboardVariable`1[[TriggerEnter, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 9995360089479749959
-          m_Value1: 853157810595848023
-        Name: Battle
-        m_Value: {fileID: 3918260923180407370}
-    - rid: 3604937332713586809
-      type: {class: 'BlackboardVariable`1[[TriggerEnter, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 1520006299412169282
-          m_Value1: 12843637051862502473
+          m_Value0: 11955608352694609042
+          m_Value1: 3930432712859557634
         Name: TriggerEnter
         m_Value: {fileID: 11400000, guid: 8f6dd49a8022317489911b01d09c47a4, type: 2}
+    - rid: 3604937349854920845
+      type: {class: 'BlackboardVariable`1[[Game.StarterBattleBase, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 12109505944792123902
+          m_Value1: 13833341345503920517
+        Name: Starter Battle
+        m_Value: {fileID: 3918260923180407370}
     - rid: 5757848069177081949
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -5148,7 +5148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6724814214292441901, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: m_BlackboardVariableOverridesList.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6724814214292441901, guid: c40012ff5f1cfde4c8c58f108ec7df4f, type: 3}
       propertyPath: managedReferences[5757848069177082454].m_Value

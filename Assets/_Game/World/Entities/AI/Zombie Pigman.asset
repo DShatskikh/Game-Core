@@ -17,14 +17,24 @@ MonoBehaviour:
     m_Value1: 7888802374358301033
   m_Variables:
   - rid: 5757848069177081938
-  - rid: 5757848069177082175
-  m_VersionTimestamp: 638837315381231335
+  - rid: 3604937340089794862
+  m_VersionTimestamp: 638860309210505075
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: -4097166147793818358}
   references:
     version: 2
     RefIds:
+    - rid: 3604937340089794862
+      type: {class: 'TypedVariableModel`1[[Game.Entity, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 6086484144538893894
+          m_Value1: 10180521412814874016
+        Name: Entity
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
     - rid: 5757848069177081938
       type: {class: 'TypedVariableModel`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
@@ -32,16 +42,6 @@ MonoBehaviour:
           m_Value0: 1
           m_Value1: 0
         Name: Self
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {fileID: 0}
-    - rid: 5757848069177082175
-      type: {class: 'TypedVariableModel`1[[Game.EnemyMover, Game]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 3170121817753974997
-          m_Value1: 7592265647947329406
-        Name: Enemy Mover
         IsExposed: 1
         m_IsShared: 0
         m_Value: {fileID: 0}
@@ -58,92 +58,92 @@ MonoBehaviour:
   m_Name: Zombie Pigman
   m_EditorClassIdentifier: 
   Graphs:
-  - rid: 5757848117779365997
+  - rid: 3604937340089794864
   RootGraph:
-    rid: 5757848117779365997
+    rid: 3604937340089794864
   m_DebugInfo: {fileID: 5754055638152936852}
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 5757848117779365997
+    - rid: 3604937340089794864
       type: {class: BehaviorGraphModule, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         AuthoringAssetID:
           m_Value0: 3770631275203015451
           m_Value1: 7888802374358301033
-        m_DebugInfo: {fileID: 5754055638152936852}
+        m_DebugInfo: {fileID: 0}
         Root:
-          rid: 5757848117779365998
+          rid: 3604937340089794865
         BlackboardReference:
-          rid: 5757848117779365999
+          rid: 3604937340089794866
         BlackboardGroupReferences: []
         m_ActiveNodes: []
         m_NodesToTick: []
         m_NodesToEnd:
-          rid: 5757848117779366000
+          rid: 3604937340089794867
         m_EndedNodes:
-          rid: 5757848117779366001
-        m_VersionTimestamp: 638837315381276514
-    - rid: 5757848117779365998
+          rid: 3604937340089794868
+        m_VersionTimestamp: 638860309223272495
+    - rid: 3604937340089794865
       type: {class: Start, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 7230575134385823892
           m_Value1: 9601535004048997037
         Graph:
-          rid: 5757848117779365997
+          rid: 3604937340089794864
         m_Parent:
           rid: -2
         m_Child:
-          rid: 5757848117779366002
+          rid: 3604937340089794869
         Repeat: 0
         AllowMultipleRepeatsPerTick: 0
-    - rid: 5757848117779365999
+    - rid: 3604937340089794866
       type: {class: BlackboardReference, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         m_Blackboard:
-          rid: 5757848117779366003
+          rid: 3604937340089794870
         m_Source: {fileID: -4097166147793818358}
-    - rid: 5757848117779366000
+    - rid: 3604937340089794867
       type: {class: 'Stack`1[[Unity.Behavior.Node, Unity.Behavior]]', ns: System.Collections.Generic, asm: mscorlib}
       data: 
-    - rid: 5757848117779366001
+    - rid: 3604937340089794868
       type: {class: 'HashSet`1[[Unity.Behavior.Node, Unity.Behavior]]', ns: System.Collections.Generic, asm: System.Core}
       data: 
-    - rid: 5757848117779366002
+    - rid: 3604937340089794869
       type: {class: RepeaterModifier, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 10943218229625691189
           m_Value1: 2053751476594608346
         Graph:
-          rid: 5757848117779365997
+          rid: 3604937340089794864
         m_Parent:
-          rid: 5757848117779365998
+          rid: 3604937340089794865
         m_Child:
-          rid: 5757848117779366004
+          rid: 3604937340089794871
         m_AllowMultipleRepeatsPerTick: 0
-    - rid: 5757848117779366003
+    - rid: 3604937340089794870
       type: {class: Blackboard, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         m_Variables:
-        - rid: 5757848117779366005
-        - rid: 5757848117779366006
-    - rid: 5757848117779366004
-      type: {class: EnemyMoveRandomPointAction, ns: , asm: Game}
+        - rid: 3604937340089794872
+        - rid: 3604937340089794873
+    - rid: 3604937340089794871
+      type: {class: EnemyMoveRandomPointAction, ns: , asm: Assembly-CSharp}
       data:
         ID:
           m_Value0: 16865405221038878430
           m_Value1: 338849066403668653
         Graph:
-          rid: 5757848117779365997
+          rid: 3604937340089794864
         m_Parent:
-          rid: 5757848117779366002
+          rid: 3604937340089794869
         Enemy:
-          rid: 5757848117779366006
-    - rid: 5757848117779366005
+          rid: 3604937340089794874
+    - rid: 3604937340089794872
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -151,14 +151,24 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 0}
-    - rid: 5757848117779366006
-      type: {class: 'BlackboardVariable`1[[Game.EnemyMover, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
+    - rid: 3604937340089794873
+      type: {class: 'BlackboardVariable`1[[Game.Entity, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
-          m_Value0: 3170121817753974997
-          m_Value1: 7592265647947329406
-        Name: Enemy Mover
+          m_Value0: 6086484144538893894
+          m_Value1: 10180521412814874016
+        Name: Entity
         m_Value: {fileID: 0}
+    - rid: 3604937340089794874
+      type: {class: 'ComponentToComponentBlackboardVariable`2[[Game.Entity, Assembly-CSharp],[Game.EnemyMover, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+        m_LinkedVariable:
+          rid: 3604937340089794873
 --- !u!114 &-4097166147793818358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,18 +181,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: Zombie Pigman Blackboard
   m_EditorClassIdentifier: 
-  VersionTimestamp: 638830906044466930
+  VersionTimestamp: 638860309210505075
   AssetID:
     m_Value0: 3770631275203015451
     m_Value1: 7888802374358301033
   m_Blackboard:
     m_Variables:
     - rid: 5757848069177081948
-    - rid: 5757848069177082184
+    - rid: 3604937340089794875
   m_SharedBlackboardVariableGuids: []
   references:
     version: 2
     RefIds:
+    - rid: 3604937340089794875
+      type: {class: 'BlackboardVariable`1[[Game.Entity, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 6086484144538893894
+          m_Value1: 10180521412814874016
+        Name: Entity
+        m_Value: {fileID: 0}
     - rid: 5757848069177081948
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -190,14 +208,6 @@ MonoBehaviour:
           m_Value0: 1
           m_Value1: 0
         Name: Self
-        m_Value: {fileID: 0}
-    - rid: 5757848069177082184
-      type: {class: 'BlackboardVariable`1[[Game.EnemyMover, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 3170121817753974997
-          m_Value1: 7592265647947329406
-        Name: Enemy Mover
         m_Value: {fileID: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -217,7 +227,7 @@ MonoBehaviour:
   - rid: 5757848069177081939
   - rid: 5757848069177082195
   - rid: 5757848069177082461
-  m_VersionTimestamp: 638837315381276514
+  m_VersionTimestamp: 638860309223272495
   m_DebugInfo: {fileID: 5754055638152936852}
   m_RuntimeGraph: {fileID: -7460211367113193746}
   AssetID:
@@ -243,7 +253,7 @@ MonoBehaviour:
     Variables:
     - Name: Enemy
       Type:
-        m_SerializableType: Game.EnemyMover, Game, Version=0.0.0.0, Culture=neutral,
+        m_SerializableType: Game.EnemyMover, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
       Tooltip: 
     NamedChildren: []
@@ -331,6 +341,35 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 3604937340089794659
+      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
+      data:
+        FieldName: Enemy
+        Type:
+          m_SerializableType: Game.EnemyMover, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        LocalValue:
+          rid: 3604937340089794660
+        LinkedVariable:
+          rid: 3604937340089794863
+    - rid: 3604937340089794660
+      type: {class: 'BlackboardVariable`1[[Game.EnemyMover, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 0
+          m_Value1: 0
+        Name: 
+        m_Value: {fileID: 0}
+    - rid: 3604937340089794863
+      type: {class: 'TypedVariableModel`1[[Game.Entity, Assembly-CSharp]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
+      data:
+        ID:
+          m_Value0: 6086484144538893894
+          m_Value1: 10180521412814874016
+        Name: Entity
+        IsExposed: 1
+        m_IsShared: 0
+        m_Value: {fileID: 0}
     - rid: 5757848069177081939
       type: {class: StartNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
       data:
@@ -372,13 +411,13 @@ MonoBehaviour:
         - rid: 5757848069177082196
         - rid: 5757848069177082197
         NodeType:
-          m_SerializableType: EnemyMoveRandomPointAction, Game, Version=0.0.0.0,
+          m_SerializableType: EnemyMoveRandomPointAction, Assembly-CSharp, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         NodeTypeID:
           m_Value0: 6359921668999101244
           m_Value1: 10333569237813000
         m_FieldValues:
-        - rid: 5757848069177082198
+        - rid: 3604937340089794659
     - rid: 5757848069177082196
       type: {class: PortModel, ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
       data:
@@ -398,35 +437,6 @@ MonoBehaviour:
         m_NodeModel:
           rid: 5757848069177082195
         m_Connections: []
-    - rid: 5757848069177082198
-      type: {class: BehaviorGraphNodeModel/FieldModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
-      data:
-        FieldName: Enemy
-        Type:
-          m_SerializableType: Game.EnemyMover, Game, Version=0.0.0.0, Culture=neutral,
-            PublicKeyToken=null
-        LocalValue:
-          rid: 5757848069177082199
-        LinkedVariable:
-          rid: 5757848069177082201
-    - rid: 5757848069177082199
-      type: {class: 'BlackboardVariable`1[[Game.EnemyMover, Game]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 0
-          m_Value1: 0
-        Name: 
-        m_Value: {fileID: 0}
-    - rid: 5757848069177082201
-      type: {class: 'TypedVariableModel`1[[Game.EnemyMover, Game]]', ns: Unity.Behavior.GraphFramework, asm: Unity.Behavior.GraphFramework}
-      data:
-        ID:
-          m_Value0: 3170121817753974997
-          m_Value1: 7592265647947329406
-        Name: Enemy Mover
-        IsExposed: 1
-        m_IsShared: 0
-        m_Value: {fileID: 0}
     - rid: 5757848069177082461
       type: {class: RepeatNodeModel, ns: Unity.Behavior, asm: Unity.Behavior.Authoring}
       data:
